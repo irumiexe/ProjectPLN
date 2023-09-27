@@ -17,7 +17,7 @@ include 'header.php';
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th class="text-center">ID Pelanggan</th>
+                            <th class="text-center">ID Mba</th>
                             <th class="text-center">Nama Pelanggan</th>
                             <th class="text-center">Daya</th>
                             <th class="text-center">Tipe Pembayaran</th>
