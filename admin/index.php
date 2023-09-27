@@ -11,7 +11,7 @@ include 'header.php';
     <div class="panel-container">
         <div class="bootstrap-tabel">
             <center>
-                <h3>SELAMAT DATANG DI WEB2</h3>
+                <h3>SELAMAT DATANG DI WEB</h3>
             </center>
 
         </div>
