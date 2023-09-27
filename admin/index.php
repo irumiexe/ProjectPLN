@@ -9,7 +9,7 @@
     <div class="panel-container">
         <div class="bootstrap-tabel">
             <center>
-                <h3>SELAMAT DATANG DI WEB SEDERHANA</h3>
+                <h3>SELAMAT DATANG DI WEB SEDERHANA2</h3>
             </center>
             
         </div>
