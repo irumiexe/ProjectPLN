@@ -12,7 +12,21 @@ include '../assets/conn/config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Menggunakan Bootstrap CSS dari CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/cosmo.min.css"> <!-- Jangan lupa tautan CSS kosmo jika diperlukan -->
+    <link rel="stylesheet" href="../assets/css/cosmo.min.css">
+    <style>
+        .navbar-brand {
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                margin-right: auto;
+                text-align: left;
+            }
+        }
+    </style>
 </head>
 
 <body onload="getLocation()">
