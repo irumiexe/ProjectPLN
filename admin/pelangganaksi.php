@@ -48,7 +48,14 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">Daya</label>
-                            <input type="text" name="daya" class="form-control" value="" placeholder="daya">
+                            <select name="tipe" id="" class="form-control">
+                                <option value="450">450VA</option>
+                                <option value="900">900VA</option>
+                                <option value="1300">1300VA</option>
+                                <option value="2200">2200VA</option>
+                                <option value="3500">3500VA</option>
+                                <option value="6600">6600VA</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Tipe Pembayaran</label>
@@ -123,7 +130,14 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Daya</label>
-                                <input type="text" name="daya" class="form-control" value="<?php echo $d['daya'] ?>" placeholder="daya">
+                                <select name="tipe" id="" class="form-control">
+                                    <option value="450">450VA</option>
+                                    <option value="900">900VA</option>
+                                    <option value="1300">1300VA</option>
+                                    <option value="2200">2200VA</option>
+                                    <option value="3500">3500VA</option>
+                                    <option value="6600">6600VA</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="">Tipe Pembayaran</label>
