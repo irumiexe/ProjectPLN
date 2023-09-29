@@ -11,7 +11,6 @@ include 'header.php';
     <div class="panel-container">
         <div class="bootstrap-tabel">
             <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
-            <a href="import_dataset.php" class="btn btn-primary">Import Dataset</a>
             <hr>
             <div class="table-responsive">
                 <table class="table table-bordered">
