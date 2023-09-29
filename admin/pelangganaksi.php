@@ -48,13 +48,13 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">Daya</label>
-                            <select name="tipe" id="" class="form-control">
-                                <option value="450">450VA</option>
-                                <option value="900">900VA</option>
-                                <option value="1300">1300VA</option>
-                                <option value="2200">2200VA</option>
-                                <option value="3500">3500VA</option>
-                                <option value="6600">6600VA</option>
+                            <select name="daya" id="" class="form-control">
+                                <option value="450VA">450VA</option>
+                                <option value="900VA">900VA</option>
+                                <option value="1300VA">1300VA</option>
+                                <option value="2200VA">2200VA</option>
+                                <option value="3500VA">3500VA</option>
+                                <option value="6600VA">6600VA</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -130,13 +130,13 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Daya</label>
-                                <select name="tipe" id="" class="form-control">
-                                    <option value="450">450VA</option>
-                                    <option value="900">900VA</option>
-                                    <option value="1300">1300VA</option>
-                                    <option value="2200">2200VA</option>
-                                    <option value="3500">3500VA</option>
-                                    <option value="6600">6600VA</option>
+                                <select name="daya" id="" class="form-control">
+                                    <option value="450VA">450VA</option>
+                                    <option value="900VA">900VA</option>
+                                    <option value="1300VA">1300VA</option>
+                                    <option value="2200VA">2200VA</option>
+                                    <option value="3500VA">3500VA</option>
+                                    <option value="6600VA">6600VA</option>
                                 </select>
                             </div>
                             <div class="form-group">
