@@ -9,8 +9,10 @@ if (isset($_GET['aksi'])) {
             $tipe = $_POST['tipe'];
             $latitude = $_POST["latitude"];
             $longitude = $_POST["longitude"];
+            move_uploaded_file($file_tmp, 'file/'.$pmet);
+            $ket = $_POST["ket"];
 
-            $query = "INSERT INTO tbl_pelanggan VALUES(' $idpel','$nama_pel','$daya',' $tipe','$latitude','$longitude')";
+            $query = "INSERT INTO tbl_pelanggan VALUES(' $idpel','$nama_pel','$daya',' $tipe','$latitude','$longitude','$pmet','$ket')";
             mysqli_query($db, $query);
 
             echo
@@ -70,6 +72,14 @@ if (isset($_GET['aksi'])) {
                                 <td><input type="text" name="latitude" class="form-control" value=""></td>
                                 <td><input type="text" name="longitude" class="form-control" value=""></td>
                             </tr>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Photo Meteran</label>
+                            <input type="file" name="pmet" class="form-control" value="" >
+                        </div>
+                        <div class="form-group">
+                            <label for="">Keterangan</label>
+                            <input type="text" name="ket" class="form-control" value="" placeholder="keterangan">
                         </div>
                         <div class="modal-footer">
                             <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
