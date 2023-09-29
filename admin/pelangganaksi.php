@@ -9,7 +9,7 @@ if (isset($_GET['aksi'])) {
             $tipe = $_POST['tipe'];
             $latitude = $_POST["latitude"];
             $longitude = $_POST["longitude"];
-            move_uploaded_file($file_tmp, 'file/'.$pmet);
+            move_uploaded_file($file_tmp, 'gambar/'.$pmet);
             $ket = $_POST["ket"];
 
             $query = "INSERT INTO tbl_pelanggan VALUES(' $idpel','$nama_pel','$daya',' $tipe','$latitude','$longitude','$pmet','$ket')";
@@ -39,7 +39,7 @@ if (isset($_GET['aksi'])) {
 
             <div class="panel-container">
                 <div class="bootstrap-tabel">
-                    <form class="myForm" action="" method="post" autocomplete="off">
+                    <form class="myForm" action="" method="post" autocomplete="off" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
                             <input type="text" name="idpel" class="form-control" value="" placeholder="id pelanggan">
