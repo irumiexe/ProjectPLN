@@ -136,40 +136,15 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Lokasi</label>
                                 <tr>
-                                    <td><input type="text" name="latitude" class="form-control" value=""></td>
-                                    <td><input type="text" name="longitude" class="form-control" value=""></td>
+                                    <td><input type="text" name="latitude" class="form-control" value="<?php echo $d['latitude'] ?>"></td>
+                                    <td><input type="text" name="longitude" class="form-control" value="<?php echo $d['longitude'] ?>"></td>
                                 </tr>
                             </div>
                             <div class="modal-footer">
-                                <a href="mhsinput.php" class="btn btn-primary">Kembali</a>
+                                <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
                                 <input type="submit" class="btn btn-success" value="Ubah">
                             </div>
-
                         </form>
-                        <script type="text/javascript">
-                            function getLocation() {
-                                if (navigator.geolocation) {
-                                    navigator.geolocation.getCurrentPosition(showPosition, showError);
-                                }
-                            }
-
-                            function showPosition(position) {
-                                document.querySelector('.myForm input[name= "latitude"]').value = position.coords.latitude;
-                                document.querySelector('.myForm input[name= "longitude"]').value = position.coords.longitude;
-                            }
-
-                            function showError(error) {
-                                switch (error.code) {
-                                    case error.PERMISSION_DENIED:
-                                        alert("aktifkan location");
-                                        location.reload();
-                                        break;
-
-                                    default:
-                                        break;
-                                }
-                            }
-                        </script>
                     <?php } ?>
                 </div>
             </div>
