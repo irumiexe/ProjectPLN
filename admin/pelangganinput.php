@@ -22,7 +22,7 @@ include 'header.php';
                             <th class="text-center">Daya</th>
                             <th class="text-center">Tipe Pembayaran</th>
                             <th class="text-center" colspan="2">Maps</th>
-                            <th class="text-center">Opsi</th>
+                            <th class="text-center">Opsi Atau Pilihan</th>
                         </tr>
                     </thead>
                     <tbody>
