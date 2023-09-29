@@ -22,60 +22,67 @@ if (isset($_GET['aksi'])) {
 }
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Sederhana</title>
+    <link rel="stylesheet" href="/assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/cosmo.min.css">
     <style type="text/css">
-        .kotak {
-            margin-top: 150px;
-            padding-left: 300px;
-        }
-
-        .kotak .input-group {
-            margin-left: 20px;
+        body {
+            background-color: skyblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
         }
 
         .container {
-            width: 1000px;
-            height: 600px;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
             background: rgb(255, 255, 255);
-            margin: 180px auto;
-            padding: 10px 30px;
-            border-radius: 30px;
-            box-shadow: 7px 7px 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
         }
 
+        .container h3 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-top: 15px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
     </style>
 </head>
 
-<body style="background-color:skyblue">
-
+<body>
     <?php
-    if (isset($_GET['aksi'])) {
-        if ($_GET['aksi'] == 'login') {
-            echo "<div style='margin-bottom:-1px;' class='alert alert-danger' role='alert'>Login anda gagal username dan password salah</div>";
-        }
+    if (isset($_GET['aksi']) && $_GET['aksi'] == 'login') {
+        echo "<div class='alert alert-danger text-center' role='alert'>Login anda gagal username dan password salah</div>";
     }
     ?>
     <div class="container">
         <form action="index.php?aksi=login" method="post" enctype="multipart/form-data">
-            <div class="col-md-9 col-offset-4 kotak">
-                <div class="text-center">
-                    <h3>LOGIN SISTEM</h3>
-                </div>
-                <div class="form-group">
-                    <label for="">Username</label>
-                    <input type="text" name="username" class="form-control" placeholder="username">
-                </div>
-                <div class="form-group">
-                    <label for="">Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="password">
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="LOGIN" class="btn btn-primary">
-                </div>
+            <h3>LOGIN SISTEM</h3>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" value="LOGIN" class="btn btn-primary">
             </div>
         </form>
     </div>
