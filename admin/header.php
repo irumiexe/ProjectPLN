@@ -20,7 +20,7 @@ include '../assets/conn/config.php';
                     <li><a href=""></a></li>
                     <li><a href="index.php">DASHBOARD</a></li>
                     <li><a href="pelangganinput.php">DATA PELANGGAN</a></li>
-                    <li><a href="logout.php">LOGOUT</a></li>
+                    <li><a href="logout.php">LOGOUT 2</a></li>
                 </ul>
             </div>
         </div>
