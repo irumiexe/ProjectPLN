@@ -37,7 +37,9 @@ include 'header.php';
                                 <td class="text-center"><?php echo $d['nama_pel'] ?></td>
                                 <td class="text-center"><?php echo $d['daya'] ?></td>
                                 <td class="text-center"><?php echo $d['tipe'] ?></td>
-                                <td style="width: 450px; height : 450px;" colspan="2"> <iframe src='https://www.google.com/maps?q=<?Php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>&hl=es;z=14&output=embed' style="width:100%;  height:100%; "></iframe> </td>
+                                <td style="width: 450px; height: 450px;" colspan="2">
+                                    <iframe src='https://www.google.com/maps?q=<?Php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>&hl=es;z=14&output=embed' style="width:100%; height:100%;"></iframe>
+                                </td>
                                 <td class="text-center"><img src="../file/<?php echo $d['pmet']; ?>" style="width: 100px;"></td>
                                 <td class="text-center"><?php echo $d['ket'] ?></td>
                                 <td class="text-center">
@@ -45,7 +47,6 @@ include 'header.php';
                                     <a href="pelangganproses.php?kode=<?php echo $d['idpel'] ?>&proses=proseshapus" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
-
                         <?php
                         }
                         ?>
@@ -53,6 +54,5 @@ include 'header.php';
                 </table>
             </div>
         </div>
-
     </div>
 </div>
