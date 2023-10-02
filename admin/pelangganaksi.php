@@ -13,8 +13,6 @@ if (isset($_GET['aksi'])) {
             $pmet = $_FILES['pmet']['name'];
             move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $_FILES['pmet']['name']);
 
-            move_uploaded_file($_FILES['pmet']['tmp_name'], 'gambar/' . $_FILES['pmet']['name']);
-
             $ket = $_POST["ket"];
 
             $query = "INSERT INTO tbl_pelanggan VALUES(' $idpel','$nama_pel','$daya',' $tipe','$latitude','$longitude','$pmet','$ket')";
