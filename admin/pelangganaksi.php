@@ -70,10 +70,9 @@ if (isset($_GET['aksi'])) {
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="">Lokasi</label>
                             <tr>
-                                <td><input type="text" name="latitude" class="form-control" value=""></td>
-                                <td><input type="text" name="longitude" class="form-control" value=""></td>
+                                <td><input type="hidden" name="latitude" class="form-control" value=""></td>
+                                <td><input type="hidden" name="longitude" class="form-control" value=""></td>
                             </tr>
                         </div>
                         <div class="form-group">
