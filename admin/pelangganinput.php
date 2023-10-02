@@ -33,7 +33,7 @@ include 'header.php';
                         while ($d = $hasil->fetch_array()) {
                         ?>
                             <tr>
-                                <td class="text-center" style="" ><?php echo $d['idpel'] ?></td>
+                                <td class="text-center" ><?php echo $d['idpel'] ?></td>
                                 <td class="text-center"><?php echo $d['nama_pel'] ?></td>
                                 <td class="text-center"><?php echo $d['daya'] ?></td>
                                 <td class="text-center"><?php echo $d['tipe'] ?></td>
