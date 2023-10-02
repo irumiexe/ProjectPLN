@@ -169,7 +169,7 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Photo Meteran</label>
-                                <input type="file" name="pmet" class="form-control" value="">
+                                <input type="file" name="pmet" class="form-control" value="<?php echo $d['pmet'] ?>">
                             </div>
                             <div class="form-group">
                                 <label for="">Keterangan</label>

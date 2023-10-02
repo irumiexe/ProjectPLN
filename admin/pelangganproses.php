@@ -18,6 +18,9 @@ if (isset($_GET['proses'])) {
         $latitude = $_POST["latitude"];
         $longitude = $_POST["longitude"];
         $pmet = $_FILES['pmet']['name'];
+
+        $pmet = $_FILES['pmet']['name'];
+        move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $_FILES['pmet']['name']);
         $ket = $_POST["ket"];
 
         $hasil = $db->query("UPDATE tbl_pelanggan set nama_pel='$nama_pel', daya='$daya', tipe='$tipe',pmet='$pmet',ket='$ket' where idpel='$idpel'");
