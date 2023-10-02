@@ -9,7 +9,7 @@ include 'header.php';
         </ol>
     </div>
     <div class="panel-container">
-        <div class="bootstrap-tabel">
+        <div class="container_tabel">
             <center>
                 <h3>SELAMAT DATANG DI WEB SEDERHANA</h3>
             </center>
