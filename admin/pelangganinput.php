@@ -2,7 +2,7 @@
 include 'header.php';
 ?>
 
-<div class="container">
+<div class="container-xl ">
     <div class="row">
         <ol class="breadcrumb">
             <h4>INPUT DATA PELANGGAN</h4>
@@ -20,7 +20,7 @@ include 'header.php';
                             <th class="text-center">Nama Pelanggan</th>
                             <th class="text-center">Daya</th>
                             <th class="text-center">Tipe Pembayaran</th>
-                            <th class="text-center" colspan="2">Maps</th>
+                            <th class="text-center" colspan="">Maps</th>
                             <th class="text-center" colspan="">Photo Meteran</th>
                             <th class="text-center">Keterangan</th>
                             <th class="text-center">Opsi</th>
@@ -37,9 +37,7 @@ include 'header.php';
                                 <td class="text-center"><?php echo $d['nama_pel'] ?></td>
                                 <td class="text-center"><?php echo $d['daya'] ?></td>
                                 <td class="text-center"><?php echo $d['tipe'] ?></td>
-                                <td style="width: 450px; height: 450px;" colspan="2">
-                                    <iframe src='https://www.google.com/maps?q=<?Php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>&hl=es;z=14&output=embed' style="width:100%; height:100%;"></iframe>
-                                </td>
+                                <td style="width: 450px; height : 450px;" colspan="2"> <iframe src='https://www.google.com/maps?q=<?Php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>&hl=es;z=14&output=embed' style="width:100%;  height:100%; "></iframe> </td>
                                 <td class="text-center"><img src="../file/<?php echo $d['pmet']; ?>" style="width: 100px;"></td>
                                 <td class="text-center"><?php echo $d['ket'] ?></td>
                                 <td class="text-center">
