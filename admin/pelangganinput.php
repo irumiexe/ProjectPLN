@@ -29,7 +29,7 @@ include 'header.php';
                             <th class="text-center">Maps</th>
                             <th class="text-center">Photo Meteran</th>
                             <th class="text-center">Keterangann</th>
-                            <th class="text-center">Opsi</th>
+                            <th class="text-center">Opsii</th>
                         </tr>
                     </thead>
                     <tbody>
