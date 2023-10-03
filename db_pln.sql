@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Sep 2023 pada 06.53
--- Versi server: 10.4.27-MariaDB
--- Versi PHP: 8.1.12
+-- Generation Time: Oct 03, 2023 at 03:16 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_akun`
+-- Table structure for table `tbl_akun`
 --
 
 CREATE TABLE `tbl_akun` (
@@ -36,7 +36,7 @@ CREATE TABLE `tbl_akun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tbl_akun`
+-- Dumping data for table `tbl_akun`
 --
 
 INSERT INTO `tbl_akun` (`kd_akun`, `nama_lengkap`, `username`, `password`, `level`) VALUES
@@ -45,37 +45,39 @@ INSERT INTO `tbl_akun` (`kd_akun`, `nama_lengkap`, `username`, `password`, `leve
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_pelanggan`
+-- Table structure for table `tbl_pelanggan`
 --
 
 CREATE TABLE `tbl_pelanggan` (
   `idpel` char(20) NOT NULL,
   `nama_pel` varchar(50) NOT NULL,
-  `daya` int(30) NOT NULL,
-  `tipe` char(10) NOT NULL,
+  `daya` varchar(30) NOT NULL,
+  `tipe` char(11) NOT NULL,
   `latitude` varchar(50) NOT NULL,
-  `longitude` varchar(50) NOT NULL
+  `longitude` varchar(50) NOT NULL,
+  `pmet` text NOT NULL,
+  `ket` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tbl_pelanggan`
+-- Dumping data for table `tbl_pelanggan`
 --
 
-INSERT INTO `tbl_pelanggan` (`idpel`, `nama_pel`, `daya`, `tipe`, `latitude`, `longitude`) VALUES
-('111111', 'ilmi', 900, 'Pascabayar', '', '');
+INSERT INTO `tbl_pelanggan` (`idpel`, `nama_pel`, `daya`, `tipe`, `latitude`, `longitude`, `pmet`, `ket`) VALUES
+(' 1', 'ilmi', '450VA', ' Prabayar', '-3.321436', '114.5921', 'download (2).jpeg', 'tes');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `tbl_akun`
+-- Indexes for table `tbl_akun`
 --
 ALTER TABLE `tbl_akun`
   ADD PRIMARY KEY (`kd_akun`);
 
 --
--- Indeks untuk tabel `tbl_pelanggan`
+-- Indexes for table `tbl_pelanggan`
 --
 ALTER TABLE `tbl_pelanggan`
   ADD PRIMARY KEY (`idpel`);
