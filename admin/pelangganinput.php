@@ -13,7 +13,9 @@ include 'header.php';
             <div class="d-flex justify-content-between mb-3">
                 <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
                 <form class="d-flex ml-auto">
-                    <input class="form-control mr-1" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control mr-1" name="cari" type="search" placeholder="Search" aria-label="Search" value="<?php if (isset($_GET['cari'])){echo $_GET['cari'];} {
+                        # code...
+                    }?>">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
@@ -34,9 +36,16 @@ include 'header.php';
                     </thead>
                     <tbody>
                         <?php
-                        $hasil = $db->query("SELECT * from tbl_pelanggan order by idpel asc");
+                        if (isset($_GET['cari'])) {
+                            $pencarian = $_GET['cari'];
+                            $hasil = "SELECT * from tbl_pelanggan where idpel like '%".$pencarian. "%' or nama_pel like '%".$pencarian."%' 
+                                                                    or daya like '%".$pencarian. "%' or tipe like '%" . $pencarian . "%'";
+                        }else {
+                            $hasil = $db->query("SELECT * from tbl_pelanggan order by idpel asc");
+                        }
+                        $tampil = $db->query("SELECT * from tbl_pelanggan order by idpel asc");
                         $no = 1;
-                        while ($d = $hasil->fetch_array()) {
+                        while ($d = $tampil->fetch_array()) {
                         ?>
                             <tr>
                                 <td class="text-center"><?php echo $d['idpel'] ?></td>
