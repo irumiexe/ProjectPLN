@@ -36,8 +36,8 @@ include 'header.php';
                         <?php
                         if (isset($_GET['cari'])) {
                             $pencarian = $_GET['cari'];
-                            $hasil ="SELECT * from tbl_pelanggan where idpel like '%".$pencarian. "%' or nama_pel like '%" . $pencarian . "%' 
-                                                                            or ket like '%".$pencarian. "%' order by idpel asc";
+                            $hasil ="SELECT * from tbl_pelanggan where idpel like '%".$pencarian. "%' or nama_pel like '%" .$pencarian ."%' 
+                                                                            or ket like '%".$pencarian. "%' or daya like '%" . $pencarian . "%' or tipe like '%" . $pencarian . "%' order by idpel asc";
                         }else {
                             $hasil ="SELECT * from tbl_pelanggan order by idpel asc";
                         }
