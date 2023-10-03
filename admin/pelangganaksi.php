@@ -27,13 +27,6 @@ if (isset($_GET['aksi'])) {
             ";
         }
 
-        if (isset($_POST["submit"])) {
-            $search_idpel = isset($_POST['search_idpel']) ? $_POST['search_idpel'] : '';
-            $search_condition = $search_idpel !== '' ? "WHERE idpel = '$search_idpel'" : '';
-
-            $query = "INSERT INTO tbl_pelanggan VALUES('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$pmet', '$ket')";
-            mysqli_query($db, $query);
-        }
 ?>
 
         <div class="container">
@@ -62,6 +55,7 @@ if (isset($_GET['aksi'])) {
                         <div class="form-group">
                             <label for="">Daya</label>
                             <select name="daya" id="" class="form-control">
+                                <option value="0">-</option>
                                 <option value="450VA">450VA</option>
                                 <option value="900VA">900VA</option>
                                 <option value="1300VA">1300VA</option>
@@ -73,6 +67,7 @@ if (isset($_GET['aksi'])) {
                         <div class="form-group">
                             <label for="">Tipe Pembayaran</label>
                             <select name="tipe" id="" class="form-control">
+                                <option value="0">-</option>
                                 <option value="Pascabayar">Pascabayar</option>
                                 <option value="Prabayar">Prabayar</option>
                             </select>
