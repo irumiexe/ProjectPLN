@@ -46,7 +46,7 @@ if (isset($_GET['aksi'])) {
                     <form class="myForm" action="" method="post" autocomplete="off" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
-                            <input type="text" name="idpel" class="form-control" value="" placeholder="id pelanggan">
+                            <input type="number" name="idpel" class="form-control" value="" placeholder="id pelanggan">
                         </div>
                         <div class="form-group">
                             <label for="">Nama Pelanggan</label>
