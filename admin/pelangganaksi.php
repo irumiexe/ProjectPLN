@@ -26,6 +26,14 @@ if (isset($_GET['aksi'])) {
             </script>
             ";
         }
+
+        if (isset($_POST["submit"])) {
+            $search_idpel = isset($_POST['search_idpel']) ? $_POST['search_idpel'] : '';
+            $search_condition = $search_idpel !== '' ? "WHERE idpel = '$search_idpel'" : '';
+
+            $query = "INSERT INTO tbl_pelanggan VALUES('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$pmet', '$ket')";
+            mysqli_query($db, $query);
+        }
 ?>
 
         <div class="container">
