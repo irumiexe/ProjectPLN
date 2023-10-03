@@ -10,7 +10,13 @@ include 'header.php';
     </div>
     <div class="panel-container">
         <div class="bootstrap-tabel">
-            <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
+            <div class="d-flex justify-content-between mb-3">
+                <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
+                <form class="d-flex ml-auto">
+                    <input class="form-control mr-1" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
             <hr>
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -33,7 +39,7 @@ include 'header.php';
                         while ($d = $hasil->fetch_array()) {
                         ?>
                             <tr>
-                                <td class="text-center" ><?php echo $d['idpel'] ?></td>
+                                <td class="text-center"><?php echo $d['idpel'] ?></td>
                                 <td class="text-center"><?php echo $d['nama_pel'] ?></td>
                                 <td class="text-center"><?php echo $d['daya'] ?></td>
                                 <td class="text-center"><?php echo $d['tipe'] ?></td>
