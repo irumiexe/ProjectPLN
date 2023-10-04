@@ -6,10 +6,27 @@ if (isset($_GET['proses'])) {
         $nama_pel = $_POST['nama_pel'];
         $daya = $_POST['daya'];
         $tipe = $_POST['tipe'];
+        $latitude = $_POST["latitude"];
+        $longitude = $_POST["longitude"];
+        $pmet = $_FILES['pmet']['name'];
 
-        $hasil = $db->query("INSERT into tbl_pelanggan (idpel,nama_pel,daya,tipe) values
-                                                            ('$idpel','$nama_pel','$daya','$tipe')");
+        $pmet = $_FILES['pmet']['name'];
+        move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $_FILES['pmet']['name']);
+        $ket = $_POST["ket"];
+
+        $ket = $_POST["ket"];
+
+        $query = "INSERT INTO tbl_pelanggan VALUES(' $idpel','$nama_pel','$daya',' $tipe','$latitude','$longitude','$pmet','$ket')";
+        mysqli_query($db, $query);
+
+        echo
+        "<script>
+            alert('Data Berhasil Di Tambahkan');
+            document.location.href = 'pelangganinput.php';
+        </script>";
+
         header("location:pelangganinput.php");
+        
     } elseif ($_GET['proses'] == 'ubah') {
         $idpel = $_POST['idpel'];
         $nama_pel = $_POST['nama_pel'];

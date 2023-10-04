@@ -2,30 +2,7 @@
 include 'header.php';
 if (isset($_GET['aksi'])) {
     if ($_GET['aksi'] == 'tambah') {
-        if (isset($_POST["submit"])) {
-            $idpel = $_POST['idpel'];
-            $nama_pel = $_POST['nama_pel'];
-            $daya = $_POST['daya'];
-            $tipe = $_POST['tipe'];
-            $latitude = $_POST["latitude"];
-            $longitude = $_POST["longitude"];
-
-            $pmet = $_FILES['pmet']['name'];
-            move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $_FILES['pmet']['name']);
-
-            $ket = $_POST["ket"];
-
-            $query = "INSERT INTO tbl_pelanggan VALUES(' $idpel','$nama_pel','$daya',' $tipe','$latitude','$longitude','$pmet','$ket')";
-            mysqli_query($db, $query);
-
-            echo
-            "
-            <script>
-            alert('Data Berhasil Di Tambahkan');
-            document.location.href = 'pelangganinput.php';
-            </script>
-            ";
-        }
+       
 
 ?>
 
@@ -43,7 +20,7 @@ if (isset($_GET['aksi'])) {
 
             <div class="panel-container">
                 <div class="bootstrap-tabel">
-                    <form class="myForm" action="" method="post" autocomplete="off" enctype="multipart/form-data">
+                    <form class="myForm" action="pelangganproses.php?proses=prosestambah" method="post" autocomplete="off" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
                             <input type="number" name="idpel" class="form-control" value="" placeholder="id pelanggan">
