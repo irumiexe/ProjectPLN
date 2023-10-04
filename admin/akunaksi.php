@@ -98,8 +98,7 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Role</label>
-                                <select name="daya" id="" class="form-control" value="<?php echo $d['tipe'] ?>>
-                                    <option value=" 0">-</option>
+                                <select name="level" id="" class="form-control" value="<?php echo $d['level'] ?>">
                                     <option value="Admin">Adminitrasi</option>
                                     <option value="petlap">Petugas Lapangan</option>
                                 </select>
