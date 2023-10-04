@@ -3,13 +3,13 @@ include 'header.php';
 if (isset($_GET['proses'])) {
     if ($_GET['proses'] == 'prosestambah') {
         $kd_akun = $_POST['kd_akun'];
-        $nama_lengkap = $_POST['nama_pelangkap'];
+        $nama_lengkap = $_POST['nama_lengkap'];
         $username = $_POST['username'];
         $password = $_POST['password'];
         $level = $_POST['level'];
 
         $hasil = $db->query("INSERT into tbl_akun (kd_akun,nama_lengkap,username,password,level) values
-        ('$idpel','$nama_pel','$daya','$tipe','$password','$level')");
+        ('$kd_akun','$nama_lengkap','$password','$level')");
         header("location:userinput.php");
     } elseif ($_GET['proses'] == 'ubah') {
         $kd_akun = $_POST['kd_akun'];
