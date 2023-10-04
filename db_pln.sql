@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2023 at 03:16 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Waktu pembuatan: 04 Okt 2023 pada 04.19
+-- Versi server: 10.4.27-MariaDB
+-- Versi PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_akun`
+-- Struktur dari tabel `tbl_akun`
 --
 
 CREATE TABLE `tbl_akun` (
@@ -36,16 +36,18 @@ CREATE TABLE `tbl_akun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_akun`
+-- Dumping data untuk tabel `tbl_akun`
 --
 
 INSERT INTO `tbl_akun` (`kd_akun`, `nama_lengkap`, `username`, `password`, `level`) VALUES
-('A01', 'administrator', 'admin', 'admin', 'Admin');
+('A01', 'Administrator', 'admin', 'admin', 'Admin'),
+('A02', 'Petugas Lapangan', 'petlap1', 'petlap', 'petlap'),
+('A03', 'Petugas Lapangan', 'petlap2', 'petlap', 'petlap');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_pelanggan`
+-- Struktur dari tabel `tbl_pelanggan`
 --
 
 CREATE TABLE `tbl_pelanggan` (
@@ -55,29 +57,33 @@ CREATE TABLE `tbl_pelanggan` (
   `tipe` char(11) NOT NULL,
   `latitude` varchar(50) NOT NULL,
   `longitude` varchar(50) NOT NULL,
-  `pmet` text NOT NULL,
+  `pmet` varchar(255) NOT NULL,
   `ket` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_pelanggan`
+-- Dumping data untuk tabel `tbl_pelanggan`
 --
 
 INSERT INTO `tbl_pelanggan` (`idpel`, `nama_pel`, `daya`, `tipe`, `latitude`, `longitude`, `pmet`, `ket`) VALUES
-(' 1', 'ilmi', '450VA', ' Prabayar', '-3.321436', '114.5921', 'download (2).jpeg', 'tes');
+(' 0001', 'Ari', '450VA', ' Pascabayar', '-3.3214959', '114.5919074', 'WhatsApp Image 2023-09-29 at 10.00.57_75b08622.jpg', 'Baik'),
+(' 0002', 'Adi', '900VA', ' Prabayar', '-3.3214959', '114.5919074', '', 'Baik'),
+(' 0003', 'Ilmi', '900VA', ' Prabayar', '-3.3214959', '114.5919074', '', 'Baik'),
+(' 0004', 'Kevin', '450VA', ' Pascabayar', '-2.1757952', '113.9441664', '', 'Baik'),
+(' 0005', 'Madun', '450VA', ' Pascabayar', '-2.1757952', '113.9441664', '', 'Rusak');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbl_akun`
+-- Indeks untuk tabel `tbl_akun`
 --
 ALTER TABLE `tbl_akun`
   ADD PRIMARY KEY (`kd_akun`);
 
 --
--- Indexes for table `tbl_pelanggan`
+-- Indeks untuk tabel `tbl_pelanggan`
 --
 ALTER TABLE `tbl_pelanggan`
   ADD PRIMARY KEY (`idpel`);
