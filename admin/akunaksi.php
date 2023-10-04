@@ -89,23 +89,32 @@ if (isset($_GET['aksi'])) {
                                 <input type="text" name="nama_lengkap" class="form-control" value="<?php echo $d['nama_lengkap'] ?>" placeholder="nama mahasiswa">
                             </div>
                             <div class="form-group">
-                                <label for="">Program Studi</label>
-                                <input type="text" name="studi" class="form-control" value="<?php echo $d['studi'] ?>" placeholder="Semester">
+                                <label for="">Username</label>
+                                <input type="text" name="username" class="form-control" value="<?php echo $d['username'] ?>" placeholder="username">
                             </div>
                             <div class="form-group">
-                                <label for="">No HP</label>
-                                <input type="text" name="nohp" class="form-control" value="<?php echo $d['nohp'] ?>" placeholder="Semester">
+                                <label for="">Password</label>
+                                <input type="password" name="password" class="form-control" value="<?php echo $d['password'] ?>" placeholder="password">
                             </div>
-
-                            <div class="modal-footer">
-                                <a href="mhsinput.php" class="btn btn-primary">Kembali</a>
-                                <input type="submit" class="btn btn-success" value="Ubah">
+                            <div class="form-group">
+                                <label for="">Role</label>
+                                <select name="daya" id="" class="form-control" value="<?php echo $d['tipe'] ?>>
+                                    <option value=" 0">-</option>
+                                    <option value="Admin">Adminitrasi</option>
+                                    <option value="petlap">Petugas Lapangan</option>
+                                </select>
                             </div>
-
-                        </form>
-                    <?php } ?>
                 </div>
+
+                <div class="modal-footer">
+                    <a href="akuninput.php" class="btn btn-primary">Kembali</a>
+                    <input type="submit" class="btn btn-success" value="Ubah">
+                </div>
+
+                </form>
+            <?php } ?>
             </div>
+        </div>
         </div>
 <?php
     }

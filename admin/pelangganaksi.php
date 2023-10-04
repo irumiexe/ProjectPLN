@@ -134,7 +134,6 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Tipe Pembayaran</label>
                                 <select name="tipe" id="" class="form-control" value="<?php echo $d['tipe'] ?>">
-                                    <option value="<?php echo $d['tipe'] ?>"><?php echo $d['tipe'] ?></option>
                                     <option value="Pascabayar">Pascabayar</option>
                                     <option value="Prabayar">Prabayar</option>
                                 </select>
