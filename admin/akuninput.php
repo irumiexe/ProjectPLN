@@ -47,7 +47,7 @@ include 'header.php';
                                 <td class="text-center"><?php echo $d['username'] ?></td>
                                 <td class="text-center"><?php echo $d['level'] ?></td>
                                 <td class="text-center">
-                                    <a href="pelangganaksi.php?kode=<?php echo $d['kd_akun'] ?>&user=ubahuser" class="btn btn-success">Ubah</a>
+                                    <a href="akunaksi.php?kode=<?php echo $d['kd_akun'] ?>&user=ubahuser" class="btn btn-success">Ubah</a>
                                     <a href="akuninput.php?kode=<?php echo $d['kd_akun'] ?>&user=hapususer" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
