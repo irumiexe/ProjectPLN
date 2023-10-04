@@ -18,7 +18,7 @@ if (isset($_GET['user'])) {
         $password = $_POST['password'];
         $level = $_POST['level'];
 
-        $hasil = $db->query("UPDATE tbl_akun set nama_lengkap='$nama_lengkap', username='$username',password='$password',level='$level' where kd_akun='$ikd_akun'");
+        $hasil = $db->query("UPDATE tbl_akun set nama_lengkap='$nama_lengkap', username='$username',password='$password',level='$level' where kd_akun='$kd_akun'");
         header("location:userinput.php");
     } elseif ($_GET['user'] == 'hapususer') {
         $kd_akun = $_GET['kode'];
