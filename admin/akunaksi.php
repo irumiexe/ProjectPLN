@@ -82,7 +82,7 @@ if (isset($_GET['aksi'])) {
                         <form action="akunproses.php?proses=ubah" method="post" enctype="multipart/form-data">
                             <div>
                                 <label for="">Kode Akun</label>
-                                <input type="text" name="kd_akun" class="form-control" value="<?php echo $d['kd_akun'] ?>">
+                                <input type="text" name="kd_akun" class="form-control" readonly value="<?php echo $d['kd_akun'] ?>">
                             </div>
                             <div class="form-group">
                                 <label for="">Nama Lengkap</label>
