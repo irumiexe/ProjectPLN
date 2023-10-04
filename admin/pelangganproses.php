@@ -24,9 +24,7 @@ if (isset($_GET['proses'])) {
             alert('Data Berhasil Di Tambahkan');
             document.location.href = 'pelangganinput.php';
         </script>";
-
         header("location:pelangganinput.php");
-        
     } elseif ($_GET['proses'] == 'ubah') {
         $idpel = $_POST['idpel'];
         $nama_pel = $_POST['nama_pel'];
