@@ -48,14 +48,23 @@ include 'header.php';
                                 <td class="text-center"><?php echo $d['level'] ?></td>
                                 <td class="text-center">
                                     <a href="akunaksi.php?kode=<?php echo $d['kd_akun'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
-                                    <a href="akuninput.php?kode=<?php echo $d['kd_akun'] ?>&proses=proseshapus" class="btn btn-danger">Hapus</a>
+                                    <a href="#" class="btn btn-danger" onclick="hapusAkun('<?php echo $d['kd_akun']; ?>')">Hapus</a>
                                 </td>
                             </tr>
                         <?php
                         }
                         ?>
+                        <script>
+                            function hapusAkun(kode) {
+                                var konfirmasi = confirm('Apakah Anda yakin ingin menghapus data ini?');
+                                if (konfirmasi) {
+                                    window.location.href = 'akunproses.php?kode=' + kode + '&proses=proseshapus';
+                                }
+                            }
+                        </script>
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>
