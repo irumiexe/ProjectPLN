@@ -8,7 +8,7 @@ if (isset($_GET['user'])) {
         $password = $_POST['password'];
         $level = $_POST['level'];
 
-        $user = $db->query("INSERT into tbl_akun (kd_akun,nama_lengkap,username,password,level) values
+        $hasil = $db->query("INSERT into tbl_akun (kd_akun,nama_lengkap,username,password,level) values
         ('$idpel','$nama_pel','$daya','$tipe','$password','$level')");
         header("location:userinput.php");
     } elseif ($_GET['user'] == 'ubahuser') {
