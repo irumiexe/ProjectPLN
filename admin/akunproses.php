@@ -20,7 +20,7 @@ if (isset($_GET['proses'])) {
 
         $hasil = $db->query("UPDATE tbl_akun set nama_lengkap='$nama_lengkap', username='$username',password='$password',level='$level' where kd_akun='$kd_akun'");
         header("location:akuninput.php");
-    } elseif ($_GET['user'] == 'proseshapus') {
+    } elseif ($_GET['proses'] == 'proseshapus') {
         $kd_akun = $_GET['kode'];
         $hasil = $db->query("DELETE FROM tbl_akun WHERE kd_akun='$kd_akun'");
         header("location:akuninput.php");
