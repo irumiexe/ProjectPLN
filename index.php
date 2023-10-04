@@ -14,7 +14,11 @@ if (isset($_GET['aksi'])) {
                 $_SESSION['username'] = $username;
                 $_SESSION['level'] = 'Admin';
                 header("location:admin/index.php");
-            } else {
+            } elseif($data['level'] == 'petlap') {
+                $_SESSION['username'] = $username;
+                $_SESSION['level'] = 'petlap';
+                header("location:petlap/index.php");
+            }else {
                 header("location:index.php?pesan=gagal");
             }
         }
