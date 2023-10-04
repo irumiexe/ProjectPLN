@@ -47,8 +47,13 @@ include 'header.php';
                                 <td class="text-center"><?php echo $d['username'] ?></td>
                                 <td class="text-center"><?php echo $d['level'] ?></td>
                                 <td class="text-center">
+<<<<<<< HEAD
                                     <a href="akunaksi.php?kode=<?php echo $d['kd_akun'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
                                     <a href="akuninput.php?kode=<?php echo $d['kd_akun'] ?>&proses=proseshapus" class="btn btn-danger">Hapus</a>
+=======
+                                    <a href="pelangganaksi.php?kode=<?php echo $d['kd_akun'] ?>&user=ubahuser" class="btn btn-success">Ubah</a>
+                                    <a href="akuninput.php?kode=<?php echo $d['kd_akun'] ?>&user=hapususer" class="btn btn-danger">Hapus</a>
+>>>>>>> 12739b03ec8ab037965f34a791c2c3c10ec9a686
                                 </td>
                             </tr>
                         <?php
