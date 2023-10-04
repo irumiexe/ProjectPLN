@@ -119,7 +119,7 @@ if (isset($_GET['aksi'])) {
                 </div>
             </div>
         </div>
-<?php
+    <?php 
     }
 }
 ?>
