@@ -11,7 +11,7 @@ include 'header.php';
     <div class="panel-container">
         <div class="bootstrap-tabel">
             <center>
-                <h3>SELAMAT DATANG DI WEB SEDERHANA</h3>
+                <h3>SELAMAT DATANG ADMIN</h3>
             </center>
         </div>
         <div class="d-flex justify-content-between mb-3">
