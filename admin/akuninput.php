@@ -5,7 +5,7 @@ include 'header.php';
 <div class="container-xl">
     <div class="row">
         <ol class="breadcrumb">
-            <h4>INPUT DATA PELANGGAN</h4>
+            <h4>INPUT DATA HAK AKSES</h4>
         </ol>
     </div>
     <div class="panel-container">
