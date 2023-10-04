@@ -1,33 +1,28 @@
 <?php
 include 'header.php';
-if (isset($_GET['proses'])) {
-    if ($_GET['proses'] == 'prosestambah') {
-        $idpel = $_POST['idpel'];
-        $nama_pel = $_POST['nama_pel'];
-        $daya = $_POST['daya'];
-        $tipe = $_POST['tipe'];
+if (isset($_GET['user'])) {
+    if ($_GET['user'] == 'tambahuser') {
+        $kd_akun = $_POST['kd_akun'];
+        $nama_lengkap = $_POST['nama_pelangkap'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $level = $_POST['level'];
 
-        $hasil = $db->query("INSERT into tbl_pelanggan (idpel,nama_pel,daya,tipe) values
-                                                            ('$idpel','$nama_pel','$daya','$tipe')");
-        header("location:pelangganinput.php");
-    } elseif ($_GET['proses'] == 'ubah') {
-        $idpel = $_POST['idpel'];
-        $nama_pel = $_POST['nama_pel'];
-        $daya = $_POST['daya'];
-        $tipe = $_POST['tipe'];
-        $latitude = $_POST["latitude"];
-        $longitude = $_POST["longitude"];
-        $pmet = $_FILES['pmet']['name'];
+        $user = $db->query("INSERT into tbl_akun (kd_akun,nama_lengkap,username,password,level) values
+        ('$idpel','$nama_pel','$daya','$tipe','$password','$level')");
+        header("location:userinput.php");
+    } elseif ($_GET['user'] == 'ubahuser') {
+        $kd_akun = $_POST['kd_akun'];
+        $nama_lengkap = $_POST['nama_pelangkap'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $level = $_POST['level'];
 
-        $pmet = $_FILES['pmet']['name'];
-        move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $_FILES['pmet']['name']);
-        $ket = $_POST["ket"];
-
-        $hasil = $db->query("UPDATE tbl_pelanggan set nama_pel='$nama_pel', daya='$daya', tipe='$tipe',pmet='$pmet',ket='$ket' where idpel='$idpel'");
-        header("location:pelangganinput.php");
-    } elseif ($_GET['proses'] == 'proseshapus') {
-        $idpel = $_GET['kode'];
-        $hasil = $db->query("DELETE FROM tbl_pelanggan WHERE idpel='$idpel'");
-        header("location:pelangganinput.php");
+        $hasil = $db->query("UPDATE tbl_akun set nama_lengkap='$nama_lengkap', username='$username',password='$password',level='$level' where kd_akun='$ikd_akun'");
+        header("location:userinput.php");
+    } elseif ($_GET['user'] == 'hapususer') {
+        $kd_akun = $_GET['kode'];
+        $hasil = $db->query("DELETE FROM tbl_user WHERE kd_akun='$kd_akun'");
+        header("location:userinput.php");
     }
 }
