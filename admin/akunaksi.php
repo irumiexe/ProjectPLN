@@ -86,7 +86,7 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Nama Lengkap</label>
-                                <input type="text" name="nama_lengkap" class="form-control" value="<?php echo $d['nama_lengkap'] ?>" placeholder="nama mahasiswa">
+                                <input type="text" name="nama_lengkap" class="form-control" value="<?php echo $d['nama_lengkap'] ?>" placeholder="nama lengkap">
                             </div>
                             <div class="form-group">
                                 <label for="">Username</label>

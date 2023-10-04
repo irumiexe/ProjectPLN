@@ -2,7 +2,7 @@
 include 'header.php';
 if (isset($_GET['aksi'])) {
     if ($_GET['aksi'] == 'tambah') {
-       
+
 
 ?>
 
@@ -133,7 +133,8 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Tipe Pembayaran</label>
-                                <select name="tipe" id="" class="form-control" value="<?php echo $d['tipe'] ?>">
+                                <select name="tipe" id="" class="form-control">
+                                    <option value=<?php echo $d['tipe'] ?>""><?php echo $d['tipe'] ?></option>
                                     <option value="Pascabayar">Pascabayar</option>
                                     <option value="Prabayar">Prabayar</option>
                                 </select>
