@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
-if (isset($_GET['user'])) {
-    if ($_GET['user'] == 'tambahuser') {
+if (isset($_GET['proses'])) {
+    if ($_GET['proses'] == 'prosestambah') {
         $kd_akun = $_POST['kd_akun'];
         $nama_lengkap = $_POST['nama_pelangkap'];
         $username = $_POST['username'];
@@ -11,7 +11,7 @@ if (isset($_GET['user'])) {
         $hasil = $db->query("INSERT into tbl_akun (kd_akun,nama_lengkap,username,password,level) values
         ('$idpel','$nama_pel','$daya','$tipe','$password','$level')");
         header("location:userinput.php");
-    } elseif ($_GET['user'] == 'ubahuser') {
+    } elseif ($_GET['proses'] == 'ubah') {
         $kd_akun = $_POST['kd_akun'];
         $nama_lengkap = $_POST['nama_pelangkap'];
         $username = $_POST['username'];
@@ -20,7 +20,7 @@ if (isset($_GET['user'])) {
 
         $hasil = $db->query("UPDATE tbl_akun set nama_lengkap='$nama_lengkap', username='$username',password='$password',level='$level' where kd_akun='$kd_akun'");
         header("location:userinput.php");
-    } elseif ($_GET['user'] == 'hapususer') {
+    } elseif ($_GET['user'] == 'proseshapus') {
         $kd_akun = $_GET['kode'];
         $hasil = $db->query("DELETE FROM tbl_akun WHERE kd_akun='$kd_akun'");
         header("location:userinput.php");
