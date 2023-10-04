@@ -13,7 +13,9 @@ include 'header.php';
             <div class="d-flex justify-content-between mb-3">
                 <a href="akunaksi.php?aksi=tambah" class="btn btn-primary">Tambah Akun</a>
                 <form class="d-flex ml-auto">
-                    <input class="form-control mr-1" name="cari" type="search" placeholder="Search" aria-label="Search" value="<?php if (isset($_GET['cari'])){echo $_GET['cari'];} ?>">
+                    <input class="form-control mr-1" name="cari" type="search" placeholder="Search" aria-label="Search" value="<?php if (isset($_GET['cari'])) {
+                                                                                                                                    echo $_GET['cari'];
+                                                                                                                                } ?>">
                     <button class="btn btn-outline-success" type="cari">Search</button>
                 </form>
             </div>
@@ -32,10 +34,10 @@ include 'header.php';
                         <?php
                         if (isset($_GET['cari'])) {
                             $pencarian = $_GET['cari'];
-                            $hasil ="SELECT * from tbl_akun where nama_lengkap like '%".$pencarian. "%' or level like '%" .$pencarian ."%' 
-                                                                            or username like '%".$pencarian. "%' order by kd_akun asc";
-                        }else {
-                            $hasil ="SELECT * from tbl_akun order by kd_akun asc";
+                            $hasil = "SELECT * from tbl_akun where nama_lengkap like '%" . $pencarian . "%' or level like '%" . $pencarian . "%' 
+                                                                            or username like '%" . $pencarian . "%' order by kd_akun asc";
+                        } else {
+                            $hasil = "SELECT * from tbl_akun order by kd_akun asc";
                         }
                         $tampil = mysqli_query($db, $hasil);
                         while ($d = $tampil->fetch_array()) {
@@ -45,8 +47,8 @@ include 'header.php';
                                 <td class="text-center"><?php echo $d['username'] ?></td>
                                 <td class="text-center"><?php echo $d['level'] ?></td>
                                 <td class="text-center">
-                                    <a href="pelangganaksi.php?kode=<?php echo $d['kd_akun'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
-                                    <a href="pelangganproses.php?kode=<?php echo $d['kd_akun'] ?>&proses=proseshapus" class="btn btn-danger">Hapus</a>
+                                    <a href="pelangganaksi.php?kode=<?php echo $d['kd_akun'] ?>&user=ubahuser" class="btn btn-success">Ubah</a>
+                                    <a href="akuninput.php?kode=<?php echo $d['kd_akun'] ?>&user=hapususer" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
                         <?php

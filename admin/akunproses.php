@@ -22,7 +22,7 @@ if (isset($_GET['user'])) {
         header("location:userinput.php");
     } elseif ($_GET['user'] == 'hapususer') {
         $kd_akun = $_GET['kode'];
-        $hasil = $db->query("DELETE FROM tbl_user WHERE kd_akun='$kd_akun'");
+        $hasil = $db->query("DELETE FROM tbl_akun WHERE kd_akun='$kd_akun'");
         header("location:userinput.php");
     }
 }
