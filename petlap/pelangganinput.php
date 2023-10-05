@@ -1,15 +1,26 @@
 <?php
 include 'header.php';
 
+// Pastikan user sudah login dan ada informasi kd_akun_user di sesi
+if (!isset($_SESSION['kd_akun_user'])) {
+    // Jika tidak, mungkin redirect ke halaman login atau lakukan tindakan lain
+    header("Location: login.php");
+    exit();
+}
+
+// Ambil kd_akun_user dari sesi
+$kd_akun_user = $_SESSION['kd_akun_user'];
+
 // Ambil tanggal hari ini
 $tanggal_hari_ini = date('Y-m-d');
 
-// Query untuk menghitung jumlah data pada tanggal hari ini
-$query_hitung_data = "SELECT COUNT(*) as jumlah_data FROM tbl_pelanggan WHERE tanggal = '$tanggal_hari_ini'";
+// Query untuk menghitung jumlah data pada tanggal hari ini untuk kd_akun tertentu
+$query_hitung_data = "SELECT COUNT(*) as jumlah_data FROM tbl_pelanggan WHERE tanggal = '$tanggal_hari_ini' AND kd_akun = '$kd_akun_user'";
 $result_hitung_data = mysqli_query($db, $query_hitung_data);
 $data_hitung = mysqli_fetch_assoc($result_hitung_data);
 $jumlah_data = $data_hitung['jumlah_data'];
 ?>
+
 
 <div class="container-xl">
     <div class="row">
