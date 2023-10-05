@@ -30,7 +30,7 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
-                            <input type="text" name="idpel" class="form-control" value="" placeholder="id pelanggan harus 12 digit" pattern="^([1-9])[0-9]{11}$" required autofocus maxlength="12">
+                            <input type="text" name="idpel" class="form-control" value="" placeholder="id pelanggan harus 12 digit" required autofocus maxlength="12">
                         </div>
                         <div class="form-group">
                             <label for="">Nama Pelanggan</label>
@@ -123,7 +123,7 @@ if (isset($_GET['aksi'])) {
                         <form action="pelangganproses.php?proses=ubah" method="post" enctype="multipart/form-data">
                             <div>
                                 <label for="">ID Pelanggan</label>
-                                <input type="text" name="idpel" class="form-control" value="<?php echo $d['idpel'] ?>" required>
+                                <input type="text" name="idpel" class="form-control" value="<?php echo $d['idpel'] ?>" placeholder="id pelanggan harus 12 digit" pattern="^([1-9])[0-9]{11}$" required autofocus maxlength="12">
                             </div>
                             <div class="form-group">
                                 <label for="">Nama Pelanggan</label>
@@ -157,7 +157,7 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Photo Meteran</label>
-                                <input type="file" name="pmet" class="form-control" value="<?php echo $d['pmet'] ?>" required>
+                                <input type="file" name="pmet" class="form-control" value="<?php echo $d['pmet'] ?>">
                             </div>
                             <div class="form-group">
                                 <label for="">Keterangan</label>
