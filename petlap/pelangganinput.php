@@ -11,16 +11,20 @@ if (!isset($_SESSION['kd_akun_user'])) {
 // Ambil kd_akun_user dari sesi
 $kd_akun_user = $_SESSION['kd_akun_user'];
 
-// Ambil tanggal hari ini
-$tanggal_hari_ini = date('Y-m-d');
+// Inisialisasi tanggal hari ini jika tidak ada tanggal yang dipilih
+$tanggal_dipilih = date('Y-m-d');
 
-// Query untuk menghitung jumlah data pada tanggal hari ini untuk kd_akun tertentu
-$query_hitung_data = "SELECT COUNT(*) as jumlah_data FROM tbl_pelanggan WHERE tanggal = '$tanggal_hari_ini' AND kd_akun = '$kd_akun_user'";
+// Jika pengguna memilih tanggal
+if (isset($_POST['pilih_tanggal'])) {
+    $tanggal_dipilih = $_POST['tanggal'];
+}
+
+// Query untuk menghitung jumlah data pada tanggal yang dipilih untuk kd_akun tertentu
+$query_hitung_data = "SELECT COUNT(*) as jumlah_data FROM tbl_pelanggan WHERE tanggal = '$tanggal_dipilih' AND kd_akun = '$kd_akun_user'";
 $result_hitung_data = mysqli_query($db, $query_hitung_data);
 $data_hitung = mysqli_fetch_assoc($result_hitung_data);
 $jumlah_data = $data_hitung['jumlah_data'];
 ?>
-
 
 <div class="container-xl">
     <div class="row">
@@ -32,15 +36,20 @@ $jumlah_data = $data_hitung['jumlah_data'];
         <div class="bootstrap-tabel">
             <div class="d-flex justify-content-between mb-3">
                 <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
-
-                <!-- Tampilkan tanggal dan jumlah data -->
             </div>
+            <br>
+            <form method="post">
+                <div class="form-group">
+                    <label for="tanggal">Pilih Tanggal: </label>
+                    <input type="date" name="tanggal" class="form-control" value="<?php echo $tanggal_dipilih; ?>">
+                    <button type="submit" name="pilih_tanggal" class="btn btn-success mt-2">Pilih</button>
+                </div>
+
+            </form>
+            <br>
             <div>
-                <br>
-                <p>Tanggal Hari Ini: <?php echo $tanggal_hari_ini; ?></p>
-                <p>Jumlah Data Hari Ini: <?php echo $jumlah_data; ?></p>
+                <p>Tanggal Dipilih: <?php echo $tanggal_dipilih; ?></p>
+                <p>Jumlah Data: <?php echo $jumlah_data; ?></p>
             </div>
-
         </div>
     </div>
-</div>
