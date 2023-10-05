@@ -23,19 +23,23 @@ if (isset($_GET['aksi'])) {
 
             <div class="panel-container">
                 <div class="bootstrap-tabel">
-                    <form class="myForm" action="pelangganproses.php?proses=prosestambah" method="post" autocomplete="off" enctype="multipart/form-data">
+                    <form class="myForm" action="pelangganproses.php?proses=prosestambah" method="post" autocomplete="off" enctype="multipart/form-data" autocomplete="off">
+                        <div class="form-group">
+                            <label for="">Tanggal</label>
+                            <input type="text" name="tanggal" class="form-control" value="<?php echo date('Y-m-d'); ?>" readonly>
+                        </div>
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
-                            <input type="number" name="idpel" class="form-control" value="" placeholder="id pelanggan">
+                            <input type="text" name="idpel" class="form-control" value="" placeholder="id pelanggan harus 12 digit" pattern="^([1-9])[0-9]{11}$" required autofocus maxlength="12">
                         </div>
                         <div class="form-group">
                             <label for="">Nama Pelanggan</label>
-                            <input type="text" name="nama_pel" class="form-control" value="" placeholder="nama pelanggan">
+                            <input type="text" name="nama_pel" class="form-control" value="" placeholder="nama pelanggan" required minlength="2">
                         </div>
                         <div class="form-group">
                             <label for="">Daya</label>
-                            <select name="daya" id="" class="form-control">
-                                <option value="0">-</option>
+                            <select name="daya" id="" class="form-control" required>
+                                <option value="">-</option>
                                 <option value="450VA">450VA</option>
                                 <option value="900VA">900VA</option>
                                 <option value="1300VA">1300VA</option>
@@ -46,8 +50,8 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">Tipe Pembayaran</label>
-                            <select name="tipe" id="" class="form-control">
-                                <option value="0">-</option>
+                            <select name="tipe" id="" class="form-control" required>
+                                <option value="">-</option>
                                 <option value="Pascabayar">Pascabayar</option>
                                 <option value="Prabayar">Prabayar</option>
                             </select>
@@ -60,19 +64,15 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">Photo Meteran</label>
-                            <input type="file" name="pmet" class="form-control" value="">
+                            <input type="file" name="pmet" class="form-control" value="" required>
                         </div>
                         <div class="form-group">
                             <label for="">Keterangan</label>
-                            <input type="text" name="ket" class="form-control" value="" placeholder="keterangan">
+                            <input type="text" name="ket" class="form-control" value="" placeholder="keterangan" required>
                         </div>
                         <div class="form-group">
-                            <label for="">Tanggal</label>
-                            <input type="text" name="tanggal" class="form-control" value="<?php echo date('Y-m-d'); ?>" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="">kode_akun</label>
-                            <input type="text" name="kd_akun" class="form-control" value="<?php echo $kd_akun_user; ?>" readonly>
+                            <label for="" hidden>kode_akun</label>
+                            <input type="hidden" name="kd_akun" class="form-control" value="<?php echo $kd_akun_user; ?>" readonly>
                         </div>
                         <div class="modal-footer">
                             <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
@@ -123,15 +123,15 @@ if (isset($_GET['aksi'])) {
                         <form action="pelangganproses.php?proses=ubah" method="post" enctype="multipart/form-data">
                             <div>
                                 <label for="">ID Pelanggan</label>
-                                <input type="text" name="idpel" class="form-control" value="<?php echo $d['idpel'] ?>">
+                                <input type="text" name="idpel" class="form-control" value="<?php echo $d['idpel'] ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Nama Pelanggan</label>
-                                <input type="text" name="nama_pel" class="form-control" value="<?php echo $d['nama_pel'] ?>" placeholder="nama pelanggan">
+                                <input type="text" name="nama_pel" class="form-control" value="<?php echo $d['nama_pel'] ?>" placeholder="nama pelanggan" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Daya</label>
-                                <select name="daya" id="" class="form-control">
+                                <select name="daya" id="" class="form-control" required>
                                     <option value="450VA">450VA</option>
                                     <option value="900VA">900VA</option>
                                     <option value="1300VA">1300VA</option>
@@ -142,7 +142,7 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Tipe Pembayaran</label>
-                                <select name="tipe" id="" class="form-control">
+                                <select name="tipe" id="" class="form-control" required>
                                     <option value=<?php echo $d['tipe'] ?>""><?php echo $d['tipe'] ?></option>
                                     <option value="Pascabayar">Pascabayar</option>
                                     <option value="Prabayar">Prabayar</option>
@@ -157,15 +157,15 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Photo Meteran</label>
-                                <input type="file" name="pmet" class="form-control" value="<?php echo $d['pmet'] ?>">
+                                <input type="file" name="pmet" class="form-control" value="<?php echo $d['pmet'] ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Keterangan</label>
-                                <input type="text" name="ket" class="form-control" value="<?php echo $d['ket'] ?>" placeholder="keterangan">
+                                <input type="text" name="ket" class="form-control" value="<?php echo $d['ket'] ?>" placeholder="keterangan" required>
                             </div>
                             <div class="form-group">
                                 <label for="">kode_akun</label>
-                                <input type="text" name="kd_akun" class="form-control" value="<?php echo $d['kd_akun']; ?>" readonly>
+                                <input type="hidden" name="kd_akun" class="form-control" value="<?php echo $d['kd_akun']; ?>" readonly>
                             </div>
                             <div class="modal-footer">
                                 <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
