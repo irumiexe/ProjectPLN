@@ -1,5 +1,28 @@
 <?php
 include 'header.php';
+
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    $level = $_SESSION['level'];
+
+    // Perolehan nama lengkap dari database (sesuaikan dengan struktur database Anda)
+    $query = $db->query("SELECT nama_lengkap FROM tbl_akun WHERE username='$username'");
+    $data = $query->fetch_assoc();
+    $nama_lengkap = $data['nama_lengkap'];
+
+    // Tampilkan pesan selamat datang sesuai dengan peran pengguna
+    if ($level == 'Admin') {
+        $welcome_message = "SELAMAT DATANG ADMIN $nama_lengkap";
+    } elseif ($level == 'petlap') {
+        $welcome_message = "SELAMAT DATANG PETUGAS LAPANGAN $nama_lengkap";
+    } else {
+        $welcome_message = "SELAMAT DATANG";
+    }
+} else {
+    // Jika pengguna belum login, redirect ke halaman login
+    header("location: ../index.php");
+    exit();
+}
 ?>
 
 <div class="container">
@@ -11,17 +34,8 @@ include 'header.php';
     <div class="panel-container">
         <div class="bootstrap-tabel">
             <center>
-                <h3>SELAMAT DATANG ADMIN</h3>
+                <h3><?php echo $welcome_message; ?></h3>
             </center>
-        </div>
-        <div class="d-flex justify-content-between mb-3">
-            <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah User</a>
-            <form class="d-flex ml-auto">
-                <input class="form-control mr-1" name="cari" type="search" placeholder="Search" aria-label="Search" value="<?php if (isset($_GET['cari'])) {
-                                                                                                                                echo $_GET['cari'];
-                                                                                                                            } ?>">
-                <button class="btn btn-outline-success" type="cari">Search</button>
-            </form>
         </div>
 
     </div>

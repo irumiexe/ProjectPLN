@@ -14,8 +14,9 @@ if (isset($_GET['aksi'])) {
             move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $_FILES['pmet']['name']);
 
             $ket = $_POST["ket"];
+            $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet, ket, tanggal) 
+            VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$pmet', '$ket', CURDATE())";
 
-            $query = "INSERT INTO tbl_pelanggan VALUES(' $idpel','$nama_pel','$daya',' $tipe','$latitude','$longitude','$pmet','$ket')";
             mysqli_query($db, $query);
 
             echo
@@ -86,6 +87,10 @@ if (isset($_GET['aksi'])) {
                             <label for="">Keterangan</label>
                             <input type="text" name="ket" class="form-control" value="" placeholder="keterangan">
                         </div>
+                        <div class="form-group">
+                            <label for="">Tanggal</label>
+                            <input type="text" name="tanggal" class="form-control" value="<?php echo date('Y-m-d'); ?>" readonly>
+                        </div>
                         <div class="modal-footer">
                             <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
                             <button type="submit" class="btn btn-success" name="submit"> Submit</button>
@@ -119,7 +124,7 @@ if (isset($_GET['aksi'])) {
                 </div>
             </div>
         </div>
-    <?php 
+<?php
     }
 }
 ?>
