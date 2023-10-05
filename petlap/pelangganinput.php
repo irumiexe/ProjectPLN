@@ -34,12 +34,12 @@ $jumlah_data = $data_hitung['jumlah_data'];
                 <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
 
                 <!-- Tampilkan tanggal dan jumlah data -->
-                <div>
-                    <p>Tanggal Hari Ini: <?php echo $tanggal_hari_ini; ?></p>
-                    <p>Jumlah Data Hari Ini: <?php echo $jumlah_data; ?></p>
-                </div>
             </div>
-            <hr>
+            <div>
+                <br>
+                <p>Tanggal Hari Ini: <?php echo $tanggal_hari_ini; ?></p>
+                <p>Jumlah Data Hari Ini: <?php echo $jumlah_data; ?></p>
+            </div>
 
         </div>
     </div>
