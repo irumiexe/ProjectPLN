@@ -10,13 +10,13 @@ if (isset($_GET['proses'])) {
         $longitude = $_POST["longitude"];
         $pmet = $_FILES['pmet']['name'];
 
-        $pmet = $_FILES['pmet']['name'];
         move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $_FILES['pmet']['name']);
         $ket = $_POST["ket"];
+        $kd_akun = $_POST['kd_akun'];  // Tambahkan baris ini
 
-        $ket = $_POST["ket"];
+        $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet, ket, tanggal, kd_akun) 
+          VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$pmet', '$ket', CURDATE(), '$kd_akun')";
 
-        $query = "INSERT INTO tbl_pelanggan VALUES(' $idpel','$nama_pel','$daya',' $tipe','$latitude','$longitude','$pmet','$ket')";
         mysqli_query($db, $query);
 
         echo

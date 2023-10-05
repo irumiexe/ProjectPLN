@@ -1,9 +1,17 @@
 <?php
 include 'header.php';
+
+// Pastikan user sudah login dan ada informasi kd_akun_user di sesi
+if (!isset($_SESSION['kd_akun_user'])) {
+    // Jika tidak, mungkin redirect ke halaman login atau lakukan tindakan lain
+    header("Location: login.php");
+    exit();
+}
+
 if (isset($_GET['aksi'])) {
     if ($_GET['aksi'] == 'tambah') {
-
-
+        // Mengambil kd_akun_user dari sesi
+        $kd_akun_user = $_SESSION['kd_akun_user'];
 ?>
 
         <div class="container">
@@ -12,11 +20,6 @@ if (isset($_GET['aksi'])) {
                     <h4>DATA PELANGGAN/ TAMBAH DATA</h4>
                 </ol>
             </div>
-
-            <?php
-
-            $carikode = $db->query("SELECT max(idpel) FROM tbl_pelanggan");
-            ?>
 
             <div class="panel-container">
                 <div class="bootstrap-tabel">
@@ -63,6 +66,14 @@ if (isset($_GET['aksi'])) {
                             <label for="">Keterangan</label>
                             <input type="text" name="ket" class="form-control" value="" placeholder="keterangan">
                         </div>
+                        <div class="form-group">
+                            <label for="">Tanggal</label>
+                            <input type="text" name="tanggal" class="form-control" value="<?php echo date('Y-m-d'); ?>" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="">kode_akun</label>
+                            <input type="text" name="kd_akun" class="form-control" value="<?php echo $kd_akun_user; ?>" readonly>
+                        </div>
                         <div class="modal-footer">
                             <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
                             <button type="submit" class="btn btn-success" name="submit"> Submit</button>
@@ -92,7 +103,6 @@ if (isset($_GET['aksi'])) {
                             }
                         }
                     </script>
-
                 </div>
             </div>
         </div>
@@ -110,7 +120,6 @@ if (isset($_GET['aksi'])) {
                     $data = $db->query("SELECT * From tbl_pelanggan where idpel='$_GET[kode]'");
                     while ($d = mysqli_fetch_array($data)) {
                     ?>
-
                         <form action="pelangganproses.php?proses=ubah" method="post" enctype="multipart/form-data">
                             <div>
                                 <label for="">ID Pelanggan</label>
@@ -153,6 +162,10 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Keterangan</label>
                                 <input type="text" name="ket" class="form-control" value="<?php echo $d['ket'] ?>" placeholder="keterangan">
+                            </div>
+                            <div class="form-group">
+                                <label for="">kode_akun</label>
+                                <input type="text" name="kd_akun" class="form-control" value="<?php echo $d['kd_akun']; ?>" readonly>
                             </div>
                             <div class="modal-footer">
                                 <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
