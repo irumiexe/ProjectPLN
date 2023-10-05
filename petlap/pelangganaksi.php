@@ -30,11 +30,11 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
-                            <input type="numberic" name="idpel" class="form-control" value="" placeholder="id pelanggan" required>
+                            <input type="numberic" name="idpel" class="form-control" value="" placeholder="id pelanggan harus 12 digit" required autofocus minlength="12" maxlength="12">
                         </div>
                         <div class="form-group">
                             <label for="">Nama Pelanggan</label>
-                            <input type="text" name="nama_pel" class="form-control" value="" placeholder="nama pelanggan" required>
+                            <input type="text" name="nama_pel" class="form-control" value="" placeholder="nama pelanggan" required minlength="2">
                         </div>
                         <div class="form-group">
                             <label for="">Daya</label>
@@ -106,77 +106,6 @@ if (isset($_GET['aksi'])) {
                 </div>
             </div>
         </div>
-    <?php } elseif ($_GET['aksi'] == 'ubah') { ?>
-        <div class="container">
-            <div class="row">
-                <ol class="breadcrumb">
-                    <h4>PELANGGAN/ UBAH</h4>
-                </ol>
-            </div>
-
-            <div class="panel-container">
-                <div class="bootstrap-tabel">
-                    <?php
-                    $data = $db->query("SELECT * From tbl_pelanggan where idpel='$_GET[kode]'");
-                    while ($d = mysqli_fetch_array($data)) {
-                    ?>
-                        <form action="pelangganproses.php?proses=ubah" method="post" enctype="multipart/form-data">
-                            <div>
-                                <label for="">ID Pelanggan</label>
-                                <input type="text" name="idpel" class="form-control" value="<?php echo $d['idpel'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Nama Pelanggan</label>
-                                <input type="text" name="nama_pel" class="form-control" value="<?php echo $d['nama_pel'] ?>" placeholder="nama pelanggan">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Daya</label>
-                                <select name="daya" id="" class="form-control">
-                                    <option value="450VA">450VA</option>
-                                    <option value="900VA">900VA</option>
-                                    <option value="1300VA">1300VA</option>
-                                    <option value="2200VA">2200VA</option>
-                                    <option value="3500VA">3500VA</option>
-                                    <option value="6600VA">6600VA</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Tipe Pembayaran</label>
-                                <select name="tipe" id="" class="form-control">
-                                    <option value=<?php echo $d['tipe'] ?>""><?php echo $d['tipe'] ?></option>
-                                    <option value="Pascabayar">Pascabayar</option>
-                                    <option value="Prabayar">Prabayar</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Lokasi</label>
-                                <tr>
-                                    <td><input type="text" name="latitude" class="form-control" value="<?php echo $d['latitude'] ?>"></td>
-                                    <td><input type="text" name="longitude" class="form-control" value="<?php echo $d['longitude'] ?>"></td>
-                                </tr>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Photo Meteran</label>
-                                <input type="file" name="pmet" class="form-control" value="<?php echo $d['pmet'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Keterangan</label>
-                                <input type="text" name="ket" class="form-control" value="<?php echo $d['ket'] ?>" placeholder="keterangan">
-                            </div>
-                            <div class="form-group">
-                                <label for="" hidden>kode_akun</label>
-                                <input type="hidden" name="kd_akun" class="form-control" value="<?php echo $d['kd_akun']; ?>" readonly>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
-                                <input type="submit" class="btn btn-success" value="Ubah">
-                            </div>
-                        </form>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
-<?php
-    }
+<?php }
 }
 ?>
