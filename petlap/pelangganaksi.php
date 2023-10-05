@@ -30,7 +30,7 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
-                            <input type="numberic" name="idpel" class="form-control" value="" placeholder="id pelanggan harus 12 digit" required autofocus minlength="12" maxlength="12">
+                            <input type="number" name="idpel" class="form-control" value="" placeholder="id pelanggan harus 12 digit" required autofocus minlength="12" maxlength="12">
                         </div>
                         <div class="form-group">
                             <label for="">Nama Pelanggan</label>
