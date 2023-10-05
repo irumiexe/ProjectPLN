@@ -37,11 +37,11 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">Nama Lengkap</label>
-                            <input type="text" name="nama_lengkap" class="form-control" value="" placeholder="nama lengkap">
+                            <input type="text" name="nama_lengkap" class="form-control" value="" placeholder="nama lengkap" required>
                         </div>
                         <div class="form-group">
                             <label for="">Username</label>
-                            <input type="text" name="username" class="form-control" value="" placeholder="username">
+                            <input type="text" name="username" class="form-control" value="" placeholder="username" required>
                         </div>
                         <div class="form-group">
                             <label for="">Password</label>
@@ -49,8 +49,8 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">Role</label>
-                            <select name="daya" id="" class="form-control">
-                                <option value="0">-</option>
+                            <select name="level" id="" class="form-control" required>
+                                <option value="">-</option>
                                 <option value="Admin">Adminitrasi</option>
                                 <option value="petlap">Petugas Lapangan</option>
                             </select>
@@ -82,15 +82,15 @@ if (isset($_GET['aksi'])) {
                         <form action="akunproses.php?proses=ubah" method="post" enctype="multipart/form-data">
                             <div>
                                 <label for="">Kode Akun</label>
-                                <input type="text" name="kd_akun" class="form-control" readonly value="<?php echo $d['kd_akun'] ?>">
+                                <input type="text" name="kd_akun" class="form-control" readonly value="<?php echo $d['kd_akun'] ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Nama Lengkap</label>
-                                <input type="text" name="nama_lengkap" class="form-control" value="<?php echo $d['nama_lengkap'] ?>" placeholder="nama lengkap">
+                                <input type="text" name="nama_lengkap" class="form-control" value="<?php echo $d['nama_lengkap'] ?>" placeholder="nama lengkap" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Username</label>
-                                <input type="text" name="username" class="form-control" value="<?php echo $d['username'] ?>" placeholder="username">
+                                <input type="text" name="username" class="form-control" value="<?php echo $d['username'] ?>" placeholder="username" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Password</label>
@@ -98,7 +98,7 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Role</label>
-                                <select name="level" id="" class="form-control" value="<?php echo $d['level'] ?>">
+                                <select name="level" id="" class="form-control" value="<?php echo $d['level'] ?>" required>
                                     <option value="Admin">Adminitrasi</option>
                                     <option value="petlap">Petugas Lapangan</option>
                                 </select>
