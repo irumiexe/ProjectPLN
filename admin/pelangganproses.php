@@ -1,5 +1,6 @@
 <?php
 include 'header.php';
+
 if (isset($_GET['proses'])) {
     if ($_GET['proses'] == 'prosestambah') {
         $idpel = $_POST['idpel'];
@@ -12,7 +13,7 @@ if (isset($_GET['proses'])) {
 
         move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $_FILES['pmet']['name']);
         $ket = $_POST["ket"];
-        $kd_akun = $_POST['kd_akun'];  // Tambahkan baris ini
+        $kd_akun = $_POST['kd_akun'];
 
         $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet, ket, tanggal, kd_akun) 
           VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$pmet', '$ket', CURDATE(), '$kd_akun')";
@@ -34,7 +35,6 @@ if (isset($_GET['proses'])) {
         $longitude = $_POST["longitude"];
         $pmet = $_FILES['pmet']['name'];
 
-        $pmet = $_FILES['pmet']['name'];
         move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $_FILES['pmet']['name']);
         $ket = $_POST["ket"];
 
@@ -42,7 +42,29 @@ if (isset($_GET['proses'])) {
         header("location:pelangganinput.php");
     } elseif ($_GET['proses'] == 'proseshapus') {
         $idpel = $_GET['kode'];
-        $hasil = $db->query("DELETE FROM tbl_pelanggan WHERE idpel='$idpel'");
+
+        // Ambil nama file yang akan dihapus dari database
+        $query = "SELECT pmet FROM tbl_pelanggan WHERE idpel='$idpel'";
+        $result = mysqli_query($db, $query);
+        $row = mysqli_fetch_assoc($result);
+        $fileToDelete = $row['pmet'];
+
+        // Hapus file dari direktori
+        $filePath = '../file/' . $fileToDelete;
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+
+        // Hapus data dari database
+        $deleteQuery = "DELETE FROM tbl_pelanggan WHERE idpel='$idpel'";
+        $deleteResult = mysqli_query($db, $deleteQuery);
+
+        if ($deleteResult) {
+            echo "<script>alert('Data dan file berhasil dihapus');</script>";
+        } else {
+            echo "<script>alert('Gagal menghapus data');</script>";
+        }
+
         header("location:pelangganinput.php");
     }
 }
