@@ -13,7 +13,7 @@ header("Content-Type: application/vnd.ms-excel");
 header("Content-Disposition: attachment; filename=" . $filename);
 
 // Mengeluarkan data dalam format Excel
-echo '<table border="1" style="display:none;">
+echo '<table border="1">
     <tr>
     <th>NO</th>
     <th>ID PELANGGAN</th>
@@ -28,15 +28,16 @@ $no = 1;
 while ($row = mysqli_fetch_assoc($daftar_pelanggan)) {
     $maps = $row['latitude'] . ', ' . $row['longitude'];
     echo "<tr>
-    <td>$no</td>
-    <td>" . $row['idpel'] . "</td>
+    <td style='mso-number-format:\"\\@\";'>$no</td>
+    <td style='mso-number-format:\"\\@\";'>" . $row['idpel'] . "</td>
+    <!-- Sisipkan style='mso-number-format:\"\\@\";' pada kolom yang ingin diubah menjadi format teks -->
     <td>" . $row['nama_pel'] . "</td>
     <td>" . $row['daya'] . "</td>
     <td>" . $row['tipe'] . "</td>
     <td>" . $maps . "</td>
     <td>" . $row['pmet'] . "</td>
     <td>" . $row['ket'] . "</td>
-    </tr>";
+</tr>";
     $no++;
 }
 echo '</table>';
