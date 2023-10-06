@@ -11,12 +11,15 @@ if (isset($_GET['proses'])) {
         $longitude = $_POST["longitude"];
         $pmet = $_FILES['pmet']['name'];
 
-        move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $_FILES['pmet']['name']);
+        // Hapus nama asli dan ganti dengan idpel
+        $nama_file_baru = $idpel . ".jpg"; // Ganti .jpg dengan ekstensi file yang sesuai
+
+        move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $nama_file_baru);
         $ket = $_POST["ket"];
         $kd_akun = $_POST['kd_akun'];
 
         $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet, ket, tanggal, kd_akun) 
-          VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$pmet', '$ket', CURDATE(), '$kd_akun')";
+          VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$nama_file_baru', '$ket', CURDATE(), '$kd_akun')";
 
         mysqli_query($db, $query);
 
@@ -35,10 +38,13 @@ if (isset($_GET['proses'])) {
         $longitude = $_POST["longitude"];
         $pmet = $_FILES['pmet']['name'];
 
-        move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $_FILES['pmet']['name']);
+        // Hapus nama asli dan ganti dengan idpel
+        $nama_file_baru = $idpel . ".jpg"; // Ganti .jpg dengan ekstensi file yang sesuai
+
+        move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $nama_file_baru);
         $ket = $_POST["ket"];
 
-        $hasil = $db->query("UPDATE tbl_pelanggan set nama_pel='$nama_pel', daya='$daya', tipe='$tipe',pmet='$pmet',ket='$ket' where idpel='$idpel'");
+        $hasil = $db->query("UPDATE tbl_pelanggan set nama_pel='$nama_pel', daya='$daya', tipe='$tipe',pmet='$nama_file_baru',ket='$ket' where idpel='$idpel'");
         header("location:pelangganinput.php");
     } elseif ($_GET['proses'] == 'proseshapus') {
         $idpel = $_GET['kode'];
