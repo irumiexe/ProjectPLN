@@ -86,11 +86,11 @@ if (isset($_GET['aksi'])) {
         </center>
         <form action="index.php?aksi=login" method="post" enctype="multipart/form-data">
             <br>
-            <div style="font-size: 18px; text-align:center;">
+            <div style="text-align:center;">
                 <p>Sistem Informasi Berbasis Website</p>
-                <p>Login ke Akun Anda</p>
+                <p style="font-size: 12px;">Login ke Akun Anda</p>
             </div>
-
+            <br>
             <div class="input-group">
                 <input type="text" name="username" class="form-control" placeholder="Username" autofocus autocomplete="off">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
