@@ -12,6 +12,8 @@ if (isset($_GET['aksi'])) {
     if ($_GET['aksi'] == 'tambah') {
         // Mengambil kd_akun_user dari sesi
         $kd_akun_user = $_SESSION['kd_akun_user'];
+
+        $alert_message = "Mohon untuk Mengaktifkan Location dan Membuka Aplikasi Gmaps Terlebih Dahulu Agar Memperkuat Akurasi Titik Koordinat!";
 ?>
 
         <div class="container">
@@ -22,6 +24,14 @@ if (isset($_GET['aksi'])) {
             </div>
 
             <div class="panel-container">
+                <center>
+                    <?php
+                    // Tampilkan alert jika ada pesan
+                    if (isset($alert_message)) {
+                        echo '<div class="alert alert-warning">' . $alert_message . '</div>';
+                    }
+                    ?>
+                </center>
                 <div class="bootstrap-tabel">
                     <form class="myForm" action="pelangganproses.php?proses=prosestambah" method="post" autocomplete="off" enctype="multipart/form-data" autocomplete="off">
                         <div class="form-group">
@@ -47,7 +57,8 @@ if (isset($_GET['aksi'])) {
 
                         </div>
                         <div class="form-group">
-                            <label for="">Daya</label>
+                            <label for="">Daya (VA)</label>
+                            <p style="font-size: 10px; color: red;"><i>*Isi salah satu kolom yang dibawah ini</i></p>
                             <div class="input-group">
                                 <div class="row">
                                     <div class="col">

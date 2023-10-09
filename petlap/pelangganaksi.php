@@ -12,6 +12,8 @@ if (isset($_GET['aksi'])) {
     if ($_GET['aksi'] == 'tambah') {
         // Mengambil kd_akun_user dari sesi
         $kd_akun_user = $_SESSION['kd_akun_user'];
+
+        $alert_message = "Mohon untuk Mengaktifkan Location dan Membuka Aplikasi Gmaps Terlebih Dahulu Agar Memperkuat Akurasi Titik Koordinat!"; 
 ?>
 
         <div class="container">
@@ -22,6 +24,14 @@ if (isset($_GET['aksi'])) {
             </div>
 
             <div class="panel-container">
+                <center>
+                    <?php
+                    // Tampilkan alert jika ada pesan
+                    if (isset($alert_message)) {
+                        echo '<div class="alert alert-warning">' . $alert_message . '</div>';
+                    }
+                    ?>
+                </center>
                 <div class="bootstrap-tabel">
                     <form class="myForm" action="pelangganproses.php?proses=prosestambah" method="post" autocomplete="off" enctype="multipart/form-data" autocomplete="off">
                         <div class="form-group">
@@ -47,21 +57,29 @@ if (isset($_GET['aksi'])) {
 
                         </div>
                         <div class="form-group">
-                            <label for="">Daya</label>
+                            <label for="">Daya (VA)</label>
+                            <p style="font-size: 10px; color: red;"><i>*Isi salah satu kolom yang dibawah ini</i></p>
                             <div class="input-group">
-                                <select name="daya" id="" class="form-control" required>
-                                    <option value="">Pilih Opsi</option>
-                                    <option value="450VA">450VA</option>
-                                    <option value="900VA">900VA</option>
-                                    <option value="1300VA">1300VA</option>
-                                    <option value="2200VA">2200VA</option>
-                                    <option value="3500VA">3500VA</option>
-                                    <option value="4400VA">4400VA</option>
-                                    <option value="5500VA">5500VA</option>
-                                    <option value="6600VA">6600VA</option>
-                                    <option value="7700VA">7700VA</option>
-                                    <option value="11000VA">11000VA</option>
-                                </select>
+                                <div class="row">
+                                    <div class="col">
+                                        <select name="daya" id="" class="form-control">
+                                            <option value="">Pilih Opsi</option>
+                                            <option value="450">450</option>
+                                            <option value="900">900</option>
+                                            <option value="1300">1300</option>
+                                            <option value="2200">2200</option>
+                                            <option value="3500">3500</option>
+                                            <option value="4400">4400</option>
+                                            <option value="5500">5500</option>
+                                            <option value="6600">6600</option>
+                                            <option value="7700">7700</option>
+                                            <option value="11000">11000</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="daya" placeholder="Masukkan Jika Tidak Ada Pilihan Daya">
+                                    </div>
+                                </div>
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-flash"></i></span>
                             </div>
                         </div>
