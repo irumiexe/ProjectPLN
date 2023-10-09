@@ -23,14 +23,14 @@ if (isset($_GET['aksi'])) {
 
             <div class="panel-container">
                 <div class="bootstrap-tabel">
-                    <form class="myForm" action="pelangganproses.php?proses=prosestambah" method="post" autocomplete="off" enctype="multipart/form-data">
+                    <form class="myForm" action="pelangganproses.php?proses=prosestambah" method="post" autocomplete="off" enctype="multipart/form-data" autocomplete="off">
                         <div class="form-group">
                             <label for="">Tanggal</label>
                             <input type="text" name="tanggal" class="form-control" value="<?php echo date('Y-m-d'); ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
-                            <input type="number" name="idpel" class="form-control" value="" placeholder="id pelanggan harus 12 digit" required autofocus minlength="12" maxlength="12">
+                            <input type="text" name="idpel" class="form-control" value="" placeholder="masukkan data minimal 11 digit" required autofocus minlength="11" maxlength="12">
                         </div>
                         <div class="form-group">
                             <label for="">Nama Pelanggan</label>

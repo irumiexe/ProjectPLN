@@ -1,5 +1,6 @@
 <?php
-include 'header.php';
+include '../assets/conn/config.php';
+
 if (isset($_GET['proses'])) {
     if ($_GET['proses'] == 'prosestambah') {
         $idpel = $_POST['idpel'];
@@ -9,13 +10,14 @@ if (isset($_GET['proses'])) {
         $latitude = $_POST["latitude"];
         $longitude = $_POST["longitude"];
         $pmet = $_FILES['pmet']['name'];
+        $nama_file_baru = $idpel . ".jpg";
 
-        move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $_FILES['pmet']['name']);
+        move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $nama_file_baru);
         $ket = $_POST["ket"];
-        $kd_akun = $_POST['kd_akun'];  // Tambahkan baris ini
+        $kd_akun = $_POST['kd_akun'];
 
         $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet, ket, tanggal, kd_akun) 
-          VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$pmet', '$ket', CURDATE(), '$kd_akun')";
+          VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$nama_file_baru', '$ket', CURDATE(), '$kd_akun')";
 
         mysqli_query($db, $query);
 
