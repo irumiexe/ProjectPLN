@@ -41,7 +41,7 @@ include 'header.php';
                         <tr>
                             <th class="text-center">ID Pelanggan</th>
                             <th class="text-center">Nama Pelanggan</th>
-                            <th class="text-center">Daya</th>
+                            <th class="text-center">Daya (VA)</th>
                             <th class="text-center">Tipe Pembayaran</th>
                             <th class="text-center">Maps</th>
                             <th class="text-center">Photo Meteran</th>

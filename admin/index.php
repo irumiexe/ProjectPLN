@@ -12,9 +12,9 @@ if (isset($_SESSION['username'])) {
 
     // Tampilkan pesan selamat datang sesuai dengan peran pengguna
     if ($level == 'Admin') {
-        $welcome_message = "SELAMAT DATANG ADMIN <br> $nama_lengkap";
+        $welcome_message = "SELAMAT DATANG ADMIN <br><br> $nama_lengkap";
     } elseif ($level == 'petlap') {
-        $welcome_message = "SELAMAT DATANG PETUGAS LAPANGAN <br> $nama_lengkap";
+        $welcome_message = "SELAMAT DATANG PETUGAS LAPANGAN <br><br> $nama_lengkap";
     } else {
         $welcome_message = "SELAMAT DATANG";
     }

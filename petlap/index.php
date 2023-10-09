@@ -14,7 +14,7 @@ if (isset($_SESSION['username'])) {
     if ($level == 'Admin') {
         $welcome_message = "SELAMAT DATANG ADMIN <br> $nama_lengkap";
     } elseif ($level == 'petlap') {
-        $welcome_message = "SELAMAT DATANG PETUGAS LAPANGAN <br> $nama_lengkap";
+        $welcome_message = "SELAMAT DATANG PETUGAS LAPANGAN <br> <br> $nama_lengkap";
     } else {
         $welcome_message = "SELAMAT DATANG";
     }
