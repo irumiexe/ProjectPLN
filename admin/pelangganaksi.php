@@ -30,16 +30,16 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
-                            <input type="text" name="idpel" class="form-control" value="" placeholder="masukkan data minimal 11 digit" required autofocus minlength="11" maxlength="12">
+                            <input type="text" name="idpel" class="form-control" value="" placeholder="Masukkan ID Pelanggan Minimal 11 digit" required autofocus minlength="11" maxlength="12">
                         </div>
                         <div class="form-group">
                             <label for="">Nama Pelanggan</label>
-                            <input type="text" name="nama_pel" class="form-control" value="" placeholder="nama pelanggan" required minlength="2">
+                            <input type="text" name="nama_pel" class="form-control" value="" placeholder="Masukkan Nama Pelanggan" required minlength="2">
                         </div>
                         <div class="form-group">
                             <label for="">Daya</label>
                             <select name="daya" id="" class="form-control" required>
-                                <option value="">-</option>
+                                <option value="">Pilih Opsi</option>
                                 <option value="450VA">450VA</option>
                                 <option value="900VA">900VA</option>
                                 <option value="1300VA">1300VA</option>
@@ -51,7 +51,7 @@ if (isset($_GET['aksi'])) {
                         <div class="form-group">
                             <label for="">Tipe Pembayaran</label>
                             <select name="tipe" id="" class="form-control" required>
-                                <option value="">-</option>
+                                <option value="">Pilih Opsi</option>
                                 <option value="Pascabayar">Pascabayar</option>
                                 <option value="Prabayar">Prabayar</option>
                             </select>
@@ -68,7 +68,19 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">Keterangan</label>
-                            <input type="text" name="ket" class="form-control" value="" placeholder="keterangan" required>
+                            <div class="row">
+                                <!-- <div class="col">
+                                    <select name="ket" class="form-control" required>
+                                        <option value="">Pilih opsi</option>
+                                        <option value="Opsi 1">Opsi 1</option>
+                                        <option value="Opsi 2">Opsi 2</option>
+                                        <option value="Opsi 3">Opsi 3</option>
+                                    </select>
+                                </div> -->
+                                <div class="col">
+                                    <input type="text" name="ket" class="form-control" placeholder="Keterangan" required>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="" hidden>kode_akun</label>
@@ -148,7 +160,7 @@ if (isset($_GET['aksi'])) {
                                     <option value="Prabayar">Prabayar</option>
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" hidden>
                                 <label for="">Lokasi</label>
                                 <tr>
                                     <td><input type="text" name="latitude" class="form-control" value="<?php echo $d['latitude'] ?>"></td>
@@ -161,11 +173,23 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Keterangan</label>
-                                <input type="text" name="ket" class="form-control" value="<?php echo $d['ket'] ?>" placeholder="keterangan" required>
+                                <!-- <div class="row">
+                                    <div class="col">
+                                        <select name="ket" class="form-control" required>
+                                            <option value="">Pilih opsi</option>
+                                            <option value="Opsi 1">Opsi 1</option>
+                                            <option value="Opsi 2">Opsi 2</option>
+                                            <option value="Opsi 3">Opsi 3</option>
+                                        </select>
+                                    </div> -->
+                                    <div class="col">
+                                        <input type="text" name="ket" class="form-control" placeholder="Keterangan" required>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="" hidden>kode_akun</label>
-                                <input type="hidden" name="kd_akun" class="form-control" value="<?php echo $kd_akun_user; ?>" readonly>
+                            <div class="form-group" hidden>
+                                <label for="">kode_akun</label>
+                                <input type="hidden" name="kd_akun" class="form-control" value="<?php echo $d['kd_akun']; ?>" readonly>
                             </div>
                             <div class="modal-footer">
                                 <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
