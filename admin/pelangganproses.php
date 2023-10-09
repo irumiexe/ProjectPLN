@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include '../assets/conn/config.php';
 
 if (isset($_GET['proses'])) {
     if ($_GET['proses'] == 'prosestambah') {
