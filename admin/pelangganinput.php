@@ -73,7 +73,7 @@ include 'header.php';
                                 <td class="text-center"><?php echo $d['ket'] ?></td>
                                 <td class="text-center">
                                     <a href="pelangganaksi.php?kode=<?php echo $d['idpel'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
-                                    <a href="pelangganproses.php?kode=<?php echo $d['idpel'] ?>&proses=proseshapus" class="btn btn-danger">Hapus</a>
+                                    <a href="javascript:void(0);" class="btn btn-danger" onclick="hapusData('<?php echo $d['idpel']; ?>')">Hapus</a>
                                 </td>
                             </tr>
                         <?php
@@ -85,3 +85,10 @@ include 'header.php';
         </div>
     </div>
 </div>
+<script>
+    function hapusData(idpelanggan) {
+        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+            window.location.href = 'pelangganproses.php?kode=' + idpelanggan + '&proses=proseshapus';
+        }
+    }
+</script>

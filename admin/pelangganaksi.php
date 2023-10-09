@@ -30,7 +30,7 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
-                            <input type="text" name="idpel" class="form-control" value="" placeholder="Masukkan ID Pelanggan Minimal 11 digit" required autofocus minlength="11" maxlength="12">
+                            <input type="text" name="idpel" class="form-control" value="" placeholder="Masukkan ID Pelanggan Minimal 11 Angka dan Maksimal 12 Angka" required autofocus minlength="11" maxlength="12">
                         </div>
                         <div class="form-group">
                             <label for="">Nama Pelanggan</label>
@@ -88,10 +88,19 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="modal-footer">
                             <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
-                            <button type="submit" class="btn btn-success" name="submit"> Submit</button>
+                            <button type="submit" class="btn btn-success" name="submit" onclick="confirmSubmit()"> Submit</button>
                         </div>
                     </form>
                     <script type="text/javascript">
+                        function confirmSubmit() {
+                            if (confirm('Yakin data sudah benar?')) {
+                                // Jika pengguna mengonfirmasi, lanjutkan untuk mengirim formulir
+                                document.querySelector('.myForm').submit();
+                            } else {
+                                // Jika pengguna membatalkan, tidak ada tindakan tambahan yang diambil
+                            }
+                        }
+
                         function getLocation() {
                             if (navigator.geolocation) {
                                 navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -135,7 +144,7 @@ if (isset($_GET['aksi'])) {
                         <form action="pelangganproses.php?proses=ubah" method="post" enctype="multipart/form-data">
                             <div>
                                 <label for="">ID Pelanggan</label>
-                                <input type="text" name="idpel" class="form-control" value="<?php echo $d['idpel'] ?>" placeholder="id pelanggan harus 12 digit" pattern="^([1-9])[0-9]{11}$" required autofocus maxlength="12">
+                                <input type="text" name="idpel" class="form-control" value="<?php echo $d['idpel'] ?>" placeholder="Masukkan ID Pelanggan Minimal 11 digit" required autofocus minlength="11" maxlength="12">
                             </div>
                             <div class="form-group">
                                 <label for="">Nama Pelanggan</label>
@@ -155,7 +164,7 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Tipe Pembayaran</label>
                                 <select name="tipe" id="" class="form-control" required>
-                                    <option value=<?php echo $d['tipe'] ?>""><?php echo $d['tipe'] ?></option>
+                                    <option value="<?php echo $d['tipe'] ?>"><?php echo $d['tipe'] ?></option>
                                     <option value="Pascabayar">Pascabayar</option>
                                     <option value="Prabayar">Prabayar</option>
                                 </select>
@@ -182,23 +191,33 @@ if (isset($_GET['aksi'])) {
                                             <option value="Opsi 3">Opsi 3</option>
                                         </select>
                                     </div> -->
-                                    <div class="col">
-                                        <input type="text" name="ket" class="form-control" placeholder="Keterangan" required>
-                                    </div>
+                                <div class="col">
+                                    <input type="text" name="ket" class="form-control" value="<?php echo $d['ket'] ?>" required>
                                 </div>
                             </div>
-                            <div class="form-group" hidden>
-                                <label for="">kode_akun</label>
-                                <input type="hidden" name="kd_akun" class="form-control" value="<?php echo $d['kd_akun']; ?>" readonly>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
-                                <input type="submit" class="btn btn-success" value="Ubah">
-                            </div>
-                        </form>
-                    <?php } ?>
                 </div>
+                <div class="form-group" hidden>
+                    <label for="">kode_akun</label>
+                    <input type="hidden" name="kd_akun" class="form-control" value="<?php echo $d['kd_akun']; ?>" readonly>
+                </div>
+                <div class="modal-footer">
+                    <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
+                    <input type="submit" class="btn btn-success" value="Ubah" onclick="return confirm('Yakin data sudah benar?');">
+                </div>
+                </form>
+                <script>
+                    function confirmUpdate() {
+                        if (confirm('Yakin data sudah benar?')) {
+                            // Jika pengguna mengonfirmasi, lanjutkan untuk mengirim formulir
+                            document.querySelector('form').submit();
+                        } else {
+                            // Jika pengguna membatalkan, tidak ada tindakan tambahan yang diambil
+                        }
+                    }
+                </script>
+            <?php } ?>
             </div>
+        </div>
         </div>
 <?php
     }

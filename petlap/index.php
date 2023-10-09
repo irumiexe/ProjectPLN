@@ -18,6 +18,9 @@ if (isset($_SESSION['username'])) {
     } else {
         $welcome_message = "SELAMAT DATANG";
     }
+
+    // Tambahkan alert
+    $alert_message = "Mohon untuk Mengaktifkan Location dan Membuka Aplikasi Gmaps Terlebih Dahulu Agar Memperkuat Akurasi Titik Koordinat!"; // Pesan alert yang ingin ditampilkan
 } else {
     // Jika pengguna belum login, redirect ke halaman login
     header("location: ../index.php");
@@ -34,10 +37,14 @@ if (isset($_SESSION['username'])) {
     <div class="panel-container">
         <div class="bootstrap-tabel">
             <center>
+                <?php
+                // Tampilkan alert jika ada pesan
+                if (isset($alert_message)) {
+                    echo '<div class="alert alert-warning">' . $alert_message . '</div>';
+                }
+                ?>
                 <h3><?php echo $welcome_message; ?></h3>
             </center>
-
         </div>
-
     </div>
 </div>

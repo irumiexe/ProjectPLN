@@ -35,9 +35,12 @@ if (isset($_GET['aksi'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Sederhana</title>
+    <title>SIPLN</title>
     <link rel="stylesheet" href="/assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/cosmo.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style type="text/css">
         body {
             background-color: skyblue;
@@ -78,21 +81,32 @@ if (isset($_GET['aksi'])) {
     }
     ?>
     <div class="container">
+        <center>
+            <img style="width: 100px; display: inline-block; vertical-align: middle;" src="img/Logo_PLN.png" alt="Logo">
+        </center>
         <form action="index.php?aksi=login" method="post" enctype="multipart/form-data">
-            <h3>LOGIN SISTEM</h3>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" class="form-control" placeholder="Username">
+            <br>
+            <div style="font-size: 18px; text-align:center;">
+                <p>Sistem Informasi Berbasis Website</p>
+                <p>Login ke Akun Anda</p>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
+
+            <div class="input-group">
+                <input type="text" name="username" class="form-control" placeholder="Username" autofocus autocomplete="off">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            </div>
+            <br>
+            <div class="input-group">
                 <input type="password" name="password" class="form-control" placeholder="Password">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
             </div>
             <div class="form-group text-center">
                 <input type="submit" value="LOGIN" class="btn btn-primary">
             </div>
         </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
