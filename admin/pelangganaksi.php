@@ -30,7 +30,7 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
-                            <input type="text" name="idpel" class="form-control" value="" placeholder="masukkan data minimal 11 digit" required autofocus minlength="11" maxlength="12" >
+                            <input type="text" name="idpel" class="form-control" value="" placeholder="masukkan data minimal 11 digit" required autofocus minlength="11" maxlength="12">
                         </div>
                         <div class="form-group">
                             <label for="">Nama Pelanggan</label>
@@ -164,8 +164,8 @@ if (isset($_GET['aksi'])) {
                                 <input type="text" name="ket" class="form-control" value="<?php echo $d['ket'] ?>" placeholder="keterangan" required>
                             </div>
                             <div class="form-group">
-                                <label for="">kode_akun</label>
-                                <input type="hidden" name="kd_akun" class="form-control" value="<?php echo $d['kd_akun']; ?>" readonly>
+                                <label for="" hidden>kode_akun</label>
+                                <input type="hidden" name="kd_akun" class="form-control" value="<?php echo $kd_akun_user; ?>" readonly>
                             </div>
                             <div class="modal-footer">
                                 <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
