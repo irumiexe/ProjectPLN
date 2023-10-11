@@ -58,7 +58,7 @@ if (isset($_GET['aksi'])) {
                             <div class="input-group">
                                 <div class="row">
                                     <div class="col">
-                                        <select name="daya" class="form-control" onchange="toggleDayaInput()">
+                                        <select name="daya" id="" class="form-control" required>
                                             <option value="">Pilih Opsi</option>
                                             <option value="450">450</option>
                                             <option value="900">900</option>
@@ -69,10 +69,11 @@ if (isset($_GET['aksi'])) {
                                             <option value="5500">5500</option>
                                             <option value="6600">6600</option>
                                             <option value="7700">7700</option>
+                                            <option value="11000">11000</option>
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <input type="text" class="form-control" name="daya" placeholder="Masukkan Jika Tidak Ada Pilihan Daya">
+                                        <!-- <input type="text" class="form-control" name="daya" placeholder="Masukkan Jika Tidak Ada Pilihan Daya"> -->
                                     </div>
                                 </div>
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-flash"></i></span>
@@ -258,7 +259,7 @@ if (isset($_GET['aksi'])) {
                                         </div>
                                         <div class="col">
                                             <label for="">Rincian</label>
-                                            <input type="text" name="ket2" class="form-control" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut">
+                                            <input type="text" name="ket2" class="form-control" value="<?php echo $d['ket2'] ?>" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut">
                                         </div>
                                     </div>
                                 </div>
