@@ -23,7 +23,6 @@ if (isset($_GET['aksi'])) {
             <div class="panel-container">
                 <center>
                     <?php
-                    // Tampilkan alert jika ada pesan
                     if (isset($alert_message)) {
                         echo '<div class="alert alert-warning">' . $alert_message . '</div>';
                     }
@@ -108,19 +107,19 @@ if (isset($_GET['aksi'])) {
                             <label for="">Keterangan</label>
                             <div class="input-group">
                                 <div class="row">
-                                    <!-- <div class="col">
-                                    <select name="ket" class="form-control" required>
-                                        <option value="">Pilih opsi</option>
-                                        <option value="Opsi 1">Opsi 1</option>
-                                        <option value="Opsi 2">Opsi 2</option>
-                                        <option value="Opsi 3">Opsi 3</option>
-                                    </select>
-                                </div> -->
                                     <div class="col">
-
+                                        <select name="ket" class="form-control" required>
+                                            <option value="">Pilih opsi</option>
+                                            <option value="macet">macet</option>
+                                            <option value="Tinggi">Tinggi</option>
+                                            <option value="Buram">Buram</option>
+                                            <option value="Normal">Normal</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="ket2" class="form-control" placeholder="Keterangan">
                                     </div>
                                 </div>
-                                <input type="text" name="ket" class="form-control" placeholder="Keterangan" required>
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
                             </div>
                         </div>
@@ -263,7 +262,20 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Keterangan</label>
                                 <div class="input-group">
-                                    <input type="text" name="ket" class="form-control" value="<?php echo $d['ket'] ?>" required>
+                                    <div class="row">
+                                        <div class="col">
+                                            <select name="ket" class="form-control" required>
+                                                <option value="<?php echo $d['ket'] ?>"> <?php echo $d['ket'] ?></option>
+                                                <option value="macet">macet</option>
+                                                <option value="Tinggi">Tinggi</option>
+                                                <option value="Buram">Buram</option>
+                                                <option value="Normal">Normal</option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" name="ket2" class="form-control" value="<?php echo $d['ket2']  ?>" placeholder="Keterangan">
+                                        </div>
+                                    </div>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
                                 </div>
                             </div>
