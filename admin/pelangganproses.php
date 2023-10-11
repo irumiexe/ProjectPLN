@@ -5,7 +5,17 @@ if (isset($_GET['proses'])) {
     if ($_GET['proses'] == 'prosestambah') {
         $idpel = $_POST['idpel'];
         $nama_pel = $_POST['nama_pel'];
-        $daya = $_POST['daya'];
+
+        // Mendapatkan nilai daya berdasarkan kondisi
+        if (!empty($_POST['daya_select']) && empty($_POST['daya_input'])) {
+            $daya = $_POST['daya_select'];
+        } elseif (!empty($_POST['daya_input']) && empty($_POST['daya_select'])) {
+            $daya = $_POST['daya_input'];
+        } else {
+            // Jika keduanya diisi, atur default atau sesuaikan dengan kebutuhan
+            $daya = null;
+        }
+
         $tipe = $_POST['tipe'];
         $latitude = $_POST["latitude"];
         $longitude = $_POST["longitude"];
@@ -32,36 +42,38 @@ if (isset($_GET['proses'])) {
     } elseif ($_GET['proses'] == 'ubah') {
         $idpel = $_POST['idpel'];
         $nama_pel = $_POST['nama_pel'];
-        $daya = $_POST['daya'];
+
+        // Mendapatkan nilai daya berdasarkan kondisi
+        if (!empty($_POST['daya_select'])) {
+            $daya = $_POST['daya_select'];
+        } elseif (!empty($_POST['daya_input'])) {
+            $daya = $_POST['daya_input'];
+        } else {
+            $daya = null; // Atur nilai default jika tidak ada yang dipilih
+        }
+
         $tipe = $_POST['tipe'];
         $latitude = $_POST["latitude"];
         $longitude = $_POST["longitude"];
         $pmet = $_FILES['pmet']['name'];
-
-        // Hapus nama asli dan ganti dengan idpel
-        $nama_file_baru = $idpel . ".jpg"; // Ganti .jpg dengan ekstensi file yang sesuai
+        $nama_file_baru = $idpel . ".jpg";
 
         move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $nama_file_baru);
         $ket = $_POST["ket"];
 
-        $hasil = $db->query("UPDATE tbl_pelanggan set nama_pel='$nama_pel', daya='$daya', tipe='$tipe',pmet='$nama_file_baru',ket='$ket' where idpel='$idpel'");
+        $hasil = $db->query("UPDATE tbl_pelanggan set nama_pel='$nama_pel', daya='$daya', tipe='$tipe', pmet='$nama_file_baru', ket='$ket' where idpel='$idpel'");
         header("location:pelangganinput.php");
     } elseif ($_GET['proses'] == 'proseshapus') {
         $idpel = $_GET['kode'];
-
-        // Ambil nama file yang akan dihapus dari database
         $query = "SELECT pmet FROM tbl_pelanggan WHERE idpel='$idpel'";
         $result = mysqli_query($db, $query);
         $row = mysqli_fetch_assoc($result);
         $fileToDelete = $row['pmet'];
-
-        // Hapus file dari direktori
         $filePath = '../file/' . $fileToDelete;
         if (file_exists($filePath)) {
             unlink($filePath);
         }
 
-        // Hapus data dari database
         $deleteQuery = "DELETE FROM tbl_pelanggan WHERE idpel='$idpel'";
         $deleteResult = mysqli_query($db, $deleteQuery);
 
