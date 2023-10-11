@@ -5,15 +5,7 @@ if (isset($_GET['proses'])) {
     if ($_GET['proses'] == 'prosestambah') {
         $idpel = $_POST['idpel'];
         $nama_pel = $_POST['nama_pel'];
-
-        if (!empty($_POST['daya_option']) && empty($_POST['daya_input'])) {
-            $daya = $_POST['daya_option'];
-        } elseif (!empty($_POST['daya_input']) && empty($_POST['daya_option'])) {
-            $daya = $_POST['daya_input'];
-        } else {
-            $daya = null;
-        }
-
+        $daya = $_POST['daya'];
         $tipe = $_POST['tipe'];
         $latitude = $_POST["latitude"];
         $longitude = $_POST["longitude"];
@@ -40,15 +32,7 @@ if (isset($_GET['proses'])) {
     } elseif ($_GET['proses'] == 'ubah') {
         $idpel = $_POST['idpel'];
         $nama_pel = $_POST['nama_pel'];
-
-        if (!empty($_POST['daya_option'])) {
-            $daya = $_POST['daya_option'];
-        } elseif (!empty($_POST['daya_input'])) {
-            $daya = $_POST['daya_input'];
-        } else {
-            $daya = null;
-        }
-
+        $daya = $_POST['daya'];
         $tipe = $_POST['tipe'];
         $latitude = $_POST["latitude"];
         $longitude = $_POST["longitude"];

@@ -58,7 +58,7 @@ if (isset($_GET['aksi'])) {
                             <div class="input-group">
                                 <div class="row">
                                     <div class="col">
-                                        <select name="daya_option" id="daya_option" class="form-control" onchange="toggleDayaInput()">
+                                        <select name="daya" class="form-control" onchange="toggleDayaInput()">
                                             <option value="">Pilih Opsi</option>
                                             <option value="450">450</option>
                                             <option value="900">900</option>
@@ -72,7 +72,7 @@ if (isset($_GET['aksi'])) {
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <input type="text" class="form-control" name="daya_input" id="daya_input" placeholder="Masukkan Jika Tidak Ada Pilihan Daya" disabled>
+                                        <input type="text" class="form-control" name="daya" placeholder="Masukkan Jika Tidak Ada Pilihan Daya">
                                     </div>
                                 </div>
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-flash"></i></span>
@@ -134,16 +134,6 @@ if (isset($_GET['aksi'])) {
                         </div>
                     </form>
                     <script type="text/javascript">
-                        function toggleDayaInput() {
-                            var select = document.getElementById("daya_option");
-                            var input = document.getElementById("daya_input");
-
-                            input.disabled = select.value !== "";
-                            if (input.disabled) {
-                                input.value = ""; // Reset nilai inputan teks jika dinonaktifkan
-                            }
-                        }
-
                         function confirmSubmit() {
                             if (confirm('Yakin data sudah benar?')) {
                                 document.querySelector('.myForm').submit();
@@ -286,19 +276,6 @@ if (isset($_GET['aksi'])) {
             </div>
             </form>
             <script>
-                function toggleDayaInput() {
-                    var select = document.getElementById('daya_select');
-                    var input = document.getElementById('daya_input');
-
-                    if (select.value === '') {
-                        input.removeAttribute('disabled');
-                    } else {
-                        input.setAttribute('disabled', 'true');
-                    }
-                }
-
-
-
                 function confirmUpdate() {
                     if (confirm('Yakin data sudah benar?')) {
                         // Jika pengguna mengonfirmasi, lanjutkan untuk mengirim formulir
