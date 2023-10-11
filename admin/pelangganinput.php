@@ -46,6 +46,7 @@ include 'header.php';
                             <th class="text-center">Maps</th>
                             <th class="text-center">Photo Meteran</th>
                             <th class="text-center">Keterangann</th>
+                            <th class="text-center">Rincian</th>
                             <th class="text-center">Opsi</th>
                         </tr>
                     </thead>
@@ -71,6 +72,7 @@ include 'header.php';
                                 </td>
                                 <td class="text-center"><img src="../file/<?php echo $d['pmet']; ?>" style="width: 100px; height:200px"></td>
                                 <td class="text-center"><?php echo $d['ket'] ?></td>
+                                <td class="text-center"><?php echo $d['ket2'] ?></td>
                                 <td class="text-center">
                                     <a href="pelangganaksi.php?kode=<?php echo $d['idpel'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
                                     <a href="javascript:void(0);" class="btn btn-danger" onclick="hapusData('<?php echo $d['idpel']; ?>')">Hapus</a>
