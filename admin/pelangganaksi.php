@@ -58,8 +58,8 @@ if (isset($_GET['aksi'])) {
                             <div class="input-group">
                                 <div class="row">
                                     <div class="col">
-                                        <select name="daya" id="" class="form-control" required>
-                                            <option value="">Pilih Opsi</option>
+                                        <select name="daya_select" id="dayaSelect" class="form-control" onchange="toggleDayaInput()">
+                                            <option value="" selected>Pilih Opsi</option>
                                             <option value="450">450</option>
                                             <option value="900">900</option>
                                             <option value="1300">1300</option>
@@ -69,11 +69,10 @@ if (isset($_GET['aksi'])) {
                                             <option value="5500">5500</option>
                                             <option value="6600">6600</option>
                                             <option value="7700">7700</option>
-                                            <option value="11000">11000</option>
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <!-- <input type="text" class="form-control" name="daya" placeholder="Masukkan Jika Tidak Ada Pilihan Daya"> -->
+                                        <input type="text" class="form-control" name="daya_input" id="dayaInput" placeholder="Masukkan Jika Tidak Ada Pilihan Daya" disabled>
                                     </div>
                                 </div>
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-flash"></i></span>
@@ -135,6 +134,20 @@ if (isset($_GET['aksi'])) {
                         </div>
                     </form>
                     <script type="text/javascript">
+                        function toggleDayaInput() {
+                            var dayaSelect = document.getElementById('dayaSelect');
+                            var dayaInput = document.getElementById('dayaInput');
+
+                            // Menonaktifkan input teks hanya jika pilihan select bukan opsi pertama
+                            dayaInput.disabled = (dayaSelect.value !== "");
+                        }
+
+                        // Memanggil fungsi saat halaman dimuat untuk menyesuaikan status input teks
+                        document.addEventListener('DOMContentLoaded', function() {
+                            toggleDayaInput();
+                        });
+
+
                         function confirmSubmit() {
                             if (confirm('Yakin data sudah benar?')) {
                                 document.querySelector('.myForm').submit();
@@ -259,7 +272,7 @@ if (isset($_GET['aksi'])) {
                                         </div>
                                         <div class="col">
                                             <label for="">Rincian</label>
-                                            <input type="text" name="ket2" class="form-control" value="<?php echo $d['ket2'] ?>" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut">
+                                            <input type="text" name="ket2" class="form-control" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut">
                                         </div>
                                     </div>
                                 </div>
