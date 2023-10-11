@@ -6,7 +6,6 @@ if (isset($_GET['proses'])) {
         $idpel = $_POST['idpel'];
         $nama_pel = $_POST['nama_pel'];
 
-        // Memeriksa apakah daya_select terpilih atau tidak
         if (isset($_POST['daya_select']) && !empty($_POST['daya_select'])) {
             $daya = $_POST['daya_select'];
         } elseif (isset($_POST['daya_input']) && !empty($_POST['daya_input'])) {
