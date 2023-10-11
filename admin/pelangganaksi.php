@@ -225,14 +225,6 @@ if (isset($_GET['aksi'])) {
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-flash"></i></span>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="">Daya (Teks)</label>
-                                <div class="input-group">
-                                    <input type="text" name="daya_input" class="form-control" placeholder="Masukkan Jika Tidak Ada Pilihan Daya">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-flash"></i></span>
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label for="">Tipe Pembayaran</label>
                                 <div class="input-group">

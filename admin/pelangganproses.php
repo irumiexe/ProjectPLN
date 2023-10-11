@@ -6,9 +6,9 @@ if (isset($_GET['proses'])) {
         $idpel = $_POST['idpel'];
         $nama_pel = $_POST['nama_pel'];
 
-        if (!empty($_POST['daya_select']) && empty($_POST['daya_input'])) {
-            $daya = $_POST['daya_select'];
-        } elseif (!empty($_POST['daya_input']) && empty($_POST['daya_select'])) {
+        if (!empty($_POST['daya_option']) && empty($_POST['daya_input'])) {
+            $daya = $_POST['daya_option'];
+        } elseif (!empty($_POST['daya_input']) && empty($_POST['daya_option'])) {
             $daya = $_POST['daya_input'];
         } else {
             $daya = null;
@@ -41,8 +41,8 @@ if (isset($_GET['proses'])) {
         $idpel = $_POST['idpel'];
         $nama_pel = $_POST['nama_pel'];
 
-        if (!empty($_POST['daya_select'])) {
-            $daya = $_POST['daya_select'];
+        if (!empty($_POST['daya_option'])) {
+            $daya = $_POST['daya_option'];
         } elseif (!empty($_POST['daya_input'])) {
             $daya = $_POST['daya_input'];
         } else {
