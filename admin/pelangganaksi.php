@@ -38,8 +38,9 @@ if (isset($_GET['aksi'])) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="">ID Pelanggan</label>
                             <div class="input-group">
+                                <label for="">ID Pelanggan</label>
+                                <p style="font-size: 10px; color: red;"><i>*Pastikan ID Pelanggan Benar</i></p>
                                 <input type="text" name="idpel" class="form-control" value="" placeholder="Masukkan ID Pelanggan Minimal 11 Angka dan Maksimal 12 Angka" required autofocus minlength="11" maxlength="12">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
                             </div>
@@ -53,9 +54,9 @@ if (isset($_GET['aksi'])) {
 
                         </div>
                         <div class="form-group">
-                            <label for="">Daya (VA)</label>
-                            <p style="font-size: 10px; color: red;"><i>*Isi salah satu kolom yang dibawah ini</i></p>
                             <div class="input-group">
+                                <label for="">Daya (VA)</label>
+                                <p style="font-size: 10px; color: red;"><i>*Isi salah satu kolom yang dibawah ini</i></p>
                                 <div class="row">
                                     <div class="col">
                                         <select name="daya_select" id="dayaSelect" class="form-control" onchange="toggleDayaInput()">
@@ -215,19 +216,7 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Daya (VA)</label>
                                 <div class="input-group">
-                                    <select name="daya" id="" class="form-control" required>
-                                        <option value="<?php echo $d['daya'] ?>"><?php echo $d['daya'] ?></option>
-                                        <option value="450">450</option>
-                                        <option value="900">900</option>
-                                        <option value="1300">1300</option>
-                                        <option value="2200">2200</option>
-                                        <option value="3500">3500</option>
-                                        <option value="4400">4400</option>
-                                        <option value="5500">5500</option>
-                                        <option value="6600">6600</option>
-                                        <option value="7700">7700</option>
-                                        <option value="11000">11000</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="daya" value="<?php echo $d['daya'] ?>" placeholder="Masukkan Daya">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-flash"></i></span>
                                 </div>
                             </div>
@@ -305,6 +294,6 @@ if (isset($_GET['aksi'])) {
         </div>
         </div>
 <?php
-}
+    }
 }
 ?>
