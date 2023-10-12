@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include '../assets/conn/config.php';
 
 if (!isset($_SESSION['kd_akun_user'])) {
     header("Location: login.php");
@@ -198,7 +198,6 @@ if (isset($_GET['aksi'])) {
                     while ($d = mysqli_fetch_array($data)) {
                     ?>
                         <form action="pelangganproses.php?proses=ubah&kode=<?php echo $d['kd_idpel']; ?>" method="post" enctype="multipart/form-data">
-
                             <div class="form-group" hidden>
                                 <label for="kd_idpel">kd_idpel</label>
                                 <input type="hidden" name="kd_idpel" class="form-control" value="<?php echo $d['kd_idpel']; ?>" readonly>
