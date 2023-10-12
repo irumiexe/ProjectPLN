@@ -11,7 +11,7 @@ if (isset($_SESSION['username'])) {
     $nama_lengkap = $data['nama_lengkap'];
 
     // Tampilkan pesan selamat datang sesuai dengan peran pengguna
-    if ($level == 'Admin') {
+    if ($level == 'petlap') {
         $welcome_message = "SELAMAT DATANG PETUGAS LAPANGAN <br> <br> $nama_lengkap";
     } else {
         $welcome_message = "SELAMAT DATANG";
