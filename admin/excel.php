@@ -23,6 +23,7 @@ echo '<table border="1">
     <th>MAPS</th>
     <th>FOTO KWH</th>
     <th>KETERANGAN</th>
+    <th>RINCIAN</th>
     </tr>';
 $no = 1;
 while ($row = mysqli_fetch_assoc($daftar_pelanggan)) {
@@ -37,6 +38,7 @@ while ($row = mysqli_fetch_assoc($daftar_pelanggan)) {
     <td>" . $maps . "</td>
     <td>" . $row['pmet'] . "</td>
     <td>" . $row['ket'] . "</td>
+    <td>" . $row['ket2'] . "</td>
 </tr>";
     $no++;
 }
