@@ -38,50 +38,5 @@ if (isset($_GET['proses'])) {
                 document.location.href = 'pelangganinput.php';
               </script>";
         header("location:pelangganinput.php");
-    } elseif ($_GET['proses'] == 'ubah') {
-        $kd_idpel = $_GET['kode'];
-        $idpel = $_POST['idpel'];
-        $nama_pel = $_POST['nama_pel'];
-        $daya = $_POST['daya'];
-        $tipe = $_POST['tipe'];
-        $latitude = $_POST["latitude"];
-        $longitude = $_POST["longitude"];
-        $pmet = $_FILES['pmet']['name'];
-        $nama_file_baru = $idpel . ".jpg";
-
-        move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $nama_file_baru);
-        $ket = $_POST["ket"];
-        $ket2 = $_POST["ket2"];
-
-        $hasil = $db->query("UPDATE tbl_pelanggan set idpel='$idpel', nama_pel='$nama_pel', daya='$daya', tipe='$tipe', pmet='$nama_file_baru', ket='$ket', ket2='$ket2' where kd_idpel='$kd_idpel'");
-        if ($hasil) {
-            echo "<script>alert('Update berhasil');</script>";
-        } else {
-            echo "<script>alert('Update gagal: " . mysqli_error($db) . "');</script>";
-        }
-        header("location:pelangganinput.php");
-    } elseif ($_GET['proses'] == 'proseshapus') {
-        $kd_idpel = $_GET['kode'];
-
-        $query = "SELECT pmet FROM tbl_pelanggan WHERE kd_idpel='$kd_idpel'";
-        $result = mysqli_query($db, $query);
-        $row = mysqli_fetch_assoc($result);
-        $fileToDelete = $row['pmet'];
-        $filePath = '../file/' . $fileToDelete;
-
-        if (file_exists($filePath)) {
-            unlink($filePath);
-        }
-
-        $deleteQuery = "DELETE FROM tbl_pelanggan WHERE kd_idpel='$kd_idpel'";
-        $deleteResult = mysqli_query($db, $deleteQuery);
-
-        if ($deleteResult) {
-            echo "<script>alert('Data dan file berhasil dihapus');</script>";
-        } else {
-            echo "<script>alert('Gagal menghapus data');</script>";
-        }
-
-        header("location:pelangganinput.php");
-    }
+    } 
 }
