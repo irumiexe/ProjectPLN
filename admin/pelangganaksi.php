@@ -16,7 +16,7 @@ if (isset($_GET['aksi'])) {
         <div class="container">
             <div class="row">
                 <ol class="breadcrumb">
-                    <h4>DATA PELANGGAN/ TAMBAH DATA</h4>
+                    <h4>DATA PELANGGAN/ TAMBAH DATAA</h4>
                 </ol>
             </div>
 
