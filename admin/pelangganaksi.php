@@ -37,10 +37,13 @@ if (isset($_GET['aksi'])) {
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                             </div>
                         </div>
+                        <div class="form-group" hidden>
+                            <label for="">kd_idpel</label>
+                            <!-- Tidak perlu menyertakan kd_idpel dalam formulir -->
+                        </div>
                         <div class="form-group">
+                            <label for="">ID Pelanggan</label>
                             <div class="input-group">
-                                <label for="">ID Pelanggan</label>
-                                <p style="font-size: 10px; color: red;"><i>*Pastikan ID Pelanggan Benar</i></p>
                                 <input type="text" name="idpel" class="form-control" value="" placeholder="Masukkan ID Pelanggan Minimal 11 Angka dan Maksimal 12 Angka" required autofocus minlength="11" maxlength="12">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
                             </div>
@@ -54,9 +57,9 @@ if (isset($_GET['aksi'])) {
 
                         </div>
                         <div class="form-group">
+                            <label for="">Daya (VA)</label>
+                            <p style="font-size: 10px; color: red;"><i>*Isi salah satu kolom yang dibawah ini</i></p>
                             <div class="input-group">
-                                <label for="">Daya (VA)</label>
-                                <p style="font-size: 10px; color: red;"><i>*Isi salah satu kolom yang dibawah ini</i></p>
                                 <div class="row">
                                     <div class="col">
                                         <select name="daya_select" id="dayaSelect" class="form-control" onchange="toggleDayaInput()">
@@ -121,7 +124,7 @@ if (isset($_GET['aksi'])) {
                                     </div>
                                     <div class="col">
                                         <label for="">Rincian</label>
-                                        <input type="text" name="ket2" class="form-control" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut" maxlength="50">
+                                        <input type="text" name="ket2" class="form-control" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut">
                                     </div>
                                 </div>
                             </div>
@@ -139,12 +142,8 @@ if (isset($_GET['aksi'])) {
                         function toggleDayaInput() {
                             var dayaSelect = document.getElementById('dayaSelect');
                             var dayaInput = document.getElementById('dayaInput');
-
-                            // Menonaktifkan input teks hanya jika pilihan select bukan opsi pertama
                             dayaInput.disabled = (dayaSelect.value !== "");
                         }
-
-                        // Memanggil fungsi saat halaman dimuat untuk menyesuaikan status input teks
                         document.addEventListener('DOMContentLoaded', function() {
                             toggleDayaInput();
                         });
@@ -195,10 +194,15 @@ if (isset($_GET['aksi'])) {
             <div class="panel-container">
                 <div class="bootstrap-tabel">
                     <?php
-                    $data = $db->query("SELECT * From tbl_pelanggan where idpel='$_GET[kode]'");
+                    $data = $db->query("SELECT * From tbl_pelanggan where kd_idpel='$_GET[kode]'");
                     while ($d = mysqli_fetch_array($data)) {
                     ?>
-                        <form action="pelangganproses.php?proses=ubah" method="post" enctype="multipart/form-data">
+                        <form action="pelangganproses.php?proses=ubah&kode=<?php echo $d['kd_idpel']; ?>" method="post" enctype="multipart/form-data">
+
+                            <div class="form-group" hidden>
+                                <label for="kd_idpel">kd_idpel</label>
+                                <input type="hidden" name="kd_idpel" class="form-control" value="<?php echo $d['kd_idpel']; ?>" readonly>
+                            </div>
                             <div>
                                 <label for="">ID Pelanggan</label>
                                 <div class="input-group">
@@ -216,7 +220,19 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Daya (VA)</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="daya" value="<?php echo $d['daya'] ?>" placeholder="Masukkan Daya">
+                                    <select name="daya" id="" class="form-control" required>
+                                        <option value="<?php echo $d['daya'] ?>"><?php echo $d['daya'] ?></option>
+                                        <option value="450">450</option>
+                                        <option value="900">900</option>
+                                        <option value="1300">1300</option>
+                                        <option value="2200">2200</option>
+                                        <option value="3500">3500</option>
+                                        <option value="4400">4400</option>
+                                        <option value="5500">5500</option>
+                                        <option value="6600">6600</option>
+                                        <option value="7700">7700</option>
+                                        <option value="11000">11000</option>
+                                    </select>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-flash"></i></span>
                                 </div>
                             </div>
@@ -262,12 +278,11 @@ if (isset($_GET['aksi'])) {
                                         </div>
                                         <div class="col">
                                             <label for="">Rincian</label>
-                                            <input type="text" name="ket2" class="form-control" value="<?php echo $d['ket2'] ?>" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut" maxlength="50">
+                                            <input type="text" name="ket2" class="form-control" value="<?php echo $d['ket2'] ?>" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                 </div>
             </div>
             <div class="form-group" hidden>
@@ -276,7 +291,7 @@ if (isset($_GET['aksi'])) {
             </div>
             <div class="modal-footer">
                 <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
-                <input type="submit" class="btn btn-success" value="Ubah" onclick="return confirm('Yakin data sudah benar?');">
+                <input type="submit" class="btn btn-success" value="Ubah" onclick="confirmUpdate();">
             </div>
             </form>
             <script>
@@ -290,9 +305,6 @@ if (isset($_GET['aksi'])) {
                 }
             </script>
         <?php } ?>
-        </div>
-        </div>
-        </div>
 <?php
     }
 }
