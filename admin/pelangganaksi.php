@@ -70,6 +70,7 @@ if (isset($_GET['aksi'])) {
                                             <option value="6600">6600</option>
                                             <option value="7700">7700</option>
                                             <option value="7700">9000</option>
+                                        </select>
                                     </div>
                                     <div class="col">
                                         <input type="text" class="form-control" name="daya_input" id="dayaInput" placeholder="Masukkan Jika Tidak Ada Pilihan Daya" disabled>
