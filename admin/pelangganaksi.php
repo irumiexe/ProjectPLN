@@ -220,19 +220,7 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Daya (VA)</label>
                                 <div class="input-group">
-                                    <select name="daya" id="" class="form-control" required>
-                                        <option value="<?php echo $d['daya'] ?>"><?php echo $d['daya'] ?></option>
-                                        <option value="450">450</option>
-                                        <option value="900">900</option>
-                                        <option value="1300">1300</option>
-                                        <option value="2200">2200</option>
-                                        <option value="3500">3500</option>
-                                        <option value="4400">4400</option>
-                                        <option value="5500">5500</option>
-                                        <option value="6600">6600</option>
-                                        <option value="7700">7700</option>
-                                        <option value="11000">11000</option>
-                                    </select>
+                                    <input type="text" value="<?php echo $d['daya'] ?>" name="" id="" class="form-control">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-flash"></i></span>
                                 </div>
                             </div>
