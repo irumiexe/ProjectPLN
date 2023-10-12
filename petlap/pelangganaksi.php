@@ -1,19 +1,16 @@
 <?php
 include 'header.php';
 
-// Pastikan user sudah login dan ada informasi kd_akun_user di sesi
 if (!isset($_SESSION['kd_akun_user'])) {
-    // Jika tidak, mungkin redirect ke halaman login atau lakukan tindakan lain
     header("Location: login.php");
     exit();
 }
 
 if (isset($_GET['aksi'])) {
     if ($_GET['aksi'] == 'tambah') {
-        // Mengambil kd_akun_user dari sesi
         $kd_akun_user = $_SESSION['kd_akun_user'];
 
-        $alert_message = "Mohon untuk Mengaktifkan Location dan Membuka Aplikasi Gmaps Terlebih Dahulu Agar Memperkuat Akurasi Titik Koordinat!"; 
+        $alert_message = "Mohon untuk Mengaktifkan Location dan Membuka Aplikasi Gmaps Terlebih Dahulu Agar Memperkuat Akurasi Titik Koordinat!";
 ?>
 
         <div class="container">
@@ -26,7 +23,6 @@ if (isset($_GET['aksi'])) {
             <div class="panel-container">
                 <center>
                     <?php
-                    // Tampilkan alert jika ada pesan
                     if (isset($alert_message)) {
                         echo '<div class="alert alert-warning">' . $alert_message . '</div>';
                     }
@@ -40,6 +36,10 @@ if (isset($_GET['aksi'])) {
                                 <input type="text" name="tanggal" class="form-control" value="<?php echo date('Y-m-d'); ?>" readonly>
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                             </div>
+                        </div>
+                        <div class="form-group" hidden>
+                            <label for="">kd_idpel</label>
+                            <!-- Tidak perlu menyertakan kd_idpel dalam formulir -->
                         </div>
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
@@ -62,8 +62,8 @@ if (isset($_GET['aksi'])) {
                             <div class="input-group">
                                 <div class="row">
                                     <div class="col">
-                                        <select name="daya" id="" class="form-control">
-                                            <option value="">Pilih Opsi</option>
+                                        <select name="daya_select" id="dayaSelect" class="form-control" onchange="toggleDayaInput()">
+                                            <option value="" selected>Pilih Opsi</option>
                                             <option value="450">450</option>
                                             <option value="900">900</option>
                                             <option value="1300">1300</option>
@@ -73,11 +73,11 @@ if (isset($_GET['aksi'])) {
                                             <option value="5500">5500</option>
                                             <option value="6600">6600</option>
                                             <option value="7700">7700</option>
-                                            <option value="11000">11000</option>
+                                            <option value="7700">9000</option>
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <input type="text" class="form-control" name="daya" placeholder="Masukkan Jika Tidak Ada Pilihan Daya">
+                                        <input type="text" class="form-control" name="daya_input" id="dayaInput" placeholder="Masukkan Jika Tidak Ada Pilihan Daya" disabled>
                                     </div>
                                 </div>
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-flash"></i></span>
@@ -109,23 +109,24 @@ if (isset($_GET['aksi'])) {
 
                         </div>
                         <div class="form-group">
-                            <label for="">Keterangan</label>
+
                             <div class="input-group">
                                 <div class="row">
-                                    <!-- <div class="col">
-                                    <select name="ket" class="form-control" required>
-                                        <option value="">Pilih opsi</option>
-                                        <option value="Opsi 1">Opsi 1</option>
-                                        <option value="Opsi 2">Opsi 2</option>
-                                        <option value="Opsi 3">Opsi 3</option>
-                                    </select>
-                                </div> -->
                                     <div class="col">
-
+                                        <label for="">Keterangan</label>
+                                        <select name="ket" class="form-control" required>
+                                            <option value="">Pilih opsi</option>
+                                            <option value="macet">macet</option>
+                                            <option value="Tinggi">Tinggi</option>
+                                            <option value="Buram">Buram</option>
+                                            <option value="Normal">Normal</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <label for="">Rincian</label>
+                                        <input type="text" name="ket2" class="form-control" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut">
                                     </div>
                                 </div>
-                                <input type="text" name="ket" class="form-control" placeholder="Keterangan" required>
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -134,16 +135,25 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="modal-footer">
                             <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
-                            <button type="submit" class="btn btn-success" name="submit" onclick="confirmSubmit()"> Submit</button>
+                            <button type="button" class="btn btn-success" onclick="confirmSubmit()">Submit</button>
                         </div>
                     </form>
                     <script type="text/javascript">
+                        function toggleDayaInput() {
+                            var dayaSelect = document.getElementById('dayaSelect');
+                            var dayaInput = document.getElementById('dayaInput');
+                            dayaInput.disabled = (dayaSelect.value !== "");
+                        }
+                        document.addEventListener('DOMContentLoaded', function() {
+                            toggleDayaInput();
+                        });
+
+
                         function confirmSubmit() {
                             if (confirm('Yakin data sudah benar?')) {
-                                // Jika pengguna mengonfirmasi, lanjutkan untuk mengirim formulir
                                 document.querySelector('.myForm').submit();
                             } else {
-                                // Jika pengguna membatalkan, tidak ada tindakan tambahan yang diambil
+                                // Tidak melakukan apa-apa jika pengguna membatalkan
                             }
                         }
 
@@ -173,6 +183,6 @@ if (isset($_GET['aksi'])) {
                 </div>
             </div>
         </div>
-<?php }
+    <?php } 
 }
 ?>
