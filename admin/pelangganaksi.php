@@ -70,7 +70,7 @@ if (isset($_GET['aksi'])) {
                                             <option value="6600">6600</option>
                                             <option value="7700">7700</option>
                                             <option value="7700">9000</option>
-                                            <select>
+                                        </select>
                                     </div>
                                     <div class="col">
                                         <input type="text" class="form-control" name="daya_input" id="dayaInput" placeholder="Masukkan Jika Tidak Ada Pilihan Daya" disabled>
@@ -198,10 +198,10 @@ if (isset($_GET['aksi'])) {
                     while ($d = mysqli_fetch_array($data)) {
                     ?>
                         <form action="pelangganproses.php?proses=ubah" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="">ID Pelanggan Baru</label>
+                            <div>
+                                <label for="">ID Pelanggan</label>
                                 <div class="input-group">
-                                    <input type="text" name="idpel_baru" class="form-control" value="<?php echo $d['idpel'] ?>" placeholder="Masukkan ID Pelanggan Baru" required autofocus minlength="11" maxlength="12">
+                                    <input type="text" name="idpel" class="form-control" value="<?php echo $d['idpel'] ?>" placeholder="Masukkan ID Pelanggan Minimal 11 digit" required autofocus minlength="11" maxlength="12">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
                                 </div>
                             </div>
@@ -273,7 +273,7 @@ if (isset($_GET['aksi'])) {
                                         </div>
                                         <div class="col">
                                             <label for="">Rincian</label>
-                                            <input type="text" name="ket2" class="form-control" value="<?php echo $d['ket2']?>" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut" >
+                                            <input type="text" name="ket2" class="form-control" value="<?php echo $d['ket2'] ?>" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut">
                                         </div>
                                     </div>
                                 </div>
@@ -305,6 +305,6 @@ if (isset($_GET['aksi'])) {
         </div>
         </div>
 <?php
-    }
+}
 }
 ?>
