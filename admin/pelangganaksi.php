@@ -121,7 +121,7 @@ if (isset($_GET['aksi'])) {
                                     </div>
                                     <div class="col">
                                         <label for="">Rincian</label>
-                                        <input type="text" name="ket2" class="form-control" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut">
+                                        <input type="text" name="ket2" class="form-control" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut" maxlength="50">
                                     </div>
                                 </div>
                             </div>
