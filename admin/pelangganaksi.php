@@ -16,7 +16,7 @@ if (isset($_GET['aksi'])) {
         <div class="container">
             <div class="row">
                 <ol class="breadcrumb">
-                    <h4>DATA PELANGGAN/ TAMBAH DATAA</h4>
+                    <h4>DATA PELANGGAN/ TAMBAH DATA</h4>
                 </ol>
             </div>
 
@@ -29,7 +29,7 @@ if (isset($_GET['aksi'])) {
                     ?>
                 </center>
                 <div class="bootstrap-tabel">
-                    <form class="myForm" action="pelangganproses.php?proses=prosestambah" method="post" autocomplete="off" enctype="multipart/form-data" autocomplete="off">
+                    <form class="myForm" action="pelangganproses.php?proses=prosestambah" method="post" enctype="multipart/form-data" autocomplete="off" required>
                         <div class="form-group">
                             <label for="">Tanggal</label>
                             <div class="input-group">
@@ -44,7 +44,7 @@ if (isset($_GET['aksi'])) {
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
                             <div class="input-group">
-                                <input type="text" name="idpel" class="form-control" value="" placeholder="Masukkan ID Pelanggan Minimal 11 Angka dan Maksimal 12 Angka" required autofocus minlength="11" maxlength="12">
+                                <input type="text" name="idpel" class="form-control" value="" placeholder="Masukkan ID Pelanggan Minimal 11 Angka dan Maksimal 12 Angka" autofocus minlength="11" maxlength="12" required>
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
                             </div>
                         </div>
@@ -135,7 +135,7 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="modal-footer">
                             <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
-                            <button type="button" class="btn btn-success" onclick="confirmSubmit()">Submit</button>
+                            <button type="submit" class="btn btn-success" name="submit" onclick="confirmSubmit()">Submit</button>
                         </div>
                     </form>
                     <script type="text/javascript">
@@ -206,7 +206,7 @@ if (isset($_GET['aksi'])) {
                             <div>
                                 <label for="">ID Pelanggan</label>
                                 <div class="input-group">
-                                    <input type="text" name="idpel" class="form-control" value="<?php echo $d['idpel'] ?>" placeholder="Masukkan ID Pelanggan Minimal 11 digit" required autofocus minlength="11" maxlength="12">
+                                    <input type="text" name="idpel" class="form-control" value="<?php echo $d['idpel'] ?>" placeholder="Masukkan ID Pelanggan Minimal 11 digit" required autofocus min="10" maxlength="12">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
                                 </div>
                             </div>
@@ -220,7 +220,7 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Daya (VA)</label>
                                 <div class="input-group">
-                                    <input type="text" value="<?php echo $d['daya'] ?>" name="" id="" class="form-control">
+                                    <input type="text" value="<?php echo $d['daya'] ?>" name="daya" id="" class="form-control">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-flash"></i></span>
                                 </div>
                             </div>
@@ -244,7 +244,7 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Photo Meteran</label>
-                                <div class="input-group">
+                                <div class="input-group" required>
                                     <input type="file" name="pmet" class="form-control" value="<?php echo $d['pmet'] ?>">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-cloud-upload"></i></span>
                                 </div>
