@@ -1,5 +1,5 @@
 <?php
-include '../assets/conn/config.php';
+include 'header.php';
 
 if (!isset($_SESSION['kd_akun_user'])) {
     header("Location: login.php");
@@ -16,7 +16,7 @@ if (isset($_GET['aksi'])) {
         <div class="container">
             <div class="row">
                 <ol class="breadcrumb">
-                    <h4>DATA PELANGGAN/ TAMBAH DATAA</h4>
+                    <h4>DATA PELANGGAN/ TAMBAH DATA</h4>
                 </ol>
             </div>
 
@@ -38,7 +38,7 @@ if (isset($_GET['aksi'])) {
                             </div>
                         </div>
                         <div class="form-group" hidden>
-                            <label for="">kd_idpel</label>
+                            <label for="" name="kd_idpel">kd_idpel</label>
                             <!-- Tidak perlu menyertakan kd_idpel dalam formulir -->
                         </div>
                         <div class="form-group">
@@ -219,7 +219,7 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Daya (VA)</label>
                                 <div class="input-group">
-                                    <input type="text" value="<?php echo $d['daya'] ?>" name="" id="" class="form-control">
+                                    <input type="text" value="<?php echo $d['daya'] ?>" name="daya" id="" class="form-control">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-flash"></i></span>
                                 </div>
                             </div>

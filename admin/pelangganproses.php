@@ -3,7 +3,7 @@ include '../assets/conn/config.php';
 
 if (isset($_GET['proses'])) {
     if ($_GET['proses'] == 'prosestambah') {
-        $kd_idpel = $_POST['kd_idpel'];
+        // $kd_idpel = $_POST['kd_idpel'];
         $idpel = $_POST['idpel'];
         $nama_pel = $_POST['nama_pel'];
 

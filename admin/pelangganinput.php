@@ -1,5 +1,5 @@
 <?php
-include '../assets/conn/config.php';
+include 'header.php';
 ?>
 
 <style>
