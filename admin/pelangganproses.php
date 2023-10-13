@@ -3,7 +3,7 @@ include '../assets/conn/config.php';
 
 if (isset($_GET['proses'])) {
     if ($_GET['proses'] == 'prosestambah') {
-        $kd_idpel = $_POST['kd_idpel'];
+        // $kd_idpel = $_POST['kd_idpel'];
         $idpel = $_POST['idpel'];
         $nama_pel = $_POST['nama_pel'];
 
@@ -37,7 +37,7 @@ if (isset($_GET['proses'])) {
                 alert('Data Berhasil Ditambahkan');
                 document.location.href = 'pelangganinput.php';
               </script>";
-        header("location:pelangganinput.php");
+        echo '<script>window.location.href = "pelangganinput.php";</script>';
     } elseif ($_GET['proses'] == 'ubah') {
         $kd_idpel = $_GET['kode'];
         $idpel = $_POST['idpel'];
@@ -59,7 +59,7 @@ if (isset($_GET['proses'])) {
         } else {
             echo "<script>alert('Update gagal: " . mysqli_error($db) . "');</script>";
         }
-        header("location:pelangganinput.php");
+        echo '<script>window.location.href = "pelangganinput.php";</script>';
     } elseif ($_GET['proses'] == 'proseshapus') {
         $kd_idpel = $_GET['kode'];
 
@@ -82,6 +82,6 @@ if (isset($_GET['proses'])) {
             echo "<script>alert('Gagal menghapus data');</script>";
         }
 
-        header("location:pelangganinput.php");
+        echo '<script>window.location.href = "pelangganinput.php";</script>';
     }
 }

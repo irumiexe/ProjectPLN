@@ -38,7 +38,7 @@ if (isset($_GET['aksi'])) {
                             </div>
                         </div>
                         <div class="form-group" hidden>
-                            <label for="">kd_idpel</label>
+                            <label for="" name="kd_idpel">kd_idpel</label>
                             <!-- Tidak perlu menyertakan kd_idpel dalam formulir -->
                         </div>
                         <div class="form-group">
@@ -198,7 +198,6 @@ if (isset($_GET['aksi'])) {
                     while ($d = mysqli_fetch_array($data)) {
                     ?>
                         <form action="pelangganproses.php?proses=ubah&kode=<?php echo $d['kd_idpel']; ?>" method="post" enctype="multipart/form-data">
-
                             <div class="form-group" hidden>
                                 <label for="kd_idpel">kd_idpel</label>
                                 <input type="hidden" name="kd_idpel" class="form-control" value="<?php echo $d['kd_idpel']; ?>" readonly>
