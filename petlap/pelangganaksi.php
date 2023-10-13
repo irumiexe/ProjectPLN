@@ -135,7 +135,7 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="modal-footer">
                             <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
-                            <button type="button" class="btn btn-success" onclick="confirmSubmit()">Submit</button>
+                            <button type="submit" class="btn btn-success" name="submit" onclick="confirmSubmit()">Submit</button>
                         </div>
                     </form>
                     <script type="text/javascript">
@@ -183,6 +183,6 @@ if (isset($_GET['aksi'])) {
                 </div>
             </div>
         </div>
-    <?php } 
+<?php }
 }
 ?>
