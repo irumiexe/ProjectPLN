@@ -34,17 +34,7 @@ include 'header.php';
     <div class="panel-container">
         <div class="bootstrap-tabel">
             <div class="d-flex justify-content-between mb-3">
-                <div class="row">
-                    <div class="col">
-                        <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
-                    </div>
-                    <div class="col">
-                        <a href="excel.php" target="_blank">
-                            <button class="btn btn-success">Excel</button>
-                        </a>
-                    </div>
-                </div>
-
+                <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
 
             </div>
 
