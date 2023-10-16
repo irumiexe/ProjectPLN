@@ -12,6 +12,17 @@ include 'header.php';
         margin-top: 10px;
         transition: background-color 0.2s ease;
     }
+
+    .pagination1 {
+        text-align: center;
+        margin-top: 20px;
+        /* Atur sesuai kebutuhan Anda */
+    }
+
+    .pagination1 a {
+        margin: 0 1px;
+        /* Atur spasi antara tombol pagination */
+    }
 </style>
 
 <div class="container-xl">
@@ -34,9 +45,7 @@ include 'header.php';
                 <div class=" d-flex justify-content-between mb-3 card-header">
                     <h3 class=" card-title ">Data Pelanggan</h3>
                     <form class="d-flex ml-auto">
-                        <input class="form-control mr-1" name="cari" type="search" placeholder="Search" aria-label="Search" value="<?php if (isset($_GET['cari'])) {
-                                                                                                                                        echo $_GET['cari'];
-                                                                                                                                    } ?>">
+                        <input class="form-control mr-2" name="cari" type="search" placeholder="Search" aria-label="Search" value="<?php if (isset($_GET['cari'])) {echo $_GET['cari'];} ?>">
                         <button class="btn btn-outline-success" type="cari">Search</button>
                     </form>
                 </div>
@@ -62,7 +71,7 @@ include 'header.php';
                                 $hasil = "SELECT * from tbl_pelanggan where idpel like '%" . $pencarian . "%' or nama_pel like '%" . $pencarian . "%' 
                                                                             or ket like '%" . $pencarian . "%' or daya like '%" . $pencarian . "%' or tipe like '%" . $pencarian . "%' order by idpel asc";
                             } else {
-                                $dataPerPage = 1; // Jumlah data per halaman
+                                $dataPerPage = 5; // Jumlah data per halaman
                                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1; // Halaman saat ini, default: 1
                                 $startFrom = ($currentPage - 1) * $dataPerPage; // Mulai dari data ke berapa
 
@@ -94,14 +103,14 @@ include 'header.php';
                                         <a href="pelangganaksi.php?kode=<?php echo $d['kd_idpel'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
                                         <a href="javascript:void(0);" class="btn btn-danger" onclick="hapusData('<?php echo $d['kd_idpel']; ?>')">Hapus</a>
                                     </td>
-                                               
+                                    
                                 </tr>
                             <?php
                             }
                             ?>
                         </tbody>
                     </table>
-                    <div class="pagination">
+                    <div class="pagination1">
                         <?php
                         $query = "SELECT COUNT(*) AS total FROM tbl_pelanggan";
                         $result = mysqli_query($db, $query);
