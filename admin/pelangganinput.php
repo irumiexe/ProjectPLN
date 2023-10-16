@@ -73,19 +73,28 @@ include 'header.php';
                             ?>
                                 <tr>
                                     <td class="text-center"><?php echo $d['idpel'] ?></td>
-                                    <td class="text-center"><?php echo $d['nama_pel'] ?></td>
+                                    <td class="text-center" style="max-width: 100px;">
+                                        <div style="word-wrap: break-word; ">
+                                            <?php echo $d['nama_pel'] ?>
+                                        </div>
+                                    </td>
                                     <td class="text-center"><?php echo $d['daya'] ?></td>
                                     <td class="text-center"><?php echo $d['tipe'] ?></td>
-                                    <td style="width: 250px; height: 250px;">
+                                    <td style="width: 200px; height: 200px;">
                                         <iframe src='https://www.google.com/maps?q=<?Php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>&hl=es;z=14&output=embed' style="width:100%; height:100%;"></iframe>
                                     </td>
                                     <td class="text-center"><img src="../file/<?php echo $d['pmet']; ?>" style="width: 100px; height:200px"></td>
                                     <td class="text-center"><?php echo $d['ket'] ?></td>
-                                    <td class="text-center"><?php echo $d['ket2'] ?></td>
+                                    <td class="text-center" style="max-width: 100px;">
+                                        <div style="word-wrap: break-word; ">
+                                            <?php echo $d['ket2'] ?>
+                                        </div>
+                                    </td>
                                     <td class="text-center">
                                         <a href="pelangganaksi.php?kode=<?php echo $d['kd_idpel'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
                                         <a href="javascript:void(0);" class="btn btn-danger" onclick="hapusData('<?php echo $d['kd_idpel']; ?>')">Hapus</a>
                                     </td>
+                                               
                                 </tr>
                             <?php
                             }
