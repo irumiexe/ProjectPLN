@@ -116,12 +116,8 @@ include 'header.php';
                         $result = mysqli_query($db, $query);
                         $row = mysqli_fetch_assoc($result);
                         $totalPages = ceil($row['total'] / $dataPerPage);
-
-                        // Tentukan rentang nomor halaman yang akan ditampilkan
                         $startRange = max(1, $currentPage - 2);
                         $endRange = min($totalPages, $currentPage + 2);
-
-                        // Link ke halaman pertama
                         if ($currentPage > 1) {
                             echo '<a href="?page=' . ($currentPage - 1) . '" class="btn btn-primary">&laquo;</a>';
                         }
@@ -130,19 +126,9 @@ include 'header.php';
                             echo '<a href="?page=1" class="btn btn-primary">1</a>';
                             echo '<span class="btn btn-secondary">...</span>';
                         }
-
-                        // Link ke halaman sebelumnya
-
-
-                        // Tampilkan link halaman
                         for ($i = $startRange; $i <= $endRange; $i++) {
                             echo '<a href="?page=' . $i . '" class="btn ' . (($i == $currentPage) ? 'btn-info' : 'btn-secondary') . '">' . $i . '</a>';
                         }
-
-                        // Link ke halaman berikutnya
-
-
-                        // Link ke halaman terakhir
                         if ($currentPage < $totalPages - 2) {
                             echo '<span class="btn btn-secondary">...</span>';
                             echo '<a href="?page=' . $totalPages . '" class="btn btn-primary">' . $totalPages . '</a>';
