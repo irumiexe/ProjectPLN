@@ -284,11 +284,8 @@ if (isset($_GET['aksi'])) {
             <script>
                 function confirmUpdate() {
                     if (confirm('Yakin data sudah benar?')) {
-                        // Jika pengguna mengonfirmasi, lanjutkan untuk mengirim formulir
                         document.querySelector('form').submit();
-                    } else {
-                        // Jika pengguna membatalkan, tidak ada tindakan tambahan yang diambil
-                    }
+                    } else {}
                 }
             </script>
         <?php } ?>
