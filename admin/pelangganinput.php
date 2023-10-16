@@ -23,6 +23,55 @@ include 'header.php';
         margin: 0 1px;
         /* Atur spasi antara tombol pagination */
     }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-header {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 1rem;
+        border-bottom: 1px solid #e9ecef;
+        border-top-left-radius: calc(0.3rem - 1px);
+        border-top-right-radius: calc(0.3rem - 1px);
+    }
+
+    .modal-content {
+        display: block;
+        margin: 0 auto;
+        max-width: 80%;
+    }
+
+    .modal-body {
+        position: relative;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 1rem;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #fff;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+    }
 </style>
 
 <div class="container-xl">
@@ -40,7 +89,7 @@ include 'header.php';
                     </div>
                     <div class="col">
                         <a href="excel.php" target="_blank">
-                            <button class="btn btn-success" >Excel</button>
+                            <button class="btn btn-success">Excel</button>
                         </a>
                     </div>
                 </div>
@@ -102,7 +151,11 @@ include 'header.php';
                                     <td style="width: 200px; height: 200px;">
                                         <iframe src='https://www.google.com/maps?q=<?Php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>&hl=es;z=14&output=embed' style="width:100%; height:100%;"></iframe>
                                     </td>
-                                    <td class="text-center"><img src="../file/<?php echo $d['pmet']; ?>" style="width: 100px; height:200px"></td>
+                                    <td class="text-center">
+                                        <a href="javascript:void(0);" onclick="tampilkanGambar('../file/<?php echo $d['pmet']; ?>')">
+                                            <img src="../file/<?php echo $d['pmet']; ?>" style="width: 100px; height: 200px">
+                                        </a>
+                                    </td>
                                     <td class="text-center"><?php echo $d['ket'] ?></td>
                                     <td class="text-center" style="max-width: 100px;">
                                         <div style="word-wrap: break-word; ">
@@ -120,6 +173,19 @@ include 'header.php';
                             ?>
                         </tbody>
                     </table>
+                    <div id="gambarPopUp" class="modal">
+
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Bukti Dokumentasi</h3>
+                                <span class="close" onclick="tutupPopUp()">&times;</span>
+                            </div>
+                            <div class="modal-body">
+                                <img id="gambarModal" style="width: 50%; item-align: center;" >
+                            </div>
+
+                        </div>
+                    </div>
                     <div class="pagination1">
                         <?php
                         $query = "SELECT COUNT(*) AS total FROM tbl_pelanggan";
@@ -159,5 +225,26 @@ include 'header.php';
             if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
                 window.location.href = 'pelangganproses.php?kode=' + idpelanggan + '&proses=proseshapus';
             }
+        }
+
+        function tampilkanGambar(namaGambar) {
+            var gambarPopUp = document.getElementById('gambarPopUp');
+            var modalContent = document.querySelector('.modal-content');
+            var gambarModal = document.getElementById('gambarModal');
+
+            // Set lebar modal sesuai dengan gambar asli
+            var gambarAsli = new Image();
+            gambarAsli.src = namaGambar;
+            gambarAsli.onload = function() {
+                var lebarAsli = this.width;
+                modalContent.style.width = lebarAsli + 'px';
+                gambarModal.src = namaGambar;
+                gambarPopUp.style.display = "block";
+            };
+        }
+
+        function tutupPopUp() {
+            var gambarPopUp = document.getElementById('gambarPopUp');
+            gambarPopUp.style.display = "none";
         }
     </script>
