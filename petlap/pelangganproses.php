@@ -37,6 +37,5 @@ if (isset($_GET['proses'])) {
                 alert('Data Berhasil Ditambahkan');
                 document.location.href = 'pelangganinput.php';
               </script>";
-        header("location:pelangganinput.php");
     } 
 }
