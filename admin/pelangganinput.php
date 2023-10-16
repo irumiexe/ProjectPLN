@@ -14,6 +14,17 @@ $dataPerPage = 1;
         margin-top: 10px;
         transition: background-color 0.2s ease;
     }
+
+    .pagination {
+        text-align: center;
+        margin-top: 20px;
+        /* Atur sesuai kebutuhan Anda */
+    }
+
+    .pagination a {
+        margin: 0 1px;
+        /* Atur spasi antara tombol pagination */
+    }
 </style>
 
 <div class="container-xl">
