@@ -34,11 +34,7 @@ $dataPerPage = 1;
         width: 100%;
         height: 100%;
         overflow: auto;
-<<<<<<< HEAD
-        background-color: rgba(0, 0, 0, 0.3);
-=======
-        background-color: rgba(0, 0, 0, 0.9);
->>>>>>> 9518d276fb423844dea1a8b253af36ac5e33fda5
+        background-color: rgba(0, 0, 0, 0.6);
     }
 
     .modal-header {
@@ -211,15 +207,43 @@ $dataPerPage = 1;
                     if ($totalPages > 1) {
                         echo '<nav aria-label="Page navigation example">';
                         echo '<ul class="pagination">';
-                        if ($currentPage > 1) {
+                        if ($currentPage > 1
+                        ) {
                             echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">&laquo;</a></li>';
                         }
-                        for ($i = 1; $i <= $totalPages; $i++) {
+
+                        // Loop untuk mencetak nomor halaman
+                        $numPagesToShow = 3; // Jumlah nomor halaman yang ingin ditampilkan
+                        $halfNumPages = floor($numPagesToShow / 2);
+                        $startPage = max(1, $currentPage - $halfNumPages);
+                        $endPage = min($totalPages, $startPage + $numPagesToShow - 1);
+
+                        if ($startPage > 1
+                        ) {
+                            echo '<li class="page-item"><a class="page-link" href="?page=1">1</a></li>';
+                            if ($startPage > 2) {
+                                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                            }
+                        }
+
+                        for ($i = $startPage; $i <= $endPage; $i++) {
                             echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
                         }
-                        if ($currentPage < $totalPages) {
+
+                        if ($endPage < $totalPages
+                        ) {
+                            if ($endPage < $totalPages - 1
+                            ) {
+                                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                            }
+                            echo '<li class="page-item"><a class="page-link" href="?page=' . $totalPages . '">' . $totalPages . '</a></li>';
+                        }
+
+                        if ($currentPage < $totalPages
+                        ) {
                             echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage + 1) . '">&raquo;</a></li>';
                         }
+
                         echo '</ul>';
                         echo '</nav>';
                     }
