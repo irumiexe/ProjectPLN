@@ -34,7 +34,7 @@ $dataPerPage = 1;
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(0, 0, 0, 0.4);
     }
 
     .modal-header {
@@ -235,8 +235,11 @@ $dataPerPage = 1;
     function tampilkanGambar(namaGambar) {
         var gambarPopUp = document.getElementById('gambarPopUp');
         var modalContent = document.querySelector('.modal-content');
-        var gambarModal = document.getElementById('gambarModal');
-        var pagination = document.querySelector('.pagination');
+        var gambarModal = document.getElementById('gambarModal'); <<
+        << << < HEAD
+        var pagination = document.querySelector('.pagination'); ===
+        === = >>>
+        >>> > f18498f2b781d8018f86fd649f60e9ba20f88003
 
         // Set lebar modal sesuai dengan gambar asli
         var gambarAsli = new Image();
@@ -245,17 +248,24 @@ $dataPerPage = 1;
             var lebarAsli = this.width;
             modalContent.style.width = lebarAsli + 'px';
             gambarModal.src = namaGambar;
-            gambarPopUp.style.display = "block";
+            gambarPopUp.style.display = "block"; <<
+            << << < HEAD
             // Hide pagination
-            pagination.style.display = "none";
+            pagination.style.display = "none"; ===
+            === = >>>
+            >>> > f18498f2b781d8018f86fd649f60e9ba20f88003
         };
     }
 
     function tutupPopUp() {
-        var gambarPopUp = document.getElementById('gambarPopUp');
+        var gambarPopUp = document.getElementById('gambarPopUp'); <<
+        << << < HEAD
         var pagination = document.querySelector('.pagination');
         gambarPopUp.style.display = "none";
         // Show pagination again
-        pagination.style.display = "block";
+        pagination.style.display = "block"; ===
+        === =
+        gambarPopUp.style.display = "none"; >>>
+        >>> > f18498f2b781d8018f86fd649f60e9ba20f88003
     }
 </script>
