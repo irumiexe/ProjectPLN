@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 
-$dataPerPage = 1;
+$dataPerPage = 10;
 
 ?>
 <style>
