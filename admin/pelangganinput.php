@@ -72,6 +72,18 @@ $dataPerPage = 10;
         font-weight: bold;
         cursor: pointer;
     }
+
+    #gambarModal {
+        max-width: 100%;
+        max-height: 100%;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    #gambarModal.zoomed {
+        transform: scale(2);
+        /* Ubah faktor skala sesuai kebutuhan zoom. */
+    }
 </style>
 
 <div class="container-xl">
@@ -266,10 +278,13 @@ $dataPerPage = 10;
     }
 
     function tampilkanGambar(namaGambar) {
+        var gambarModal = document.getElementById('gambarModal');
         var gambarPopUp = document.getElementById('gambarPopUp');
         var modalContent = document.querySelector('.modal-content');
-        var gambarModal = document.getElementById('gambarModal');
         var pagination = document.querySelector('.pagination');
+
+        gambarModal.src = namaGambar;
+        gambarModal.classList.remove('zoomed'); // Reset zoom jika sebelumnya sudah di-zoom.
 
         // Set lebar modal sesuai dengan gambar asli
         var gambarAsli = new Image();
@@ -277,7 +292,6 @@ $dataPerPage = 10;
         gambarAsli.onload = function() {
             var lebarAsli = this.width;
             modalContent.style.width = lebarAsli + 'px';
-            gambarModal.src = namaGambar;
             gambarPopUp.style.display = "block";
             // Hide pagination
             pagination.style.display = "none";
@@ -291,4 +305,7 @@ $dataPerPage = 10;
         // Show pagination again
         pagination.style.display = "block";
     }
+    gambarModal.addEventListener('click', function() {
+        gambarModal.classList.toggle('zoomed'); // Aktifkan atau nonaktifkan zoom.
+    });
 </script>
