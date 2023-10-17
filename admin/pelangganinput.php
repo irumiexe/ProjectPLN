@@ -207,7 +207,8 @@ $dataPerPage = 1;
                     if ($totalPages > 1) {
                         echo '<nav aria-label="Page navigation example">';
                         echo '<ul class="pagination">';
-                        if ($currentPage > 1
+                        if (
+                            $currentPage > 1
                         ) {
                             echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">&laquo;</a></li>';
                         }
@@ -218,7 +219,8 @@ $dataPerPage = 1;
                         $startPage = max(1, $currentPage - $halfNumPages);
                         $endPage = min($totalPages, $startPage + $numPagesToShow - 1);
 
-                        if ($startPage > 1
+                        if (
+                            $startPage > 1
                         ) {
                             echo '<li class="page-item"><a class="page-link" href="?page=1">1</a></li>';
                             if ($startPage > 2) {
@@ -230,16 +232,19 @@ $dataPerPage = 1;
                             echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
                         }
 
-                        if ($endPage < $totalPages
+                        if (
+                            $endPage < $totalPages
                         ) {
-                            if ($endPage < $totalPages - 1
+                            if (
+                                $endPage < $totalPages - 1
                             ) {
                                 echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
                             }
                             echo '<li class="page-item"><a class="page-link" href="?page=' . $totalPages . '">' . $totalPages . '</a></li>';
                         }
 
-                        if ($currentPage < $totalPages
+                        if (
+                            $currentPage < $totalPages
                         ) {
                             echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage + 1) . '">&raquo;</a></li>';
                         }
