@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 
-$dataPerPage = 2;
+$dataPerPage = 1;
 
 ?>
 <style>
@@ -22,7 +22,6 @@ $dataPerPage = 2;
 
     .pagination a {
         margin: 0 1px;
-<<<<<<< HEAD
     }
 
     .modal {
@@ -54,7 +53,7 @@ $dataPerPage = 2;
     .modal-content {
         display: block;
         margin: 0 auto;
-        max-width: 30%;
+        max-width: 25%;
     }
 
     .modal-body {
@@ -72,8 +71,6 @@ $dataPerPage = 2;
         font-size: 24px;
         font-weight: bold;
         cursor: pointer;
-=======
->>>>>>> aa511fd3a50fdcd31bbc8e7202899f696eb09fed
     }
 </style>
 
@@ -149,7 +146,11 @@ $dataPerPage = 2;
                                     <td style="width: 200px; height: 200px;">
                                         <iframe src='https://www.google.com/maps?q=<?Php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>&hl=es;z=14&output=embed' style="width:100%; height:100%;"></iframe>
                                     </td>
-                                    <td class="text-center"><img src="../file/<?php echo $d['pmet']; ?>" style="width: 100px; height:200px"></td>
+                                    <td class="text-center">
+                                        <a href="javascript:void(0);" onclick="tampilkanGambar('../file/<?php echo $d['pmet']; ?>')">
+                                            <img src="../file/<?php echo $d['pmet']; ?>" style="width: 100px; height: 200px">
+                                        </a>
+                                    </td>
                                     <td class="text-center"><?php echo $d['ket'] ?></td>
                                     <td class="text-center" style="max-width: 100px;">
                                         <div style="word-wrap: break-word; ">
@@ -166,36 +167,19 @@ $dataPerPage = 2;
                             ?>
                         </tbody>
                     </table>
-<<<<<<< HEAD
                     <div id="gambarPopUp" class="modal">
+
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h3>Bukti Dokumentasi</h3>
                                 <span class="close" onclick="tutupPopUp()">&times;</span>
                             </div>
                             <div class="modal-body">
-                                <img id="gambarModal" style="width: 100%; item-align: center;">
+                                <img id="gambarModal" style="width: 100%;">
                             </div>
+
                         </div>
                     </div>
-                    <div class="pagination">
-                        <?php
-                        $query = "SELECT COUNT(*) AS total FROM tbl_pelanggan";
-                        if (isset($_GET['cari'])) {
-                            $pencarian = $_GET['cari'];
-                            $query .= " WHERE idpel LIKE '%$pencarian%' OR nama_pel LIKE '%$pencarian%' OR ket LIKE '%$pencarian%' OR daya LIKE '%$pencarian%' OR tipe LIKE '%$pencarian%'";
-                        }
-                        $result = mysqli_query($db, $query);
-                        $row = mysqli_fetch_assoc($result);
-                        $totalPages = ($row['total'] > 0) ? ceil($row['total'] / $dataPerPage) : 1;
-                        $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-                        $startFrom = ($currentPage - 1) * $dataPerPage; // Mulai dari data ke berapa
-
-                        // Tambahkan LIMIT ke dalam query data
-                        $queryData = "SELECT * FROM tbl_pelanggan";
-                        if (isset($_GET['cari'])) {
-                            $queryData .= " WHERE idpel LIKE '%$pencarian%' OR nama_pel LIKE '%$pencarian%' OR ket LIKE '%$pencarian%' OR daya LIKE '%$pencarian%' OR tipe LIKE '%$pencarian%'";
-=======
                 </div>
                 <div class="pagination">
                     <?php
@@ -225,64 +209,53 @@ $dataPerPage = 2;
                         echo '<ul class="pagination">';
                         if ($currentPage > 1) {
                             echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">&laquo;</a></li>';
->>>>>>> aa511fd3a50fdcd31bbc8e7202899f696eb09fed
                         }
-                        $queryData .= " ORDER BY idpel ASC LIMIT $startFrom, $dataPerPage";
-
-                        $resultData = mysqli_query($db, $queryData);
-                        while ($d = $resultData->fetch_array()) {
+                        for ($i = 1; $i <= $totalPages; $i++) {
+                            echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
                         }
-                        if ($totalPages > 1) {
-                            echo '<nav aria-label="Page navigation example">';
-                            echo '<ul class="pagination">';
-                            if ($currentPage > 1) {
-                                echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">&laquo;</a></li>';
-                            }
-                            for ($i = 1; $i <= $totalPages; $i++) {
-                                echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
-                            }
-                            if ($currentPage < $totalPages) {
-                                echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage + 1) . '">&raquo;</a></li>';
-                            }
-                            echo '</ul>';
-                            echo '</nav>';
+                        if ($currentPage < $totalPages) {
+                            echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage + 1) . '">&raquo;</a></li>';
                         }
-                        ?>
-                    </div>
+                        echo '</ul>';
+                        echo '</nav>';
+                    }
+                    ?>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        function hapusData(idpelanggan) {
-            if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
-                window.location.href = 'pelangganproses.php?kode=' + idpelanggan + '&proses=proseshapus';
-            }
+</div>
+<script>
+    function hapusData(idpelanggan) {
+        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+            window.location.href = 'pelangganproses.php?kode=' + idpelanggan + '&proses=proseshapus';
         }
-<<<<<<< HEAD
+    }
 
-        function tampilkanGambar(namaGambar) {
-            var gambarPopUp = document.getElementById('gambarPopUp');
-            var modalContent = document.querySelector('.modal-content');
-            var gambarModal = document.getElementById('gambarModal');
+    function tampilkanGambar(namaGambar) {
+        var gambarPopUp = document.getElementById('gambarPopUp');
+        var modalContent = document.querySelector('.modal-content');
+        var gambarModal = document.getElementById('gambarModal');
+        var pagination = document.querySelector('.pagination');
 
-            // Set lebar modal sesuai dengan gambar asli
-            var gambarAsli = new Image();
-            gambarAsli.src = namaGambar;
-            gambarAsli.onload = function() {
-                var lebarAsli = this.width;
-                modalContent.style.width = lebarAsli + 'px';
-                gambarModal.src = namaGambar;
-                gambarPopUp.style.display = "block";
-            };
-        }
+        // Set lebar modal sesuai dengan gambar asli
+        var gambarAsli = new Image();
+        gambarAsli.src = namaGambar;
+        gambarAsli.onload = function() {
+            var lebarAsli = this.width;
+            modalContent.style.width = lebarAsli + 'px';
+            gambarModal.src = namaGambar;
+            gambarPopUp.style.display = "block";
+            // Hide pagination
+            pagination.style.display = "none";
+        };
+    }
 
-        function tutupPopUp() {
-            var gambarPopUp = document.getElementById('gambarPopUp');
-            gambarPopUp.style.display = "none";
-        }
-    </script>
-=======
+    function tutupPopUp() {
+        var gambarPopUp = document.getElementById('gambarPopUp');
+        var pagination = document.querySelector('.pagination');
+        gambarPopUp.style.display = "none";
+        // Show pagination again
+        pagination.style.display = "block";
     }
 </script>
->>>>>>> aa511fd3a50fdcd31bbc8e7202899f696eb09fed
