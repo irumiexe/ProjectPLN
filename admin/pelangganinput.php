@@ -34,7 +34,11 @@ $dataPerPage = 1;
         width: 100%;
         height: 100%;
         overflow: auto;
+<<<<<<< HEAD
         background-color: rgba(0, 0, 0, 0.3);
+=======
+        background-color: rgba(0, 0, 0, 0.9);
+>>>>>>> 9518d276fb423844dea1a8b253af36ac5e33fda5
     }
 
     .modal-header {
