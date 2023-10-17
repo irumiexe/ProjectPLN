@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 
-$dataPerPage = 10;
+$dataPerPage = 1;
 
 ?>
 <style>
@@ -34,7 +34,7 @@ $dataPerPage = 10;
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: rgba(0, 0, 0, 0.3);
     }
 
     .modal-header {
@@ -53,7 +53,7 @@ $dataPerPage = 10;
     .modal-content {
         display: block;
         margin: 0 auto;
-        max-width: 25%;
+        max-width: 22%;
     }
 
     .modal-body {
@@ -236,6 +236,7 @@ $dataPerPage = 10;
         var gambarPopUp = document.getElementById('gambarPopUp');
         var modalContent = document.querySelector('.modal-content');
         var gambarModal = document.getElementById('gambarModal');
+        var pagination = document.querySelector('.pagination');
 
         // Set lebar modal sesuai dengan gambar asli
         var gambarAsli = new Image();
@@ -245,11 +246,16 @@ $dataPerPage = 10;
             modalContent.style.width = lebarAsli + 'px';
             gambarModal.src = namaGambar;
             gambarPopUp.style.display = "block";
+            // Hide pagination
+            pagination.style.display = "none";
         };
     }
 
     function tutupPopUp() {
         var gambarPopUp = document.getElementById('gambarPopUp');
+        var pagination = document.querySelector('.pagination');
         gambarPopUp.style.display = "none";
+        // Show pagination again
+        pagination.style.display = "block";
     }
 </script>
