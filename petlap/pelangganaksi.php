@@ -39,10 +39,10 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group" hidden>
                             <label for="">kd_idpel</label>
-                            <!-- Tidak perlu menyertakan kd_idpel dalam formulir -->
                         </div>
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
+                            <p style="font-size: 10px; color: red;"><i>*Mohon isi ID pelanggan dengan benar</i></p>
                             <div class="input-group">
                                 <input type="text" name="idpel" class="form-control" value="" placeholder="Masukkan ID Pelanggan Minimal 11 Angka dan Maksimal 12 Angka" required autofocus minlength="11" maxlength="12">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>

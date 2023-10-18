@@ -38,20 +38,23 @@ include '../assets/conn/config.php';
 
 <body onload="getLocation()">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
         <div class="container">
             <img style="width: 30px; display: inline-block; vertical-align: middle;" src="../img/Logo_PLN.png" alt="Logo">
             <a class="navbar-brand" href="#">SIPLN</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav" style="font-size: medium; ">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">DASHBOARD</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="pelangganinput.php">DATA PELANGGAN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="akuninput.php">DATA HAK AKSES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">LOGOUT</a>
