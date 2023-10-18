@@ -1,18 +1,13 @@
 <?php
-// Koneksi ke database
 include '../assets/conn/config.php';
 
-// Ambil data pelanggan dari database
 $daftar_pelanggan = mysqli_query($db, "SELECT * from tbl_pelanggan");
 
-// Membuat file Excel
 $filename = "Daftar Pelanggan.xls";
 
-// Header untuk mengunduh file Excel
 header("Content-Type: application/vnd.ms-excel");
 header("Content-Disposition: attachment; filename=" . $filename);
 
-// Mengeluarkan data dalam format Excel
 echo '<table border="1">
     <tr>
     <th>NO</th>
@@ -44,5 +39,4 @@ while ($row = mysqli_fetch_assoc($daftar_pelanggan)) {
 }
 echo '</table>';
 
-// Tutup koneksi database
 mysqli_close($db);
