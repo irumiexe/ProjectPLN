@@ -187,7 +187,8 @@ $dataPerPage = 10;
                                 <span class="close" onclick="tutupPopUp()">&times;</span>
                             </div>
                             <div class="modal-body">
-                                <img id="gambarModal">
+                                <img id="gambarModal"
+                                >
                             </div>
 
                         </div>
