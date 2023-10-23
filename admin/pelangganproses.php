@@ -25,10 +25,10 @@ if (isset($_GET['proses'])) {
         move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $nama_file_baru);
         $ket = $_POST["ket"];
         $ket2 = $_POST["ket2"];
-        $kd_akun = $_POST['kd_akun'];
+        
 
-        $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet, ket, ket2, tanggal, kd_akun) 
-        VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$nama_file_baru', '$ket', '$ket2', CURDATE(), '$kd_akun')";
+        $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet, ket, ket2, tanggal) 
+        VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$nama_file_baru', '$ket', '$ket2', CURDATE())";
 
 
         mysqli_query($db, $query);
@@ -53,7 +53,7 @@ if (isset($_GET['proses'])) {
         $ket = $_POST["ket"];
         $ket2 = $_POST["ket2"];
 
-        $hasil = $db->query("UPDATE tbl_pelanggan set idpel='$idpel', nama_pel='$nama_pel', daya='$daya', tipe='$tipe', pmet='$nama_file_baru', ket='$ket', ket2='$ket2' where kd_idpel='$kd_idpel'");
+        $hasil = $db->query("UPDATE tbl_pelanggan set nama_pel='$nama_pel', daya='$daya', tipe='$tipe', pmet='$nama_file_baru', ket='$ket', ket2='$ket2' where idpel='$idpel'");
         if ($hasil) {
             echo "<script>alert('Update berhasil');</script>";
         } else {
@@ -61,9 +61,9 @@ if (isset($_GET['proses'])) {
         }
         echo '<script>window.location.href = "pelangganinput.php";</script>';
     } elseif ($_GET['proses'] == 'proseshapus') {
-        $kd_idpel = $_GET['kode'];
+        $idpel = $_GET['kode'];
 
-        $query = "SELECT pmet FROM tbl_pelanggan WHERE kd_idpel='$kd_idpel'";
+        $query = "SELECT pmet FROM tbl_pelanggan WHERE idpel='$idpel'";
         $result = mysqli_query($db, $query);
         $row = mysqli_fetch_assoc($result);
         $fileToDelete = $row['pmet'];
@@ -73,7 +73,7 @@ if (isset($_GET['proses'])) {
             unlink($filePath);
         }
 
-        $deleteQuery = "DELETE FROM tbl_pelanggan WHERE kd_idpel='$kd_idpel'";
+        $deleteQuery = "DELETE FROM tbl_pelanggan WHERE idpel='$idpel'";
         $deleteResult = mysqli_query($db, $deleteQuery);
 
         if ($deleteResult) {

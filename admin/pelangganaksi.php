@@ -194,10 +194,10 @@ if (isset($_GET['aksi'])) {
             <div class="panel-container">
                 <div class="bootstrap-tabel">
                     <?php
-                    $data = $db->query("SELECT * From tbl_pelanggan where kd_idpel='$_GET[kode]'");
+                    $data = $db->query("SELECT * From tbl_pelanggan where idpel='$_GET[kode]'");
                     while ($d = mysqli_fetch_array($data)) {
                     ?>
-                        <form action="pelangganproses.php?proses=ubah&kode=<?php echo $d['kd_idpel']; ?>" method="post" enctype="multipart/form-data">
+                        <form action="pelangganproses.php?proses=ubah&kode=<?php echo $d['idpel']; ?>" method="post" enctype="multipart/form-data">
                             <div class="form-group" hidden>
                                 <label for="kd_idpel">kd_idpel</label>
                                 <input type="hidden" name="kd_idpel" class="form-control" value="<?php echo $d['kd_idpel']; ?>" readonly>
