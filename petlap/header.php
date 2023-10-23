@@ -33,6 +33,11 @@ include '../assets/conn/config.php';
                 text-align: left;
             }
         }
+
+        .form-control {
+            text-align: center;
+            height: 30px;
+        }
     </style>
 </head>
 

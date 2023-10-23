@@ -25,7 +25,7 @@ if (isset($_GET['proses'])) {
         move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $nama_file_baru);
         $ket = $_POST["ket"];
         $ket2 = $_POST["ket2"];
-        
+
 
         $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet, ket, ket2, tanggal) 
         VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$nama_file_baru', '$ket', '$ket2', CURDATE())";
