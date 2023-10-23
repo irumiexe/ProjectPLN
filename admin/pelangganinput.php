@@ -191,7 +191,7 @@ $dataPerPage = 10;
 
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h3>Bukti Dokumentasi</h3>
+                                <h3>Bukti Dokumentas</h3>
                                 <span class="close" onclick="tutupPopUp()">&times;</span>
                             </div>
                             <div class="modal-body">
