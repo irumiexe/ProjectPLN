@@ -33,6 +33,10 @@ include '../assets/conn/config.php';
                 text-align: left;
             }
         }
+
+        .nav-link {
+            color: white;
+        }
     </style>
 </head>
 
