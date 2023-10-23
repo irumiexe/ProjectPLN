@@ -84,6 +84,10 @@ $dataPerPage = 10;
         transform: scale(2);
         /* Ubah faktor skala sesuai kebutuhan zoom. */
     }
+
+    .card-header {
+        background-color: #CDF5FD
+    }
 </style>
 
 <div class="container-xl">
@@ -108,7 +112,7 @@ $dataPerPage = 10;
             </div>
             <div class="card">
                 <div class="d-flex justify-content-between mb-3 card-header">
-                    <h4 class="card-title">Data Pelanggan</h4>
+                    <h4 class=" card-title">Data Pelanggan</h4>
                     <form class="d-flex ml-auto" method="GET">
                         <input class="form-control mr-1" name="cari" type="search" placeholder="Search" aria-label="Search" value="<?php if (isset($_GET['cari'])) {
                                                                                                                                         echo $_GET['cari'];
