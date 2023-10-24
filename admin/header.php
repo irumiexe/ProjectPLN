@@ -14,7 +14,6 @@ include '../assets/conn/config.php';
 
     <!-- Menggunakan Bootstrap CSS dari CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/css/cosmo.min.css">
     <link rel="stylesheet" href="../assets/css/css_final.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -41,15 +40,10 @@ include '../assets/conn/config.php';
         .nav-item.dropdown:hover .dropdown-menu {
             display: block;
         }
-
-        .nav-item.logout {
-            margin-left: auto;
-        }
     </style>
 </head>
 
 <body onload="getLocation()">
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-info">
         <div class="container">
             <img style="width: 30px; display: inline-block; vertical-align: middle;" src="../img/Logo_PLN.png" alt="Logo">
@@ -71,15 +65,13 @@ include '../assets/conn/config.php';
                             <a class="dropdown-item" href="akuninput.php">TAMBAH HAK AKSES</a>
                         </div>
                     </li>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php">LOGOUT</a>
+                        </li>
+                    </ul>
                 </ul>
             </div>
-        </div>
-        <div class="container">
-            <ul class="navbar-nav logout">
-                <li class="nav-item">
-                    <a class="nav-link" href="logout.php">LOGOUT</a>
-                </li>
-            </ul>
         </div>
     </nav>
 
