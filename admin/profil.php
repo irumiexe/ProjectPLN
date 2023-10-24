@@ -1,5 +1,20 @@
 <?php
 include 'header.php';
+
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    $level = $_SESSION['level'];
+
+    $query = $db->query("SELECT * FROM tbl_akun");
+    $petlap_data = array();
+
+    while ($row = $query->fetch_assoc()) {
+        $petlap_data[] = $row;
+    }
+} else {
+    header("location: ../index.php");
+    exit();
+}
 ?>
 
 <style>
@@ -12,10 +27,14 @@ include 'header.php';
         border-top: 1px solid #ccc;
         border-bottom: 1px solid #ccc;
         display: flex;
+        /* Menggunakan display flex */
         justify-content: space-between;
+        /* Mendorong elemen ke ujung kanan */
         align-items: center;
+        /* Mengatur vertikal tengah */
     }
 
+    /* Membuat teks tebal (bold) untuk angka di sebelah kanan */
     .list-group-item a {
         font-weight: bold;
     }
@@ -30,9 +49,6 @@ include 'header.php';
 
     .card-primary {
         border-top: 2px solid #007bff;
-    }
-
-    .card-primary {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 </style>
@@ -51,137 +67,42 @@ include 'header.php';
                     <input class="form-control mr-1" name="cari" type="search" placeholder="Search" aria-label="Search" value="<?php if (isset($_GET['cari'])) {
                                                                                                                                     echo $_GET['cari'];
                                                                                                                                 } ?>">
-                    <button class="btn btn-outline-success" type="cari">Search</button>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
             <hr>
             <div class="row">
-                <div class="row">
+                <?php foreach ($petlap_data as $petlap) : ?>
                     <div class="col-md-3">
-                        <div class="card card-primary card-outline">
-                            <div class="card card-primary card-outline">
-                                <div class="card-body box-profile">
-                                    <div class="text-center">
-                                        <img class="profile-user-img img-fluid img-circle" src="../assets/dist/img/user4-128x128.jpg" alt="User profile picture">
-                                    </div>
-
-                                    <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-                                    <p class="text-muted text-center">Software Engineer</p>
-
-                                    <ul class="list-group list-group-unbordered mb-3">
-                                        <li class="list-group-item">
-                                            <b>Followers</b> <a class="float-right">1,322</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Following</b> <a class="float-right">543</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Friends</b> <a class="float-right">13,287</a>
-                                        </li>
-                                    </ul>
-
-                                    <a href="targetaksi.php?aksi=tambah" class="btn btn-success btn-block"><b>Tambah Target</b></a>
-                                    <a href="#" class="btn btn-primary btn-block"><b>Detail Target</b></a>
+                        <div class="card card-primary card-outline" style="border-top: 1px solid #ccc; margin-bottom: 20px;">
+                            <div class="card-body box-profile">
+                                <div class="text-center">
+                                    <img class="profile-user-img img-fluid img-circle" src="../assets/dist/img/user4-128x128.jpg" alt="User profile picture">
                                 </div>
-                                <!-- /.card-body -->
+
+                                <h3 class="profile-username text-center"><?php echo $petlap['nama_lengkap']; ?></h3>
+                                <p class="text-muted text-center"><?php echo $petlap['level']; ?></p>
+
+                                <ul class="list-group list-group-unbordered mb-3">
+                                    <li class="list-group-item">
+                                        <b>Followers</b> <a class="float-right">1,322</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Following</b> <a class="float-right">543</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Friends</b> <a class="float-right">13,287</a>
+                                    </li>
+                                </ul>
+
+                                <a href="#" class="btn btn-success btn-block"><b>Tambah Target</b></a>
+                                <a href="#" class="btn btn-primary btn-block"><b>Detail Target</b></a>
                             </div>
+                            <!-- /.card-body -->
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card card-primary card-outline">
-                            <div class="card card-primary card-outline">
-                                <div class="card-body box-profile">
-                                    <div class="text-center">
-                                        <img class="profile-user-img img-fluid img-circle" src="../assets/dist/img/user4-128x128.jpg" alt="User profile picture">
-                                    </div>
-
-                                    <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-                                    <p class="text-muted text-center">Software Engineer</p>
-
-                                    <ul class="list-group list-group-unbordered mb-3">
-                                        <li class="list-group-item">
-                                            <b>Followers</b> <a class="float-right">1,322</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Following</b> <a class="float-right">543</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Friends</b> <a class="float-right">13,287</a>
-                                        </li>
-                                    </ul>
-
-                                    <a href="#" class="btn btn-success btn-block"><b>Tambah Target</b></a>
-                                    <a href="#" class="btn btn-primary btn-block"><b>Detail Target</b></a>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card card-primary card-outline">
-                            <div class="card card-primary card-outline">
-                                <div class="card-body box-profile">
-                                    <div class="text-center">
-                                        <img class="profile-user-img img-fluid img-circle" src="../assets/dist/img/user4-128x128.jpg" alt="User profile picture">
-                                    </div>
-
-                                    <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-                                    <p class="text-muted text-center">Software Engineer</p>
-
-                                    <ul class="list-group list-group-unbordered mb-3">
-                                        <li class="list-group-item">
-                                            <b>Followers</b> <a class="float-right">1,322</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Following</b> <a class="float-right">543</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Friends</b> <a class="float-right">13,287</a>
-                                        </li>
-                                    </ul>
-
-                                    <a href="#" class="btn btn-success btn-block"><b>Tambah Target</b></a>
-                                    <a href="#" class="btn btn-primary btn-block"><b>Detail Target</b></a>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card card-primary card-outline">
-                            <div class="card card-primary card-outline">
-                                <div class="card-body box-profile">
-                                    <div class="text-center">
-                                        <img class="profile-user-img img-fluid img-circle" src="../assets/dist/img/user4-128x128.jpg" alt="User profile picture">
-                                    </div>
-
-                                    <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-                                    <p class="text-muted text-center">Software Engineer</p>
-
-                                    <ul class="list-group list-group-unbordered mb-3">
-                                        <li class="list-group-item">
-                                            <b>Followers</b> <a class="float-right">1,322</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Following</b> <a class="float-right">543</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Friends</b> <a class="float-right">13,287</a>
-                                        </li>
-                                    </ul>
-
-                                    <a href="#" class="btn btn-success btn-block"><b>Tambah Target</b></a>
-                                    <a href="#" class="btn btn-primary btn-block"><b>Detail Target</b></a>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
+    </div>
+</div>
