@@ -10,9 +10,9 @@ if (isset($_SESSION['username'])) {
     $nama_lengkap = $data['nama_lengkap'];
 
     if ($level == 'Admin') {
-        $welcome_message = "SELAMAT DATANG ADMIN <br><br> $nama_lengkap";
-    } else {
         $welcome_message = "SELAMAT DATANG";
+        $nama = "$nama_lengkap";
+        $role= "$level";
     }
 } else {
     header("location: ../index.php");
@@ -73,9 +73,9 @@ if (isset($_SESSION['username'])) {
                                     <img class="profile-user-img img-fluid img-circle" src="../assets/dist/img/user4-128x128.jpg" alt="User profile picture">
                                 </div>
 
-                                <h3 class="profile-username text-center">Nina Mcintire</h3>
+                                <h3 class="profile-username text-center"><?php echo "$nama" ?></h3>
 
-                                <p class="text-muted text-center">Software Engineer</p>
+                                <p class="text-muted text-center"><?php echo "$role" ?></p>
 
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
