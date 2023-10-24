@@ -37,6 +37,14 @@ include '../assets/conn/config.php';
         .nav-link {
             color: white;
         }
+
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .nav-item.logout {
+            margin-left: auto;
+        }
     </style>
 </head>
 
@@ -54,23 +62,34 @@ include '../assets/conn/config.php';
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">DASHBOARD</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pelangganinput.php">DATA PELANGGAN</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="akuninput.php">DATA HAK AKSES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.php">LOGOUT</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="pelangganDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            DATA UMUM
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="pelangganDropdown">
+                            <a class="dropdown-item" href="pelangganinput.php">TAMBAH PELANGGAN</a>
+                            <a class="dropdown-item" href="akuninput.php">TAMBAH HAK AKSES</a>
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
+        <div class="container">
+            <ul class="navbar-nav logout">
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">LOGOUT</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <!-- Isi konten halaman di sini -->
-
-    <!-- Menggunakan Bootstrap JS (jQuery, Popper.js, dan Bootstrap JS) dari CDN -->
+    <script>
+        $(document).ready(function() {
+            $('.dropdown').on('mouseleave', function() {
+                $('.dropdown-menu').removeClass('show');
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
