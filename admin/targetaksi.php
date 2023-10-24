@@ -26,7 +26,7 @@ if (isset($_GET['aksi'])) {
                     ?>
                 </center>
                 <div class="bootstrap-tabel">
-                    <form class="myForm" action="targetproses.php?proses=prosestambah" method="post" enctype="multipart/form-data" autocomplete="off" required>
+                    <form class="myForm" action="targetproses.php?proses=prosestambah" method="post" enctype="multipart/form-data" required>
                         <div class="form-group">
                             <label for="">Tanggal</label>
                             <div class="input-group">
