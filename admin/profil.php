@@ -81,8 +81,17 @@ if (isset($_SESSION['username'])) {
                                 </div>
 
                                 <h3 class="profile-username text-center"><?php echo $petlap['nama_lengkap']; ?></h3>
-                                <p class="text-muted text-center"><?php echo $petlap['level']; ?></p>
-
+                                <p class="text-muted text-center">
+                                    <?php
+                                    if ($petlap['level'] == 0) {
+                                        echo "Admin";
+                                    } elseif ($petlap['level'] == 1) {
+                                        echo "Petugas Lapangan";
+                                    } else {
+                                        echo $petlap['level'];
+                                    }
+                                    ?>
+                                </p>
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
                                         <b>Followers</b> <a class="float-right">1,322</a>

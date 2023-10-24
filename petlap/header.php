@@ -14,7 +14,7 @@ include '../assets/conn/config.php';
 
     <!-- Menggunakan Bootstrap CSS dari CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/css/cosmo.min.css">
+
     <link rel="stylesheet" href="../assets/css/css_final.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -35,7 +35,7 @@ include '../assets/conn/config.php';
         }
 
         .form-control {
-            text-align: center;
+            text-align: left;
             height: 30px;
         }
     </style>

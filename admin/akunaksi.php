@@ -51,8 +51,8 @@ if (isset($_GET['aksi'])) {
                             <label for="">Role</label>
                             <select name="level" id="" class="form-control" required>
                                 <option value="">-</option>
-                                <option value="Admin">Adminitrasi</option>
-                                <option value="petlap">Petugas Lapangan</option>
+                                <option value="0" <?php if ($_SESSION['level'] == 0) echo 'selected'; ?>>Admin</option>
+                                <option value="1" <?php if ($_SESSION['level'] == 1) echo 'selected'; ?>>Petugas Lapangan</option>
                             </select>
                         </div>
                         <div class="modal-footer">
@@ -99,8 +99,9 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Role</label>
                                 <select name="level" id="" class="form-control" value="<?php echo $d['level'] ?>" required>
-                                    <option value="Admin">Adminitrasi</option>
-                                    <option value="petlap">Petugas Lapangan</option>
+                                    <option value="<?php echo $d['level'] ?>"><?php echo $d['level'] ?></option>
+                                    <option value="0" <?php if ($_SESSION['level'] == 0) echo 'selected'; ?>>Admin</option>
+                                    <option value="1" <?php if ($_SESSION['level'] == 1) echo 'selected'; ?>>Petugas Lapangan</option>
                                 </select>
                             </div>
                 </div>

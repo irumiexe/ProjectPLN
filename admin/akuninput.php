@@ -45,7 +45,18 @@ include 'header.php';
                             <tr>
                                 <td class="text-center"><?php echo $d['nama_lengkap'] ?></td>
                                 <td class="text-center"><?php echo $d['username'] ?></td>
-                                <td class="text-center"><?php echo $d['level'] ?></td>
+                                <td class="text-center">
+                                    <?php
+                                    if ($d['level'] == 0) {
+                                        echo "Admin";
+                                    } elseif ($d['level'] == 1) {
+                                        echo "Petugas Lapangan";
+                                    } 
+                                    else {
+                                        echo $d['level'];
+                                    }
+                                    ?>
+                                </td>
                                 <td class="text-center">
                                     <a href="akunaksi.php?kode=<?php echo $d['kd_akun'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
                                     <a href="#" class="btn btn-danger" onclick="hapusAkun('<?php echo $d['kd_akun']; ?>')">Hapus</a>
