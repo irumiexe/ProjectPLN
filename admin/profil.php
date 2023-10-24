@@ -95,7 +95,7 @@ if (isset($_SESSION['username'])) {
                                     </li>
                                 </ul>
 
-                                <a href="#" class="btn btn-success btn-block"><b>Tambah Target</b></a>
+                                <a href="targetaksi.php?aksi=tambah" class="btn btn-success btn-block"><b>Tambah Target</b></a>
                                 <a href="#" class="btn btn-primary btn-block"><b>Detail Target</b></a>
                             </div>
                             <!-- /.card-body -->

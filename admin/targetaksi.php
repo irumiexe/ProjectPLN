@@ -34,12 +34,12 @@ if (isset($_GET['aksi'])) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="kd_akun">Kode Akun</label>
+                            <label for="kd_akun">Akun Tujuan</label>
                             <select name="kd_akun" class="form-control">
                                 <?php
-                                $akun_data = $db->query("SELECT kd_akun, nama_akun FROM tbl_akun");
-                                while ($akun = mysqli_fetch_array($akun_data)) {
-                                    echo '<option value="' . $akun['kd_akun'] . '">' . $akun['nama_akun'] . '</option>';
+                                $hasil = $db->query("SELECT kd_akun, nama_lengkap FROM tbl_akun");
+                                while ($data = mysqli_fetch_array($hasil)) {
+                                    echo '<option value="' . $data['kd_akun'] . '">' . $data['nama_lengkap'] . '</option>';
                                 }
                                 ?>
                             </select>
