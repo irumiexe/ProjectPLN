@@ -36,10 +36,15 @@ if (isset($_GET['aksi'])) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="kd_akun">Akun Tujuan</label>
-                            <div class="input-group">
-                                <input type="text" name="kd_akun" value="<?php echo $kd_akun; ?>" readonly>
-                            </div>
+                            <label for="kd_akun">Kode Akun</label>
+                            <select name="kd_akun" class="form-control">
+                                <?php
+                                $akun_data = $db->query("SELECT kd_akun, nama_akun FROM tbl_akun");
+                                while ($akun = mysqli_fetch_array($akun_data)) {
+                                    echo '<option value="' . $akun['kd_akun'] . '">' . $akun['nama_akun'] . '</option>';
+                                }
+                                ?>
+                            </select>
                         </div>
 
                         <div class="form-group">

@@ -52,4 +52,36 @@ $jumlah_data = $data_hitung['jumlah_data'];
                 <p>Jumlah Data: <?php echo $jumlah_data; ?></p>
             </div>
         </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">No.</th>
+                        <th class="text-center">ID PELANGGAN</th>
+                        <th class="text-center">MAPS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $counter = 1;
+                    $hasil = "SELECT * from tbl_target order by kd_akun asc";
+                    $tampil = mysqli_query($db, $hasil);
+                    while ($d = $tampil->fetch_array()) {
+                    ?>
+                        <tr>
+                            <td class="text-center"><?php echo $counter; ?></td>
+                            <td class="text-center"><?php echo $d['idpel'] ?></td>
+                            <td class="text-center">
+                                <a href='https://www.google.com/maps?q=<?php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>' target="_blank">Lihat di Google Maps</a>
+                            </td>
+                        </tr>
+                    <?php
+                    $counter++;
+                    }
+                    ?>
+                </tbody>
+            </table>
+
+        </div>
     </div>
