@@ -2,13 +2,14 @@
 include '../assets/conn/config.php';
 
 if (isset($_GET['proses']) && $_GET['proses'] == 'prosestambah') {
+    $tanggal = $_POST['tanggal'];
     $kd_akun = $_POST['kd_akun'];
     $idpel = $_POST['idpel'];
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
 
     $query = "INSERT INTO tbl_target (tanggal,kd_akun, idpel, latitude, longitude) 
-          VALUES (CURDATE(),'$kd_akun', '$idpel', '$latitude', '$longitude')";
+          VALUES ('$tanggal','$kd_akun', '$idpel', '$latitude', '$longitude')";
     mysqli_query($db, $query);
     echo '<script>window.location.href = "targetinput.php";</script>';
 } elseif ($_GET['proses'] == 'ubah') {
