@@ -8,14 +8,6 @@ if (isset($_SESSION['username'])) {
     $query = $db->query("SELECT * FROM tbl_akun");
     $petlap_data = array();
 
-    if (isset($_GET['cari'])) {
-        $cari = $db->real_escape_string($_GET['cari']);
-        $query = $db->query("SELECT * FROM tbl_akun WHERE nama_lengkap LIKE '%$cari%' OR level = '$cari'");
-    } else {
-        $query = $db->query("SELECT * FROM tbl_akun");
-    }
-    $petlap_data = array();
-
     while ($row = $query->fetch_assoc()) {
         $petlap_data[] = $row;
     }
@@ -69,19 +61,12 @@ if (isset($_SESSION['username'])) {
                     <input class="form-control mr-1" name="cari" type="search" placeholder="Search" aria-label="Search" value="<?php if (isset($_GET['cari'])) {
                                                                                                                                     echo $_GET['cari'];
                                                                                                                                 } ?>">
-                    <button class="btn" type="submit">
-                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </button>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
             <hr>
             <div class="row">
                 <?php foreach ($petlap_data as $petlap) : ?>
-                    <?php if (isset($_GET['cari']) && strpos($petlap['nama_lengkap'], $cari) === false && $petlap['level'] != $cari) {
-                        continue;
-                    } ?>
                     <div class="col-md-3">
                         <div class="card card-primary card-outline" style="border-top: 5px solid #007bff; margin-bottom: 20px;">
                             <div class="card-body box-profile">
@@ -113,7 +98,7 @@ if (isset($_SESSION['username'])) {
                                     </li>
                                 </ul>
 
-                                <a href="#" class="btn btn-success btn-block"><b>Tambah Target</b></a>
+                                <a href="targetaksi.php?aksi=tambah&kd_akun=<?php echo $petlap['kd_akun']; ?>" class="btn btn-success btn-block"><b>Tambah Target</b></a>
                                 <a href="#" class="btn btn-primary btn-block"><b>Detail Target</b></a>
                             </div>
                             <!-- /.card-body -->
