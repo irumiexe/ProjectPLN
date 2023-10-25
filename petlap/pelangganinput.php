@@ -27,12 +27,25 @@ $jumlah_data = $data_hitung['jumlah_data'];
 ?>
 
 <style>
+    .card {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
     .card-title {
         text-align: center;
     }
 
     .card-header {
         background-color: #CDF5FD
+    }
+
+    @media (max-width: 768px) {
+        .mx-3 {
+            margin-right: 0;
+            /* Hapus margin kanan pada layar kecil */
+            margin-left: 0;
+            /* Hapus margin kiri pada layar kecil */
+        }
     }
 </style>
 
@@ -59,15 +72,15 @@ $jumlah_data = $data_hitung['jumlah_data'];
             <br>
             <div>
                 <p>Tanggal Dipilih: <?php echo $tanggal_dipilih; ?></p>
-                <p>Jumlah Data: <?php echo $jumlah_data; ?></p>
+                <p>Jumlah Data yang di input : <?php echo $jumlah_data; ?></p>
             </div>
         </div>
         <br>
-        <div class="card">
+        <div class="card mx-3 " style="max-height: 500px; overflow-y: auto;">
             <div class=" mb-3 card-header">
                 <h4 class=" card-title"> Target Pelanggan</h4>
             </div>
-            <div class="mx-3 table-responsive">
+            <div class=" px-3 table-responsive">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -79,7 +92,7 @@ $jumlah_data = $data_hitung['jumlah_data'];
                     <tbody>
                         <?php
                         $counter = 1;
-                        $hasil = "SELECT * FROM tbl_target WHERE kd_akun = '$kd_akun_user' AND tanggal LIKE '$tanggal_dipilih%'";
+                        $hasil = "SELECT * FROM tbl_target WHERE kd_akun = '$kd_akun_user' AND ('$tanggal_dipilih' BETWEEN tanggal AND tanggal_akhir)";
 
                         $tampil = mysqli_query($db, $hasil);
                         while ($d = $tampil->fetch_array()) {
