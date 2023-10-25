@@ -79,8 +79,8 @@ if (isset($_SESSION['username'])) {
             </div>
             <hr>
             <div class="row">
-                <?php foreach ($petlap_data as $petlap) : ?>
-                    <?php if (isset($_GET['cari']) && strpos($petlap['nama_lengkap'], $cari) === false && $petlap['level'] != $cari) {
+                <?php foreach ($petlap_data as $d) : ?>
+                    <?php if (isset($_GET['cari']) && strpos($d['nama_lengkap'], $cari) === false && $d['level'] != $cari) {
                         continue; // Data tidak sesuai dengan pencarian, lanjutkan ke data berikutnya
                     } ?>
                     <div class="col-md-3">
@@ -90,15 +90,15 @@ if (isset($_SESSION['username'])) {
                                     <img class="profile-user-img img-fluid img-circle" src="../assets/dist/img/user4-128x128.jpg" alt="User profile picture">
                                 </div>
 
-                                <h3 class="profile-username text-center"><?php echo $petlap['nama_lengkap']; ?></h3>
+                                <h3 class="profile-username text-center"><?php echo $d['nama_lengkap']; ?></h3>
                                 <p class="text-muted text-center">
                                     <?php
-                                    if ($petlap['level'] == 0) {
+                                    if ($d['level'] == 0) {
                                         echo "Admin";
-                                    } elseif ($petlap['level'] == 1) {
+                                    } elseif ($d['level'] == 1) {
                                         echo "Petugas Lapangan";
                                     } else {
-                                        echo $petlap['level'];
+                                        echo $d['level'];
                                     }
                                     ?>
                                 </p>
@@ -114,8 +114,8 @@ if (isset($_SESSION['username'])) {
                                     </li>
                                 </ul>
 
-                                <a href="targetaksi.php?aksi=tambah&kd_akun=<?php echo $petlap['kd_akun']; ?>" class="btn btn-success btn-block"><b>Tambah Target</b></a>
-                                <a href="#" class="btn btn-primary btn-block"><b>Detail Target</b></a>
+                                <a href="targetaksi.php?aksi=tambah&kd_akun=<?php echo $d['kd_akun']; ?>" class="btn btn-success btn-block"><b>Tambah Target</b></a>
+                                <a href="targetdetail.php" class="btn btn-primary btn-block"><b>Detail Target</b></a>
                             </div>
                             <!-- /.card-body -->
                         </div>

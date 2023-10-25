@@ -34,6 +34,10 @@ include '../assets/conn/config.php';
             }
         }
 
+        .nav-link {
+            color: white;
+        }
+
         .form-control {
             text-align: left;
             height: 30px;

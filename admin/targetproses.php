@@ -3,33 +3,30 @@ include '../assets/conn/config.php';
 
 if (isset($_GET['proses']) && $_GET['proses'] == 'prosestambah') {
     $tanggal = $_POST['tanggal'];
+    $tanggal_akhir = $_POST['tanggal_akhir'];
     $kd_akun = $_POST['kd_akun'];
     $idpel = $_POST['idpel'];
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
 
-    $query = "INSERT INTO tbl_target (tanggal,kd_akun, idpel, latitude, longitude) 
-          VALUES ('$tanggal','$kd_akun', '$idpel', '$latitude', '$longitude')";
+    $query = "INSERT INTO tbl_target (tanggal,tanggal_akhir,kd_akun, idpel, latitude, longitude) 
+          VALUES ('$tanggal','$tanggal_akhir','$kd_akun', '$idpel', '$latitude', '$longitude')";
     mysqli_query($db, $query);
     echo '<script>window.location.href = "targetinput.php";</script>';
 } elseif ($_GET['proses'] == 'ubah') {
-    $kd_idpel = $_GET['kode'];
+    $kd_akun = $_GET['kode'];
+    $tanggal = $_POST['tanggal'];
     $idpel = $_POST['idpel'];
-    $nama_pel = $_POST['nama_pel'];
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
 
-    move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $nama_file_baru);
-    $ket = $_POST["ket"];
-    $ket2 = $_POST["ket2"];
-
-    $hasil = $db->query("UPDATE tbl_pelanggan set nama_pel='$nama_pel', daya='$daya', tipe='$tipe', pmet='$nama_file_baru', ket='$ket', ket2='$ket2' where idpel='$idpel'");
+    $hasil = $db->query("UPDATE tbl_target set idpel='$idpel', tanggal='$tanggal', latitude='$latitude', longitude='$longitude' where kd_akun='$kd_akun'");
     if ($hasil) {
         echo "<script>alert('Update berhasil');</script>";
     } else {
         echo "<script>alert('Update gagal: " . mysqli_error($db) . "');</script>";
     }
-    echo '<script>window.location.href = "pelangganinput.php";</script>';
+    echo '<script>window.location.href = "targetdetail.php";</script>';
 } elseif ($_GET['proses'] == 'proseshapus') {
     $idpel = $_GET['kode'];
 

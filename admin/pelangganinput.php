@@ -125,7 +125,7 @@ $dataPerPage = 10;
                     </form>
                 </div>
                 <div class="mx-3 table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-striped table-bordered table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">ID Pelanggan</th>
