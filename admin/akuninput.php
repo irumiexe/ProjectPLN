@@ -1,6 +1,15 @@
 <?php
 include 'header.php';
 ?>
+<style>
+    .table-striped tbody tr:nth-child(odd) {
+        background-color: #A0E9FF !important;
+    }
+
+    .table-striped tbody tr:nth-child(even) {
+        background-color: #FFF6F6 !important;
+    }
+</style>
 
 <div class="container-xl">
     <div class="row">
@@ -16,12 +25,12 @@ include 'header.php';
                     <input class="form-control mr-1" name="cari" type="search" placeholder="Search" aria-label="Search" value="<?php if (isset($_GET['cari'])) {
                                                                                                                                     echo $_GET['cari'];
                                                                                                                                 } ?>">
-                    <button class="btn btn-outline-success" type="cari">Search</button>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
             <hr>
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th class="text-center">Nama Lengkap</th>
@@ -51,8 +60,7 @@ include 'header.php';
                                         echo "Admin";
                                     } elseif ($d['level'] == 1) {
                                         echo "Petugas Lapangan";
-                                    } 
-                                    else {
+                                    } else {
                                         echo $d['level'];
                                     }
                                     ?>
@@ -65,17 +73,8 @@ include 'header.php';
                         <?php
                         }
                         ?>
-                        <script>
-                            function hapusAkun(kode) {
-                                var konfirmasi = confirm('Apakah Anda yakin ingin menghapus data ini?');
-                                if (konfirmasi) {
-                                    window.location.href = 'akunproses.php?kode=' + kode + '&proses=proseshapus';
-                                }
-                            }
-                        </script>
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>
