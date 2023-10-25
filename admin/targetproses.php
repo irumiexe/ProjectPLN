@@ -7,9 +7,10 @@ if (isset($_GET['proses']) && $_GET['proses'] == 'prosestambah') {
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
 
-    $query = "INSERT INTO tbl_target (kd_akun, idpel, latitude, longitude, tanggal) 
-          VALUES ('$kd_akun', '$idpel', '$latitude', '$longitude', CURDATE())";
+    $query = "INSERT INTO tbl_target (tanggal,kd_akun, idpel, latitude, longitude) 
+          VALUES (CURDATE(),'$kd_akun', '$idpel', '$latitude', '$longitude')";
     mysqli_query($db, $query);
+    echo '<script>window.location.href = "targetinput.php";</script>';
 } elseif ($_GET['proses'] == 'ubah') {
     $kd_idpel = $_GET['kode'];
     $idpel = $_POST['idpel'];

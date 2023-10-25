@@ -38,7 +38,7 @@ if (isset($_GET['aksi'])) {
                         <div class="form-group">
                             <label for="kd_akun">Akun Tujuan</label>
                             <div class="input-group">
-                                <input type="text" name="kd_akun" value="<?php echo $kd_akun; ?>" readonly>
+                                <input type="text" name="kd_akun" class="form-control" value="<?php echo $kd_akun; ?>" readonly>
                             </div>
                         </div>
 
