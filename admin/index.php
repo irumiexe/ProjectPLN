@@ -8,9 +8,9 @@ if (isset($_SESSION['username'])) {
     $query = $db->query("SELECT nama_lengkap, level FROM tbl_akun WHERE username='$username'");
     $data = $query->fetch_assoc();
     $nama_lengkap = $data['nama_lengkap'];
+    $welcome_message = "SELAMAT DATANG";
 
     if ($level == '0') {
-        $welcome_message = "SELAMAT DATANG";
         $nama = "$nama_lengkap";
         $role = "$level";
     }
