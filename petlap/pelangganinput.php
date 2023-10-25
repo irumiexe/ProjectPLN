@@ -65,7 +65,7 @@ $jumlah_data = $data_hitung['jumlah_data'];
                 <tbody>
                     <?php
                     $counter = 1;
-                    $hasil = "SELECT * from tbl_target order by kd_akun asc";
+                    $hasil = "SELECT * from tbl_target WHERE  kd_akun LIKE '$kd_akun_user'";
                     $tampil = mysqli_query($db, $hasil);
                     while ($d = $tampil->fetch_array()) {
                     ?>

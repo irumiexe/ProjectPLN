@@ -5,6 +5,19 @@ if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
     $level = $_SESSION['level'];
 
+    if (isset($_GET['cari'])) {
+        $cari = $db->real_escape_string($_GET['cari']);
+        $query = $db->query("SELECT * FROM tbl_akun WHERE nama_lengkap LIKE '%$cari%' OR level = '$cari'");
+    } else {
+        $query = $db->query("SELECT * FROM tbl_akun");
+    }
+
+    $petlap_data = array();
+
+    while ($row = $query->fetch_assoc()) {
+        $petlap_data[] = $row;
+    }
+
     $query = $db->query("SELECT * FROM tbl_akun");
     $petlap_data = array();
 
@@ -67,6 +80,9 @@ if (isset($_SESSION['username'])) {
             <hr>
             <div class="row">
                 <?php foreach ($petlap_data as $petlap) : ?>
+                    <?php if (isset($_GET['cari']) && strpos($petlap['nama_lengkap'], $cari) === false && $petlap['level'] != $cari) {
+                        continue; // Data tidak sesuai dengan pencarian, lanjutkan ke data berikutnya
+                    } ?>
                     <div class="col-md-3">
                         <div class="card card-primary card-outline" style="border-top: 5px solid #007bff; margin-bottom: 20px;">
                             <div class="card-body box-profile">
