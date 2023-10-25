@@ -63,7 +63,7 @@ include '../assets/conn/config.php';
                         <div class="dropdown-menu" aria-labelledby="pelangganDropdown">
                             <a class="dropdown-item" href="pelangganinput.php">TAMBAH PELANGGAN</a>
                             <a class="dropdown-item" href="akuninput.php">TAMBAH HAK AKSES</a>
-                            <a class="dropdown-item" href="profil.php">Profil</a>
+                            <a class="dropdown-item" href="profil.php">Target</a>
                         </div>
                     </li>
                     <ul class="navbar-nav ml-auto">
