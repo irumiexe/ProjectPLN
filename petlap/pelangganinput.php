@@ -26,6 +26,16 @@ $data_hitung = mysqli_fetch_assoc($result_hitung_data);
 $jumlah_data = $data_hitung['jumlah_data'];
 ?>
 
+<style>
+    .card-title {
+        text-align: center;
+    }
+
+    .card-header {
+        background-color: #CDF5FD
+    }
+</style>
+
 <div class="container-xl">
     <div class="row">
         <ol class="breadcrumb">
@@ -52,36 +62,40 @@ $jumlah_data = $data_hitung['jumlah_data'];
                 <p>Jumlah Data: <?php echo $jumlah_data; ?></p>
             </div>
         </div>
-
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th class="text-center">No.</th>
-                        <th class="text-center">ID PELANGGAN</th>
-                        <th class="text-center">MAPS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $counter = 1;
-                    $hasil = "SELECT * from tbl_target WHERE  kd_akun LIKE '$kd_akun_user'";
-                    $tampil = mysqli_query($db, $hasil);
-                    while ($d = $tampil->fetch_array()) {
-                    ?>
+        <br>
+        <div class="card">
+            <div class=" mb-3 card-header">
+                <h4 class=" card-title"> Target Pelanggan</h4>
+            </div>
+            <div class="mx-3 table-responsive">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td class="text-center"><?php echo $counter; ?></td>
-                            <td class="text-center"><?php echo $d['idpel'] ?></td>
-                            <td class="text-center">
-                                <a href='https://www.google.com/maps?q=<?php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>' target="_blank">Lihat di Google Maps</a>
-                            </td>
+                            <th class="text-center">No.</th>
+                            <th class="text-center">ID PELANGGAN</th>
+                            <th class="text-center">MAPS</th>
                         </tr>
-                    <?php
-                        $counter++;
-                    }
-                    ?>
-                </tbody>
-            </table>
-
+                    </thead>
+                    <tbody>
+                        <?php
+                        $counter = 1;
+                        $hasil = "SELECT * from tbl_target WHERE  kd_akun LIKE '$kd_akun_user'";
+                        $tampil = mysqli_query($db, $hasil);
+                        while ($d = $tampil->fetch_array()) {
+                        ?>
+                            <tr>
+                                <td class="text-center"><?php echo $counter; ?></td>
+                                <td class="text-center"><?php echo $d['idpel'] ?></td>
+                                <td class="text-center">
+                                    <a href='https://www.google.com/maps?q=<?php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>' target="_blank">Lihat di Google Maps</a>
+                                </td>
+                            </tr>
+                        <?php
+                            $counter++;
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
