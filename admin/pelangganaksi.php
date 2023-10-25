@@ -37,9 +37,6 @@ if (isset($_GET['aksi'])) {
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                             </div>
                         </div>
-                        <div class="form-group" hidden>
-                            <label for="" name="kd_idpel">kd_idpel</label>
-                        </div>
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
                             <p style="font-size: 10px; color: red;"><i>*Mohon isi ID pelanggan dengan benar</i></p>

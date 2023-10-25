@@ -92,7 +92,7 @@ $jumlah_data = $data_hitung['jumlah_data'];
                     <tbody>
                         <?php
                         $counter = 1;
-                        $hasil = "SELECT * FROM tbl_target WHERE kd_akun = '$kd_akun_user' AND tanggal LIKE '$tanggal_dipilih%'";
+                        $hasil = "SELECT * FROM tbl_target WHERE kd_akun = '$kd_akun_user' AND ('$tanggal_dipilih' BETWEEN tanggal AND tanggal_akhir)";
 
                         $tampil = mysqli_query($db, $hasil);
                         while ($d = $tampil->fetch_array()) {
