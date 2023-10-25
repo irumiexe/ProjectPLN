@@ -5,14 +5,14 @@ if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
     $level = $_SESSION['level'];
 
-    $query = $db->query("SELECT nama_lengkap FROM tbl_akun WHERE username='$username'");
+    $query = $db->query("SELECT nama_lengkap, level FROM tbl_akun WHERE username='$username'");
     $data = $query->fetch_assoc();
     $nama_lengkap = $data['nama_lengkap'];
 
-    if ($level == 'Admin') {
+    if ($level == '0') {
         $welcome_message = "SELAMAT DATANG";
         $nama = "$nama_lengkap";
-        $role= "$level";
+        $role = "$level";
     }
 } else {
     header("location: ../index.php");
@@ -73,9 +73,18 @@ if (isset($_SESSION['username'])) {
                                     <img class="profile-user-img img-fluid img-circle" src="../assets/dist/img/user4-128x128.jpg" alt="User profile picture">
                                 </div>
 
-                                <h3 class="profile-username text-center"><?php echo "$nama" ?></h3>
-
-                                <p class="text-muted text-center"><?php echo "$role" ?></p>
+                                <h3 class="profile-username text-center"><?php echo $data['nama_lengkap']; ?></h3>
+                                <p class="text-muted text-center">
+                                    <?php
+                                    if ($data['level'] == 0) {
+                                        echo "Admin";
+                                    } elseif ($data['level'] == 1) {
+                                        echo "Petugas Lapangan";
+                                    } else {
+                                        echo $data['level'];
+                                    }
+                                    ?>
+                                </p>
 
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
