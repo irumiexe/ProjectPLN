@@ -77,7 +77,7 @@ $jumlah_data = $data_hitung['jumlah_data'];
                             </td>
                         </tr>
                     <?php
-                    $counter++;
+                        $counter++;
                     }
                     ?>
                 </tbody>
