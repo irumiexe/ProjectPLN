@@ -22,19 +22,14 @@ if (isset($_SESSION['username'])) {
         border: none;
     }
 
-    /* Menambahkan garis pembatas di atas dan di bawah setiap elemen list-group-item */
     .list-group-item {
         border-top: 1px solid #ccc;
         border-bottom: 1px solid #ccc;
         display: flex;
-        /* Menggunakan display flex */
         justify-content: space-between;
-        /* Mendorong elemen ke ujung kanan */
         align-items: center;
-        /* Mengatur vertikal tengah */
     }
 
-    /* Membuat teks tebal (bold) untuk angka di sebelah kanan */
     .list-group-item a {
         font-weight: bold;
     }
@@ -48,7 +43,6 @@ if (isset($_SESSION['username'])) {
     }
 
     .card-primary {
-        border-top: 2px solid #007bff;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 </style>
@@ -74,15 +68,24 @@ if (isset($_SESSION['username'])) {
             <div class="row">
                 <?php foreach ($petlap_data as $petlap) : ?>
                     <div class="col-md-3">
-                        <div class="card card-primary card-outline" style="border-top: 1px solid #ccc; margin-bottom: 20px;">
+                        <div class="card card-primary card-outline" style="border-top: 5px solid #007bff; margin-bottom: 20px;">
                             <div class="card-body box-profile">
                                 <div class="text-center">
                                     <img class="profile-user-img img-fluid img-circle" src="../assets/dist/img/user4-128x128.jpg" alt="User profile picture">
                                 </div>
 
                                 <h3 class="profile-username text-center"><?php echo $petlap['nama_lengkap']; ?></h3>
-                                <p class="text-muted text-center"><?php echo $petlap['level']; ?></p>
-
+                                <p class="text-muted text-center">
+                                    <?php
+                                    if ($petlap['level'] == 0) {
+                                        echo "Admin";
+                                    } elseif ($petlap['level'] == 1) {
+                                        echo "Petugas Lapangan";
+                                    } else {
+                                        echo $petlap['level'];
+                                    }
+                                    ?>
+                                </p>
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
                                         <b>Followers</b> <a class="float-right">1,322</a>
@@ -95,7 +98,7 @@ if (isset($_SESSION['username'])) {
                                     </li>
                                 </ul>
 
-                                <a href="#" class="btn btn-success btn-block"><b>Tambah Target</b></a>
+                                <a href="targetaksi.php?aksi=tambah&kd_akun=<?php echo $petlap['kd_akun']; ?>" class="btn btn-success btn-block"><b>Tambah Target</b></a>
                                 <a href="#" class="btn btn-primary btn-block"><b>Detail Target</b></a>
                             </div>
                             <!-- /.card-body -->

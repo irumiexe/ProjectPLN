@@ -1,6 +1,8 @@
 <?php
 include 'header.php';
 
+$kd_akun = isset($_GET['kd_akun']) ? $_GET['kd_akun'] : '';
+
 if (!isset($_SESSION['kd_akun_user'])) {
     header("Location: login.php");
     exit();
@@ -22,11 +24,11 @@ if (isset($_GET['aksi'])) {
             <div class="panel-container">
                 <center>
                     <?php
-                    
+
                     ?>
                 </center>
                 <div class="bootstrap-tabel">
-                    <form class="myForm" action="targetproses.php?proses=prosestambah" method="post" enctype="multipart/form-data" autocomplete="off" required>
+                    <form class="myForm" action="targetproses.php?proses=prosestambah" method="post" enctype="multipart/form-data" required>
                         <div class="form-group">
                             <label for="">Tanggal</label>
                             <div class="input-group">
@@ -34,16 +36,12 @@ if (isset($_GET['aksi'])) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="kd_akun">Kode Akun</label>
-                            <select name="kd_akun" class="form-control">
-                                <?php
-                                $akun_data = $db->query("SELECT kd_akun, nama_akun FROM tbl_akun");
-                                while ($akun = mysqli_fetch_array($akun_data)) {
-                                    echo '<option value="' . $akun['kd_akun'] . '">' . $akun['nama_akun'] . '</option>';
-                                }
-                                ?>
-                            </select>
+                            <label for="kd_akun">Akun Tujuan</label>
+                            <div class="input-group">
+                                <input type="text" name="kd_akun" value="<?php echo $kd_akun; ?>" readonly>
+                            </div>
                         </div>
+
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
                             <p style="font-size: 10px; color: red;"><i>*Mohon isi ID pelanggan dengan benar</i></p>
@@ -66,16 +64,6 @@ if (isset($_GET['aksi'])) {
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <tr>
-
-
-                            </tr>
-                        </div>
-                </div>
-                <div class="form-group">
-                    <label for="" hidden>kode_akun</label>
-                    <input type="hidden" name="kd_akun" class="form-control" value="<?php echo $kd_akun_user; ?>" readonly>
                 </div>
                 <div class="modal-footer">
                     <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
