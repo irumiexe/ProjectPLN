@@ -43,7 +43,7 @@ if (isset($_GET['proses'])) {
                   </script>";
         } else {
             echo "<script>
-                    alert('ID Pelanggan tidak valid, pastikan ID Pelanggan sesuai dengan data tbl_target');
+                    alert('ID Pelanggan tidak valid, pastikan ID Pelanggan sesuai dengan Data Target');
                     document.location.href = 'pelangganinput.php';
                   </script>";
         }
