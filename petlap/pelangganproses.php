@@ -6,7 +6,6 @@ if (isset($_GET['proses'])) {
         $idpel = $_POST['idpel'];
         $nama_pel = $_POST['nama_pel'];
 
-        // Tambahkan kode untuk memeriksa apakah $idpel ada di tbl_target
         $kd_akun = $_POST['kd_akun'];
         $tanggal_dipilih = date('Y-m-d');
 
