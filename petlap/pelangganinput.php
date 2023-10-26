@@ -1,25 +1,19 @@
 <?php
 include 'header.php';
 
-// Pastikan user sudah login dan ada informasi kd_akun_user di sesi
 if (!isset($_SESSION['kd_akun_user'])) {
-    // Jika tidak, mungkin redirect ke halaman login atau lakukan tindakan lain
     header("Location: login.php");
     exit();
 }
 
-// Ambil kd_akun_user dari sesi
 $kd_akun_user = $_SESSION['kd_akun_user'];
 
-// Inisialisasi tanggal hari ini jika tidak ada tanggal yang dipilih
 $tanggal_dipilih = date('Y-m-d');
 
-// Jika pengguna memilih tanggal
 if (isset($_POST['pilih_tanggal'])) {
     $tanggal_dipilih = $_POST['tanggal'];
 }
 
-// Query untuk menghitung jumlah data pada tanggal yang dipilih untuk kd_akun tertentu
 $query_hitung_data = "SELECT COUNT(*) as jumlah_data FROM tbl_pelanggan WHERE tanggal = '$tanggal_dipilih' AND kd_akun = '$kd_akun_user'";
 $result_hitung_data = mysqli_query($db, $query_hitung_data);
 $data_hitung = mysqli_fetch_assoc($result_hitung_data);
@@ -42,7 +36,6 @@ $jumlah_data = $data_hitung['jumlah_data'];
     @media (max-width: 768px) {
         .mx-3 {
             margin-right: 0;
-            /* Hapus margin kanan pada layar kecil */
             margin-left: 0;
             /* Hapus margin kiri pada layar kecil */
         }
@@ -58,7 +51,7 @@ $jumlah_data = $data_hitung['jumlah_data'];
     <div class="panel-container">
         <div class="bootstrap-tabel">
             <div class="d-flex justify-content-between mb-3">
-                <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
+                <a href="pelangganaksi.php?aksi=tambah&kd_akun_user=<?php echo $kd_akun_user; ?>&tanggal_dipilih=<?php echo $tanggal_dipilih; ?>" class="btn btn-primary">Tambah Data</a>
             </div>
             <br>
             <form method="post">
@@ -113,3 +106,4 @@ $jumlah_data = $data_hitung['jumlah_data'];
             </div>
         </div>
     </div>
+</div>
