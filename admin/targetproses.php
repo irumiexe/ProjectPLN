@@ -14,13 +14,14 @@ if (isset($_GET['proses']) && $_GET['proses'] == 'prosestambah') {
     mysqli_query($db, $query);
     echo '<script>window.location.href = "targetinput.php";</script>';
 } elseif ($_GET['proses'] == 'ubah') {
-    $kd_akun = $_GET['kode'];
+    $kd_akun = $_POST['kd_akun'];
     $tanggal = $_POST['tanggal'];
-    $idpel = $_POST['idpel'];
+    $tanggal_akhir = $_POST['tanggal_akhir'];
+    $idpel = $_GET['kode'];
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
 
-    $hasil = $db->query("UPDATE tbl_target set idpel='$idpel', tanggal='$tanggal', latitude='$latitude', longitude='$longitude' where kd_akun='$kd_akun'");
+    $hasil = $db->query("UPDATE tbl_target set tanggal='$tanggal', tanggal_akhir='$tanggal_akhir', latitude='$latitude', longitude='$longitude' where idpel='$idpel'");
     if ($hasil) {
         echo "<script>alert('Update berhasil');</script>";
     } else {
@@ -30,24 +31,21 @@ if (isset($_GET['proses']) && $_GET['proses'] == 'prosestambah') {
 } elseif ($_GET['proses'] == 'proseshapus') {
     $idpel = $_GET['kode'];
 
-    $query = "SELECT pmet FROM tbl_pelanggan WHERE idpel='$idpel'";
+    $query = "SELECT * FROM tbl_target WHERE idpel='$idpel'";
     $result = mysqli_query($db, $query);
-    $row = mysqli_fetch_assoc($result);
-    $fileToDelete = $row['pmet'];
-    $filePath = '../file/' . $fileToDelete;
 
-    if (file_exists($filePath)) {
-        unlink($filePath);
-    }
+    if (mysqli_num_rows($result) > 0) {
+        $deleteQuery = "DELETE FROM tbl_target WHERE idpel='$idpel'";
+        $deleteResult = mysqli_query($db, $deleteQuery);
 
-    $deleteQuery = "DELETE FROM tbl_pelanggan WHERE idpel='$idpel'";
-    $deleteResult = mysqli_query($db, $deleteQuery);
-
-    if ($deleteResult) {
-        echo "<script>alert('Data dan file berhasil dihapus');</script>";
+        if ($deleteResult) {
+            echo "<script>alert('Data berhasil dihapus');</script>";
+        } else {
+            echo "<script>alert('Gagal menghapus data: " . mysqli_error($db) . "');</script>";
+        }
     } else {
-        echo "<script>alert('Gagal menghapus data');</script>";
+        echo "<script>alert('Data tidak ditemukan');</script>";
     }
 
-    echo '<script>window.location.href = "pelangganinput.php";</script>';
+    echo '<script>window.location.href = "targetdetail.php";</script>';
 }

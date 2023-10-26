@@ -47,7 +47,7 @@ $kd_akun_user = $_SESSION['kd_akun_user'];
                     <tbody>
                         <?php
                         $counter = 1;
-                        $hasil = "SELECT * FROM tbl_target WHERE kd_akun = '$kd_akun_user' AND kd_akun LIKE '$kd_akun_user%'";
+                        $hasil = "SELECT * FROM tbl_target";
                         $tampil = mysqli_query($db, $hasil);
                         while ($d = $tampil->fetch_array()) {
                         ?>
@@ -58,8 +58,9 @@ $kd_akun_user = $_SESSION['kd_akun_user'];
                                     <a href='https://www.google.com/maps?q=<?php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>' target="_blank">Lihat di Google Maps</a>
                                 </td>
                                 <td class="text-center">
-                                    <a href="targetaksi.php?kode=<?php echo $d['kd_akun'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
-                                    <a href="javascript:void(0);" class="btn btn-danger" onclick="hapusData('<?php echo $d['kd_akun']; ?>')">Hapus</a>
+                                    <a href="targetaksi.php?kode=<?php echo $d['idpel'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
+                                    <a href="javascript:void(0);" class="btn btn-danger" onclick="hapusData('<?php echo $d['idpel']; ?>')">Hapus</a>
+
                                 </td>
                             </tr>
                         <?php
@@ -74,7 +75,8 @@ $kd_akun_user = $_SESSION['kd_akun_user'];
     <script>
         function hapusData(idpelanggan) {
             if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
-                window.location.href = 'pelangganproses.php?kode=' + idpelanggan + '&proses=proseshapus';
+                window.location.href = 'targetproses.php?kode=' + idpelanggan + '&proses=proseshapus';
+
             }
         }
     </script>

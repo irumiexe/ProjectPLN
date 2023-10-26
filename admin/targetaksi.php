@@ -111,14 +111,20 @@ if (isset($_GET['aksi'])) {
             <div class="panel-container">
                 <div class="bootstrap-tabel">
                     <?php
-                    $data = $db->query("SELECT * From tbl_target where kd_akun='$_GET[kode]'");
+                    $data = $db->query("SELECT * From tbl_target where idpel='$_GET[kode]'");
                     while ($d = mysqli_fetch_array($data)) {
                     ?>
-                        <form class="myForm" action="targetproses.php?proses=ubah&kode=<?php echo $d['kd_akun']; ?>" method="post" enctype="multipart/form-data" required>
+                        <form class="myForm" action="targetproses.php?proses=ubah&kode=<?php echo $d['idpel']; ?>" method="post" enctype="multipart/form-data" required>
                             <div class="form-group">
                                 <label for="">Tanggal</label>
                                 <div class="input-group">
                                     <input type="date" name="tanggal" class="form-control" value="<?php echo $d['tanggal']; ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Tanggal Akhir</label>
+                                <div class="input-group">
+                                    <input type="date" name="tanggal_akhir" class="form-control" value="<?php echo $d['tanggal_akhir']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -130,9 +136,8 @@ if (isset($_GET['aksi'])) {
 
                             <div class="form-group">
                                 <label for="">ID Pelanggan</label>
-                                <p style="font-size: 10px; color: red;"><i>*Mohon isi ID pelanggan dengan benar</i></p>
                                 <div class="input-group">
-                                    <input type="text" name="idpel" class="form-control" value="<?php echo $d['idpel']; ?>" placeholder="Masukkan ID Pelanggan Minimal 11 Angka dan Maksimal 12 Angka" autofocus minlength="11" maxlength="12" required>
+                                    <input type="text" name="idpel" class="form-control" value="<?php echo $d['idpel']; ?>" placeholder="Masukkan ID Pelanggan Minimal 11 Angka dan Maksimal 12 Angka" autofocus minlength="11" maxlength="12" required readonly>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
                                 </div>
                             </div>
