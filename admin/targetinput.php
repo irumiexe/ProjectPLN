@@ -12,13 +12,33 @@ if (isset($_SESSION['username'])) {
         $query = $db->query("SELECT * FROM tbl_akun");
     }
 
+    // Hitung jumlah total data
+    $totalData = $query->num_rows;
+
+    // Tentukan jumlah data per halaman
+    $dataPerPage = 10;
+
+    // Hitung jumlah halaman
+    $totalPages = ceil($totalData / $dataPerPage);
+
+    // Ambil parameter halaman dari URL
+    if (isset($_GET['page'])) {
+        $currentPage = $_GET['page'];
+    } else {
+        $currentPage = 1;
+    }
+
+    // Hitung indeks awal dan akhir data yang harus ditampilkan
+    $startIndex = ($currentPage - 1) * $dataPerPage;
+    $endIndex = $startIndex + $dataPerPage;
+
     $petlap_data = array();
 
     while ($row = $query->fetch_assoc()) {
         $petlap_data[] = $row;
     }
 
-    $query = $db->query("SELECT * FROM tbl_akun");
+    $query = $db->query("SELECT * FROM tbl_akun WHERE level='1'");
     $petlap_data = array();
 
     while ($row = $query->fetch_assoc()) {
@@ -79,10 +99,11 @@ if (isset($_SESSION['username'])) {
             </div>
             <hr>
             <div class="row">
-                <?php foreach ($petlap_data as $d) : ?>
-                    <?php if (isset($_GET['cari']) && strpos($d['nama_lengkap'], $cari) === false && $d['level'] != $cari) {
-                        continue;
+                <?php for ($i = $startIndex; $i < $endIndex; $i++) : ?>
+                    <?php if ($i >= count($petlap_data)) {
+                        break;
                     }
+                    $d = $petlap_data[$i];
 
                     $kd_akun = $d['kd_akun'];
                     $target_query = $db->query("SELECT COUNT(*) as jumlah_target FROM tbl_target WHERE kd_akun = '$kd_akun'");
@@ -117,11 +138,64 @@ if (isset($_SESSION['username'])) {
                                 <a href="targetaksi.php?aksi=tambah&kd_akun=<?php echo $d['kd_akun']; ?>" class="btn btn-success btn-block"><b>Tambah Target</b></a>
                                 <a href="targetdetail.php" class="btn btn-primary btn-block"><b>Detail Target</b></a>
                             </div>
+
                             <!-- /.card-body -->
                         </div>
                     </div>
-                <?php endforeach; ?>
+                <?php endfor; ?>
             </div>
+
         </div>
     </div>
+    <?php 
+if ($totalPages > 1) {
+                        echo '<nav aria-label="Page navigation example">';
+                        echo '<ul class="pagination">';
+                        if (
+                            $currentPage > 1
+                        ) {
+                            echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">&laquo;</a></li>';
+                        }
+
+                        // Loop untuk mencetak nomor halaman
+                        $numPagesToShow = 3; // Jumlah nomor halaman yang ingin ditampilkan
+                        $halfNumPages = floor($numPagesToShow / 2);
+                        $startPage = max(1, $currentPage - $halfNumPages);
+                        $endPage = min($totalPages, $startPage + $numPagesToShow - 1);
+
+                        if (
+                            $startPage > 1
+                        ) {
+                            echo '<li class="page-item"><a class="page-link" href="?page=1">1</a></li>';
+                            if ($startPage > 2) {
+                                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                            }
+                        }
+
+                        for ($i = $startPage; $i <= $endPage; $i++) {
+                            echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+                        }
+
+                        if (
+                            $endPage < $totalPages
+                        ) {
+                            if (
+                                $endPage < $totalPages - 1
+                            ) {
+                                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                            }
+                            echo '<li class="page-item"><a class="page-link" href="?page=' . $totalPages . '">' . $totalPages . '</a></li>';
+                        }
+
+                        if (
+                            $currentPage < $totalPages
+                        ) {
+                            echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage + 1) . '">&raquo;</a></li>';
+                        }
+
+                        echo '</ul>';
+                        echo '</nav>';
+                    }
+    ?>
+        
 </div>

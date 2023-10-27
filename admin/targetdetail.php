@@ -1,9 +1,9 @@
 <?php
 include 'header.php';
 
-// Pastikan user sudah login dan ada informasi kd_akun_user di sesi
+
 if (!isset($_SESSION['kd_akun_user'])) {
-    // Jika tidak, mungkin redirect ke halaman login atau lakukan tindakan lain
+
     header("Location: login.php");
     exit();
 }
@@ -46,19 +46,19 @@ $kd_akun_user = $_SESSION['kd_akun_user'];
                     <tbody>
                         <?php
                         $counter = 1;
-                        $hasil = "SELECT * FROM tbl_target WHERE kd_akun= '$kd_akun_user'";
+                        $hasil = "SELECT * FROM tbl_target ";
                         $tampil = mysqli_query($db, $hasil);
-                        while ($d = $tampil->fetch_array()) {
+                        while ($db = $tampil->fetch_array()) {
                         ?>
                             <tr>
                                 <td class="text-center"><?php echo $counter; ?></td>
-                                <td class="text-center"><?php echo $d['idpel'] ?></td>
+                                <td class="text-center"><?php echo $db['idpel'] ?></td>
                                 <td class="text-center">
-                                    <a href='https://www.google.com/maps?q=<?php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>' target="_blank">Lihat di Google Maps</a>
+                                    <a href='https://www.google.com/maps?q=<?php echo $db["latitude"] ?>,<?php echo $db["longitude"]; ?>' target="_blank">Lihat di Google Maps</a>
                                 </td>
                                 <td class="text-center">
-                                    <a href="targetaksi.php?kode=<?php echo $d['idpel'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
-                                    <a href="javascript:void(0);" class="btn btn-danger" onclick="hapusData('<?php echo $d['idpel']; ?>')">Hapus</a>
+                                    <a href="targetaksi.php?kode=<?php echo $db['idpel'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
+                                    <a href="javascript:void(0);" class="btn btn-danger" onclick="hapusData('<?php echo $db['idpel']; ?>')">Hapus</a>
 
                                 </td>
                             </tr>
