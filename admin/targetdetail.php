@@ -8,7 +8,6 @@ if (!isset($_SESSION['kd_akun_user'])) {
     exit();
 }
 
-// Ambil kd_akun_user dari sesi
 $kd_akun_user = $_SESSION['kd_akun_user'];
 
 ?>
@@ -47,7 +46,7 @@ $kd_akun_user = $_SESSION['kd_akun_user'];
                     <tbody>
                         <?php
                         $counter = 1;
-                        $hasil = "SELECT * FROM tbl_target";
+                        $hasil = "SELECT * FROM tbl_target WHERE kd_akun= '$kd_akun_user'";
                         $tampil = mysqli_query($db, $hasil);
                         while ($d = $tampil->fetch_array()) {
                         ?>

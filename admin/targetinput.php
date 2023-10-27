@@ -81,8 +81,14 @@ if (isset($_SESSION['username'])) {
             <div class="row">
                 <?php foreach ($petlap_data as $d) : ?>
                     <?php if (isset($_GET['cari']) && strpos($d['nama_lengkap'], $cari) === false && $d['level'] != $cari) {
-                        continue; // Data tidak sesuai dengan pencarian, lanjutkan ke data berikutnya
-                    } ?>
+                        continue;
+                    }
+
+                    $kd_akun = $d['kd_akun'];
+                    $target_query = $db->query("SELECT COUNT(*) as jumlah_target FROM tbl_target WHERE kd_akun = '$kd_akun'");
+                    $target_data = $target_query->fetch_assoc();
+                    $jumlah_target = $target_data['jumlah_target'];
+                    ?>
                     <div class="col-md-3">
                         <div class="card card-primary card-outline" style="border-top: 5px solid #007bff; margin-bottom: 20px;">
                             <div class="card-body box-profile">
@@ -104,13 +110,7 @@ if (isset($_SESSION['username'])) {
                                 </p>
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
-                                        <b>Followers</b> <a class="float-right">1,322</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Following</b> <a class="float-right">543</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Friends</b> <a class="float-right">13,287</a>
+                                        <b>Jumlah Target</b> <a class="float-right"><?php echo $jumlah_target; ?></a>
                                     </li>
                                 </ul>
 
