@@ -29,7 +29,7 @@ if (isset($_GET['aksi'])) {
                     ?>
                 </center>
                 <div class="bootstrap-tabel">
-                    <form class="myForm" action="pelangganproses2.php?proses=prosestambah" method="post" enctype="multipart/form-data" autocomplete="off" required>
+                    <form class="myForm" action="pelangganproses2.php?proses=prosestambah" method="post" autocomplete="off" enctype="multipart/form-data" autocomplete="off">
                         <div class="form-group">
                             <label for="">Tanggal</label>
                             <div class="input-group">
@@ -37,11 +37,14 @@ if (isset($_GET['aksi'])) {
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                             </div>
                         </div>
+                        <div class="form-group" hidden>
+                            <label for="">kd_idpel</label>
+                        </div>
                         <div class="form-group">
                             <label for="">ID Pelanggan</label>
                             <p style="font-size: 10px; color: red;"><i>*Mohon isi ID pelanggan dengan benar</i></p>
                             <div class="input-group">
-                                <input type="text" name="idpel" class="form-control" value="" placeholder="Masukkan ID Pelanggan Minimal 11 Angka dan Maksimal 12 Angka" autofocus minlength="11" maxlength="12" required>
+                                <input type="text" name="idpel" class="form-control" value="" placeholder="Masukkan ID Pelanggan Minimal 11 Angka dan Maksimal 12 Angka" required autofocus minlength="11" maxlength="12">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
                             </div>
                         </div>
@@ -180,7 +183,6 @@ if (isset($_GET['aksi'])) {
                 </div>
             </div>
         </div>
-<?php
-    }
+<?php }
 }
 ?>

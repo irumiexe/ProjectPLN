@@ -1,23 +1,34 @@
 <?php
 include 'header.php';
 
+// Pastikan user sudah login dan ada informasi kd_akun_user di sesi
 if (!isset($_SESSION['kd_akun_user'])) {
+    // Jika tidak, mungkin redirect ke halaman login atau lakukan tindakan lain
     header("Location: login.php");
     exit();
 }
 
+// Ambil kd_akun_user dari sesi
 $kd_akun_user = $_SESSION['kd_akun_user'];
 
+// Inisialisasi tanggal hari ini jika tidak ada tanggal yang dipilih
 $tanggal_dipilih = date('Y-m-d');
 
+// Jika pengguna memilih tanggal
 if (isset($_POST['pilih_tanggal'])) {
     $tanggal_dipilih = $_POST['tanggal'];
 }
 
+// Query untuk menghitung jumlah data pada tanggal yang dipilih untuk kd_akun tertentu
 $query_hitung_data = "SELECT COUNT(*) as jumlah_data FROM tbl_pelanggan WHERE tanggal = '$tanggal_dipilih' AND kd_akun = '$kd_akun_user'";
 $result_hitung_data = mysqli_query($db, $query_hitung_data);
 $data_hitung = mysqli_fetch_assoc($result_hitung_data);
 $jumlah_data = $data_hitung['jumlah_data'];
+
+$query_hitung_data_target = "SELECT COUNT(*) as jumlah_data_target FROM tbl_target WHERE kd_akun = '$kd_akun_user' AND ('$tanggal_dipilih' BETWEEN tanggal AND tanggal_akhir)";
+$result_hitung_data_target = mysqli_query($db, $query_hitung_data_target);
+$data_hitung_target = mysqli_fetch_assoc($result_hitung_data_target);
+$jumlah_data_target = $data_hitung_target['jumlah_data_target'];
 ?>
 
 <style>
@@ -51,8 +62,11 @@ $jumlah_data = $data_hitung['jumlah_data'];
     <div class="panel-container">
         <div class="bootstrap-tabel">
             <div class="mb-3">
-                <a href="pelangganaksi.php?aksi=tambah&kd_akun_user=<?php echo $kd_akun_user; ?>&tanggal_dipilih=<?php echo $tanggal_dipilih; ?>" class="btn btn-primary" id="button_target">Tambah Data</a>
-                <a href="pelangganaksi2.php?aksi=tambah&kd_akun_user=<?php echo $kd_akun_user; ?>&tanggal_dipilih=<?php echo $tanggal_dipilih; ?>" class="btn btn-success" id="button_sisir">Tambah Data</a>
+                <?php if ($jumlah_data_target == 0) : ?>
+                    <a href="pelangganaksi2.php?aksi=tambah&kd_akun_user=<?php echo $kd_akun_user; ?>&tanggal_dipilih=<?php echo $tanggal_dipilih; ?>" class="btn btn-success" id="button_sisir">Tambah Data</a>
+                <?php else : ?>
+                    <a href="pelangganaksi.php?aksi=tambah&kd_akun_user=<?php echo $kd_akun_user; ?>&tanggal_dipilih=<?php echo $tanggal_dipilih; ?>" class="btn btn-primary" id="button_target">Tambah Data</a>
+                <?php endif; ?>
             </div>
             <br>
             <form method="post">
