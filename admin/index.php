@@ -14,6 +14,11 @@ if (isset($_SESSION['username'])) {
         $queryTarget = $db->query("SELECT COUNT(*) as jumlah_target FROM tbl_pelanggan");
         $dataTarget = $queryTarget->fetch_assoc();
         $jumlah_target = $dataTarget['jumlah_target'];
+
+        $queryTarget2 = $db->query("SELECT COUNT(*) as jumlah_akun FROM tbl_akun WHERE level='1'");
+        $dataTarget2 = $queryTarget2->fetch_assoc();
+        $jumlah_target2 = $dataTarget2['jumlah_akun'];
+
         $nama = "$nama_lengkap";
         $role = "$level";
     }
@@ -89,7 +94,10 @@ if (isset($_SESSION['username'])) {
 
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
-                                        <b>Jumlah Data</b> <a class="float-right"><?php echo $jumlah_target; ?></a>
+                                        <b>Jumlah Data Pelanggan</b> <a class="float-right"><?php echo $jumlah_target; ?></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Jumlah Petugas</b> <a class="float-right"><?php echo $jumlah_target2; ?></a>
                                     </li>
                                 </ul>
                             </div>

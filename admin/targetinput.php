@@ -109,6 +109,13 @@ if (isset($_SESSION['username'])) {
                     $target_query = $db->query("SELECT COUNT(*) as jumlah_target FROM tbl_target WHERE kd_akun = '$kd_akun'");
                     $target_data = $target_query->fetch_assoc();
                     $jumlah_target = $target_data['jumlah_target'];
+
+                    $countQuery = $db->query("SELECT COUNT(*) as jumlah_data FROM tbl_pelanggan WHERE kd_akun = '$kd_akun'");
+                    $countData = $countQuery->fetch_assoc();
+                    $jumlah_data = $countData['jumlah_data'];
+
+                    $selisih = $jumlah_data - $jumlah_target; // Hitung selisih
+
                     ?>
                     <div class="col-md-3">
                         <div class="card card-primary card-outline" style="border-top: 5px solid #007bff; margin-bottom: 20px;">
@@ -133,13 +140,14 @@ if (isset($_SESSION['username'])) {
                                     <li class="list-group-item">
                                         <b>Jumlah Target</b> <a class="float-right"><?php echo $jumlah_target; ?></a>
                                     </li>
+                                    <li class="list-group-item">
+                                        <b>Selisih (Data - Target)</b> <a class="float-right"><?php echo $selisih; ?></a>
+                                    </li>
                                 </ul>
 
                                 <a href="targetaksi.php?aksi=tambah&kd_akun=<?php echo $d['kd_akun']; ?>" class="btn btn-success btn-block"><b>Tambah Target</b></a>
                                 <a href="targetdetail.php" class="btn btn-primary btn-block"><b>Detail Target</b></a>
                             </div>
-
-                            <!-- /.card-body -->
                         </div>
                     </div>
                 <?php endfor; ?>
@@ -147,55 +155,55 @@ if (isset($_SESSION['username'])) {
 
         </div>
     </div>
-    <?php 
-if ($totalPages > 1) {
-                        echo '<nav aria-label="Page navigation example">';
-                        echo '<ul class="pagination">';
-                        if (
-                            $currentPage > 1
-                        ) {
-                            echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">&laquo;</a></li>';
-                        }
+    <?php
+    if ($totalPages > 1) {
+        echo '<nav aria-label="Page navigation example">';
+        echo '<ul class="pagination">';
+        if (
+            $currentPage > 1
+        ) {
+            echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">&laquo;</a></li>';
+        }
 
-                        // Loop untuk mencetak nomor halaman
-                        $numPagesToShow = 3; // Jumlah nomor halaman yang ingin ditampilkan
-                        $halfNumPages = floor($numPagesToShow / 2);
-                        $startPage = max(1, $currentPage - $halfNumPages);
-                        $endPage = min($totalPages, $startPage + $numPagesToShow - 1);
+        // Loop untuk mencetak nomor halaman
+        $numPagesToShow = 3; // Jumlah nomor halaman yang ingin ditampilkan
+        $halfNumPages = floor($numPagesToShow / 2);
+        $startPage = max(1, $currentPage - $halfNumPages);
+        $endPage = min($totalPages, $startPage + $numPagesToShow - 1);
 
-                        if (
-                            $startPage > 1
-                        ) {
-                            echo '<li class="page-item"><a class="page-link" href="?page=1">1</a></li>';
-                            if ($startPage > 2) {
-                                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
-                            }
-                        }
+        if (
+            $startPage > 1
+        ) {
+            echo '<li class="page-item"><a class="page-link" href="?page=1">1</a></li>';
+            if ($startPage > 2) {
+                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+            }
+        }
 
-                        for ($i = $startPage; $i <= $endPage; $i++) {
-                            echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
-                        }
+        for ($i = $startPage; $i <= $endPage; $i++) {
+            echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+        }
 
-                        if (
-                            $endPage < $totalPages
-                        ) {
-                            if (
-                                $endPage < $totalPages - 1
-                            ) {
-                                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
-                            }
-                            echo '<li class="page-item"><a class="page-link" href="?page=' . $totalPages . '">' . $totalPages . '</a></li>';
-                        }
+        if (
+            $endPage < $totalPages
+        ) {
+            if (
+                $endPage < $totalPages - 1
+            ) {
+                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+            }
+            echo '<li class="page-item"><a class="page-link" href="?page=' . $totalPages . '">' . $totalPages . '</a></li>';
+        }
 
-                        if (
-                            $currentPage < $totalPages
-                        ) {
-                            echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage + 1) . '">&raquo;</a></li>';
-                        }
+        if (
+            $currentPage < $totalPages
+        ) {
+            echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage + 1) . '">&raquo;</a></li>';
+        }
 
-                        echo '</ul>';
-                        echo '</nav>';
-                    }
+        echo '</ul>';
+        echo '</nav>';
+    }
     ?>
-        
+
 </div>
