@@ -50,8 +50,9 @@ $jumlah_data = $data_hitung['jumlah_data'];
     </div>
     <div class="panel-container">
         <div class="bootstrap-tabel">
-            <div class="d-flex justify-content-between mb-3">
-                <a href="pelangganaksi.php?aksi=tambah&kd_akun_user=<?php echo $kd_akun_user; ?>&tanggal_dipilih=<?php echo $tanggal_dipilih; ?>" class="btn btn-primary">Tambah Data</a>
+            <div class="mb-3">
+                <a href="pelangganaksi.php?aksi=tambah&kd_akun_user=<?php echo $kd_akun_user; ?>&tanggal_dipilih=<?php echo $tanggal_dipilih; ?>" class="btn btn-primary" id="button_target">Tambah Data</a>
+                <a href="pelangganaksi2.php?aksi=tambah&kd_akun_user=<?php echo $kd_akun_user; ?>&tanggal_dipilih=<?php echo $tanggal_dipilih; ?>" class="btn btn-success" id="button_sisir">Tambah Data</a>
             </div>
             <br>
             <form method="post">
