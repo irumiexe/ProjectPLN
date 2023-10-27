@@ -24,10 +24,10 @@ if (isset($_GET['proses'])) {
         move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $nama_file_baru);
         $ket = $_POST["ket"];
         $ket2 = $_POST["ket2"];
+        $kd_akun = $_POST['kd_akun'];
 
-
-        $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet, ket, ket2, tanggal) 
-        VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$nama_file_baru', '$ket', '$ket2', CURDATE())";
+        $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet, ket, ket2, tanggal, kd_akun) 
+        VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$nama_file_baru', '$ket', '$ket2', CURDATE(), '$kd_akun')";
 
 
         mysqli_query($db, $query);
@@ -36,6 +36,6 @@ if (isset($_GET['proses'])) {
                 alert('Data Berhasil Ditambahkan');
                 document.location.href = 'pelangganinput.php';
               </script>";
-        echo '<script>window.location.href = "pelangganinput.php";</script>';
+        header("location:pelangganinput.php");
     }
 }
