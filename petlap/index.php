@@ -10,6 +10,9 @@ if (isset($_SESSION['username'])) {
     $nama_lengkap = $data['nama_lengkap'];
 
     if ($level == '1') {
+        $queryTarget = $db->query("SELECT COUNT(*) as jumlah_target FROM tbl_target");
+        $dataTarget = $queryTarget->fetch_assoc();
+        $jumlah_target = $dataTarget['jumlah_target'];
         $welcome_message = "SELAMAT DATANG";
         $nama = "$nama_lengkap";
         $role = "$level";
@@ -88,13 +91,7 @@ if (isset($_SESSION['username'])) {
 
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
-                                        <b>Followers</b> <a class="float-right">1,322</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Following</b> <a class="float-right">543</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Friends</b> <a class="float-right">13,287</a>
+                                        <b>Jumlah Target</b> <a class="float-right"><?php echo $jumlah_target; ?></a>
                                     </li>
                                 </ul>
                             </div>

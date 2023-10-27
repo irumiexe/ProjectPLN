@@ -61,9 +61,9 @@ include '../assets/conn/config.php';
                             DATA UMUM
                         </a>
                         <div class="dropdown-menu" aria-labelledby="pelangganDropdown">
-                            <a class="dropdown-item" href="pelangganinput.php">TAMBAH PELANGGAN</a>
-                            <a class="dropdown-item" href="akuninput.php">TAMBAH HAK AKSES</a>
-                            <a class="dropdown-item" href="targetinput.php">TAMBAH TARGET</a>
+                            <a class="dropdown-item" href="pelangganinput.php">DATA PELANGGAN</a>
+                            <a class="dropdown-item" href="akuninput.php">DATA AKSES</a>
+                            <a class="dropdown-item" href="targetinput.php">DATA TARGET</a>
                         </div>
                     </li>
                     <ul class="navbar-nav ml-auto">
