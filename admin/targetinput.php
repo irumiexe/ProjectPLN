@@ -12,23 +12,19 @@ if (isset($_SESSION['username'])) {
         $query = $db->query("SELECT * FROM tbl_akun");
     }
 
-    // Hitung jumlah total data
+
     $totalData = $query->num_rows;
 
-    // Tentukan jumlah data per halaman
     $dataPerPage = 10;
 
-    // Hitung jumlah halaman
     $totalPages = ceil($totalData / $dataPerPage);
 
-    // Ambil parameter halaman dari URL
     if (isset($_GET['page'])) {
         $currentPage = $_GET['page'];
     } else {
         $currentPage = 1;
     }
 
-    // Hitung indeks awal dan akhir data yang harus ditampilkan
     $startIndex = ($currentPage - 1) * $dataPerPage;
     $endIndex = $startIndex + $dataPerPage;
 
@@ -114,14 +110,20 @@ if (isset($_SESSION['username'])) {
                     $countData = $countQuery->fetch_assoc();
                     $jumlah_data = $countData['jumlah_data'];
 
-                    $selisih = $jumlah_data - $jumlah_target; // Hitung selisih
+                    $selisih = $jumlah_data - $jumlah_target;
+
+                    $kd_akun = $d['kd_akun'];
+                    $queryAkun = $db->query("SELECT foto FROM tbl_akun WHERE kd_akun = '$kd_akun'");
+                    $akunData = $queryAkun->fetch_assoc();
+                    $fotoProfil = $akunData['foto'];
+                    $fotoProfilPath = '../assets/img/' . $fotoProfil;
 
                     ?>
                     <div class="col-md-3">
                         <div class="card card-primary card-outline" style="border-top: 5px solid #007bff; margin-bottom: 20px;">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <img class="profile-user-img img-fluid img-circle" src="../assets/dist/img/user4-128x128.jpg" alt="User profile picture">
+                                    <img class="profile-user-img img-fluid img-circle" src="<?php echo $fotoProfilPath; ?>" alt="User profile picture">
                                 </div>
 
                                 <h3 class="profile-username text-center"><?php echo $d['nama_lengkap']; ?></h3>

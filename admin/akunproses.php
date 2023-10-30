@@ -21,19 +21,23 @@ if (isset($_GET['proses'])) {
         } elseif ($type == IMAGETYPE_PNG) {
             $image = imagecreatefrompng($file_tmp);
         } else {
+            // Handle other image types if needed
+            // You can add support for other image types here
         }
 
         $new_image = imagecreatetruecolor($new_width, $new_height);
 
         imagecopyresampled($new_image, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 
-        $new_image_filename = '../assets/img/' . pathinfo($foto, PATHINFO_FILENAME) . '.jpg'; // Ubah format menjadi PNG
-        imagepng($new_image, $new_image_filename);
+        // Simpan gambar yang sudah diubah ukuran ke format JPG
+        $new_image_filename = '../assets/img/' . pathinfo($foto, PATHINFO_FILENAME) . '.jpg'; // Ubah format menjadi JPG
+        imagejpeg($new_image, $new_image_filename);
 
         unlink($file_tmp);
 
-        // Simpan informasi ke database
-        $hasil = $db->query("INSERT into tbl_akun (kd_akun, nama_lengkap, foto, username, password, level) values ('$kd_akun', '$nama_lengkap', '$foto', '$username', '$password', '$level')");
+        // Simpan informasi ke database dengan format JPG
+        $foto_jpg = pathinfo($new_image_filename, PATHINFO_FILENAME) . '.jpg'; // Ubah format di sini
+        $hasil = $db->query("INSERT into tbl_akun (kd_akun, nama_lengkap, foto, username, password, level) values ('$kd_akun', '$nama_lengkap', '$foto_jpg', '$username', '$password', '$level')");
         header("location:akuninput.php");
     } elseif ($_GET['proses'] == 'ubah') {
         $kd_akun = $_POST['kd_akun'];
