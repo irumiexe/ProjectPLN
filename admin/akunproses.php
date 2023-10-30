@@ -46,7 +46,26 @@ if (isset($_GET['proses'])) {
         header("location:akuninput.php");
     } elseif ($_GET['proses'] == 'proseshapus') {
         $kd_akun = $_GET['kode'];
-        $hasil = $db->query("DELETE FROM tbl_akun WHERE kd_akun='$kd_akun'");
-        header("location:akuninput.php");
+
+        $query = "SELECT foto FROM tbl_akun WHERE kd_akun='$kd_akun'";
+        $result = mysqli_query($db, $query);
+        $row = mysqli_fetch_assoc($result);
+        $fileToDelete = $row['foto'];
+        $filePath = '../assets/img/' . $fileToDelete;
+
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+
+        $deleteQuery = "DELETE FROM tbl_akun WHERE kd_akun='$kd_akun'";
+        $deleteResult = mysqli_query($db, $deleteQuery);
+
+        if ($deleteResult) {
+            echo "<script>alert('Data dan file berhasil dihapus');</script>";
+        } else {
+            echo "<script>alert('Gagal menghapus data');</script>";
+        }
+
+        echo '<script>window.location.href = "akuninput.php";</script>';
     }
 }

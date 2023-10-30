@@ -67,7 +67,7 @@ include 'header.php';
                                 </td>
                                 <td class="text-center">
                                     <a href="akunaksi.php?kode=<?php echo $d['kd_akun'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
-                                    <a href="#" class="btn btn-danger" onclick="hapusAkun('<?php echo $d['kd_akun']; ?>')">Hapus</a>
+                                    <a href="javascript:void(0);" class="btn btn-danger" onclick="hapusData('<?php echo $d['kd_akun']; ?>')">Hapus</a>
                                 </td>
                             </tr>
                         <?php
@@ -79,3 +79,11 @@ include 'header.php';
         </div>
     </div>
 </div>
+
+<script>
+    function hapusData(akun) {
+        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+            window.location.href = 'akunproses.php?kode=' + akun + '&proses=proseshapus';
+        }
+    }
+</script>
