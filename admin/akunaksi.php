@@ -45,7 +45,6 @@ if (isset($_GET['aksi'])) {
                                 <input type="file" name="foto" class="form-control" value="" required>
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-cloud-upload"></i></span>
                             </div>
-
                         </div>
                         <div class="form-group">
                             <label for="">Username</label>
@@ -97,6 +96,13 @@ if (isset($_GET['aksi'])) {
                                 <input type="text" name="nama_lengkap" class="form-control" value="<?php echo $d['nama_lengkap'] ?>" placeholder="nama lengkap" required>
                             </div>
                             <div class="form-group">
+                                <label for="">Foto Profile</label>
+                                <div class="input-group">
+                                    <input type="file" name="foto" class="form-control" value="<>php echo $d['foto'] ?>" required>
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-cloud-upload"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="">Username</label>
                                 <input type="text" name="username" class="form-control" value="<?php echo $d['username'] ?>" placeholder="username" required>
                             </div>
@@ -107,7 +113,6 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Role</label>
                                 <select name="level" id="" class="form-control" value="<?php echo $d['level'] ?>" required>
-                                    <option value="<?php echo $d['level'] ?>"><?php echo $d['level'] ?></option>
                                     <option value="0" <?php if ($_SESSION['level'] == 0) echo 'selected'; ?>>Admin</option>
                                     <option value="1" <?php if ($_SESSION['level'] == 1) echo 'selected'; ?>>Petugas Lapangan</option>
                                 </select>

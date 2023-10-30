@@ -46,7 +46,42 @@ if (isset($_GET['proses'])) {
         $password = $_POST['password'];
         $level = $_POST['level'];
 
-        $hasil = $db->query("UPDATE tbl_akun set nama_lengkap='$nama_lengkap', username='$username',password='$password',level='$level' where kd_akun='$kd_akun'");
+        $updateFoto = false;
+
+        if ($_FILES['foto']['name']) {
+            $file_tmp = $_FILES['foto']['tmp_name'];
+            $new_width = 128;
+            $new_height = 128;
+
+            list($width, $height, $type) = getimagesize($file_tmp);
+
+            if ($type == IMAGETYPE_JPEG) {
+                $image = imagecreatefromjpeg($file_tmp);
+            } elseif ($type == IMAGETYPE_PNG) {
+                $image = imagecreatefrompng($file_tmp);
+            } else {
+                // Handle other image types if needed
+                // You can add support for other image types here
+            }
+
+            $new_image = imagecreatetruecolor($new_width, $new_height);
+
+            imagecopyresampled($new_image, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+
+            $new_image_filename = '../assets/img/' . pathinfo($_FILES['foto']['name'], PATHINFO_FILENAME) . '.jpg';
+            imagejpeg($new_image, $new_image_filename);
+
+            unlink($file_tmp);
+
+            $foto_jpg = pathinfo($new_image_filename, PATHINFO_FILENAME) . '.jpg';
+            $updateFoto = true;
+        }
+
+        if ($updateFoto) {
+            $hasil = $db->query("UPDATE tbl_akun set nama_lengkap='$nama_lengkap', username='$username',password='$password',level='$level',foto='$foto_jpg' where kd_akun='$kd_akun'");
+        } else {
+            $hasil = $db->query("UPDATE tbl_akun set nama_lengkap='$nama_lengkap', username='$username',password='$password',level='$level' where kd_akun='$kd_akun'");
+        }
         header("location:akuninput.php");
     } elseif ($_GET['proses'] == 'proseshapus') {
         $kd_akun = $_GET['kode'];
