@@ -5,10 +5,11 @@ if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
     $level = $_SESSION['level'];
 
-    $query = $db->query("SELECT nama_lengkap, level FROM tbl_akun WHERE username='$username'");
+    $query = $db->query("SELECT nama_lengkap, level, foto FROM tbl_akun WHERE username='$username'");
     $data = $query->fetch_assoc();
     $nama_lengkap = $data['nama_lengkap'];
     $welcome_message = "SELAMAT DATANG";
+    $imagePath = $data['foto'];
 
     if ($level == '0') {
         $queryTarget = $db->query("SELECT COUNT(*) as jumlah_target FROM tbl_pelanggan");
@@ -78,31 +79,30 @@ if (isset($_SESSION['username'])) {
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <img class="profile-user-img img-fluid img-circle" src="../assets/dist/img/user4-128x128.jpg" alt="User profile picture">
+                                    <img class="profile-user-img img-fluid img-circle" src="<?php echo $imagePath; ?>" alt="User profile picture" </div>
+
+                                    <h3 class="profile-username text-center"><?php echo $data['nama_lengkap']; ?></h3>
+                                    <p class="text-muted text-center">
+                                        <?php
+                                        if ($data['level'] == 0) {
+                                            echo "Admin";
+                                        } else {
+                                            echo $data['level'];
+                                        }
+                                        ?>
+                                    </p>
+
+                                    <ul class="list-group list-group-unbordered mb-3">
+                                        <li class="list-group-item">
+                                            <b>Jumlah Data Pelanggan</b> <a class="float-right"><?php echo $jumlah_target; ?></a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Jumlah Petugas</b> <a class="float-right"><?php echo $jumlah_target2; ?></a>
+                                        </li>
+                                    </ul>
                                 </div>
-
-                                <h3 class="profile-username text-center"><?php echo $data['nama_lengkap']; ?></h3>
-                                <p class="text-muted text-center">
-                                    <?php
-                                    if ($data['level'] == 0) {
-                                        echo "Admin";
-                                    } else {
-                                        echo $data['level'];
-                                    }
-                                    ?>
-                                </p>
-
-                                <ul class="list-group list-group-unbordered mb-3">
-                                    <li class="list-group-item">
-                                        <b>Jumlah Data Pelanggan</b> <a class="float-right"><?php echo $jumlah_target; ?></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Jumlah Petugas</b> <a class="float-right"><?php echo $jumlah_target2; ?></a>
-                                    </li>
-                                </ul>
+                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card-body -->
-                        </div>
             </center>
         </div>
     </div>
