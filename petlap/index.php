@@ -5,9 +5,11 @@ if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
     $level = $_SESSION['level'];
 
-    $query = $db->query("SELECT nama_lengkap, level FROM tbl_akun WHERE username='$username'");
+    $query = $db->query("SELECT nama_lengkap, level, foto FROM tbl_akun WHERE username='$username'");
     $data = $query->fetch_assoc();
     $nama_lengkap = $data['nama_lengkap'];
+    $imagePath = $data['foto'];
+    $fotoProfilPath = '../assets/img/' . $imagePath;
 
     if ($level == '1') {
         $queryTarget = $db->query("SELECT COUNT(*) as jumlah_target FROM tbl_target");
@@ -59,7 +61,7 @@ if (isset($_SESSION['username'])) {
 </style>
 
 <div class="container">
-    <div class="row"> 
+    <div class="row">
         <ol class="breadcrumb">
             <h4>DASHBOARD</h4>
         </ol>
@@ -73,7 +75,7 @@ if (isset($_SESSION['username'])) {
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <img class="profile-user-img img-fluid img-circle" src="../assets/dist/img/user4-128x128.jpg" alt="User profile picture">
+                                    <img class="profile-user-img img-fluid img-circle" src="<?php echo  $fotoProfilPath ?>" alt="User profile picture">
                                 </div>
 
                                 <h3 class="profile-username text-center"><?php echo $data['nama_lengkap']; ?></h3>

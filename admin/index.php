@@ -10,6 +10,7 @@ if (isset($_SESSION['username'])) {
     $nama_lengkap = $data['nama_lengkap'];
     $welcome_message = "SELAMAT DATANG";
     $imagePath = $data['foto'];
+    $fotoProfilPath = '../assets/img/' . $imagePath;
 
     if ($level == '0') {
         $queryTarget = $db->query("SELECT COUNT(*) as jumlah_target FROM tbl_pelanggan");
@@ -79,7 +80,7 @@ if (isset($_SESSION['username'])) {
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <img class="profile-user-img img-fluid img-circle" src="<?php echo $imagePath; ?>" alt="User profile picture" </div>
+                                    <img class="profile-user-img img-fluid img-circle" src="<?php echo $fotoProfilPath; ?>" alt="User profile picture" </div>
 
                                     <h3 class="profile-username text-center"><?php echo $data['nama_lengkap']; ?></h3>
                                     <p class="text-muted text-center">
