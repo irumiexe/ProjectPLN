@@ -47,10 +47,13 @@ $tampil = mysqli_query($db, $hasil);
         display: flex;
         list-style: none;
         padding: 0;
+        text-align: center;
+        justify-content: center;
+        align-items: center
     }
 
     .pagination a {
-        margin-right: 10px;
+        margin: 0 1px;
         text-decoration: none;
         padding: 5px 10px;
         background-color: #337ab7;
@@ -63,7 +66,13 @@ $tampil = mysqli_query($db, $hasil);
     }
 
     .pagination .ellipsis {
-        margin-right: 10px;
+        margin: 0 1px;
+        text-decoration: none;
+        padding: 5px 10px;
+        background-color: #d3d3d3;
+        opacity: 0.5;
+        color: #337ab7;
+        border-radius: 5px;
     }
 </style>
 
@@ -128,50 +137,48 @@ $tampil = mysqli_query($db, $hasil);
                     </tbody>
                 </table>
             </div>
+            <!-- Tampilkan link navigasi halaman -->
+            <div class="pagination">
+                <?php
+                $max_links = 3; // Jumlah maksimum tautan halaman yang ditampilkan
+                $half_max_links = floor($max_links / 2);
+
+                $start_page = max($current_page - $half_max_links, 1);
+                $end_page = min($start_page + $max_links - 1, $total_pages);
+
+                if ($current_page > 1) {
+                    echo '<a href="?page=' . ($current_page - 1) . '&tanggal=' . $tanggal_dipilih . '">&laquo;</a>';
+                }
+
+                if ($start_page > 1) {
+                    echo '<a href="?page=1&tanggal=' . $tanggal_dipilih . '">1</a>';
+                    if ($start_page > 2) {
+                        echo '<span class="ellipsis">...</span>';
+                    }
+                }
+
+                for ($page = $start_page; $page <= $end_page; $page++) {
+                    echo '<a href="?page=' . $page . '&tanggal=' . $tanggal_dipilih . '"';
+                    if ($page == $current_page) {
+                        echo ' class="current-page"';
+                    }
+                    echo '>' . $page . '</a>';
+                }
+
+                if ($end_page < $total_pages) {
+                    if ($end_page < $total_pages - 1) {
+                        echo '<span class="ellipsis">...</span>';
+                    }
+                    echo '<a href="?page=' . $total_pages . '&tanggal=' . $tanggal_dipilih . '">' . $total_pages . '</a>';
+                }
+
+                if ($current_page < $total_pages) {
+                    echo '<a href="?page=' . ($current_page + 1) . '&tanggal=' . $tanggal_dipilih . '">&raquo;</a>';
+                }
+                ?>
+            </div>
         </div>
+
     </div>
-
-    <!-- Tampilkan link navigasi halaman -->
-    <div class="pagination">
-        <?php
-        $max_links = 3; // Jumlah maksimum tautan halaman yang ditampilkan
-        $half_max_links = floor($max_links / 2);
-
-        $start_page = max($current_page - $half_max_links, 1);
-        $end_page = min($start_page + $max_links - 1, $total_pages);
-
-        if ($current_page > 1) {
-            echo '<a href="?page=' . ($current_page - 1) . '&tanggal=' . $tanggal_dipilih . '">Sebelumnya</a>';
-        }
-
-        if ($start_page > 1) {
-            echo '<a href="?page=1&tanggal=' . $tanggal_dipilih . '">1</a>';
-            if ($start_page > 2) {
-                echo '<span class="ellipsis">...</span>';
-            }
-        }
-
-        for ($page = $start_page; $page <= $end_page; $page++) {
-            echo '<a href="?page=' . $page . '&tanggal=' . $tanggal_dipilih . '"';
-            if ($page == $current_page) {
-                echo ' class="current-page"';
-            }
-            echo '>' . $page . '</a>';
-        }
-
-        if ($end_page < $total_pages) {
-            if ($end_page < $total_pages - 1) {
-                echo '<span class="ellipsis">...</span>';
-            }
-            echo '<a href="?page=' . $total_pages . '&tanggal=' . $tanggal_dipilih . '">' . $total_pages . '</a>';
-        }
-
-        if ($current_page < $total_pages) {
-            echo '<a href="?page=' . ($current_page + 1) . '&tanggal=' . $tanggal_dipilih . '">Selanjutnya</a>';
-        }
-        ?>
-    </div>
-
-
 
 </div>
