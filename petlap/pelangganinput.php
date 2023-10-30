@@ -8,6 +8,7 @@ if (!isset($_SESSION['kd_akun_user'])) {
     exit();
 }
 
+
 // Ambil kd_akun_user dari sesi
 $kd_akun_user = $_SESSION['kd_akun_user'];
 
@@ -29,6 +30,42 @@ $query_hitung_data_target = "SELECT COUNT(*) as jumlah_data_target FROM tbl_targ
 $result_hitung_data_target = mysqli_query($db, $query_hitung_data_target);
 $data_hitung_target = mysqli_fetch_assoc($result_hitung_data_target);
 $jumlah_data_target = $data_hitung_target['jumlah_data_target'];
+
+// Hitung jumlah total data
+$query = $db->query("SELECT * FROM tbl_target");
+$totalData = $query->num_rows;
+
+// Tentukan jumlah data per halaman
+$dataPerPage = 1;
+
+// Hitung jumlah halaman
+$totalPages = ceil($totalData / $dataPerPage);
+
+// Ambil parameter halaman dari URL
+if (isset($_GET['page'])) {
+    $currentPage = $_GET['page'];
+} else {
+    $currentPage = 1;
+}
+
+// Hitung indeks awal dan akhir data yang harus ditampilkan
+$startIndex = ($currentPage - 1) * $dataPerPage;
+$endIndex = $startIndex + $dataPerPage;
+
+$petlap_data = array();
+
+while ($row = $query->fetch_assoc()) {
+    $petlap_data[] = $row;
+}
+
+$query = $db->query("SELECT * FROM tbl_akun WHERE level='1'");
+$petlap_data = array();
+
+while ($row = $query->fetch_assoc()) {
+    $petlap_data[] = $row;
+}
+
+
 ?>
 
 <style>
@@ -121,4 +158,54 @@ $jumlah_data_target = $data_hitung_target['jumlah_data_target'];
             </div>
         </div>
     </div>
+    <?php
+    if ($totalPages > 1) {
+        echo '<nav aria-label="Page navigation example">';
+        echo '<ul class="pagination">';
+        if (
+            $currentPage > 1
+        ) {
+            echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">&laquo;</a></li>';
+        }
+
+        // Loop untuk mencetak nomor halaman
+        $numPagesToShow = 3; // Jumlah nomor halaman yang ingin ditampilkan
+        $halfNumPages = floor($numPagesToShow / 2);
+        $startPage = max(1, $currentPage - $halfNumPages);
+        $endPage = min($totalPages, $startPage + $numPagesToShow - 1);
+
+        if (
+            $startPage > 1
+        ) {
+            echo '<li class="page-item"><a class="page-link" href="?page=1">1</a></li>';
+            if ($startPage > 2) {
+                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+            }
+        }
+
+        for ($i = $startPage; $i <= $endPage; $i++) {
+            echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+        }
+
+        if (
+            $endPage < $totalPages
+        ) {
+            if (
+                $endPage < $totalPages - 1
+            ) {
+                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+            }
+            echo '<li class="page-item"><a class="page-link" href="?page=' . $totalPages . '">' . $totalPages . '</a></li>';
+        }
+
+        if (
+            $currentPage < $totalPages
+        ) {
+            echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage + 1) . '">&raquo;</a></li>';
+        }
+
+        echo '</ul>';
+        echo '</nav>';
+    }
+    ?>
 </div>
