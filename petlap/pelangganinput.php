@@ -74,6 +74,10 @@ $tampil = mysqli_query($db, $hasil);
         color: #337ab7;
         border-radius: 5px;
     }
+
+    .card-header {
+        background-color: #CDF5FD
+    }
 </style>
 
 </styl.pagination>
