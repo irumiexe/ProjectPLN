@@ -27,7 +27,7 @@ if (isset($_GET['proses'])) {
 
         imagecopyresampled($new_image, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 
-        $new_image_filename = '../assets/img/' . pathinfo($foto, PATHINFO_FILENAME) . '.png'; // Ubah format menjadi PNG
+        $new_image_filename = '../assets/img/' . pathinfo($foto, PATHINFO_FILENAME) . '.jpg'; // Ubah format menjadi PNG
         imagepng($new_image, $new_image_filename);
 
         unlink($file_tmp);
