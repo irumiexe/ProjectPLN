@@ -146,7 +146,8 @@ if (isset($_SESSION['username'])) {
                                 </ul>
 
                                 <a href="targetaksi.php?aksi=tambah&kd_akun=<?php echo $d['kd_akun']; ?>" class="btn btn-success btn-block"><b>Tambah Target</b></a>
-                                <a href="targetdetail.php" class="btn btn-primary btn-block"><b>Detail Target</b></a>
+                                <a href="targetdetail.php?kd_akun=<?php echo $d['kd_akun']; ?>" class="btn btn-primary btn-block"><b>Detail Target</b></a>
+
                             </div>
                         </div>
                     </div>

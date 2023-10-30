@@ -9,6 +9,9 @@ if (!isset($_SESSION['kd_akun_user'])) {
 }
 
 $kd_akun_user = $_SESSION['kd_akun_user'];
+$kd_akun = $_GET['kd_akun']; // Ambil nilai kd_akun dari URL
+
+
 
 ?>
 
@@ -46,9 +49,12 @@ $kd_akun_user = $_SESSION['kd_akun_user'];
                     <tbody>
                         <?php
                         $counter = 1;
-                        $hasil = "SELECT * FROM tbl_target ";
+                        $hasil = "SELECT * FROM tbl_target WHERE kd_akun = '$kd_akun'";
                         $tampil = mysqli_query($db, $hasil);
+
+                        // Lanjutkan dengan mengganti nama variabel jika perlu
                         while ($db = $tampil->fetch_array()) {
+                            // Tampilkan data dari tabel tbl_target sesuai dengan kd_akun
                         ?>
                             <tr>
                                 <td class="text-center"><?php echo $counter; ?></td>
