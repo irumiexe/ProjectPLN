@@ -233,8 +233,7 @@ $dataPerPage = 10;
                             echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">&laquo;</a></li>';
                         }
 
-                        // Loop untuk mencetak nomor halaman
-                        $numPagesToShow = 3; // Jumlah nomor halaman yang ingin ditampilkan
+                        $numPagesToShow = 3;
                         $halfNumPages = floor($numPagesToShow / 2);
                         $startPage = max(1, $currentPage - $halfNumPages);
                         $endPage = min($totalPages, $startPage + $numPagesToShow - 1);

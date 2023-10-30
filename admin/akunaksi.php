@@ -40,6 +40,14 @@ if (isset($_GET['aksi'])) {
                             <input type="text" name="nama_lengkap" class="form-control" value="" placeholder="nama lengkap" required>
                         </div>
                         <div class="form-group">
+                            <label for="">Foto Profile</label>
+                            <div class="input-group">
+                                <input type="file" name="foto" class="form-control" value="" required>
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-cloud-upload"></i></span>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
                             <label for="">Username</label>
                             <input type="text" name="username" class="form-control" value="" placeholder="username" required>
                         </div>
