@@ -42,7 +42,7 @@ if (isset($_GET['aksi'])) {
                             <label for="">ID Pelanggan</label>
                             <p style="font-size: 10px; color: red;"><i>*Mohon isi ID pelanggan dengan benar</i></p>
                             <div class="input-group">
-                                <input type="text" name="idpel" class="form-control" value="" placeholder="Masukkan ID Pelanggan Minimal 11 Angka dan Maksimal 12 Angka" autofocus minlength="11" maxlength="12" required>
+                                <input type="text" name="idpel" class="form-control" value="<?php echo isset($_GET['idpel']) ? htmlspecialchars($_GET['idpel']) : ''; ?>" placeholder="Masukkan ID Pelanggan Minimal 11 Angka dan Maksimal 12 Angka" autofocus minlength="11" maxlength="12" required>
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
                             </div>
                         </div>
