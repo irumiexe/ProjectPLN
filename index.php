@@ -82,7 +82,7 @@ if (isset($_GET['aksi'])) {
     ?>
     <div class="container">
         <center>
-            <img style="width: 100px; display: inline-block; vertical-align: middle;" src="img/Logo_PLN.png" alt="Logo">
+            <img style="width: 100px; display: inline-block; vertical-align: middle;" src="assets/img/Logo_PLN.png" alt="Logo">
         </center>
         <form action="index.php?aksi=login" method="post" enctype="multipart/form-data">
             <br>

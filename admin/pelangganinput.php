@@ -104,9 +104,34 @@ $dataPerPage = 10;
                         <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
                     </div>
                     <div class="col">
-                        <a href="excel.php" target="_blank">
-                            <button class="btn btn-success">Excel</button>
-                        </a>
+                        <button class="btn btn-primary" onclick="openImportPopup()">Excel</button>
+                    </div>
+                </div>
+            </div>
+            <div id="importPopup" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Import Data Excel</h3>
+                        <span class="close" onclick="closeImportPopup()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col">
+                            <a href="excel.php" target="_blank">
+                                <button class="btn btn-success">Export Excel</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Tambahkan formulir untuk impor Excel di sini -->
+                        <form action="import.php" method="post" enctype="multipart/form-data">
+                            <div class="col">
+                                <input type="file" name="excelFile">
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">Import</button>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
@@ -315,4 +340,14 @@ $dataPerPage = 10;
     gambarModal.addEventListener('click', function() {
         gambarModal.classList.toggle('zoomed'); // Aktifkan atau nonaktifkan zoom.
     });
+
+    function openImportPopup() {
+        var importPopup = document.getElementById('importPopup');
+        importPopup.style.display = "block";
+    }
+
+    function closeImportPopup() {
+        var importPopup = document.getElementById('importPopup');
+        importPopup.style.display = "none";
+    }
 </script>

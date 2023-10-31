@@ -98,7 +98,7 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Foto Profile</label>
                                 <div class="input-group">
-                                    <input type="file" name="foto" class="form-control" value="<>php echo $d['foto'] ?>" required>
+                                    <input type="file" name="foto" class="form-control" value="<>php echo $d['foto'] ?>">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-cloud-upload"></i></span>
                                 </div>
                             </div>
@@ -112,9 +112,13 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Role</label>
-                                <select name="level" id="" class="form-control" value="<?php echo $d['level'] ?>" required>
-                                    <option value="0" <?php if ($_SESSION['level'] == 0) echo 'selected'; ?>>Admin</option>
-                                    <option value="1" <?php if ($_SESSION['level'] == 1) echo 'selected'; ?>>Petugas Lapangan</option>
+                                <select name="level" id="" class="form-control" required>
+                                    <?php
+                                    $role = ($d['level'] == 0) ? 'Admin' : (($d['level'] == 1) ? 'Petugas Lapangan' : $d['level']);
+                                    ?>
+                                    <option value="<?php echo $d['level'] ?>"><?php echo $role ?></option>
+                                    <option value="0">Admin</option>
+                                    <option value="1">Petugas Lapangan</option>
                                 </select>
                             </div>
                 </div>
