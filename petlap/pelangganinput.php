@@ -119,6 +119,7 @@ $tampil = mysqli_query($db, $hasil);
                         <tr>
                             <th class="text-center">No.</th>
                             <th class="text-center">ID PELANGGAN</th>
+                            <th class="text-center">RBM</th>
                             <th class="text-center">MAPS</th>
                         </tr>
                     </thead>
@@ -132,6 +133,7 @@ $tampil = mysqli_query($db, $hasil);
                                 <td class="text-center">
                                     <a href="pelangganaksi.php?aksi=tambah&kd_akun_user=<?php echo $kd_akun_user; ?>&tanggal_dipilih=<?php echo $tanggal_dipilih; ?>&idpel=<?php echo $d['idpel']; ?>"><?php echo $d['idpel']; ?></a>
                                 </td>
+                                <td class="text-center"><?php echo $d['rbm']; ?></td>
                                 <td class="text-center">
                                     <a href='https://www.google.com/maps?q=<?php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>' target="_blank">Lihat di Google Maps</a>
                                 </td>

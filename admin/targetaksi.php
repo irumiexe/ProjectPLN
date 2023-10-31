@@ -57,6 +57,12 @@ if (isset($_GET['aksi'])) {
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="kd_akun">Rute Meter</label>
+                            <div class="input-group">
+                                <input type="text" name="rbm" class="form-control" placeholder="Masukkan Rute">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="">Lokasi</label>
                             <div class="input-group">
                                 <div class="row">
