@@ -41,10 +41,10 @@ if (isset($_GET['aksi'])) {
                                 <input type="date" name="tanggal_akhir" class="form-control" value="<?php echo $tanggal_dipilih; ?>">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" hidden>
                             <label for="kd_akun">Akun Tujuan</label>
                             <div class="input-group">
-                                <input type="text" name="kd_akun" class="form-control" value="<?php echo $kd_akun; ?>" readonly>
+                                <input type="hidden" name="kd_akun" class="form-control" value="<?php echo $kd_akun; ?>" readonly>
                             </div>
                         </div>
 
