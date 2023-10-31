@@ -107,38 +107,84 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">Merk kWh Meter</label>
-                            <input type="text" class="form-control">
+                            <select name="merk" class="form-control" required>
+                                <option value="">Pilih Opsi</option>
+                                <option value="SMARTMETER">SMARTMETER</option>
+                                <option value="HEXING">HEXING</option>
+                                <option value="ITRON">ITRON</option>
+                                <option value="MELCOINDA">MELCOINDA</option>
+                                <option value="CANNET">CANNET</option>
+                                <option value="SANXING">SANXING</option>
+                                <option value="FUJI">FUJI</option>
+                                <option value="METBELOSA">METBELOSA</option>
+                                <option value="WASION">WASION</option>
+                                <option value="STAR">STAR</option>
+                                <option value="ACTARIS">ACTARIS</option>
+                                <option value="EDMI">EDMI</option>
+                                <option value="SIGMA">SIGMA</option>
+                                <option value="SCHLUMBERGER">SCHLUMBERGER</option>
+                                <option value="MEISYS">MEISYS</option>
+                                <option value="SAINT">SAINT</option>
+                                <option value="MECOINDO">MECOINDO</option>
+                                <option value="GLOMET">GLOMET</option>
+                                <option value="LIPUVINDO">LIPUVINDO</option>
+                                <option value="LANDISGYR">LANDIS+GYR</option>
+                                <option value="MITSUBISHI">MITSUBISHI</option>
+                                <option value="OSAKI">OSAKI</option>
+                                <option value="SCHNEIDER">SCHNEIDER</option>
+                                <option value="KRIZIK">KRIZIK</option>
+                                <option value="GANZ">GANZ</option>
+                                <option value="LANDIS">LANDIS</option>
+                                <option value="SGRID">SGRID</option>
+                                <option value="EMAIL">EMAIL</option>
+                                <option value="ENERTEC">ENERTEC</option>
+                                <option value="CHANGSHA">CHANGSHA</option>
+                                <option value="GALVANIZE">GALVANIZE</option>
+                                <option value="GE">GE</option>
+                                <option value="PRODIGY">PRODIGY</option>
+                                <option value="ELSTER">ELSTER</option>
+                                <option value="AEG">AEG</option>
+                                <option value="ADTECH">ADTECH</option>
+                                <option value="ELIPS SYSTEM">ELIPS SYSTEM</option>
+                                <option value="METRICO">METRICO</option>
+                            </select>
                         </div>
-
-                            <div class="form-group">
-
-                                <div class="input-group">
-                                    <div class="row">
-                                        <div class="col">
-                                            <label for="">Keterangan</label>
-                                            <select name="ket" class="form-control" required>
-                                                <option value="">Pilih opsi</option>
-                                                <option value="macet">macet</option>
-                                                <option value="Tinggi">Tinggi</option>
-                                                <option value="Buram">Buram</option>
-                                                <option value="Normal">Normal</option>
-                                            </select>
-                                        </div>
-                                        <div class="col">
-                                            <label for="">Rincian</label>
-                                            <input type="text" name="ket2" class="form-control" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut">
-                                        </div>
+                        <div class="form-group">
+                            <label for="">Type kWh Meter</label>
+                            <input type="text" name="tipemet" class="form-control" placeholder="Masukkan Type kWh Meter" require>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Nomor kWh Meter</label>
+                            <input type="text" name="nomet" class="form-control" placeholder="Masukkan Nomor Meter Minimal 11 Angka dan Maksimal 12 Angka" autofocus minlength="11" maxlength="12" require>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="">Keterangan</label>
+                                        <select name="ket" class="form-control" required>
+                                            <option value="">Pilih opsi</option>
+                                            <option value="Macet">macet</option>
+                                            <option value="Tinggi">Tinggi</option>
+                                            <option value="Buram">Buram</option>
+                                            <option value="Normal">Normal</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <label for="">Rincian</label>
+                                        <input type="text" name="ket2" class="form-control" placeholder="Masukkan Jika Ada Keterangan Lebih Lanjut">
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="" hidden>kode_akun</label>
-                                <input type="hidden" name="kd_akun" class="form-control" value="<?php echo $kd_akun_user; ?>" readonly>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
-                                <button type="submit" class="btn btn-success" name="submit" onclick="confirmSubmit()">Submit</button>
-                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" hidden>kode_akun</label>
+                            <input type="hidden" name="kd_akun" class="form-control" value="<?php echo $kd_akun_user; ?>" readonly>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="pelangganinput.php" class="btn btn-primary">Kembali</a>
+                            <button type="submit" class="btn btn-success" name="submit" onclick="confirmSubmit()">Submit</button>
+                        </div>
                     </form>
                     <script type="text/javascript">
                         function toggleDayaInput() {

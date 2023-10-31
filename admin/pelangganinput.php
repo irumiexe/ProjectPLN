@@ -104,33 +104,45 @@ $dataPerPage = 10;
                         <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
                     </div>
                     <div class="col">
-                        <button class="btn btn-primary" onclick="openImportPopup()">Excel</button>
+                        <button class="btn btn-success" onclick="openImportPopup()">Excel</button>
                     </div>
                 </div>
             </div>
             <div id="importPopup" class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3>Import Data Excel</h3>
+                        <h3>Data Excel</h3>
                         <span class="close" onclick="closeImportPopup()">&times;</span>
                     </div>
                     <div class="modal-body">
-                        <div class="col">
-                            <a href="excel.php" target="_blank">
-                                <button class="btn btn-success">Export Excel</button>
-                            </a>
+                        <div class="row">
+                            <div class="col text-center">
+                                <a href="excel.php" target="_blank">
+                                    <button class="btn btn-success">Export</button>
+                                </a>
+                            </div>
+                            <div class="col text-center">
+                                <a href="exceltemp.php" target="_blank">
+                                    <button class="btn btn-primary">Template Excel</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-body">
-                        <!-- Tambahkan formulir untuk impor Excel di sini -->
                         <form action="import.php" method="post" enctype="multipart/form-data">
-                            <div class="col">
-                                <input type="file" name="excelFile">
+                            <div class="form-group">
+                                <label for="excelFile">Import File Excel</label>
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <div class="input-group ">
+                                            <input type="file" class="form-control" name="excelFile">
+                                        </div>
+                                    </div>
+                                    <div class="col text-center">
+                                        <button class="btn btn-danger">Import</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary">Import</button>
-                            </div>
-
                         </form>
                     </div>
                 </div>
@@ -159,6 +171,9 @@ $dataPerPage = 10;
                                 <th class="text-center">Tipe Pembayaran</th>
                                 <th class="text-center">Maps</th>
                                 <th class="text-center">Photo Meteran</th>
+                                <th class="text-center">Merk Meteran</th>
+                                <th class="text-center">Type Meteran</th>
+                                <th class="text-center">Nomor Meteran</th>
                                 <th class="text-center">Keterangann</th>
                                 <th class="text-center">Rincian</th>
                                 <th class="text-center">Opsi</th>
@@ -196,6 +211,9 @@ $dataPerPage = 10;
                                             <img src="../file/<?php echo $d['pmet']; ?>" style="width: 100px; height: 200px">
                                         </a>
                                     </td>
+                                    <td class="text-center"><?php echo $d['merk'] ?></td>
+                                    <td class="text-center"><?php echo $d['tipemet'] ?></td>
+                                    <td class="text-center"><?php echo $d['nomet'] ?></td>
                                     <td class="text-center"><?php echo $d['ket'] ?></td>
                                     <td class="text-center" style="max-width: 100px;">
                                         <div style="word-wrap: break-word; ">

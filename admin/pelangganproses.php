@@ -22,13 +22,15 @@ if (isset($_GET['proses'])) {
         $nama_file_baru = $idpel . ".jpg";
 
         move_uploaded_file($_FILES['pmet']['tmp_name'], '../file/' . $nama_file_baru);
+        $merk = $_POST["merk"];
+        $tipemet = $_POST["tipemet"];
+        $nomet = $_POST["nomet"];
         $ket = $_POST["ket"];
         $ket2 = $_POST["ket2"];
 
 
-        $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet, ket, ket2, tanggal) 
-        VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$nama_file_baru', '$ket', '$ket2', CURDATE())";
-
+        $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet,merk,tipemet,nomet, ket, ket2, tanggal) 
+        VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$nama_file_baru', '$merk', '$tipemet', '$nomet', '$ket', '$ket2', CURDATE())";
 
         mysqli_query($db, $query);
 
@@ -45,6 +47,9 @@ if (isset($_GET['proses'])) {
         $tipe = $_POST['tipe'];
         $latitude = $_POST["latitude"];
         $longitude = $_POST["longitude"];
+        $merk = $_POST["merk"];
+        $tipemet = $_POST["tipemet"];
+        $nomet = $_POST["nomet"];
         $pmet = $_FILES['pmet']['name'];
         $nama_file_baru = $idpel . ".jpg";
 
@@ -52,7 +57,7 @@ if (isset($_GET['proses'])) {
         $ket = $_POST["ket"];
         $ket2 = $_POST["ket2"];
 
-        $hasil = $db->query("UPDATE tbl_pelanggan set nama_pel='$nama_pel', daya='$daya', tipe='$tipe', pmet='$nama_file_baru', ket='$ket', ket2='$ket2' where idpel='$idpel'");
+        $hasil = $db->query("UPDATE tbl_pelanggan set nama_pel='$nama_pel', daya='$daya', tipe='$tipe', pmet='$nama_file_baru', merk='$merk',tipemet= '$tipemet',nomet= '$nomet', ket='$ket', ket2='$ket2' where idpel='$idpel'");
         if ($hasil) {
             echo "<script>alert('Update berhasil');</script>";
         } else {
