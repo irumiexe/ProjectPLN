@@ -5,6 +5,22 @@ $dataPerPage = 10;
 
 ?>
 <style>
+    .table {
+        width: 100%;
+
+    }
+
+    .container-xl {
+        max-width: 1705px;
+        /* Atur lebar maksimum kontainer sesuai dengan preferensi Anda */
+    }
+
+    .table th,
+    .table td {
+        font-size: 18px;
+        /* Mengatur ukuran font pada sel tabel */
+    }
+
     .excel-btn {
         padding: 10px 20px;
         border: none;

@@ -36,7 +36,7 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 
 // Sesuaikan query untuk mengambil data dengan memperhitungkan halaman yang sedang aktif
 $offset = ($current_page - 1) * $data_per_page;
-$hasil = "SELECT * FROM tbl_target WHERE kd_akun = '$kd_akun_user' AND ('$tanggal_dipilih' BETWEEN tanggal AND tanggal_akhir) LIMIT $data_per_page OFFSET $offset";
+$hasil = "SELECT * FROM tbl_target WHERE kd_akun = '$kd_akun_user' AND ('$tanggal_dipilih' BETWEEN tanggal AND tanggal_akhir) AND status = 0 LIMIT $data_per_page OFFSET $offset";
 
 $tampil = mysqli_query($db, $hasil);
 ?>
@@ -92,7 +92,7 @@ $tampil = mysqli_query($db, $hasil);
         <div class="bootstrap-tabel">
             <div class="mb-3">
                 <!-- Tambahkan tombol Tambah Data di sini -->
-                <a href="pelangganaksi.php?aksi=tambah&kd_akun_user=<?php echo $kd_akun_user; ?>&tanggal_dipilih=<?php echo $tanggal_dipilih; ?>" class="btn btn-primary" id="button_target">Tambah Data</a>
+                <a href="pelangganaksi2.php?aksi=tambah&kd_akun_user=<?php echo $kd_akun_user; ?>&tanggal_dipilih=<?php echo $tanggal_dipilih; ?>" class="btn btn-primary" id="button_target">Tambah Data</a>
             </div>
             <br>
             <form method="post">

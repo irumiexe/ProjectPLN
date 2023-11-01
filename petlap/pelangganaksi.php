@@ -158,6 +158,12 @@ if (isset($_GET['aksi'])) {
                             <input type="text" name="nomet" class="form-control" placeholder="Masukkan Nomor Meter Minimal 11 Angka dan Maksimal 12 Angka" autofocus minlength="11" maxlength="12" require>
                         </div>
                         <div class="form-group">
+                            <label for="kd_akun">Status</label>
+                            <div class="input-group">
+                                <input type="number" name="status" value="1" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="input-group">
                                 <div class="row">
                                     <div class="col">

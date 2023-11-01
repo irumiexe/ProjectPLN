@@ -9,9 +9,7 @@ if (!isset($_SESSION['kd_akun_user'])) {
 }
 
 $kd_akun_user = $_SESSION['kd_akun_user'];
-$kd_akun = $_GET['kd_akun']; // Ambil nilai kd_akun dari URL
-
-
+$kd_akun = $_GET['kd_akun'];
 
 ?>
 
@@ -50,7 +48,7 @@ $kd_akun = $_GET['kd_akun']; // Ambil nilai kd_akun dari URL
                     <tbody>
                         <?php
                         $counter = 1;
-                        $hasil = "SELECT * FROM tbl_target WHERE kd_akun = '$kd_akun'";
+                        $hasil = "SELECT * FROM tbl_target WHERE kd_akun = '$kd_akun' ORDER BY rbm";
                         $tampil = mysqli_query($db, $hasil);
 
                         // Lanjutkan dengan mengganti nama variabel jika perlu

@@ -5,7 +5,6 @@ if (isset($_GET['proses'])) {
     if ($_GET['proses'] == 'prosestambah') {
         $idpel = $_POST['idpel'];
         $nama_pel = $_POST['nama_pel'];
-
         $kd_akun = $_POST['kd_akun'];
         $tanggal_dipilih = date('Y-m-d');
 
@@ -32,13 +31,17 @@ if (isset($_GET['proses'])) {
             $merk = $_POST["merk"];
             $tipemet = $_POST["tipemet"];
             $nomet = $_POST["nomet"];
+            $status = $_POST["status"];
             $ket = $_POST["ket"];
             $ket2 = $_POST["ket2"];
 
-            $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet,merk,tipemet,nomet, ket, ket2, tanggal) 
-            VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$nama_file_baru', '$merk', '$tipemet', '$nomet', '$ket', '$ket2', CURDATE())";
+            $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet, merk, tipemet,nomet, ket, ket2,kd_akun, tanggal) 
+            VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$nama_file_baru', '$merk', '$tipemet', '$nomet', '$ket', '$ket2','$kd_akun',CURDATE())";
+
+            $query1 = "UPDATE tbl_target set status = '$status' where idpel='$idpel'";
 
             mysqli_query($db, $query);
+            mysqli_query($db, $query1);
 
             echo "<script>
                     alert('Data Berhasil Ditambahkan');

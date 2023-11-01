@@ -290,10 +290,16 @@ if (isset($_GET['aksi'])) {
                             </div>
                             <div class="form-group">
                                 <label for="">Photo Meteran</label>
-                                <div class="input-group" required>
-                                    <input type="file" name="pmet" class="form-control" value="<?php echo $d['pmet'] ?>">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-cloud-upload"></i></span>
+                                <div class="row">
+                                    <div class="col">
+                                        <img src="../file/<?php echo $d['pmet']; ?>" style="width: 50px; height: 100px">
+                                        <div class="input-group" required>
+                                            <input type="file" name="pmet" class="form-control" value="<?php echo $d['pmet'] ?>">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-cloud-upload"></i></span>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
                             <div class="form-group">
                                 <label for="">Merk kWh Meter</label>
