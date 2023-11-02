@@ -318,4 +318,13 @@ if (isset($_SESSION['username'])) {
         var importPopup = document.getElementById('importPopup');
         importPopup.style.display = "none";
     }
+
+    var successMessage = "<?php echo isset($_GET['success_message']) ? $_GET['success_message'] : ''; ?>";
+    var errorMessage = "<?php echo isset($_GET['error_message']) ? $_GET['error_message'] : ''; ?>";
+    if (successMessage) {
+        alert(successMessage); // Tampilkan pesan berhasil
+    }
+    if (errorMessage) {
+        alert(errorMessage); // Tampilkan pesan error
+    }
 </script>
