@@ -5,6 +5,22 @@ $dataPerPage = 10;
 
 ?>
 <style>
+    .table {
+        width: 100%;
+
+    }
+
+    .container-xl {
+        max-width: 1705px;
+        /* Atur lebar maksimum kontainer sesuai dengan preferensi Anda */
+    }
+
+    .table th,
+    .table td {
+        font-size: 18px;
+        /* Mengatur ukuran font pada sel tabel */
+    }
+
     .excel-btn {
         padding: 10px 20px;
         border: none;
@@ -104,9 +120,46 @@ $dataPerPage = 10;
                         <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
                     </div>
                     <div class="col">
-                        <a href="excel.php" target="_blank">
-                            <button class="btn btn-success">Excel</button>
-                        </a>
+                        <button class="btn btn-success" onclick="openImportPopup()">Excel</button>
+                    </div>
+                </div>
+            </div>
+            <div id="importPopup" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Data Excel</h3>
+                        <span class="close" onclick="closeImportPopup()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col text-center">
+                                <a href="excel.php" target="_blank">
+                                    <button class="btn btn-success">Export</button>
+                                </a>
+                            </div>
+                            <div class="col text-center">
+                                <a href="exceltemp.php" target="_blank">
+                                    <button class="btn btn-primary">Template Excel</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form action="import.php" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="excelFile">Import File Excel</label>
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <div class="input-group ">
+                                            <input type="file" class="form-control" name="excelFile">
+                                        </div>
+                                    </div>
+                                    <div class="col text-center">
+                                        <button class="btn btn-danger">Import</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -134,6 +187,9 @@ $dataPerPage = 10;
                                 <th class="text-center">Tipe Pembayaran</th>
                                 <th class="text-center">Maps</th>
                                 <th class="text-center">Photo Meteran</th>
+                                <th class="text-center">Merk Meteran</th>
+                                <th class="text-center">Type Meteran</th>
+                                <th class="text-center">Nomor Meteran</th>
                                 <th class="text-center">Keterangann</th>
                                 <th class="text-center">Rincian</th>
                                 <th class="text-center">Opsi</th>
@@ -171,6 +227,9 @@ $dataPerPage = 10;
                                             <img src="../file/<?php echo $d['pmet']; ?>" style="width: 100px; height: 200px">
                                         </a>
                                     </td>
+                                    <td class="text-center"><?php echo $d['merk'] ?></td>
+                                    <td class="text-center"><?php echo $d['tipemet'] ?></td>
+                                    <td class="text-center"><?php echo $d['nomet'] ?></td>
                                     <td class="text-center"><?php echo $d['ket'] ?></td>
                                     <td class="text-center" style="max-width: 100px;">
                                         <div style="word-wrap: break-word; ">
@@ -315,4 +374,14 @@ $dataPerPage = 10;
     gambarModal.addEventListener('click', function() {
         gambarModal.classList.toggle('zoomed'); // Aktifkan atau nonaktifkan zoom.
     });
+
+    function openImportPopup() {
+        var importPopup = document.getElementById('importPopup');
+        importPopup.style.display = "block";
+    }
+
+    function closeImportPopup() {
+        var importPopup = document.getElementById('importPopup');
+        importPopup.style.display = "none";
+    }
 </script>

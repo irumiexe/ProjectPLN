@@ -46,7 +46,7 @@ include '../assets/conn/config.php';
 <body onload="getLocation()">
     <nav class="navbar navbar-expand-lg navbar-dark bg-info">
         <div class="container">
-            <img style="width: 30px; display: inline-block; vertical-align: middle;" src="../img/Logo_PLN.png" alt="Logo">
+            <img style="width: 30px; display: inline-block; vertical-align: middle;" src="../assets/img/Logo_PLN.png" alt="Logo">
             <a class="navbar-brand" href="#">SIPLN</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

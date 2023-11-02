@@ -57,6 +57,18 @@ if (isset($_GET['aksi'])) {
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="kd_akun">Rute Meter</label>
+                            <div class="input-group">
+                                <input type="text" name="rbm" class="form-control" placeholder="Masukkan Rute">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="kd_akun">Status</label>
+                            <div class="input-group">
+                                <input type="number" name="status" value="0" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="">Lokasi</label>
                             <div class="input-group">
                                 <div class="row">
@@ -139,6 +151,18 @@ if (isset($_GET['aksi'])) {
                                 <div class="input-group">
                                     <input type="text" name="idpel" class="form-control" value="<?php echo $d['idpel']; ?>" placeholder="Masukkan ID Pelanggan Minimal 11 Angka dan Maksimal 12 Angka" autofocus minlength="11" maxlength="12" required readonly>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="kd_akun">Rute Meter</label>
+                                <div class="input-group">
+                                    <input type="text" name="rbm" value="<?php echo $d['rbm'] ?>" class="form-control" placeholder="Masukkan Rute">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="kd_akun">Status</label>
+                                <div class="input-group">
+                                    <input type="number" name="rbm" value="0" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
