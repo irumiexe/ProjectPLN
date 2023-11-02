@@ -44,7 +44,7 @@ $dataPerPage = 10;
         display: none;
         position: fixed;
         z-index: 1;
-        padding-top: 100px;
+        padding-top: 60px;
         left: 0;
         top: 0;
         width: 100%;
@@ -364,6 +364,11 @@ $dataPerPage = 10;
             pagination.style.display = "none";
         };
     }
+    gambarPopUp.addEventListener('click', function(event) {
+        if (event.target === gambarPopUp) {
+            tutupPopUp();
+        }
+    });
 
     function tutupPopUp() {
         var gambarPopUp = document.getElementById('gambarPopUp');

@@ -304,7 +304,7 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Merk kWh Meter</label>
                                 <select name="merk" class="form-control" required>
-                                    <option value="<?php echo $d['merk'] ?>">Pilih Opsi</option>
+                                    <option value="<?php echo $d['merk'] ?>"><?php echo $d['merk'] ?></option>
                                     <option value="SMARTMETER">SMARTMETER</option>
                                     <option value="HEXING">HEXING</option>
                                     <option value="ITRON">ITRON</option>
