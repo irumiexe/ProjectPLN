@@ -139,22 +139,22 @@ if (isset($_SESSION['username'])) {
                         <a href="akunaksi.php?aksi=tambah" class="btn btn-primary">Tambah Akun</a>
                     </div>
                     <div class="col">
-                        <button class="btn btn-success" onclick="openImportPopup()">Excel</button>
+                        <button class="btn btn-success" onclick="openImportPopup()">Import</button>
                     </div>
                 </div>
                 <div id="importPopup" class="modal">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3>Data Excel</h3>
+                            <h3>Import Data</h3>
                             <span class="close" onclick="closeImportPopup()">&times;</span>
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col text-center">
+                                <!-- <div class="col text-center">
                                     <a href="excel.php" target="_blank">
                                         <button class="btn btn-success">Export</button>
                                     </a>
-                                </div>
+                                </div> -->
                                 <div class="col text-center">
                                     <a href="exceltemp.php" target="_blank">
                                         <button class="btn btn-primary">Template Excel</button>
