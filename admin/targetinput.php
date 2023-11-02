@@ -74,6 +74,55 @@ if (isset($_SESSION['username'])) {
     .card-primary {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-header {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 1rem;
+        border-bottom: 1px solid #e9ecef;
+        border-top-left-radius: calc(0.3rem - 1px);
+        border-top-right-radius: calc(0.3rem - 1px);
+    }
+
+    .modal-content {
+        display: block;
+        margin: 0 auto;
+        max-width: 22%;
+    }
+
+    .modal-body {
+        position: relative;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 1rem;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #fff;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+    }
 </style>
 
 <div class="container-xl">
@@ -85,7 +134,53 @@ if (isset($_SESSION['username'])) {
     <div class="panel-container">
         <div class="bootstrap-tabel">
             <div class="d-flex justify-content-between mb-3">
-                <a href="akunaksi.php?aksi=tambah" class="btn btn-primary">Tambah Akun</a>
+                <div class="row">
+                    <div class="col">
+                        <a href="akunaksi.php?aksi=tambah" class="btn btn-primary">Tambah Akun</a>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-success" onclick="openImportPopup()">Excel</button>
+                    </div>
+                </div>
+                <div id="importPopup" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Data Excel</h3>
+                            <span class="close" onclick="closeImportPopup()">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col text-center">
+                                    <a href="excel.php" target="_blank">
+                                        <button class="btn btn-success">Export</button>
+                                    </a>
+                                </div>
+                                <div class="col text-center">
+                                    <a href="exceltemp.php" target="_blank">
+                                        <button class="btn btn-primary">Template Excel</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <form action="import.php" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="excelFile">Import File Excel</label>
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <div class="input-group ">
+                                                <input type="file" class="form-control" name="excelFile">
+                                            </div>
+                                        </div>
+                                        <div class="col text-center">
+                                            <button class="btn btn-danger">Import</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <form class="d-flex ml-auto">
                     <input class="form-control mr-1" name="cari" type="search" placeholder="Search" aria-label="Search" value="<?php if (isset($_GET['cari'])) {
                                                                                                                                     echo $_GET['cari'];
@@ -212,5 +307,15 @@ if (isset($_SESSION['username'])) {
         echo '</nav>';
     }
     ?>
-
 </div>
+<script>
+    function openImportPopup() {
+        var importPopup = document.getElementById('importPopup');
+        importPopup.style.display = "block";
+    }
+
+    function closeImportPopup() {
+        var importPopup = document.getElementById('importPopup');
+        importPopup.style.display = "none";
+    }
+</script>

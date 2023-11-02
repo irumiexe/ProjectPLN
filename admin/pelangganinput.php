@@ -119,12 +119,12 @@ $dataPerPage = 10;
                     <div class="col">
                         <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
                     </div>
-                    <div class="col">
+                    <!-- <div class="col">
                         <button class="btn btn-success" onclick="openImportPopup()">Excel</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
-            <div id="importPopup" class="modal">
+            <!-- <div id="importPopup" class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Data Excel</h3>
@@ -162,8 +162,8 @@ $dataPerPage = 10;
                         </form>
                     </div>
                 </div>
-            </div>
-            
+            </div> -->
+
             <div class="card">
                 <div class="d-flex justify-content-between mb-3 card-header">
                     <h4 class=" card-title">Data Pelanggan</h4>
@@ -188,8 +188,8 @@ $dataPerPage = 10;
                                 <th class="text-center">Tipe Pembayaran</th>
                                 <th class="text-center">Maps</th>
                                 <th class="text-center">Photo Meteran</th>
-                                <th class="text-center">Merk Meteran</th>
-                                <th class="text-center">Type Meteran</th>
+                                <th class="text-center">Merk</th>
+                                <th class="text-center">Type</th>
                                 <th class="text-center">Nomor Meteran</th>
                                 <th class="text-center">Keterangann</th>
                                 <th class="text-center">Rincian</th>
