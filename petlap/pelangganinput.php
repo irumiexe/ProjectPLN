@@ -12,12 +12,13 @@ if (!isset($_SESSION['kd_akun_user'])) {
 $kd_akun_user = $_SESSION['kd_akun_user'];
 
 // Inisialisasi tanggal hari ini jika tidak ada tanggal yang dipilih
-$tanggal_dipilih = date('Y-m-d');
-
-// Jika pengguna memilih tanggal
-if (isset($_POST['pilih_tanggal'])) {
-    $tanggal_dipilih = $_POST['tanggal'];
+if (isset($_POST['tanggal'])) {
+    $_SESSION['tanggal_dipilih'] = $_POST['tanggal'];
+} else if (!isset($_SESSION['tanggal_dipilih'])) {
+    $_SESSION['tanggal_dipilih'] = date('Y-m-d');
 }
+
+$tanggal_dipilih = $_SESSION['tanggal_dipilih'];
 
 $query_hitung_data_input = "SELECT COUNT(*) as jumlah_data FROM tbl_pelanggan WHERE tanggal = '$tanggal_dipilih' AND kd_akun = '$kd_akun_user'";
 $result_hitung_data_input = mysqli_query($db, $query_hitung_data_input);
@@ -32,7 +33,7 @@ $data_total = mysqli_fetch_assoc($result_total_data);
 $total_data = $data_total['total_data'];
 
 // Tentukan jumlah data per halaman
-$data_per_page = 5;
+$data_per_page = 1;
 
 // Hitung jumlah halaman yang dibutuhkan
 $total_pages = ceil($total_data / $data_per_page);
@@ -105,7 +106,8 @@ $tampil = mysqli_query($db, $hasil);
                 <div class="form-group">
                     <label for="tanggal">Pilih Tanggal: </label>
                     <input type="date" name="tanggal" class="form-control" value="<?php echo $tanggal_dipilih; ?>">
-                    <button type="submit" name="pilih_tanggal" class="btn btn-success mt-2">Pilih</button>
+                    <input type="hidden" name="pilih_tanggal" value="1">
+                    <button type="submit" class="btn btn-success mt-2">Pilih</button>
                 </div>
             </form>
             <br>
@@ -189,6 +191,7 @@ $tampil = mysqli_query($db, $hasil);
                 if ($current_page < $total_pages) {
                     echo '<a href="?page=' . ($current_page + 1) . '&tanggal=' . $tanggal_dipilih . '">&raquo;</a>';
                 }
+
                 ?>
             </div>
         </div>
