@@ -319,6 +319,13 @@ if (isset($_SESSION['username'])) {
         importPopup.style.display = "none";
     }
 
+    window.addEventListener("click", function(event) {
+        var importPopup = document.getElementById('importPopup');
+        if (event.target == importPopup) {
+            closeImportPopup();
+        }
+    });
+
     var successMessage = "<?php echo isset($_GET['success_message']) ? $_GET['success_message'] : ''; ?>";
     var errorMessage = "<?php echo isset($_GET['error_message']) ? $_GET['error_message'] : ''; ?>";
     if (successMessage) {
