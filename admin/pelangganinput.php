@@ -119,7 +119,12 @@ $dataPerPage = 10;
                     <div class="col">
                         <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
                     </div>
-                    <!-- <div class="col">
+                    <div class="col text-center">
+                        <a href="excel.php" target="_blank">
+                            <button class="btn btn-success">Export Excel</button>
+                        </a>
+                    </div>
+                    <!-- ?<div class="col">
                         <button class="btn btn-success" onclick="openImportPopup()">Excel</button>
                     </div> -->
                 </div>

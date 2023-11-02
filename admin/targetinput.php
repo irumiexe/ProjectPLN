@@ -139,7 +139,7 @@ if (isset($_SESSION['username'])) {
                         <a href="akunaksi.php?aksi=tambah" class="btn btn-primary">Tambah Akun</a>
                     </div>
                     <div class="col">
-                        <button class="btn btn-success" onclick="openImportPopup()">Import</button>
+                        <button class="btn btn-success" onclick="openImportPopup()">Import Data</button>
                     </div>
                 </div>
                 <div id="importPopup" class="modal">
@@ -156,8 +156,8 @@ if (isset($_SESSION['username'])) {
                                     </a>
                                 </div> -->
                                 <div class="col text-center">
-                                    <a href="exceltemp.php" target="_blank">
-                                        <button class="btn btn-primary">Template Excel</button>
+                                    <a href="../assets/tmp/Daftar_Target.xlsx" target="_blank">
+                                        <button class="btn btn-primary" download>Template Excel</button>
                                     </a>
                                 </div>
                             </div>
@@ -231,7 +231,7 @@ if (isset($_SESSION['username'])) {
                                     if ($d['level'] == 0) {
                                         echo "Admin";
                                     } elseif ($d['level'] == 1) {
-                                        echo "Petugas Lapangan";
+                                        echo "Petugas Lapangan ($kd_akun)";
                                     } else {
                                         echo $d['level'];
                                     }
