@@ -42,6 +42,7 @@ $kd_akun = $_GET['kd_akun'];
                             <th class="text-center">ID PELANGGAN</th>
                             <th class="text-center">MAPS</th>
                             <th class="text-center">RBM</th>
+                            <th class="text-center">STATUS</th>
                             <th class="text-center">OPSI</th>
                         </tr>
                     </thead>
@@ -62,6 +63,15 @@ $kd_akun = $_GET['kd_akun'];
                                     <a href='https://www.google.com/maps?q=<?php echo $db["latitude"] ?>,<?php echo $db["longitude"]; ?>' target="_blank">Lihat di Google Maps</a>
                                 </td>
                                 <td class="text-center"><?php echo $db['rbm']; ?></td>
+                                <td class="text-center">
+                                    <?php
+                                    if ($db['status'] == 0) {
+                                        echo "Belum";
+                                    } elseif ($db['status'] == 1) {
+                                        echo "Sudah";
+                                    } 
+                                    ?>
+                                </td>
                                 <td class="text-center">
                                     <a href="targetaksi.php?kode=<?php echo $db['idpel'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
                                     <a href="javascript:void(0);" class="btn btn-danger" onclick="hapusData('<?php echo $db['idpel']; ?>')">Hapus</a>
