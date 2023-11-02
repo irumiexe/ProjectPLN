@@ -162,7 +162,7 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="kd_akun">Status</label>
                                 <div class="input-group">
-                                    <input type="number" name="rbm" value="0" class="form-control">
+                                    <input type="number" name="status" value="0" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">

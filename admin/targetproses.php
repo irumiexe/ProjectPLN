@@ -25,7 +25,7 @@ if (isset($_GET['proses']) && $_GET['proses'] == 'prosestambah') {
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
 
-    $hasil = $db->query("UPDATE tbl_target set tanggal='$tanggal', tanggal_akhir='$tanggal_akhir', rbm='$rbm', latitude='$latitude', longitude='$longitude' where idpel='$idpel'");
+    $hasil = $db->query("UPDATE tbl_target set tanggal='$tanggal', tanggal_akhir='$tanggal_akhir', rbm='$rbm', latitude='$latitude', longitude='$longitude',status='$status' where idpel='$idpel'");
     if ($hasil) {
         echo "<script>alert('Update berhasil');</script>";
     } else {
