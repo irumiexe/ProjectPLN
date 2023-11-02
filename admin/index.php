@@ -1,6 +1,9 @@
 <?php
 include 'header.php';
 
+$jumlah_target = 0; 
+$jumlah_target2 = 0;
+
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
     $level = $_SESSION['level'];

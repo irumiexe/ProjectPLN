@@ -163,6 +163,7 @@ $dataPerPage = 10;
                     </div>
                 </div>
             </div>
+            
             <div class="card">
                 <div class="d-flex justify-content-between mb-3 card-header">
                     <h4 class=" card-title">Data Pelanggan</h4>
