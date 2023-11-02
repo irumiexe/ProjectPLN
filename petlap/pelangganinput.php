@@ -19,6 +19,12 @@ if (isset($_POST['pilih_tanggal'])) {
     $tanggal_dipilih = $_POST['tanggal'];
 }
 
+$query_hitung_data_input = "SELECT COUNT(*) as jumlah_data FROM tbl_pelanggan WHERE tanggal = '$tanggal_dipilih' AND kd_akun = '$kd_akun_user'";
+$result_hitung_data_input = mysqli_query($db, $query_hitung_data_input);
+$data_hitung_input = mysqli_fetch_assoc($result_hitung_data_input);
+$jumlah_data = $data_hitung_input['jumlah_data'];
+
+
 // Hitung jumlah total data yang akan ditampilkan
 $query_total_data = "SELECT COUNT(*) as total_data FROM tbl_target WHERE kd_akun = '$kd_akun_user' AND ('$tanggal_dipilih' BETWEEN tanggal AND tanggal_akhir)";
 $result_total_data = mysqli_query($db, $query_total_data);
@@ -105,7 +111,7 @@ $tampil = mysqli_query($db, $hasil);
             <br>
             <div>
                 <p>Tanggal Dipilih: <?php echo $tanggal_dipilih; ?></p>
-                <p>Jumlah Data yang di input : <?php echo $total_data; ?></p>
+                <p>Jumlah Data yang di input : <?php echo $jumlah_data; ?></p>
             </div>
         </div>
         <br>
