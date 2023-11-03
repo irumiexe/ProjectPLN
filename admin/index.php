@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 
-$jumlah_target = 0; 
+$jumlah_target = 0;
 $jumlah_target2 = 0;
 
 if (isset($_SESSION['username'])) {
@@ -111,3 +111,4 @@ if (isset($_SESSION['username'])) {
         </div>
     </div>
 </div>
+<?php include '../assets/footer.php'; ?>

@@ -3,7 +3,7 @@ include 'header.php';
 ?>
 <style>
     .table-striped tbody tr:nth-child(odd) {
-        background-color: #A0E9FF !important;
+        background-color: #E0F4FF !important;
     }
 
     .table-striped tbody tr:nth-child(even) {

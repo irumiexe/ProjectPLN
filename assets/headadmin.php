@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();
+// session_start();
 include '../assets/conn/cek.php';
 include '../assets/conn/config.php';
 ?>
@@ -12,8 +12,8 @@ include '../assets/conn/config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>SI PLN</title>
-    <link href="../assets/img/Logo_PLN.png" rel="icon" />
+    <title>Bebas Masalah: Mahasiswa</title>
+    <!-- <link href="../assets/img/Logo Poliban.png" rel="icon" /> -->
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="../assets/css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -21,9 +21,9 @@ include '../assets/conn/config.php';
 </head>
 
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-info">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="../Mahasiswa/mahasiswa.php"><b>SI PLN</b></a>
+        <a class="navbar-brand ps-3" href="../Mahasiswa/mahasiswa.php"><b>BEBAS MASALAH</b></a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -38,7 +38,9 @@ include '../assets/conn/config.php';
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= strtoupper($_SESSION['username']) ?><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                    <!-- <li><a class="dropdown-item" href="#!">Activity Log</a></li> -->
+                    <!-- <li><hr class="dropdown-divider" /></li> -->
+                    <li><a class="dropdown-item" href="../Logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -55,24 +57,16 @@ include '../assets/conn/config.php';
                             <div class="small">Role: <?= $_SESSION['role'] ?></div>
                         </div>
                         <div class="sb-sidenav-menu-heading">Menu</div>
-                        <a class="nav-link" href="../admin/index.php">
+                        <a class="nav-link" href="../Admin/admin.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="../admin/pelangganinput.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Data Pelanggan
-                        </a>
-                        <a class="nav-link" href="../admin/akuninput.php">
+                        <a class="nav-link" href="../Admin/KajurElektro.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                            Data Hak Akses
-                        </a>
-                        <a class="nav-link" href="../admin/targetinput.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user-graduate"></i></div>
-                            data Target
+                            Data pelanggan
                         </a>
                     </div>
-
             </nav>
         </div>
-        <div id="layoutSidenav_content">
+    </div>
+    <div id="layoutSidenav_content">
