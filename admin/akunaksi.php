@@ -144,10 +144,11 @@ if (isset($_GET['aksi'])) {
                 </div>
 
                 </form>
-                <?php include '../assets/footer.php'; ?>
+
             <?php } ?>
             </div>
         </div>
+        <?php include '../assets/footer.php'; ?>
         </div>
 <?php
     }
