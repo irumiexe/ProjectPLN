@@ -47,6 +47,11 @@ if (isset($_SESSION['username'])) {
 ?>
 
 <style>
+    .container-xl {
+        max-width: 1705px;
+        /* Atur lebar maksimum kontainer sesuai dengan preferensi Anda */
+    }
+
     .list-group {
         border: none;
     }

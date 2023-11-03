@@ -34,6 +34,11 @@ if (isset($_SESSION['username'])) {
 ?>
 
 <style>
+    .container-xl {
+        max-width: 1705px;
+        /* Atur lebar maksimum kontainer sesuai dengan preferensi Anda */
+    }
+
     .list-group {
         border: none;
     }
@@ -68,7 +73,7 @@ if (isset($_SESSION['username'])) {
     }
 </style>
 
-<div class="container">
+<div class="container-xl">
     <div class="row">
         <ol class="breadcrumb px-2 pt-2">
             <h4>DASHBOARD</h4>
@@ -84,7 +89,6 @@ if (isset($_SESSION['username'])) {
                             <div class="card-body box-profile">
                                 <div class="text-center">
                                     <img class="profile-user-img img-fluid img-circle" src="<?php echo $fotoProfilPath; ?>" alt="User profile picture" </div>
-
                                     <h3 class="profile-username text-center"><?php echo $data['nama_lengkap']; ?></h3>
                                     <p class="text-muted text-center">
                                         <?php

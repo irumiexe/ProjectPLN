@@ -9,6 +9,11 @@ include 'header.php';
     .table-striped tbody tr:nth-child(even) {
         background-color: #FFF6F6 !important;
     }
+
+    .container-xl {
+        max-width: 1705px;
+        /* Atur lebar maksimum kontainer sesuai dengan preferensi Anda */
+    }
 </style>
 
 <div class="container-xl">
