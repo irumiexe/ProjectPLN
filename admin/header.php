@@ -23,7 +23,8 @@ include '../assets/conn/config.php';
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-info">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="../Mahasiswa/mahasiswa.php"><b>SI PLN</b></a>
+        <a class="navbar-brand ps-3 text-center" href="index.php"><b>SI PLN</b></a>
+
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -51,9 +52,15 @@ include '../assets/conn/config.php';
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-footer">
-                            <div class="small">Login Sebagai: <?= strtoupper($_SESSION['username']) ?></div>
-                            <div class="small">Role: <?= $_SESSION['role'] ?></div>
+                            <div class="d-flex align-items-center">
+                                <img src="../assets/img/Logo_PLN.png" width="45px" height="60px" alt="Footer Image">
+                                <div class="ms-3" style="color: #fff;">
+                                    <b>SIPLN</b><br>
+                                    <a>UP3 Banjarmasin</a>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="sb-sidenav-menu-heading">Menu</div>
                         <a class="nav-link" href="../admin/index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
