@@ -123,6 +123,10 @@ if (isset($_SESSION['username'])) {
         font-weight: bold;
         cursor: pointer;
     }
+
+    .foto-user {
+        border-radius: 150px;
+    }
 </style>
 
 <div class="container-xl">
@@ -222,7 +226,7 @@ if (isset($_SESSION['username'])) {
                         <div class="card card-primary card-outline" style="border-top: 5px solid #007bff; margin-bottom: 20px;">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <img class="profile-user-img img-fluid img-circle" src="<?php echo $fotoProfilPath; ?>" alt="User profile picture">
+                                    <img class="foto-user" src="<?php echo $fotoProfilPath; ?>" alt="User profile picture">
                                 </div>
 
                                 <h3 class="profile-username text-center"><?php echo $d['nama_lengkap']; ?></h3>
