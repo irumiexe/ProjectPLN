@@ -70,7 +70,7 @@ if (isset($_SESSION['username'])) {
 
 <div class="container">
     <div class="row">
-        <ol class="breadcrumb">
+        <ol class="breadcrumb px-2 pt-2">
             <h4>DASHBOARD</h4>
         </ol>
     </div>
