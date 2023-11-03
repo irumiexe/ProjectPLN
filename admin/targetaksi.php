@@ -14,6 +14,13 @@ if (isset($_GET['aksi'])) {
         $tanggal_dipilih = date('Y-m-d');
 ?>
 
+        <style>
+            .form-group {
+                margin-top: 10px;
+
+            }
+        </style>
+
         <div class="container">
             <div class="row">
                 <ol class="breadcrumb">

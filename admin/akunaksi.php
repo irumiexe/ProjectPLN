@@ -28,6 +28,13 @@ if (isset($_GET['aksi'])) {
 
             ?>
 
+            <style>
+                .form-group {
+                    margin-top: 10px;
+
+                }
+            </style>
+
             <div class="panel-container">
                 <div class="bootstrap-tabel">
                     <form action="akunproses.php?proses=prosestambah" method="post" enctype="multipart/form-data">

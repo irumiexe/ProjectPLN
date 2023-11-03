@@ -13,6 +13,14 @@ if (isset($_GET['aksi'])) {
         $alert_message = "Mohon untuk Mengaktifkan Location dan Membuka Aplikasi Gmaps Terlebih Dahulu Agar Memperkuat Akurasi Titik Koordinat!";
 ?>
 
+        <style>
+            .form-group {
+                margin-top: 10px;
+
+            }
+        </style>
+
+
         <div class="container">
             <div class="row">
                 <ol class="breadcrumb">
