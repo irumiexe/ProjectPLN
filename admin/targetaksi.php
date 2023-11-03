@@ -23,7 +23,7 @@ if (isset($_GET['aksi'])) {
 
         <div class="container">
             <div class="row">
-                <ol class="breadcrumb">
+                <ol class="breadcrumb px-2 pt-2">
                     <h4>DATA PETUGAS/ TAMBAH TARGET</h4>
                 </ol>
             </div>
@@ -123,7 +123,7 @@ if (isset($_GET['aksi'])) {
     <?php } elseif ($_GET['aksi'] == 'ubah') { ?>
         <div class="container">
             <div class="row">
-                <ol class="breadcrumb">
+                <ol class="breadcrumb px-2 pt-2">
                     <h4>TARGET/ UBAH</h4>
                 </ol>
             </div>

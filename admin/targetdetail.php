@@ -27,7 +27,7 @@ $kd_akun = $_GET['kd_akun']; // Ambil nilai kd_akun dari URL
 
 <div class="container-xl">
     <div class="row">
-        <ol class="breadcrumb">
+        <ol class="breadcrumb px-2 pt-2">
             <h4>DATA TARGET</h4>
         </ol>
     </div>
