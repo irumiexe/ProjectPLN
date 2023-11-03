@@ -237,6 +237,7 @@ if (isset($_GET['aksi'])) {
                     </script>
                 </div>
             </div>
+            <?php include '../assets/footer.php'; ?>
         </div>
     <?php } elseif ($_GET['aksi'] == 'ubah') { ?>
         <div class="container">
@@ -392,6 +393,7 @@ if (isset($_GET['aksi'])) {
                 <input type="submit" class="btn btn-success" value="Ubah" onclick="confirmUpdate();">
             </div>
             </form>
+            <?php include '../assets/footer.php'; ?>
             <script>
                 function confirmUpdate() {
                     if (confirm('Yakin data sudah benar?')) {

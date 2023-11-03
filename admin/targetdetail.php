@@ -9,9 +9,12 @@ if (!isset($_SESSION['kd_akun_user'])) {
 }
 
 $kd_akun_user = $_SESSION['kd_akun_user'];
-$kd_akun = $_GET['kd_akun'];
+$kd_akun = $_GET['kd_akun']; // Ambil nilai kd_akun dari URL
+
+
 
 ?>
+
 <style>
     .card-title {
         text-align: center;
@@ -40,33 +43,23 @@ $kd_akun = $_GET['kd_akun'];
                             <th class="text-center">No.</th>
                             <th class="text-center">ID PELANGGAN</th>
                             <th class="text-center">MAPS</th>
-                            <th class="text-center">RBM</th>
-                            <th class="text-center">STATUS</th>
                             <th class="text-center">OPSI</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $counter = 1;
-                        $hasil = "SELECT * FROM tbl_target WHERE kd_akun = '$kd_akun' ORDER BY rbm";
+                        $hasil = "SELECT * FROM tbl_target WHERE kd_akun = '$kd_akun'";
                         $tampil = mysqli_query($db, $hasil);
+
                         while ($db = $tampil->fetch_array()) {
+                            // Tampilkan data dari tabel tbl_target sesuai dengan kd_akun
                         ?>
                             <tr>
                                 <td class="text-center"><?php echo $counter; ?></td>
                                 <td class="text-center"><?php echo $db['idpel'] ?></td>
                                 <td class="text-center">
                                     <a href='https://www.google.com/maps?q=<?php echo $db["latitude"] ?>,<?php echo $db["longitude"]; ?>' target="_blank">Lihat di Google Maps</a>
-                                </td>
-                                <td class="text-center"><?php echo $db['rbm']; ?></td>
-                                <td class="text-center">
-                                    <?php
-                                    if ($db['status'] == 0) {
-                                        echo "Belum";
-                                    } elseif ($db['status'] == 1) {
-                                        echo "Sudah";
-                                    } 
-                                    ?>
                                 </td>
                                 <td class="text-center">
                                     <a href="targetaksi.php?kode=<?php echo $db['idpel'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
@@ -82,6 +75,7 @@ $kd_akun = $_GET['kd_akun'];
                 </table>
             </div>
         </div>
+        <?php include '../assets/footer.php'; ?>
     </div>
     <script>
         function hapusData(idpelanggan) {

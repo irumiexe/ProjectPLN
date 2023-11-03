@@ -77,6 +77,7 @@ if (isset($_GET['aksi'])) {
                     </form>
                 </div>
             </div>
+            <?php include '../assets/footer.php'; ?>
         </div>
     <?php } elseif ($_GET['aksi'] == 'ubah') { ?>
 
@@ -143,6 +144,7 @@ if (isset($_GET['aksi'])) {
                 </div>
 
                 </form>
+                <?php include '../assets/footer.php'; ?>
             <?php } ?>
             </div>
         </div>

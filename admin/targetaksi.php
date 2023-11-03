@@ -79,10 +79,10 @@ if (isset($_GET['aksi'])) {
                             <label for="">Lokasi</label>
                             <div class="input-group">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-5">
                                         <td><input type="text" name="latitude" class="form-control" value="" placeholder="Garis Lintang"></td>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-5">
                                         <td><input type="text" name="longitude" class="form-control" value="" placeholder="Garis Bujur"></td>
                                     </div>
                                 </div>
@@ -118,6 +118,7 @@ if (isset($_GET['aksi'])) {
                 </script>
             </div>
         </div>
+        <?php include '../assets/footer.php'; ?>
         </div>
     <?php } elseif ($_GET['aksi'] == 'ubah') { ?>
         <div class="container">
@@ -192,7 +193,7 @@ if (isset($_GET['aksi'])) {
                     <button type="submit" class="btn btn-success" name="submit" onclick="confirmSubmit()">Submit</button>
                 </div>
                 </form>
-
+                <?php include '../assets/footer.php'; ?>
                 <script>
                     function confirmUpdate() {
                         if (confirm('Yakin data sudah benar?')) {
