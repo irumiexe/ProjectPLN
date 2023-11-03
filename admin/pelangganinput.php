@@ -108,7 +108,7 @@ $dataPerPage = 10;
 
 <div class="container-xl">
     <div class="row">
-        <ol class="breadcrumb">
+        <ol class="breadcrumb px-2 pt-2">
             <h4>INPUT DATA PELANGGAN</h4>
         </ol>
     </div>
@@ -117,19 +117,16 @@ $dataPerPage = 10;
             <div class="d-flex justify-content-between mb-3">
                 <div class="row">
                     <div class="col">
-                        <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah Data</a>
+                        <a href="akunaksi.php?aksi=tambah" class="btn btn-primary">Tambah Akun</a>
+                        <button class="btn btn-success ml-2" onclick="openImportPopup()">Import Data</button>
                     </div>
-                    <div class="col text-center">
-                        <a href="excel.php" target="_blank">
-                            <button class="btn btn-success">Export Excel</button>
-                        </a>
-                    </div>
-                    <!-- ?<div class="col">
+                </div>
+                <!-- ?<div class="col">
                         <button class="btn btn-success" onclick="openImportPopup()">Excel</button>
                     </div> -->
-                </div>
             </div>
-            <!-- <div id="importPopup" class="modal">
+        </div>
+        <!-- <div id="importPopup" class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Data Excel</h3>
@@ -169,178 +166,179 @@ $dataPerPage = 10;
                 </div>
             </div> -->
 
-            <div class="card">
-                <div class="d-flex justify-content-between mb-3 card-header">
-                    <h4 class=" card-title">Data Pelanggan</h4>
-                    <form class="d-flex ml-auto" method="GET">
-                        <input class="form-control mr-1" name="cari" type="search" placeholder="Search" aria-label="Search" value="<?php if (isset($_GET['cari'])) {
-                                                                                                                                        echo $_GET['cari'];
-                                                                                                                                    } ?>">
-                        <button class="btn" type="submit">
-                            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-                <div class="mx-3 table-responsive">
-                    <table class="table table-striped table-bordered table-bordered">
-                        <thead>
-                            <tr>
-                                <th class="text-center">ID Pelanggan</th>
-                                <th class="text-center">Nama Pelanggan</th>
-                                <th class="text-center">Daya (VA)</th>
-                                <th class="text-center">Tipe Pembayaran</th>
-                                <th class="text-center">Maps</th>
-                                <th class="text-center">Photo Meteran</th>
-                                <th class="text-center">Merk</th>
-                                <th class="text-center">Type</th>
-                                <th class="text-center">Nomor Meteran</th>
-                                <th class="text-center">Keterangann</th>
-                                <th class="text-center">Rincian</th>
-                                <th class="text-center">Opsi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            if (isset($_GET['cari'])) {
-                                $pencarian = $_GET['cari'];
-                                $hasil = "SELECT * from tbl_pelanggan where idpel like '%" . $pencarian . "%' or nama_pel like '%" . $pencarian . "%' 
+        <div class="card">
+            <div class="d-flex justify-content-between mb-3 card-header">
+                <h4 class=" card-title">Data Pelanggan</h4>
+                <form class="d-flex ml-auto" method="GET">
+                    <input class="form-control mr-1" name="cari" type="search" placeholder="Search" aria-label="Search" value="<?php if (isset($_GET['cari'])) {
+                                                                                                                                    echo $_GET['cari'];
+                                                                                                                                } ?>">
+                    <button class="btn" type="submit">
+                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            <div class="mx-3 table-responsive">
+                <table class="table table-striped table-bordered table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID Pelanggan</th>
+                            <th class="text-center">Nama Pelanggan</th>
+                            <th class="text-center">Daya (VA)</th>
+                            <th class="text-center">Tipe Pembayaran</th>
+                            <th class="text-center">Maps</th>
+                            <th class="text-center">Photo Meteran</th>
+                            <th class="text-center">Merk</th>
+                            <th class="text-center">Type</th>
+                            <th class="text-center">Nomor Meteran</th>
+                            <th class="text-center">Keterangann</th>
+                            <th class="text-center">Rincian</th>
+                            <th class="text-center">Opsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if (isset($_GET['cari'])) {
+                            $pencarian = $_GET['cari'];
+                            $hasil = "SELECT * from tbl_pelanggan where idpel like '%" . $pencarian . "%' or nama_pel like '%" . $pencarian . "%' 
                                                                             or ket like '%" . $pencarian . "%' or daya like '%" . $pencarian . "%' or tipe like '%" . $pencarian . "%' order by idpel asc";
-                            } else {
-                                $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-                                $startFrom = ($currentPage - 1) * $dataPerPage;
+                        } else {
+                            $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+                            $startFrom = ($currentPage - 1) * $dataPerPage;
 
-                                $hasil = "SELECT * from tbl_pelanggan order by idpel asc LIMIT $startFrom, $dataPerPage";
-                            }
-                            $tampil = mysqli_query($db, $hasil);
-                            while ($d = $tampil->fetch_array()) {
-                            ?>
-                                <tr>
-                                    <td class="text-center"><?php echo $d['idpel'] ?></td>
-                                    <td class="text-center" style="max-width: 100px;">
-                                        <div style="word-wrap: break-word; ">
-                                            <?php echo $d['nama_pel'] ?>
-                                        </div>
-                                    </td>
-                                    <td class="text-center"><?php echo $d['daya'] ?></td>
-                                    <td class="text-center"><?php echo $d['tipe'] ?></td>
-                                    <td style="width: 200px; height: 200px;">
-                                        <iframe src='https://www.google.com/maps?q=<?Php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>&hl=es;z=14&output=embed' style="width:100%; height:100%;"></iframe>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="javascript:void(0);" onclick="tampilkanGambar('../file/<?php echo $d['pmet']; ?>')">
-                                            <img src="../file/<?php echo $d['pmet']; ?>" style="width: 100px; height: 200px">
-                                        </a>
-                                    </td>
-                                    <td class="text-center"><?php echo $d['merk'] ?></td>
-                                    <td class="text-center"><?php echo $d['tipemet'] ?></td>
-                                    <td class="text-center"><?php echo $d['nomet'] ?></td>
-                                    <td class="text-center"><?php echo $d['ket'] ?></td>
-                                    <td class="text-center" style="max-width: 100px;">
-                                        <div style="word-wrap: break-word; ">
-                                            <?php echo $d['ket2'] ?>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="pelangganaksi.php?kode=<?php echo $d['idpel'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
-                                        <a href="javascript:void(0);" class="btn btn-danger" onclick="hapusData('<?php echo $d['idpel']; ?>')">Hapus</a>
-                                    </td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                    <div id="gambarPopUp" class="modal">
+                            $hasil = "SELECT * from tbl_pelanggan order by idpel asc LIMIT $startFrom, $dataPerPage";
+                        }
+                        $tampil = mysqli_query($db, $hasil);
+                        while ($d = $tampil->fetch_array()) {
+                        ?>
+                            <tr>
+                                <td class="text-center"><?php echo $d['idpel'] ?></td>
+                                <td class="text-center" style="max-width: 100px;">
+                                    <div style="word-wrap: break-word; ">
+                                        <?php echo $d['nama_pel'] ?>
+                                    </div>
+                                </td>
+                                <td class="text-center"><?php echo $d['daya'] ?></td>
+                                <td class="text-center"><?php echo $d['tipe'] ?></td>
+                                <td style="width: 200px; height: 200px;">
+                                    <iframe src='https://www.google.com/maps?q=<?Php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>&hl=es;z=14&output=embed' style="width:100%; height:100%;"></iframe>
+                                </td>
+                                <td class="text-center">
+                                    <a href="javascript:void(0);" onclick="tampilkanGambar('../file/<?php echo $d['pmet']; ?>')">
+                                        <img src="../file/<?php echo $d['pmet']; ?>" style="width: 100px; height: 200px">
+                                    </a>
+                                </td>
+                                <td class="text-center"><?php echo $d['merk'] ?></td>
+                                <td class="text-center"><?php echo $d['tipemet'] ?></td>
+                                <td class="text-center"><?php echo $d['nomet'] ?></td>
+                                <td class="text-center"><?php echo $d['ket'] ?></td>
+                                <td class="text-center" style="max-width: 100px;">
+                                    <div style="word-wrap: break-word; ">
+                                        <?php echo $d['ket2'] ?>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <a href="pelangganaksi.php?kode=<?php echo $d['idpel'] ?>&aksi=ubah" class="btn btn-success">Ubah</a>
+                                    <a href="javascript:void(0);" class="btn btn-danger" onclick="hapusData('<?php echo $d['idpel']; ?>')">Hapus</a>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <div id="gambarPopUp" class="modal">
 
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3>Bukti Dokumentasi</h3>
-                                <span class="close" onclick="tutupPopUp()">&times;</span>
-                            </div>
-                            <div class="modal-body">
-                                <img id="gambarModal">
-                            </div>
-
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Bukti Dokumentasi</h3>
+                            <span class="close" onclick="tutupPopUp()">&times;</span>
                         </div>
+                        <div class="modal-body">
+                            <img id="gambarModal">
+                        </div>
+
                     </div>
                 </div>
-                <div class="pagination">
-                    <?php
-                    $query = "SELECT COUNT(*) AS total FROM tbl_pelanggan";
-                    if (isset($_GET['cari'])) {
-                        $pencarian = $_GET['cari'];
-                        $query .= " WHERE idpel LIKE '%$pencarian%' OR nama_pel LIKE '%$pencarian%' OR ket LIKE '%$pencarian%' OR daya LIKE '%$pencarian%' OR tipe LIKE '%$pencarian%'";
+            </div>
+            <div class="pagination">
+                <?php
+                $query = "SELECT COUNT(*) AS total FROM tbl_pelanggan";
+                if (isset($_GET['cari'])) {
+                    $pencarian = $_GET['cari'];
+                    $query .= " WHERE idpel LIKE '%$pencarian%' OR nama_pel LIKE '%$pencarian%' OR ket LIKE '%$pencarian%' OR daya LIKE '%$pencarian%' OR tipe LIKE '%$pencarian%'";
+                }
+                $result = mysqli_query($db, $query);
+                $row = mysqli_fetch_assoc($result);
+                $totalPages = ($row['total'] > 0) ? ceil($row['total'] / $dataPerPage) : 1;
+                $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+                $startFrom = ($currentPage - 1) * $dataPerPage; // Mulai dari data ke berapa
+
+                // Tambahkan LIMIT ke dalam query data
+                $queryData = "SELECT * FROM tbl_pelanggan";
+                if (isset($_GET['cari'])) {
+                    $queryData .= " WHERE idpel LIKE '%$pencarian%' OR nama_pel LIKE '%$pencarian%' OR ket LIKE '%$pencarian%' OR daya LIKE '%$pencarian%' OR tipe LIKE '%$pencarian%'";
+                }
+                $queryData .= " ORDER BY idpel ASC LIMIT $startFrom, $dataPerPage";
+
+                $resultData = mysqli_query($db, $queryData);
+                while ($d = $resultData->fetch_array()) {
+                }
+                if ($totalPages > 1) {
+                    echo '<nav aria-label="Page navigation example">';
+                    echo '<ul class="pagination">';
+                    if (
+                        $currentPage > 1
+                    ) {
+                        echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">&laquo;</a></li>';
                     }
-                    $result = mysqli_query($db, $query);
-                    $row = mysqli_fetch_assoc($result);
-                    $totalPages = ($row['total'] > 0) ? ceil($row['total'] / $dataPerPage) : 1;
-                    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-                    $startFrom = ($currentPage - 1) * $dataPerPage; // Mulai dari data ke berapa
 
-                    // Tambahkan LIMIT ke dalam query data
-                    $queryData = "SELECT * FROM tbl_pelanggan";
-                    if (isset($_GET['cari'])) {
-                        $queryData .= " WHERE idpel LIKE '%$pencarian%' OR nama_pel LIKE '%$pencarian%' OR ket LIKE '%$pencarian%' OR daya LIKE '%$pencarian%' OR tipe LIKE '%$pencarian%'";
+                    $numPagesToShow = 3;
+                    $halfNumPages = floor($numPagesToShow / 2);
+                    $startPage = max(1, $currentPage - $halfNumPages);
+                    $endPage = min($totalPages, $startPage + $numPagesToShow - 1);
+
+                    if (
+                        $startPage > 1
+                    ) {
+                        echo '<li class="page-item"><a class="page-link" href="?page=1">1</a></li>';
+                        if ($startPage > 2) {
+                            echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                        }
                     }
-                    $queryData .= " ORDER BY idpel ASC LIMIT $startFrom, $dataPerPage";
 
-                    $resultData = mysqli_query($db, $queryData);
-                    while ($d = $resultData->fetch_array()) {
+                    for ($i = $startPage; $i <= $endPage; $i++) {
+                        echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
                     }
-                    if ($totalPages > 1) {
-                        echo '<nav aria-label="Page navigation example">';
-                        echo '<ul class="pagination">';
+
+                    if (
+                        $endPage < $totalPages
+                    ) {
                         if (
-                            $currentPage > 1
+                            $endPage < $totalPages - 1
                         ) {
-                            echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">&laquo;</a></li>';
+                            echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
                         }
-
-                        $numPagesToShow = 3;
-                        $halfNumPages = floor($numPagesToShow / 2);
-                        $startPage = max(1, $currentPage - $halfNumPages);
-                        $endPage = min($totalPages, $startPage + $numPagesToShow - 1);
-
-                        if (
-                            $startPage > 1
-                        ) {
-                            echo '<li class="page-item"><a class="page-link" href="?page=1">1</a></li>';
-                            if ($startPage > 2) {
-                                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
-                            }
-                        }
-
-                        for ($i = $startPage; $i <= $endPage; $i++) {
-                            echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
-                        }
-
-                        if (
-                            $endPage < $totalPages
-                        ) {
-                            if (
-                                $endPage < $totalPages - 1
-                            ) {
-                                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
-                            }
-                            echo '<li class="page-item"><a class="page-link" href="?page=' . $totalPages . '">' . $totalPages . '</a></li>';
-                        }
-
-                        if (
-                            $currentPage < $totalPages
-                        ) {
-                            echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage + 1) . '">&raquo;</a></li>';
-                        }
-
-                        echo '</ul>';
-                        echo '</nav>';
+                        echo '<li class="page-item"><a class="page-link" href="?page=' . $totalPages . '">' . $totalPages . '</a></li>';
                     }
-                    ?>
-                </div>
+
+                    if (
+                        $currentPage < $totalPages
+                    ) {
+                        echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage + 1) . '">&raquo;</a></li>';
+                    }
+
+                    echo '</ul>';
+                    echo '</nav>';
+                }
+                ?>
             </div>
         </div>
     </div>
+</div>
+<?php include '../assets/footer.php'; ?>
 </div>
 <script>
     function hapusData(idpelanggan) {

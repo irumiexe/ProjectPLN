@@ -13,7 +13,7 @@ include 'header.php';
 
 <div class="container-xl">
     <div class="row">
-        <ol class="breadcrumb">
+        <ol class="breadcrumb px-2 pt-2">
             <h4>INPUT DATA HAK AKSES</h4>
         </ol>
     </div>
@@ -83,6 +83,7 @@ include 'header.php';
         </div>
     </div>
 </div>
+<?php include '../assets/footer.php'; ?>
 
 <script>
     function hapusData(akun) {
