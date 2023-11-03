@@ -96,15 +96,22 @@ include '../assets/conn/config.php';
                             </a>
                             <div class="nav-submenu">
                                 <ul class="small">
-                                    <a class="nav-link" href="../admin/pelangganinput.php">
-                                        Pelanggan
-                                    </a>
-                                    <a class="nav-link" href="../admin/akuninput.php">
-                                        Hak Akses
-                                    </a>
-                                    <a class="nav-link" href="../admin/targetinput.php">
-                                        Target
-                                    </a>
+                                    <li class="list-unstyled">
+                                        <a class="nav-link" href="../admin/pelangganinput.php">
+                                            Pelanggan
+                                        </a>
+                                    </li>
+                                    <li class="list-unstyled">
+                                        <a class="nav-link" href="../admin/akuninput.php">
+                                            Hak Akses
+                                        </a>
+                                    </li>
+                                    <li class="list-unstyled">
+                                        <a class="nav-link" href="../admin/targetinput.php">
+                                            Target
+                                        </a>
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
