@@ -69,7 +69,7 @@ if (isset($_GET['aksi'])) {
                                 <input type="text" name="rbm" class="form-control" placeholder="Masukkan Rute">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" hidden>
                             <label for="kd_akun">Status</label>
                             <div class="input-group">
                                 <input type="number" name="status" value="0" class="form-control">
@@ -79,14 +79,14 @@ if (isset($_GET['aksi'])) {
                             <label for="">Lokasi</label>
                             <div class="input-group">
                                 <div class="row">
-                                    <div class="col-5">
-                                        <td><input type="text" name="latitude" class="form-control" value="" placeholder="Garis Lintang"></td>
+                                    <div class="col-6">
+                                        <input type="text" name="latitude" class="form-control" value="" placeholder="Garis Lintang">
                                     </div>
-                                    <div class="col-5">
-                                        <td><input type="text" name="longitude" class="form-control" value="" placeholder="Garis Bujur"></td>
+                                    <div class="col-6">
+                                        <input type="text" name="longitude" class="form-control" value="" placeholder="Garis Bujur">
                                     </div>
                                 </div>
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                                <span class="input-group-addon"><i class="bi bi-geo-alt"></i></span>
                             </div>
                         </div>
                 </div>

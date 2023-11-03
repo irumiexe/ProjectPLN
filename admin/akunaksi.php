@@ -150,6 +150,7 @@ if (isset($_GET['aksi'])) {
         </div>
         <?php include '../assets/footer.php'; ?>
         </div>
+
 <?php
     }
 }

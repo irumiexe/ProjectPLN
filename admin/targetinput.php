@@ -127,14 +127,6 @@ if (isset($_SESSION['username'])) {
     .foto-user {
         border-radius: 150px;
     }
-
-    .table-striped tbody tr:nth-child(odd) {
-        background-color: #E0F4FF !important;
-    }
-
-    .table-striped tbody tr:nth-child(even) {
-        background-color: #FFF6F6 !important;
-    }
 </style>
 
 <div class="container-xl">
