@@ -15,7 +15,7 @@ if (isset($_SESSION['username'])) {
 
     $totalData = $query->num_rows;
 
-    $dataPerPage = 10;
+    $dataPerPage = 8;
 
     $totalPages = ceil($totalData / $dataPerPage);
 
