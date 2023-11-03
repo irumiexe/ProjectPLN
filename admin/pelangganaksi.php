@@ -246,7 +246,12 @@ if (isset($_GET['aksi'])) {
                     <h4>PELANGGAN/ UBAH</h4>
                 </ol>
             </div>
+            <style>
+                .form-group {
+                    margin-top: 10px;
 
+                }
+            </style>
             <div class="panel-container">
                 <div class="bootstrap-tabel">
                     <?php
