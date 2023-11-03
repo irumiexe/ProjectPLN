@@ -97,12 +97,15 @@ include '../assets/conn/config.php';
                             <div class="nav-submenu">
                                 <ul class="small">
                                     <a class="nav-link" href="../admin/pelangganinput.php">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></i></div>
                                         Pelanggan
                                     </a>
                                     <a class="nav-link" href="../admin/akuninput.php">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-user-lock"></i></div>
                                         Hak Akses
                                     </a>
                                     <a class="nav-link" href="../admin/targetinput.php">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-user-check"></i></div>
                                         Target
                                     </a>
                                 </ul>
