@@ -117,7 +117,7 @@ $dataPerPage = 10;
             <div class="d-flex justify-content-between mb-3">
                 <div class="row">
                     <div class="col">
-                        <a href="akunaksi.php?aksi=tambah" class="btn btn-primary">Tambah Akun</a>
+                        <a href="pelangganaksi.php?aksi=tambah" class="btn btn-primary">Tambah data</a>
                         <button class="btn btn-success ml-2" onclick="openImportPopup()">Import Data</button>
                     </div>
                 </div>
