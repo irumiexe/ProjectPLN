@@ -141,9 +141,7 @@ if (isset($_SESSION['username'])) {
                 <div class="row">
                     <div class="col">
                         <a href="akunaksi.php?aksi=tambah" class="btn btn-primary">Tambah Akun</a>
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-success" onclick="openImportPopup()">Import Data</button>
+                        <button class="btn btn-success ml-2" onclick="openImportPopup()">Import Data</button>
                     </div>
                 </div>
                 <div id="importPopup" class="modal">
