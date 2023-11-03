@@ -18,10 +18,19 @@ if (isset($_GET['aksi'])) {
                 margin-top: 10px;
 
             }
+
+            .container-xl {
+                max-width: 1705px;
+                /* Atur lebar maksimum kontainer sesuai dengan preferensi Anda */
+            }
+
+            .row {
+                width: 100%;
+            }
         </style>
 
 
-        <div class="container">
+        <div class="container-xl">
             <div class="row">
                 <ol class="breadcrumb px-2 pt-2">
                     <h4>DATA PELANGGAN/ TAMBAH DATA</h4>
