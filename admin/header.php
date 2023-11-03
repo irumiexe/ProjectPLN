@@ -17,7 +17,30 @@ include '../assets/conn/config.php';
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="../assets/css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+        .nav-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #000;
+        }
 
+        .nav-link:hover {
+            background-color: #ccc;
+        }
+
+        .sb-nav-link-icon {
+            margin-right: 10px;
+        }
+
+        .nav-submenu {
+            display: none;
+        }
+
+        .nav-item.active .nav-submenu {
+            display: block;
+        }
+    </style>
 </head>
 
 <body class="sb-nav-fixed">
@@ -66,20 +89,26 @@ include '../assets/conn/config.php';
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="../admin/pelangganinput.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Data Pelanggan
-                        </a>
-                        <a class="nav-link" href="../admin/akuninput.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                            Data Hak Akses
-                        </a>
-                        <a class="nav-link" href="../admin/targetinput.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user-graduate"></i></div>
-                            data Target
-                        </a>
+                        <div class="nav-item">
+                            <a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Data
+                            </a>
+                            <div class="nav-submenu">
+                                <ul class="small">
+                                    <a class="nav-link" href="../admin/pelangganinput.php">
+                                        Pelanggan
+                                    </a>
+                                    <a class="nav-link" href="../admin/akuninput.php">
+                                        Hak Akses
+                                    </a>
+                                    <a class="nav-link" href="../admin/targetinput.php">
+                                        Target
+                                    </a>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-
             </nav>
         </div>
         <div id="layoutSidenav_content">
