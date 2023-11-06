@@ -24,6 +24,10 @@ if (isset($_GET['aksi'])) {
                 max-width: 1705px;
                 /* Atur lebar maksimum kontainer sesuai dengan preferensi Anda */
             }
+
+            .row {
+                width: 100%;
+            }
         </style>
 
         <div class="container-xl">
