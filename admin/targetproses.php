@@ -27,16 +27,20 @@ if (isset($_GET['proses']) && $_GET['proses'] == 'prosestambah') {
     $tanggal_akhir = $_POST['tanggal_akhir'];
     $idpel = $_GET['kode'];
     $rbm = $_POST['rbm'];
+    $tipe = $_POST['tipe'];
+    $merk = $_POST['merk'];
+    $tipe_kwh = $_POST['tipe_kwh'];
+    $nomet = $_POST['nomet'];
     $status = $_POST["status"];
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
 
-    $hasil = $db->query("UPDATE tbl_target set tanggal='$tanggal', tanggal_akhir='$tanggal_akhir', rbm='$rbm', latitude='$latitude', longitude='$longitude',status='$status' where idpel='$idpel'");
-    if ($hasil) {
-        echo "<script>alert('Update berhasil');</script>";
-    } else {
-        echo "<script>alert('Update gagal: " . mysqli_error($db) . "');</script>";
-    }
+    $hasil = $db->query("UPDATE tbl_target set tanggal='$tanggal', tanggal_akhir='$tanggal_akhir', rbm='$rbm',tipe='$tipe',merk='$merk',tipe_kwh='$tipe_kwh', latitude='$latitude', longitude='$longitude',nomet='$nomet',status='$status' where idpel='$idpel'");
+    // if ($hasil) {
+    //     echo "<script>alert('Update berhasil');</script>";
+    // } else {
+    //     echo "<script>alert('Update gagal: " . mysqli_error($db) . "');</script>";
+    // }
     if ($hasil) {
         echo "<script>alert('Update berhasil');</script>";
         echo "<script>window.location.href = 'targetdetail.php?kd_akun=$kd_akun';</script>";
