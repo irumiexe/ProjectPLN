@@ -23,6 +23,11 @@ if (isset($_FILES['excelFile']) && $_FILES['excelFile']['error'] === UPLOAD_ERR_
         $idpel = $rowData[0]; // Kolom 1
         $kd_akun = $rowData[1]; // Kolom 2
         $rbm = $rowData[2]; // Kolom 3
+        $nama_pel = $rowData[2]; // Kolom 3
+        $tipe = $rowData[2]; // Kolom 3
+        $merk = $rowData[2]; // Kolom 3
+        $tipe_kwh = $rowData[2]; // Kolom 3
+        $nomet = $rowData[2]; // Kolom 3
         $tanggal = $rowData[3]; // Kolom 4
         $tanggal_akhir = $rowData[4]; // Kolom 5
         $latitude = $rowData[5]; // Kolom 6
@@ -37,7 +42,7 @@ if (isset($_FILES['excelFile']) && $_FILES['excelFile']['error'] === UPLOAD_ERR_
 
         if ($count > 0) {
             // `kd_akun` valid, lanjutkan dengan INSERT
-            $query = "INSERT INTO tbl_target (idpel, kd_akun, rbm, tanggal, tanggal_akhir, latitude, longitude, status) VALUES ('$idpel', '$kd_akun', '$rbm', '$tanggal', '$tanggal_akhir', '$latitude', '$longitude', '$status')";
+            $query = "INSERT INTO tbl_target (idpel, kd_akun,nama_pel, rbm, tipe, merk, tipe_kwh, nomet, tanggal, tanggal_akhir, latitude, longitude, status) VALUES ('$idpel', '$nama_pel', '$kd_akun', '$rbm','$tipe','$merk','$tipe_kwh','$nomet', '$tanggal', '$tanggal_akhir', '$latitude', '$longitude', '$status')";
 
             if (mysqli_query($db, $query)) {
                 $successCount++;

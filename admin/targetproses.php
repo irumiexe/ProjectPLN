@@ -9,16 +9,13 @@ if (isset($_GET['proses']) && $_GET['proses'] == 'prosestambah') {
     $nama_pel = $_POST['nama_pel'];
     $rbm = $_POST['rbm'];
     $tipe = $_POST['tipe'];
-    $merk = $_POST['merk'];
-    $tipe_kwh = $_POST['tipe_kwh'];
-    $nomet = $_POST['nomet'];
-    $idpel = $_POST['idpel'];
+    $alamat = $_POST['alamat'];
     $status = $_POST["status"];
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
 
-    $query = "INSERT INTO tbl_target (tanggal,tanggal_akhir,kd_akun, idpel,nama_pel,rbm,tipe,merk,tipe_kwh,nomet, latitude, longitude,status) 
-          VALUES ('$tanggal','$tanggal_akhir','$kd_akun', '$idpel','$nama_pel', '$rbm','$tipe','$merk','$tipe_kwh','$nomet', '$latitude', '$longitude' , '$status')";
+    $query = "INSERT INTO tbl_target (tanggal,tanggal_akhir,kd_akun, idpel,nama_pel,rbm,tipe,alamat,latitude, longitude,status) 
+          VALUES ('$tanggal','$tanggal_akhir','$kd_akun', '$idpel','$nama_pel', '$rbm','$tipe','$alamat','$latitude', '$longitude' , '$status')";
     mysqli_query($db, $query);
     echo '<script>window.location.href = "targetinput.php";</script>';
 } elseif ($_GET['proses'] == 'ubah') {
@@ -26,16 +23,14 @@ if (isset($_GET['proses']) && $_GET['proses'] == 'prosestambah') {
     $tanggal = $_POST['tanggal'];
     $tanggal_akhir = $_POST['tanggal_akhir'];
     $idpel = $_GET['kode'];
+    $nama_pel = $_POST['nama_pel'];
     $rbm = $_POST['rbm'];
     $tipe = $_POST['tipe'];
-    $merk = $_POST['merk'];
-    $tipe_kwh = $_POST['tipe_kwh'];
-    $nomet = $_POST['nomet'];
     $status = $_POST["status"];
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
 
-    $hasil = $db->query("UPDATE tbl_target set tanggal='$tanggal', tanggal_akhir='$tanggal_akhir', rbm='$rbm',tipe='$tipe',merk='$merk',tipe_kwh='$tipe_kwh', latitude='$latitude', longitude='$longitude',nomet='$nomet',status='$status' where idpel='$idpel'");
+    $hasil = $db->query("UPDATE tbl_target set tanggal='$tanggal', tanggal_akhir='$tanggal_akhir', nama_pel='$nama_pel', rbm='$rbm',tipe='$tipe',latitude='$latitude', longitude='$longitude',nomet='$nomet',status='$status' where idpel='$idpel'");
     // if ($hasil) {
     //     echo "<script>alert('Update berhasil');</script>";
     // } else {

@@ -21,6 +21,7 @@ if (isset($_GET['proses'])) {
             }
 
             $tipe = $_POST['tipe'];
+            $alamat = $_POST['alamat'];
             $latitude = $_POST["latitude"];
             $longitude = $_POST["longitude"];
             $pmet = $_FILES['pmet']['name'];
@@ -35,8 +36,8 @@ if (isset($_GET['proses'])) {
             $ket = $_POST["ket"];
             $ket2 = $_POST["ket2"];
 
-            $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe, latitude, longitude, pmet, merk, tipemet,nomet, ket, ket2,kd_akun, tanggal) 
-            VALUES ('$idpel', '$nama_pel', '$daya', '$tipe', '$latitude', '$longitude', '$nama_file_baru', '$merk', '$tipemet', '$nomet', '$ket', '$ket2','$kd_akun',CURDATE())";
+            $query = "INSERT INTO tbl_pelanggan (idpel, nama_pel, daya, tipe,alamat, latitude, longitude, pmet, merk, tipemet,nomet, ket, ket2,kd_akun, tanggal) 
+            VALUES ('$idpel', '$nama_pel', '$daya', '$tipe','$alamat', '$latitude', '$longitude', '$nama_file_baru', '$merk', '$tipemet', '$nomet', '$ket', '$ket2','$kd_akun',CURDATE())";
 
             $query1 = "UPDATE tbl_target set status = '$status' where idpel='$idpel'";
 
