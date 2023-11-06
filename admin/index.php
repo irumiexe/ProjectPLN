@@ -73,6 +73,7 @@ if (isset($_SESSION['username'])) {
 
     .inner {
         padding: 10px;
+        border-radius: 10px;
     }
 </style>
 
@@ -89,9 +90,9 @@ if (isset($_SESSION['username'])) {
                     <h3 class="card-title">Selamat Datang <?php echo $data['nama_lengkap']; ?>(
                         <?php
                         if ($data['level'] == 0) {
-                        echo "Admin";
+                            echo "Admin";
                         } else {
-                        echo "";
+                            echo "";
                         }
                         ?> </td>)</h3>
                 </div>
