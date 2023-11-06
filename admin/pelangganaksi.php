@@ -261,6 +261,10 @@ if (isset($_GET['aksi'])) {
                     margin-top: 10px;
 
                 }
+
+                .row {
+                    width: 100%;
+                }
             </style>
             <div class="panel-container">
                 <div class="bootstrap-tabel">
