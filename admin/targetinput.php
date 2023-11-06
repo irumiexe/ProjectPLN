@@ -236,7 +236,7 @@ if (isset($_SESSION['username'])) {
                         </div>
                     </div>
                 <?php endforeach; ?>
-            </div>  
+            </div>
             <?php
             if ($totalPages > 1) {
                 echo '<nav aria-label="Page navigation example">';
@@ -305,14 +305,6 @@ if (isset($_SESSION['username'])) {
                     closeImportPopup();
                 }
             });
-
-            var successMessage = "<?php echo isset($_GET['success_message']) ? $_GET['success_message'] : ''; ?>";
-            var errorMessage = "<?php echo isset($_GET['error_message']) ? $_GET['error_message'] : ''; ?>";
-            if (successMessage) {
-                alert(successMessage); // Tampilkan pesan berhasil
-            }
-            if (errorMessage) {
-                alert(errorMessage); // Tampilkan pesan error
-            }
         </script>
-        <?php include '../assets/footer.php'; ?>
+        <?php include '../assets/footer.php';
+        ?>

@@ -92,7 +92,6 @@ $kd_akun = $_GET['kd_akun']; // Ambil nilai kd_akun dari URL
         </div>
     </div>
 </div>
-<?php include '../assets/footer.php'; ?>
 <script>
     function hapusData(idpelanggan) {
         if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
