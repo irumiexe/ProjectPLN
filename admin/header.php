@@ -54,10 +54,8 @@ include '../assets/conn/config.php';
         </form>
         <ul class="navbar-nav d-md-inline-block form-inline  ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= strtoupper($_SESSION['username']) ?><i class="fas fa-user fa-fw"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                </ul>
+                <a class="nav-link" id="navbar" href="logout.php" role="button" ><i class="fas fa-sign-out-alt"></i> Log out</a>
+                
             </li>
         </ul>
     </nav>
