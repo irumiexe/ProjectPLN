@@ -250,22 +250,28 @@ if (isset($_GET['aksi'])) {
             <?php include '../assets/footer.php'; ?>
         </div>
     <?php } elseif ($_GET['aksi'] == 'ubah') { ?>
-        <div class="container">
+        <style>
+            .container-xl {
+                max-width: 1705px;
+                /* Atur lebar maksimum kontainer sesuai dengan preferensi Anda */
+            }
+
+            .form-group {
+                margin-top: 10px;
+
+            }
+
+            .row {
+                width: 100%;
+            }
+        </style>
+        <div class="container-xl">
             <div class="row">
                 <ol class="breadcrumb px-2 pt-2">
                     <h4>PELANGGAN/ UBAH</h4>
                 </ol>
             </div>
-            <style>
-                .form-group {
-                    margin-top: 10px;
 
-                }
-
-                .row {
-                    width: 100%;
-                }
-            </style>
             <div class="panel-container">
                 <div class="bootstrap-tabel">
                     <?php

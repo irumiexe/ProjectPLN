@@ -3,8 +3,18 @@ include 'header.php';
 if (isset($_GET['aksi'])) {
     if ($_GET['aksi'] == 'tambah') {
 ?>
+        <style>
+            .form-group {
+                margin-top: 10px;
 
-        <div class="container">
+            }
+
+            .container-xl {
+                max-width: 1705px;
+                /* Atur lebar maksimum kontainer sesuai dengan preferensi Anda */
+            }
+        </style>
+        <div class="container-xl">
             <div class="row">
                 <ol class="breadcrumb px-2 pt-2">
                     <h4>DATA AKUN/ TAMBAH DATA</h4>
@@ -27,14 +37,6 @@ if (isset($_GET['aksi'])) {
 
 
             ?>
-
-            <style>
-                .form-group {
-                    margin-top: 10px;
-
-                }
-            </style>
-
             <div class="panel-container">
                 <div class="bootstrap-tabel">
                     <form action="akunproses.php?proses=prosestambah" method="post" enctype="multipart/form-data">
@@ -86,8 +88,13 @@ if (isset($_GET['aksi'])) {
                 margin-top: 10px;
 
             }
+
+            .container-xl {
+                max-width: 1705px;
+                /* Atur lebar maksimum kontainer sesuai dengan preferensi Anda */
+            }
         </style>
-        <div class="container">
+        <div class="container-xl">
             <div class="row">
                 <ol class="breadcrumb px-2 pt-2">
                     <h4>AKUN/ UBAH</h4>

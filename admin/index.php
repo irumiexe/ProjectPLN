@@ -66,7 +66,7 @@ if (isset($_SESSION['username'])) {
         margin: 0;
     }
 </style>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="container-xl">
     <div class="row">
         <ol class="breadcrumb px-2 pt-2">
@@ -87,6 +87,8 @@ if (isset($_SESSION['username'])) {
                 </div>
                 <div class="card-body">
                     <h3>Data Saat Ini</h3>
+                    <canvas id="myChart" width="400" height="200"></canvas>
+
                     <table class="table table-striped table-bordered table-bordered">
                         <thead>
                             <tr>

@@ -7,7 +7,7 @@ if (isset($_SESSION['username'])) {
 
     if (isset($_GET['cari'])) {
         $cari = $db->real_escape_string($_GET['cari']);
-        $query = $db->query("SELECT * FROM tbl_akun WHERE nama_lengkap LIKE '%$cari%'");
+        $query = $db->query("SELECT * FROM tbl_akun WHERE nama_lengkap LIKE '%$cari%' ");
     } else {
         $query = $db->query("SELECT * FROM tbl_akun");
     }
