@@ -27,6 +27,3 @@
 <script type="text/javascript" src="../assets/js/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../assets/js/datatables-simple-demo.js"></script>
-</body>
-
-</html>

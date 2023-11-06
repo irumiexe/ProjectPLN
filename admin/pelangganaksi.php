@@ -108,10 +108,10 @@ if (isset($_GET['aksi'])) {
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-shopping-cart"></i></span>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" hidden>
                             <tr>
-                                <td><input type="hidden" name="latitude" class="form-control" value=""></td>
-                                <td><input type="hidden" name="longitude" class="form-control" value=""></td>
+                                <td><input type="text" name="latitude" class="form-control" value=""></td>
+                                <td><input type="text" name="longitude" class="form-control" value=""></td>
                             </tr>
                         </div>
                         <div class="form-group">
@@ -228,9 +228,10 @@ if (isset($_GET['aksi'])) {
                         }
 
                         function showPosition(position) {
-                            document.querySelector('.myForm input[name= "latitude"]').value = position.coords.latitude;
-                            document.querySelector('.myForm input[name= "longitude"]').value = position.coords.longitude;
+                            document.querySelector('.myForm input[name="latitude"]').value = position.coords.latitude;
+                            document.querySelector('.myForm input[name="longitude"]').value = position.coords.longitude;
                         }
+                        window.onload = getLocation;
 
                         function showError(error) {
                             switch (error.code) {
