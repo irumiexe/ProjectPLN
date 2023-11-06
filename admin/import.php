@@ -40,7 +40,7 @@ if (isset($_FILES['excelFile']) && $_FILES['excelFile']['error'] === UPLOAD_ERR_
 
         if ($count > 0) {
             // `kd_akun` valid, lanjutkan dengan INSERT
-            $query = "INSERT INTO tbl_target (idpel, kd_akun,nama_pel, rbm, tipe,alamat ,tanggal, tanggal_akhir, latitude, longitude, status) VALUES ('$idpel', '$kd_akun','$nama_pel','$rbm','$tipe','$alamat','$tanggal', '$tanggal_akhir', '$latitude', '$longitude', '$status')";
+            $query = "INSERT INTO tbl_target (idpel, kd_akun, nama_pel, rbm, tipe, alamat, tanggal, tanggal_akhir, latitude, longitude, status) VALUES ('$idpel', '$kd_akun', '$nama_pel', '$rbm', '$tipe', '$alamat', '$tanggal', '$tanggal_akhir', '$latitude', '$longitude', '$status')";
 
             if (mysqli_query($db, $query)) {
                 $successCount++;
@@ -51,10 +51,8 @@ if (isset($_FILES['excelFile']) && $_FILES['excelFile']['error'] === UPLOAD_ERR_
     }
 }
 
-if ($successCount > 0) {
-    $successMessage = "Berhasil mengimpor $successCount data.";
-    header('Location: targetinput.php?success_message=' . urlencode($successMessage));
-} else {
-    $errorMessage = "Gagal mengimpor $failCount data.";
-    header('Location: targetinput.php?error_message=' . urlencode($errorMessage));
-}
+// Menambahkan notifikasi JavaScript
+echo '<script>';
+echo 'alert("Data berhasil diimpor: ' . $successCount . ' data");';
+echo 'window.location.href = "targetinput.php";'; // Gantilah "halaman_tujuan.php" dengan halaman tujuan Anda.
+echo '</script>';
