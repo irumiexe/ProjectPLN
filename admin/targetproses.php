@@ -26,11 +26,12 @@ if (isset($_GET['proses']) && $_GET['proses'] == 'prosestambah') {
     $nama_pel = $_POST['nama_pel'];
     $rbm = $_POST['rbm'];
     $tipe = $_POST['tipe'];
+    $alamat = $_POST['alamat'];
     $status = $_POST["status"];
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
 
-    $hasil = $db->query("UPDATE tbl_target set tanggal='$tanggal', tanggal_akhir='$tanggal_akhir', nama_pel='$nama_pel', rbm='$rbm',tipe='$tipe',latitude='$latitude', longitude='$longitude',nomet='$nomet',status='$status' where idpel='$idpel'");
+    $hasil = $db->query("UPDATE tbl_target set tanggal='$tanggal', tanggal_akhir='$tanggal_akhir', nama_pel='$nama_pel', rbm='$rbm',tipe='$tipe',alamat='$alamat',latitude='$latitude', longitude='$longitude',status='$status' where idpel='$idpel'");
     // if ($hasil) {
     //     echo "<script>alert('Update berhasil');</script>";
     // } else {
