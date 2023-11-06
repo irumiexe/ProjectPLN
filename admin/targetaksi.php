@@ -64,9 +64,38 @@ if (isset($_GET['aksi'])) {
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="">Nama Pelanggan</label>
+                            <div class="input-group">
+                                <input type="text" name="nama_pel" class="form-control" placeholder="Masukkan Rute">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="kd_akun">Rute Meter</label>
                             <div class="input-group">
                                 <input type="text" name="rbm" class="form-control" placeholder="Masukkan Rute">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Tipe Pembayaran</label>
+                            <div class="input-group">
+                                <select name="tipe" id="" class="form-control" required>
+                                    <option value="">Pilih Opsi</option>
+                                    <option value="Pascabayar">Pascabayar</option>
+                                    <option value="Prabayar">Prabayar</option>
+                                </select>
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-shopping-cart"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Merek KWH</label>
+                            <div class="input-group">
+                                <input type="text" name="merek_kwh" class="form-control" placeholder="Masukkan Rute">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Tipe KWH</label>
+                            <div class="input-group">
+                                <input type="text" name="tipe_kwh" class="form-control" placeholder="Masukkan Rute">
                             </div>
                         </div>
                         <div class="form-group" hidden>

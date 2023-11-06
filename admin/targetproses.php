@@ -6,13 +6,18 @@ if (isset($_GET['proses']) && $_GET['proses'] == 'prosestambah') {
     $tanggal_akhir = $_POST['tanggal_akhir'];
     $kd_akun = $_POST['kd_akun'];
     $idpel = $_POST['idpel'];
+    $nama_pel = $_POST['nama_pel'];
     $rbm = $_POST['rbm'];
+    $tipe = $_POST['tipe'];
+    $merek_kwh = $_POST['merek_kwh'];
+    $tipe_kwh = $_POST['tipe_kwh'];
+    $idpel = $_POST['idpel'];
     $status = $_POST["status"];
     $latitude = $_POST["latitude"];
     $longitude = $_POST["longitude"];
 
-    $query = "INSERT INTO tbl_target (tanggal,tanggal_akhir,kd_akun, idpel,rbm, latitude, longitude,status) 
-          VALUES ('$tanggal','$tanggal_akhir','$kd_akun', '$idpel', '$rbm', '$latitude', '$longitude' , '$status')";
+    $query = "INSERT INTO tbl_target (tanggal,tanggal_akhir,kd_akun, idpel,nama_pel,rbm,tipe,merek_kwh,tipe_kwh, latitude, longitude,status) 
+          VALUES ('$tanggal','$tanggal_akhir','$kd_akun', '$idpel','$nama_pel', '$rbm','$tipe','$merek_kwh','$tipe_kwh', '$latitude', '$longitude' , '$status')";
     mysqli_query($db, $query);
     echo '<script>window.location.href = "targetinput.php";</script>';
 } elseif ($_GET['proses'] == 'ubah') {
@@ -63,4 +68,3 @@ if (isset($_GET['proses']) && $_GET['proses'] == 'prosestambah') {
         echo '<script>window.location.href = "targetdetail.php";</script>';
     }
 }
-
