@@ -91,7 +91,7 @@ if (isset($_SESSION['username'])) {
                         if ($data['level'] == 0) {
                         echo "Admin";
                         } else {
-                        echo "Sudah";
+                        echo "";
                         }
                         ?> </td>)</h3>
                 </div>
