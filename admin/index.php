@@ -66,7 +66,7 @@ if (isset($_SESSION['username'])) {
         margin: 0;
     }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div class="container-xl">
     <div class="row">
         <ol class="breadcrumb px-2 pt-2">
@@ -77,18 +77,10 @@ if (isset($_SESSION['username'])) {
         <div class="bootstrap-tabel">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Selamat Datang <?php
-                                                            if ($data['level'] == 0) {
-                                                                echo "Admin";
-                                                            } else {
-                                                                echo $data['level'];
-                                                            }
-                                                            ?> <?php echo $data['nama_lengkap']; ?></h3>
+                    <h3 class="card-title">Selamat Datang <?php echo $data['nama_lengkap']; ?></h3>
                 </div>
                 <div class="card-body">
                     <h3>Data Saat Ini</h3>
-                    <canvas id="myChart" width="400" height="200"></canvas>
-
                     <table class="table table-striped table-bordered table-bordered">
                         <thead>
                             <tr>

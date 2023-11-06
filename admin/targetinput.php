@@ -9,7 +9,7 @@ if (isset($_SESSION['username'])) {
         $cari = $db->real_escape_string($_GET['cari']);
         $query = $db->query("SELECT * FROM tbl_akun WHERE nama_lengkap LIKE '%$cari%' ");
     } else {
-        $query = $db->query("SELECT * FROM tbl_akun");
+        $query = $db->query("SELECT * FROM tbl_akun where level='1'");
     }
 
     $totalData = $query->num_rows;
