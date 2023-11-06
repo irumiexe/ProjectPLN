@@ -81,7 +81,7 @@ if (isset($_SESSION['username'])) {
     </div>
     <div class="panel-container">
         <div class="bootstrap-tabel">
-            <center>
+            <center> <br><br><br><br>
                 <h3><?php echo $welcome_message; ?></h3>
                 <div class="col-md-13">
                     <div class="card card-primary card-outline">
