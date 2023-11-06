@@ -44,7 +44,7 @@ $dataPerPage = 10;
         display: none;
         position: fixed;
         z-index: 1;
-        padding-top: 60px;
+        padding-top: 100px;
         left: 0;
         top: 0;
         width: 100%;
@@ -69,7 +69,7 @@ $dataPerPage = 10;
     .modal-content {
         display: block;
         margin: 0 auto;
-        max-width: 22%;
+        max-width: 25%;
     }
 
     .modal-body {
@@ -350,6 +350,10 @@ $dataPerPage = 10;
         }
     }
 
+    var currentZoom = 1;
+    var pointerOffsetX = 0;
+    var pointerOffsetY = 0;
+
     function tampilkanGambar(namaGambar) {
         var gambarModal = document.getElementById('gambarModal');
         var gambarPopUp = document.getElementById('gambarPopUp');
@@ -357,7 +361,9 @@ $dataPerPage = 10;
         var pagination = document.querySelector('.pagination');
 
         gambarModal.src = namaGambar;
-        gambarModal.classList.remove('zoomed'); // Reset zoom jika sebelumnya sudah di-zoom.
+        currentZoom = 1; // Reset zoom ke 1 saat gambar baru ditampilkan.
+        pointerOffsetX = 0;
+        pointerOffsetY = 0;
 
         // Set lebar modal sesuai dengan gambar asli
         var gambarAsli = new Image();
@@ -370,9 +376,37 @@ $dataPerPage = 10;
             pagination.style.display = "none";
         };
     }
+
     gambarPopUp.addEventListener('click', function(event) {
         if (event.target === gambarPopUp) {
             tutupPopUp();
+        }
+    });
+
+    function tutupPopUp() {
+        var gambarPopUp = document.getElementById('gambarPopUp');
+        var pagination = document.querySelector('.pagination');
+        gambarPopUp.style.display = "none";
+        // Show pagination again
+        pagination.style.display = "block";
+    }
+
+    gambarModal.addEventListener('click', function(event) {
+        if (currentZoom !== 1) {
+            // Reset zoom jika saat ini di-zoom
+            currentZoom = 1;
+            gambarModal.style.transform = 'scale(1)';
+        } else {
+            // Hitung posisi pointer relatif terhadap gambar
+            var gambarRect = gambarModal.getBoundingClientRect();
+            pointerOffsetX = (event.clientX - gambarRect.left) / gambarRect.width;
+            pointerOffsetY = (event.clientY - gambarRect.top) / gambarRect.height;
+
+            // Zoom dengan faktor 2 (Anda bisa menyesuaikan sesuai kebutuhan)
+            currentZoom = 2;
+            gambarModal.style.transform = 'scale(2)';
+            // Set transform origin sesuai dengan posisi pointer
+            gambarModal.style.transformOrigin = (pointerOffsetX * 100) + '% ' + (pointerOffsetY * 100) + '%';
         }
     });
 

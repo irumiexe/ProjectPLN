@@ -23,6 +23,11 @@ $kd_akun = $_GET['kd_akun']; // Ambil nilai kd_akun dari URL
     .card-header {
         background-color: #CDF5FD
     }
+
+    .container-xl {
+        max-width: 1705px;
+        /* Atur lebar maksimum kontainer sesuai dengan preferensi Anda */
+    }
 </style>
 
 <div class="container-xl">
@@ -42,6 +47,7 @@ $kd_akun = $_GET['kd_akun']; // Ambil nilai kd_akun dari URL
                         <tr>
                             <th class="text-center">No.</th>
                             <th class="text-center">ID PELANGGAN</th>
+                            <th class="text-center">RBM</th>
                             <th class="text-center">MAPS</th>
                             <th class="text-center">OPSI</th>
                         </tr>
@@ -58,6 +64,7 @@ $kd_akun = $_GET['kd_akun']; // Ambil nilai kd_akun dari URL
                             <tr>
                                 <td class="text-center"><?php echo $counter; ?></td>
                                 <td class="text-center"><?php echo $db['idpel'] ?></td>
+                                <td class="text-center"><?php echo $db['rbm'] ?></td>
                                 <td class="text-center">
                                     <a href='https://www.google.com/maps?q=<?php echo $db["latitude"] ?>,<?php echo $db["longitude"]; ?>' target="_blank">Lihat di Google Maps</a>
                                 </td>

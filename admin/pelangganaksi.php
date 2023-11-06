@@ -108,10 +108,10 @@ if (isset($_GET['aksi'])) {
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-shopping-cart"></i></span>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" hidden>
                             <tr>
-                                <td><input type="hidden" name="latitude" class="form-control" value=""></td>
-                                <td><input type="hidden" name="longitude" class="form-control" value=""></td>
+                                <td><input type="text" name="latitude" class="form-control" value=""></td>
+                                <td><input type="text" name="longitude" class="form-control" value=""></td>
                             </tr>
                         </div>
                         <div class="form-group">
@@ -228,9 +228,10 @@ if (isset($_GET['aksi'])) {
                         }
 
                         function showPosition(position) {
-                            document.querySelector('.myForm input[name= "latitude"]').value = position.coords.latitude;
-                            document.querySelector('.myForm input[name= "longitude"]').value = position.coords.longitude;
+                            document.querySelector('.myForm input[name="latitude"]').value = position.coords.latitude;
+                            document.querySelector('.myForm input[name="longitude"]').value = position.coords.longitude;
                         }
+                        window.onload = getLocation;
 
                         function showError(error) {
                             switch (error.code) {
@@ -249,22 +250,28 @@ if (isset($_GET['aksi'])) {
             <?php include '../assets/footer.php'; ?>
         </div>
     <?php } elseif ($_GET['aksi'] == 'ubah') { ?>
-        <div class="container">
+        <style>
+            .container-xl {
+                max-width: 1705px;
+                /* Atur lebar maksimum kontainer sesuai dengan preferensi Anda */
+            }
+
+            .form-group {
+                margin-top: 10px;
+
+            }
+
+            .row {
+                width: 100%;
+            }
+        </style>
+        <div class="container-xl">
             <div class="row">
                 <ol class="breadcrumb px-2 pt-2">
                     <h4>PELANGGAN/ UBAH</h4>
                 </ol>
             </div>
-            <style>
-                .form-group {
-                    margin-top: 10px;
 
-                }
-
-                .row {
-                    width: 100%;
-                }
-            </style>
             <div class="panel-container">
                 <div class="bootstrap-tabel">
                     <?php

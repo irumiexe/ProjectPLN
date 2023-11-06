@@ -7,16 +7,13 @@ if (isset($_SESSION['username'])) {
 
     if (isset($_GET['cari'])) {
         $cari = $db->real_escape_string($_GET['cari']);
-        $query = $db->query("SELECT * FROM tbl_akun WHERE nama_lengkap LIKE '%$cari%' OR level = '$cari'");
+        $query = $db->query("SELECT * FROM tbl_akun WHERE nama_lengkap LIKE '%$cari%' ");
     } else {
         $query = $db->query("SELECT * FROM tbl_akun");
     }
 
-
     $totalData = $query->num_rows;
-
     $dataPerPage = 8;
-
     $totalPages = ceil($totalData / $dataPerPage);
 
     if (isset($_GET['page'])) {
@@ -27,19 +24,6 @@ if (isset($_SESSION['username'])) {
 
     $startIndex = ($currentPage - 1) * $dataPerPage;
     $endIndex = $startIndex + $dataPerPage;
-
-    $petlap_data = array();
-
-    while ($row = $query->fetch_assoc()) {
-        $petlap_data[] = $row;
-    }
-
-    $query = $db->query("SELECT * FROM tbl_akun WHERE level='1'");
-    $petlap_data = array();
-
-    while ($row = $query->fetch_assoc()) {
-        $petlap_data[] = $row;
-    }
 } else {
     header("location: ../index.php");
     exit();
@@ -200,13 +184,9 @@ if (isset($_SESSION['username'])) {
             </div>
             <hr>
             <div class="row">
-                <?php for ($i = $startIndex; $i < $endIndex; $i++) : ?>
-                    <?php if ($i >= count($petlap_data)) {
-                        break;
-                    }
-                    $d = $petlap_data[$i];
-
-                    $kd_akun = $d['kd_akun'];
+                <?php foreach ($query as $row) : ?>
+                    <?php
+                    $kd_akun = $row['kd_akun'];
                     $target_query = $db->query("SELECT COUNT(*) as jumlah_target FROM tbl_target WHERE kd_akun = '$kd_akun'");
                     $target_data = $target_query->fetch_assoc();
                     $jumlah_target = $target_data['jumlah_target'];
@@ -217,12 +197,11 @@ if (isset($_SESSION['username'])) {
 
                     $selisih = $jumlah_data - $jumlah_target;
 
-                    $kd_akun = $d['kd_akun'];
+                    $kd_akun = $row['kd_akun'];
                     $queryAkun = $db->query("SELECT foto FROM tbl_akun WHERE kd_akun = '$kd_akun'");
                     $akunData = $queryAkun->fetch_assoc();
                     $fotoProfil = $akunData['foto'];
                     $fotoProfilPath = '../assets/img/' . $fotoProfil;
-
                     ?>
                     <div class="col-md-3">
                         <div class="card card-primary card-outline" style="border-top: 5px solid #007bff; margin-bottom: 20px;">
@@ -231,15 +210,15 @@ if (isset($_SESSION['username'])) {
                                     <img class="foto-user" src="<?php echo $fotoProfilPath; ?>" alt="User profile picture">
                                 </div>
 
-                                <h3 class="profile-username text-center"><?php echo $d['nama_lengkap']; ?></h3>
+                                <h3 class="profile-username text-center"><?php echo $row['nama_lengkap']; ?></h3>
                                 <p class="text-muted text-center">
                                     <?php
-                                    if ($d['level'] == 0) {
+                                    if ($row['level'] == 0) {
                                         echo "Admin";
-                                    } elseif ($d['level'] == 1) {
+                                    } elseif ($row['level'] == 1) {
                                         echo "Petugas Lapangan ($kd_akun)";
                                     } else {
-                                        echo $d['level'];
+                                        echo $row['level'];
                                     }
                                     ?>
                                 </p>
@@ -251,94 +230,89 @@ if (isset($_SESSION['username'])) {
                                         <b>Selisih (Data - Target)</b> <a class="float-right"><?php echo $selisih; ?></a>
                                     </li>
                                 </ul>
-
-                                <a href="targetaksi.php?aksi=tambah&kd_akun=<?php echo $d['kd_akun']; ?>" class="btn btn-success btn-block"><b>Tambah Target</b></a>
-                                <a href="targetdetail.php?kd_akun=<?php echo $d['kd_akun']; ?>" class="btn btn-primary btn-block"><b>Detail Target</b></a>
-
+                                <a href="targetaksi.php?aksi=tambah&kd_akun=<?php echo $row['kd_akun']; ?>" class="btn btn-success btn-block"><b>Tambah Target</b></a>
+                                <a href="targetdetail.php?kd_akun=<?php echo $row['kd_akun']; ?>" class="btn btn-primary btn-block"><b>Detail Target</b></a>
                             </div>
                         </div>
                     </div>
-                <?php endfor; ?>
-            </div>
+                <?php endforeach; ?>
+            </div>  
+            <?php
+            if ($totalPages > 1) {
+                echo '<nav aria-label="Page navigation example">';
+                echo '<ul class="pagination">';
+                if (
+                    $currentPage > 1
+                ) {
+                    echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">&laquo;</a></li>';
+                }
 
+                // Loop untuk mencetak nomor halaman
+                $numPagesToShow = 3; // Jumlah nomor halaman yang ingin ditampilkan
+                $halfNumPages = floor($numPagesToShow / 2);
+                $startPage = max(1, $currentPage - $halfNumPages);
+                $endPage = min($totalPages, $startPage + $numPagesToShow - 1);
+
+                if (
+                    $startPage > 1
+                ) {
+                    echo '<li class="page-item"><a class="page-link" href="?page=1">1</a></li>';
+                    if ($startPage > 2) {
+                        echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                    }
+                }
+
+                for ($i = $startPage; $i <= $endPage; $i++) {
+                    echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+                }
+
+                if (
+                    $endPage < $totalPages
+                ) {
+                    if (
+                        $endPage < $totalPages - 1
+                    ) {
+                        echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                    }
+                    echo '<li class="page-item"><a class="page-link" href="?page=' . $totalPages . '">' . $totalPages . '</a></li>';
+                }
+
+                if (
+                    $currentPage < $totalPages
+                ) {
+                    echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage + 1) . '">&raquo;</a></li>';
+                }
+
+                echo '</ul>';
+                echo '</nav>';
+            }
+            ?>
         </div>
-    </div>
-    <?php
-    if ($totalPages > 1) {
-        echo '<nav aria-label="Page navigation example">';
-        echo '<ul class="pagination">';
-        if (
-            $currentPage > 1
-        ) {
-            echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage - 1) . '">&laquo;</a></li>';
-        }
-
-        // Loop untuk mencetak nomor halaman
-        $numPagesToShow = 3; // Jumlah nomor halaman yang ingin ditampilkan
-        $halfNumPages = floor($numPagesToShow / 2);
-        $startPage = max(1, $currentPage - $halfNumPages);
-        $endPage = min($totalPages, $startPage + $numPagesToShow - 1);
-
-        if (
-            $startPage > 1
-        ) {
-            echo '<li class="page-item"><a class="page-link" href="?page=1">1</a></li>';
-            if ($startPage > 2) {
-                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+        <script>
+            function openImportPopup() {
+                var importPopup = document.getElementById('importPopup');
+                importPopup.style.display = "block";
             }
-        }
 
-        for ($i = $startPage; $i <= $endPage; $i++) {
-            echo '<li class="page-item ' . (($i == $currentPage) ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
-        }
-
-        if (
-            $endPage < $totalPages
-        ) {
-            if (
-                $endPage < $totalPages - 1
-            ) {
-                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+            function closeImportPopup() {
+                var importPopup = document.getElementById('importPopup');
+                importPopup.style.display = "none";
             }
-            echo '<li class="page-item"><a class="page-link" href="?page=' . $totalPages . '">' . $totalPages . '</a></li>';
-        }
 
-        if (
-            $currentPage < $totalPages
-        ) {
-            echo '<li class="page-item"><a class="page-link" href="?page=' . ($currentPage + 1) . '">&raquo;</a></li>';
-        }
+            window.addEventListener("click", function(event) {
+                var importPopup = document.getElementById('importPopup');
+                if (event.target == importPopup) {
+                    closeImportPopup();
+                }
+            });
 
-        echo '</ul>';
-        echo '</nav>';
-    }
-    ?>
-</div>
-<script>
-    function openImportPopup() {
-        var importPopup = document.getElementById('importPopup');
-        importPopup.style.display = "block";
-    }
-
-    function closeImportPopup() {
-        var importPopup = document.getElementById('importPopup');
-        importPopup.style.display = "none";
-    }
-
-    window.addEventListener("click", function(event) {
-        var importPopup = document.getElementById('importPopup');
-        if (event.target == importPopup) {
-            closeImportPopup();
-        }
-    });
-
-    var successMessage = "<?php echo isset($_GET['success_message']) ? $_GET['success_message'] : ''; ?>";
-    var errorMessage = "<?php echo isset($_GET['error_message']) ? $_GET['error_message'] : ''; ?>";
-    if (successMessage) {
-        alert(successMessage); // Tampilkan pesan berhasil
-    }
-    if (errorMessage) {
-        alert(errorMessage); // Tampilkan pesan error
-    }
-</script>
-<?php include '../assets/footer.php'; ?>
+            var successMessage = "<?php echo isset($_GET['success_message']) ? $_GET['success_message'] : ''; ?>";
+            var errorMessage = "<?php echo isset($_GET['error_message']) ? $_GET['error_message'] : ''; ?>";
+            if (successMessage) {
+                alert(successMessage); // Tampilkan pesan berhasil
+            }
+            if (errorMessage) {
+                alert(errorMessage); // Tampilkan pesan error
+            }
+        </script>
+        <?php include '../assets/footer.php'; ?>
