@@ -225,12 +225,12 @@ $dataPerPage = 10;
                                 </td>
                                 <td class="text-center"><?php echo $d['daya'] ?></td>
                                 <td class="text-center"><?php echo $d['tipe'] ?></td>
-                                <td style="width: 200px; height: 200px;">
-                                    <iframe src='https://www.google.com/maps?q=<?Php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>&hl=es;z=14&output=embed' style="width:100%; height:100%;"></iframe>
+                                <td class="text-center">
+                                    <a href='https://www.google.com/maps?q=<?php echo $d["latitude"] ?>,<?php echo $d["longitude"]; ?>' target="_blank">Lihat di Google Maps</a>
                                 </td>
                                 <td class="text-center">
                                     <a href="javascript:void(0);" onclick="tampilkanGambar('../file/<?php echo $d['pmet']; ?>')">
-                                        <img src="../file/<?php echo $d['pmet']; ?>" style="width: 100px; height: 200px">
+                                        <img src="../file/<?php echo $d['pmet']; ?>" style="width: 50px; height: 100px">
                                     </a>
                                 </td>
                                 <td class="text-center"><?php echo $d['merk'] ?></td>

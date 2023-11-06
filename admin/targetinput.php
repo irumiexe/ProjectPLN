@@ -9,7 +9,7 @@ if (isset($_SESSION['username'])) {
         $cari = $db->real_escape_string($_GET['cari']);
         $query = $db->query("SELECT * FROM tbl_akun WHERE nama_lengkap LIKE '%$cari%' ");
     } else {
-        $query = $db->query("SELECT * FROM tbl_akun");
+        $query = $db->query("SELECT * FROM tbl_akun where level='1'");
     }
 
     $totalData = $query->num_rows;
@@ -227,7 +227,7 @@ if (isset($_SESSION['username'])) {
                                         <b>Jumlah Target</b> <a class="float-right"><?php echo $jumlah_target; ?></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Selisih (Data - Target)</b> <a class="float-right"><?php echo $selisih; ?></a>
+                                        <b>Pending</b> <a class="float-right"><?php echo $selisih; ?></a>
                                     </li>
                                 </ul>
                                 <a href="targetaksi.php?aksi=tambah&kd_akun=<?php echo $row['kd_akun']; ?>" class="btn btn-success btn-block"><b>Tambah Target</b></a>

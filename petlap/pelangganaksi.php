@@ -74,7 +74,7 @@ if (isset($_GET['aksi'])) {
                             <div class="input-group">
                                 <div class="row">
                                     <div class="col">
-                                        <select name="daya_select" id="dayaSelect" class="form-control" onchange="toggleDayaInput()">
+                                        <select name="daya_select" id="dayaSelect" class="form-control" onchange="toggleDayaInput()" require>
                                             <option value="" selected>Pilih Opsi</option>
                                             <option value="450">450</option>
                                             <option value="900">900</option>
@@ -107,7 +107,7 @@ if (isset($_GET['aksi'])) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="">alamat</label>
+                            <label for="">Alamat</label>
                             <input type="text" name="alamat" class="form-control" placeholder="Masukkan Type kWh Meter" value="<?php echo $alamat; ?>" require>
                         </div>
                         <div class="form-group">

@@ -11,7 +11,7 @@ if (isset($_SESSION['username'])) {
     $query = $db->query("SELECT nama_lengkap, level, foto FROM tbl_akun WHERE username='$username'");
     $data = $query->fetch_assoc();
     $nama_lengkap = $data['nama_lengkap'];
-    $welcome_message = "Selamat Datang di SIPLN (Sistem Informasi PLN) UP3 Banjarmasin";
+    $welcome_message = "Dashboard";
     $imagePath = $data['foto'];
     $fotoProfilPath = '../assets/img/' . $imagePath;
 
@@ -20,9 +20,13 @@ if (isset($_SESSION['username'])) {
         $dataTarget = $queryTarget->fetch_assoc();
         $jumlah_target = $dataTarget['jumlah_target'];
 
-        $queryTarget2 = $db->query("SELECT COUNT(*) as jumlah_akun FROM tbl_akun WHERE level='1'");
+        $queryTarget2 = $db->query("SELECT COUNT(*) as jumlah_target2 FROM tbl_target where status='0'");
         $dataTarget2 = $queryTarget2->fetch_assoc();
-        $jumlah_target2 = $dataTarget2['jumlah_akun'];
+        $jumlah_target2 = $dataTarget2['jumlah_target2'];
+
+        $queryTarget3 = $db->query("SELECT COUNT(*) as jumlah_akun FROM tbl_akun WHERE level='1'");
+        $dataTarget3 = $queryTarget3->fetch_assoc();
+        $jumlah_target3 = $dataTarget3['jumlah_akun'];
 
         $nama = "$nama_lengkap";
         $role = "$level";
@@ -57,6 +61,7 @@ if (isset($_SESSION['username'])) {
     .card {
         box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
         margin-bottom: 1rem;
+        border-radius: 10px;
     }
 
     .card-title {
@@ -65,44 +70,59 @@ if (isset($_SESSION['username'])) {
         font-weight: 400;
         margin: 0;
     }
+
+    .inner {
+        padding: 10px;
+    }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div class="container-xl">
     <div class="row">
         <ol class="breadcrumb px-2 pt-2">
-            <h4><?php echo $welcome_message; ?></h4>
+            <h3><?php echo $welcome_message; ?></h3>
         </ol>
     </div>
     <div class="panel-container">
         <div class="bootstrap-tabel">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Selamat Datang <?php
-                                                            if ($data['level'] == 0) {
-                                                                echo "Admin";
-                                                            } else {
-                                                                echo $data['level'];
-                                                            }
-                                                            ?> <?php echo $data['nama_lengkap']; ?></h3>
+                    <h3 class="card-title">Selamat Datang <?php echo $data['nama_lengkap']; ?>(
+                        <?php
+                        if ($data['level'] == 0) {
+                        echo "Admin";
+                        } else {
+                        echo "Sudah";
+                        }
+                        ?> </td>)</h3>
                 </div>
                 <div class="card-body">
                     <h3>Data Saat Ini</h3>
-                    <canvas id="myChart" width="400" height="200"></canvas>
-
-                    <table class="table table-striped table-bordered table-bordered">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Jumlah Data Pelanggan</th>
-                                <th class="text-center">Jumlah Petugas</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-center"><?php echo $jumlah_target; ?></td>
-                                <td class="text-center"><?php echo $jumlah_target2; ?></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="inner bg-info">
+                                    <h4><?php echo $jumlah_target; ?></h4>
+                                    <p>Pelanggan</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="inner bg-danger">
+                                    <h4><?php echo $jumlah_target2; ?></h4>
+                                    <p>Pending</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="inner bg-warning">
+                                    <h4><?php echo $jumlah_target3; ?></h4>
+                                    <p>Petugas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
