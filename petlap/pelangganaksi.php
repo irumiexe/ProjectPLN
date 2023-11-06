@@ -13,6 +13,12 @@ if (isset($_GET['aksi'])) {
         $tanggal_dipilih = $_GET['tanggal_dipilih'];
 
         $alert_message = "Mohon untuk Mengaktifkan Location dan Membuka Aplikasi Gmaps Terlebih Dahulu Agar Memperkuat Akurasi Titik Koordinat!";
+
+        $idpelanggan = $_GET['idpel']; // Anda sudah mengambilnya dari $_GET
+
+        // Lakukan kueri ke database
+        $query = "SELECT * FROM tbl_target WHERE idpel = '$idpelanggan'";
+        $result = mysqli_query($db, $query);
 ?>
         <div class="container">
             <div class="row">
@@ -27,9 +33,19 @@ if (isset($_GET['aksi'])) {
                     if (isset($alert_message)) {
                         echo '<div class="alert alert-warning">' . $alert_message . '</div>';
                     }
+
+                    if (mysqli_num_rows($result) > 0) {
+                        $row = mysqli_fetch_assoc($result);
+                        $nama_pel = $row['nama_pel'];
+                        $tipe_pembayaran = $row['tipe'];
+                        $merek_kwh = $row['merk'];
+                        $type_kwh = $row['tipe_kwh'];
+                        $nomet = $row['nomet'];
                     ?>
                 </center>
                 <div class="bootstrap-tabel">
+
+
                     <form class="myForm" action="pelangganproses.php?proses=prosestambah" method="post" enctype="multipart/form-data" autocomplete="off" required>
                         <div class="form-group">
                             <label for="">Tanggal</label>
@@ -49,7 +65,7 @@ if (isset($_GET['aksi'])) {
                         <div class="form-group">
                             <label for="">Nama Pelanggan</label>
                             <div class="input-group">
-                                <input type="text" name="nama_pel" class="form-control" value="" placeholder="Masukkan Nama Pelanggan" required minlength="2">
+                                <input type="text" name="nama_pel" class="form-control" value="<?php echo $nama_pel; ?>" placeholder="Masukkan Nama Pelanggan" required minlength="2">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             </div>
 
@@ -84,10 +100,10 @@ if (isset($_GET['aksi'])) {
                         <div class="form-group">
                             <label for="">Tipe Pembayaran</label>
                             <div class="input-group">
-                                <select name="tipe" id="" class="form-control" required>
+                                <select name="tipe" class="form-control" required>
                                     <option value="">Pilih Opsi</option>
-                                    <option value="Pascabayar">Pascabayar</option>
-                                    <option value="Prabayar">Prabayar</option>
+                                    <option value="Pascabayar" <?php if ($tipe_pembayaran == 'Pascabayar') echo 'selected'; ?>>Pascabayar</option>
+                                    <option value="Prabayar" <?php if ($tipe_pembayaran == 'Prabayar') echo 'selected'; ?>>Prabayar</option>
                                 </select>
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-shopping-cart"></i></span>
                             </div>
@@ -109,55 +125,56 @@ if (isset($_GET['aksi'])) {
                             <label for="">Merk kWh Meter</label>
                             <select name="merk" class="form-control" required>
                                 <option value="">Pilih Opsi</option>
-                                <option value="SMARTMETER">SMARTMETER</option>
-                                <option value="HEXING">HEXING</option>
-                                <option value="ITRON">ITRON</option>
-                                <option value="MELCOINDA">MELCOINDA</option>
-                                <option value="CANNET">CANNET</option>
-                                <option value="SANXING">SANXING</option>
-                                <option value="FUJI">FUJI</option>
-                                <option value="METBELOSA">METBELOSA</option>
-                                <option value="WASION">WASION</option>
-                                <option value="STAR">STAR</option>
-                                <option value="ACTARIS">ACTARIS</option>
-                                <option value="EDMI">EDMI</option>
-                                <option value="SIGMA">SIGMA</option>
-                                <option value="SCHLUMBERGER">SCHLUMBERGER</option>
-                                <option value="MEISYS">MEISYS</option>
-                                <option value="SAINT">SAINT</option>
-                                <option value="MECOINDO">MECOINDO</option>
-                                <option value="GLOMET">GLOMET</option>
-                                <option value="LIPUVINDO">LIPUVINDO</option>
-                                <option value="LANDISGYR">LANDIS+GYR</option>
-                                <option value="MITSUBISHI">MITSUBISHI</option>
-                                <option value="OSAKI">OSAKI</option>
-                                <option value="SCHNEIDER">SCHNEIDER</option>
-                                <option value="KRIZIK">KRIZIK</option>
-                                <option value="GANZ">GANZ</option>
-                                <option value="LANDIS">LANDIS</option>
-                                <option value="SGRID">SGRID</option>
-                                <option value="EMAIL">EMAIL</option>
-                                <option value="ENERTEC">ENERTEC</option>
-                                <option value="CHANGSHA">CHANGSHA</option>
-                                <option value="GALVANIZE">GALVANIZE</option>
-                                <option value="GE">GE</option>
-                                <option value="PRODIGY">PRODIGY</option>
-                                <option value="ELSTER">ELSTER</option>
-                                <option value="AEG">AEG</option>
-                                <option value="ADTECH">ADTECH</option>
-                                <option value="ELIPS SYSTEM">ELIPS SYSTEM</option>
-                                <option value="METRICO">METRICO</option>
+                                <option value="SMARTMETER" <?php if ($merek_kwh == 'SMARTMETER') echo 'selected'; ?>>SMARTMETER</option>
+                                <option value="HEXING" <?php if ($merek_kwh == 'HEXING') echo 'selected'; ?>>HEXING</option>
+                                <option value="ITRON" <?php if ($merek_kwh == 'ITRON') echo 'selected'; ?>>ITRON</option>
+                                <option value="MELCOINDA" <?php if ($merek_kwh == 'MELCOINDA') echo 'selected'; ?>>MELCOINDA</option>
+                                <option value="CANNET" <?php if ($merek_kwh == 'CANNET') echo 'selected'; ?>>CANNET</option>
+                                <option value="SANXING" <?php if ($merek_kwh == 'SANXING') echo 'selected'; ?>>SANXING</option>
+                                <option value="FUJI" <?php if ($merek_kwh == 'FUJI') echo 'selected'; ?>>FUJI</option>
+                                <option value="METBELOSA" <?php if ($merek_kwh == 'METBELOSA') echo 'selected'; ?>>METBELOSA</option>
+                                <option value="WASION" <?php if ($merek_kwh == 'WASION') echo 'selected'; ?>>WASION</option>
+                                <option value="STAR" <?php if ($merek_kwh == 'STAR') echo 'selected'; ?>>STAR</option>
+                                <option value="ACTARIS" <?php if ($merek_kwh == 'ACTARIS') echo 'selected'; ?>>ACTARIS</option>
+                                <option value="EDMI" <?php if ($merek_kwh == 'EDMI') echo 'selected'; ?>>EDMI</option>
+                                <option value="SIGMA" <?php if ($merek_kwh == 'SIGMA') echo 'selected'; ?>>SIGMA</option>
+                                <option value="SCHLUMBERGER" <?php if ($merek_kwh == 'SCHLUMBERGER') echo 'selected'; ?>>SCHLUMBERGER</option>
+                                <option value="MEISYS" <?php if ($merek_kwh == 'MEISYS') echo 'selected'; ?>>MEISYS</option>
+                                <option value="SAINT" <?php if ($merek_kwh == 'SAINT') echo 'selected'; ?>>SAINT</option>
+                                <option value="MECOINDO" <?php if ($merek_kwh == 'MECOINDO') echo 'selected'; ?>>MECOINDO</option>
+                                <option value="GLOMET" <?php if ($merek_kwh == 'GLOMET') echo 'selected'; ?>>GLOMET</option>
+                                <option value="LIPUVINDO" <?php if ($merek_kwh == 'LIPUVINDO') echo 'selected'; ?>>LIPUVINDO</option>
+                                <option value="LANDIS+GYR" <?php if ($merek_kwh == 'LANDIS+GYR') echo 'selected'; ?>>LANDIS+GYR</option>
+                                <option value="MITSUBISHI" <?php if ($merek_kwh == 'MITSUBISHI') echo 'selected'; ?>>MITSUBISHI</option>
+                                <option value="OSAKI" <?php if ($merek_kwh == 'OSAKI') echo 'selected'; ?>>OSAKI</option>
+                                <option value="SCHNEIDER" <?php if ($merek_kwh == 'SCHNEIDER') echo 'selected'; ?>>SCHNEIDER</option>
+                                <option value="KRIZIK" <?php if ($merek_kwh == 'KRIZIK') echo 'selected'; ?>>KRIZIK</option>
+                                <option value="GANZ" <?php if ($merek_kwh == 'GANZ') echo 'selected'; ?>>GANZ</option>
+                                <option value="LANDIS" <?php if ($merek_kwh == 'LANDIS') echo 'selected'; ?>>LANDIS</option>
+                                <option value="SGRID" <?php if ($merek_kwh == 'SGRID') echo 'selected'; ?>>SGRID</option>
+                                <option value="EMAIL" <?php if ($merek_kwh == 'EMAIL') echo 'selected'; ?>>EMAIL</option>
+                                <option value="ENERTEC" <?php if ($merek_kwh == 'ENERTEC') echo 'selected'; ?>>ENERTEC</option>
+                                <option value="CHANGSHA" <?php if ($merek_kwh == 'CHANGSHA') echo 'selected'; ?>>CHANGSHA</option>
+                                <option value="GALVANIZE" <?php if ($merek_kwh == 'GALVANIZE') echo 'selected'; ?>>GALVANIZE</option>
+                                <option value="GE" <?php if ($merek_kwh == 'GE') echo 'selected'; ?>>GE</option>
+                                <option value="PRODIGY" <?php if ($merek_kwh == 'PRODIGY') echo 'selected'; ?>>PRODIGY</option>
+                                <option value="ELSTER" <?php if ($merek_kwh == 'ELSTER') echo 'selected'; ?>>ELSTER</option>
+                                <option value="AEG" <?php if ($merek_kwh == 'AEG') echo 'selected'; ?>>AEG</option>
+                                <option value="ADTECH" <?php if ($merek_kwh == 'ADTECH') echo 'selected'; ?>>ADTECH</option>
+                                <option value="ELIPS SYSTEM" <?php if ($merek_kwh == 'ELIPS SYSTEM') echo 'selected'; ?>>ELIPS SYSTEM</option>
+                                <option value="METRICO" <?php if ($merek_kwh == 'METRICO') echo 'selected'; ?>>METRICO</option>
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label for="">Type kWh Meter</label>
-                            <input type="text" name="tipemet" class="form-control" placeholder="Masukkan Type kWh Meter" require>
+                            <input type="text" name="tipemet" class="form-control" placeholder="Masukkan Type kWh Meter" value="<?php echo $type_kwh; ?>" require>
                         </div>
                         <div class="form-group">
                             <label for="">Nomor kWh Meter</label>
-                            <input type="text" name="nomet" class="form-control" placeholder="Masukkan Nomor Meter Minimal 11 Angka dan Maksimal 12 Angka" autofocus minlength="11" maxlength="12" require>
+                            <input type="text" name="nomet" class="form-control" placeholder="Masukkan Nomor Meter Minimal 11 Angka dan Maksimal 12 Angka" value="<?php echo $nomet; ?>" autofocus minlength="11" maxlength="12" require>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" hidden>
                             <label for="kd_akun">Status</label>
                             <div class="input-group">
                                 <input type="number" name="status" value="1" class="form-control">
@@ -234,6 +251,7 @@ if (isset($_GET['aksi'])) {
                             }
                         }
                     </script>
+                <?php } ?>
                 </div>
             </div>
         </div>

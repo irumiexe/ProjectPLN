@@ -66,13 +66,13 @@ if (isset($_GET['aksi'])) {
                         <div class="form-group">
                             <label for="">Nama Pelanggan</label>
                             <div class="input-group">
-                                <input type="text" name="nama_pel" class="form-control" placeholder="Masukkan Rute">
+                                <input type="text" name="nama_pel" class="form-control" placeholder="">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="kd_akun">Rute Meter</label>
                             <div class="input-group">
-                                <input type="text" name="rbm" class="form-control" placeholder="Masukkan Rute">
+                                <input type="text" name="rbm" class="form-control" placeholder="">
                             </div>
                         </div>
                         <div class="form-group">
@@ -87,15 +87,60 @@ if (isset($_GET['aksi'])) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="">Merek KWH</label>
-                            <div class="input-group">
-                                <input type="text" name="merek_kwh" class="form-control" placeholder="Masukkan Rute">
-                            </div>
+                            <label for="">Merk kWh Meter</label>
+                            <select name="merk" class="form-control" required>
+                                <option value="">Pilih Opsi</option>
+                                <option value="SMARTMETER">SMARTMETER</option>
+                                <option value="HEXING">HEXING</option>
+                                <option value="ITRON">ITRON</option>
+                                <option value="MELCOINDA">MELCOINDA</option>
+                                <option value="CANNET">CANNET</option>
+                                <option value="SANXING">SANXING</option>
+                                <option value="FUJI">FUJI</option>
+                                <option value="METBELOSA">METBELOSA</option>
+                                <option value="WASION">WASION</option>
+                                <option value="STAR">STAR</option>
+                                <option value="ACTARIS">ACTARIS</option>
+                                <option value="EDMI">EDMI</option>
+                                <option value="SIGMA">SIGMA</option>
+                                <option value="SCHLUMBERGER">SCHLUMBERGER</option>
+                                <option value="MEISYS">MEISYS</option>
+                                <option value="SAINT">SAINT</option>
+                                <option value="MECOINDO">MECOINDO</option>
+                                <option value="GLOMET">GLOMET</option>
+                                <option value="LIPUVINDO">LIPUVINDO</option>
+                                <option value="LANDISGYR">LANDIS+GYR</option>
+                                <option value="MITSUBISHI">MITSUBISHI</option>
+                                <option value="OSAKI">OSAKI</option>
+                                <option value="SCHNEIDER">SCHNEIDER</option>
+                                <option value="KRIZIK">KRIZIK</option>
+                                <option value="GANZ">GANZ</option>
+                                <option value="LANDIS">LANDIS</option>
+                                <option value="SGRID">SGRID</option>
+                                <option value="EMAIL">EMAIL</option>
+                                <option value="ENERTEC">ENERTEC</option>
+                                <option value="CHANGSHA">CHANGSHA</option>
+                                <option value="GALVANIZE">GALVANIZE</option>
+                                <option value="GE">GE</option>
+                                <option value="PRODIGY">PRODIGY</option>
+                                <option value="ELSTER">ELSTER</option>
+                                <option value="AEG">AEG</option>
+                                <option value="ADTECH">ADTECH</option>
+                                <option value="ELIPS SYSTEM">ELIPS SYSTEM</option>
+                                <option value="METRICO">METRICO</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Tipe KWH</label>
                             <div class="input-group">
-                                <input type="text" name="tipe_kwh" class="form-control" placeholder="Masukkan Rute">
+                                <input type="text" name="tipe_kwh" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Nomor Meter</label>
+                            <div class="input-group">
+                                <input type="text" name="nomet" class="form-control" value="" placeholder="" autofocus minlength="11" maxlength="11" required>
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
                             </div>
                         </div>
                         <div class="form-group" hidden>
