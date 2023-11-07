@@ -38,7 +38,13 @@ if (isset($_FILES['excelFile']) && $_FILES['excelFile']['error'] === UPLOAD_ERR_
         $row = mysqli_fetch_array($result);
         $count = $row[0];
 
-        if ($count > 0) {
+        // Validasi jika idpel sudah ada dalam tbl_target
+        $checkIdpelQuery = "SELECT COUNT(*) FROM tbl_target WHERE idpel = '$idpel'";
+        $resultIdpel = mysqli_query($db, $checkIdpelQuery);
+        $rowIdpel = mysqli_fetch_array($resultIdpel);
+        $countIdpel = $rowIdpel[0];
+
+        if ($count > 0 && $countIdpel == 0) {
             // `kd_akun` valid, lanjutkan dengan INSERT
             $query = "INSERT INTO tbl_target (idpel, kd_akun, nama_pel, rbm, tipe, alamat, tanggal, tanggal_akhir, latitude, longitude, status) VALUES ('$idpel', '$kd_akun', '$nama_pel', '$rbm', '$tipe', '$alamat', '$tanggal', '$tanggal_akhir', '$latitude', '$longitude', '$status')";
 
@@ -47,7 +53,18 @@ if (isset($_FILES['excelFile']) && $_FILES['excelFile']['error'] === UPLOAD_ERR_
             } else {
                 $failCount++;
             }
+        } elseif ($countIdpel > 0) {
+            // idpel sudah ada, tampilkan pesan kesalahan
+            echo '<script>';
+            echo 'alert("idpel yang anda masukkan sudah ada: ' . $idpel . '");';
+            echo '</script>';
         }
+    }
+    if ($count == 0) {
+        // kd_akun tidak valid, tampilkan pesan kesalahan
+        echo '<script>';
+        echo 'alert("kd_akun yang anda masukkan tidak valid: ' . $kd_akun . '");';
+        echo '</script>';
     }
 }
 
