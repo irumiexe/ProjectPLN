@@ -54,8 +54,8 @@ include '../assets/conn/config.php';
         </form>
         <ul class="navbar-nav d-md-inline-block form-inline  ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
-                <a class="nav-link" id="navbar" href="logout.php" role="button" ><i class="fas fa-sign-out-alt"></i> Log out</a>
-                
+                <a class="nav-link" id="navbar" href="logout.php" role="button"><i class="fas fa-sign-out-alt"></i> Log out</a>
+
             </li>
         </ul>
     </nav>
@@ -82,12 +82,12 @@ include '../assets/conn/config.php';
                             Dashboard
                         </a>
                         <div class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#dataDropdown">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Data
                             </a>
                             <div class="nav-submenu">
-                                <ul class="small">
+                                <ul class="small" id="dataDropdown">
                                     <a class="nav-link" href="../admin/pelangganinput.php">
                                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></i></div>
                                         Pelanggan
@@ -107,3 +107,52 @@ include '../assets/conn/config.php';
             </nav>
         </div>
         <div id="layoutSidenav_content">
+            <script>
+                // Cek jika ada cookie yang menyimpan status dropdown
+                document.addEventListener("DOMContentLoaded", function() {
+                    var dataDropdown = document.getElementById("dataDropdown");
+
+                    // Periksa jika ada cookie dengan nama "dataDropdownOpen"
+                    var isDropdownOpen = getCookie("dataDropdownOpen");
+
+                    // Jika ada cookie dan nilainya "true," buka dropdown
+                    if (isDropdownOpen === "true") {
+                        dataDropdown.classList.add("show");
+                    }
+
+                    // Temukan elemen yang memicu dropdown
+                    var dataLink = document.querySelector('[data-toggle="collapse"]');
+
+                    // Tambahkan event listener untuk mengatasi klik
+                    dataLink.addEventListener("click", function(event) {
+                        event.preventDefault(); // Untuk mencegah navigasi
+
+                        // Toggle (buka/tutup) dropdown
+                        dataDropdown.classList.toggle("show");
+
+                        // Simpan status dropdown dalam cookie
+                        var isDropdownOpen = dataDropdown.classList.contains("show");
+                        setCookie("dataDropdownOpen", isDropdownOpen.toString(), 30);
+                    });
+
+                    // Fungsi untuk mengambil nilai cookie
+                    function getCookie(name) {
+                        var value = "; " + document.cookie;
+                        var parts = value.split("; " + name + "=");
+                        if (parts.length === 2) {
+                            return parts.pop().split(";").shift();
+                        }
+                    }
+
+                    // Fungsi untuk mengatur nilai cookie
+                    function setCookie(name, value, days) {
+                        var expires = "";
+                        if (days) {
+                            var date = new Date();
+                            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                            expires = "; expires=" + date.toUTCString();
+                        }
+                        document.cookie = name + "=" + value + expires + "; path=/";
+                    }
+                });
+            </script>

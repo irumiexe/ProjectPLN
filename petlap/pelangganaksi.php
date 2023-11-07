@@ -63,7 +63,7 @@ if (isset($_GET['aksi'])) {
                         <div class="form-group">
                             <label for="">Nama Pelanggan</label>
                             <div class="input-group">
-                                <input type="text" name="nama_pel" class="form-control" value="<?php echo $nama_pel; ?>" placeholder="Masukkan Nama Pelanggan" required minlength="2">
+                                <input type="text" name="nama_pel" class="form-control" value="<?php echo $nama_pel; ?>" placeholder="Masukkan Nama Pelanggan" required minlength="2" maxlength="50">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             </div>
 
@@ -108,7 +108,7 @@ if (isset($_GET['aksi'])) {
                         </div>
                         <div class="form-group">
                             <label for="">Alamat</label>
-                            <input type="text" name="alamat" class="form-control" placeholder="Masukkan Type kWh Meter" value="<?php echo $alamat; ?>" require>
+                            <input type="text" name="alamat" class="form-control" placeholder="Masukkan Type kWh Meter" value="<?php echo $alamat; ?>" maxlength="100" require>
                         </div>
                         <div class="form-group">
                             <tr>
@@ -170,7 +170,7 @@ if (isset($_GET['aksi'])) {
 
                         <div class="form-group">
                             <label for="">Type kWh Meter</label>
-                            <input type="text" name="tipemet" class="form-control" placeholder="Masukkan Type kWh Meter" value="" require>
+                            <input type="text" name="tipemet" class="form-control" placeholder="Masukkan Type kWh Meter" value="" maxlength="25" require>
                         </div>
                         <div class="form-group">
                             <label for="">Nomor kWh Meter</label>

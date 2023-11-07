@@ -207,13 +207,13 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">Nama Pelanggan</label>
                                 <div class="input-group">
-                                    <input type="text" name="nama_pel" value="<?php echo $d['nama_pel'] ?>" class="form-control" placeholder="">
+                                    <input type="text" name="nama_pel" value="<?php echo $d['nama_pel'] ?>" class="form-control" placeholder="" maxlength="50">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="kd_akun">Rute Meter</label>
                                 <div class="input-group">
-                                    <input type="text" name="rbm" value="<?php echo $d['rbm'] ?>" class="form-control" placeholder="Masukkan Rute">
+                                    <input type="text" name="rbm" value="<?php echo $d['rbm'] ?>" class="form-control" placeholder="Masukkan Rute" maxlength="13">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -230,7 +230,7 @@ if (isset($_GET['aksi'])) {
                             <div class="form-group">
                                 <label for="">alamat</label>
                                 <div class="input-group">
-                                    <input type="text" name="alamat" value="<?php echo $d['alamat'] ?>" class="form-control" placeholder="">
+                                    <input type="text" name="alamat" value="<?php echo $d['alamat'] ?>" class="form-control" placeholder="" maxlength="100">
                                 </div>
                             </div>
                             <div class="form-group" hidden>
