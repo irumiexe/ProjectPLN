@@ -121,11 +121,12 @@ $tampil = mysqli_query($db, $hasil);
             <div class=" mb-3 card-header">
                 <h4 class=" card-title"> Target Pelanggan</h4>
             </div>
-            <div class=" px-3 table-responsive">
-                <table class="table table-bordered">
+            <div class="px-3 table-responsive" style="overflow-x: auto;">
+
+                <table class="table table-bordered" style="min-width: 100%; max-width: 100%;">
+
                     <thead>
                         <tr>
-                            <th class="text-center">No.</th>
                             <th class="text-center">ID PELANGGAN</th>
                             <th class="text-center">RBM</th>
                             <th class="text-center">MAPS</th>
@@ -137,7 +138,6 @@ $tampil = mysqli_query($db, $hasil);
                         while ($d = $tampil->fetch_array()) {
                         ?>
                             <tr>
-                                <td class="text-center"><?php echo $counter; ?></td>
                                 <td class="text-center">
                                     <a href="pelangganaksi.php?aksi=tambah&kd_akun_user=<?php echo $kd_akun_user; ?>&tanggal_dipilih=<?php echo $tanggal_dipilih; ?>&idpel=<?php echo $d['idpel']; ?>"><?php echo $d['idpel']; ?></a>
                                 </td>

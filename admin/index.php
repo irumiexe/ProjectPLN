@@ -64,6 +64,19 @@ if (isset($_SESSION['username'])) {
         border-radius: 10px;
     }
 
+    .card2 {
+        box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
+        margin-bottom: 1rem;
+        border-radius: 10px;
+    }
+
+    .card2-title {
+        float: left;
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin: 0;
+    }
+
     .card-title {
         float: left;
         font-size: 1.1rem;
@@ -74,6 +87,21 @@ if (isset($_SESSION['username'])) {
     .inner {
         padding: 10px;
         border-radius: 10px;
+    }
+
+    .inner2 {
+        text-align: center;
+        align-items: center;
+        padding: 2px;
+        border-radius: 10px;
+        color: whitesmoke;
+    }
+
+    .icon-right {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 50px;
+        align-items: center;
     }
 </style>
 
@@ -99,27 +127,38 @@ if (isset($_SESSION['username'])) {
                 <div class="card-body">
                     <h3>Data Saat Ini</h3>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-lg-3 col-6">
                             <div class="card">
                                 <div class="inner bg-info">
                                     <h4><?php echo $jumlah_target; ?></h4>
+                                    <div class="icon-right"><i class="fas fa-user-check"></i></div>
                                     <p>Pelanggan</p>
                                 </div>
+
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-lg-3 col-6">
                             <div class="card">
                                 <div class="inner bg-danger">
                                     <h4><?php echo $jumlah_target2; ?></h4>
+                                    <div class="icon-right"><i class="fas fa-user-clock"></i></div>
                                     <p>Pending</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-lg-3 col-6">
                             <div class="card">
                                 <div class="inner bg-warning">
                                     <h4><?php echo $jumlah_target3; ?></h4>
+                                    <div class="icon-right"><i class="fas fa-users"></i></div>
                                     <p>Petugas</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <div class="card2">
+                                <div class="inner2 bg-info">
+                                    <p id="real-time-date"></p>
                                 </div>
                             </div>
                         </div>
